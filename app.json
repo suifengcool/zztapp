@@ -24,7 +24,6 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#000",
     "navigationBarTextStyle": "#fff",
-    "enablePullDownRefresh": true,
     "navigationBarTitleText": "镇镇通"
   },
   "networkTimeout": {

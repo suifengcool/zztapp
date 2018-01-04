@@ -8,55 +8,261 @@
 		          <image src="{{item.url}}" class="slide-image" mode="aspectFill"/>  
 		        </swiper-item>    
 	        </block> 
-	        <view class="swiper-btn">
-	        	<view class="search-box">
-		        	<i class="iconfont icon-search2"></i>
-		        </view>
-		        <view class="scan-box">
-		        	<i class="iconfont icon-scan"></i>
-		        </view>
-	        </view>
 	    </swiper>
+	    <view class="swiper-btn">
+        	<view class="search-box">
+	        	<i class="iconfont icon-search2"></i>
+	        </view>
+	        <view class="scan-box">
+	        	<i class="iconfont icon-scan"></i>
+	        </view>
+        </view>
 
 	    <view class="shop-box">
 	    	<view class="title-box">
 	    		<view class="title">推荐店铺</view>
 	    		<view class="btn">免费入驻</view>
 	    	</view>
-
-	    	<scroll-view class="type-box" scroll-x='true'>
-	        	<view class="type-item">
-	                <i class="iconfont icon-pcduan" style="color:#979797"></i>
-	                <text class="type-item-text">PC端</text>
+	    	<scroll-view class="shopList" scroll-x='true'>
+	        	<view class="shop-item">
+	                <view class="pic"></view>
+	                <text class="shop-item-text">顾村新街幼儿园</text>
 	            </view>
-	            <view class="type-item">
-	                <i class="iconfont icon-yidongduan" style="color:rgb(12, 163, 240)"></i>
-	                <text class="type-item-text">H5移动端</text>
+	            <view class="shop-item">
+	            	<view class="pic"></view>
+	                <view class="shop-item-text">中国电信</view>
 	            </view>
-	            <view class="type-item">
-	                <i class="iconfont icon-gongzhonghao2" style="color:rgb(114, 189, 99)"></i>
-	                <text class="type-item-text">微信公众号</text>
+	            <view class="shop-item">
+	            	<view class="pic"></view>
+	                <view class="shop-item-text">家乐福超市</view>
 	            </view>
-	            <view class="type-item">
-	                <i class="iconfont icon-xiaochengxu" style="color:rgb(22, 211, 40)"></i>
-	                <text class="type-item-text">微信小程序</text>
+	            <view class="shop-item">
+	            	<view class="pic"></view>
+	                <view class="shop-item-text">沃尔玛</view>
 	            </view>
-	            <view class="type-item">
-	                <i class="iconfont icon-webapp" style="color:rgb(52, 152, 219)"></i>
-	                <text class="type-item-text">WebApp</text>
+	            <view class="shop-item">
+	            	<view class="pic"></view>
+	                <view class="shop-item-text">永红幼儿园</view>
 	            </view>
-	            <view class="type-item">
-	                <i class="iconfont icon-xitongguanli" style="color:rgb(36, 167, 242)"></i>
-	                <text class="type-item-text">管理系统</text>
+	            <view class="shop-item">
+	            	<view class="pic"></view>
+	                <view class="shop-item-text">青青家园网吧</view>
 	            </view>
 		    </scroll-view>
 	    </view>
+
+	    <view class="line"></view>
+
+	    <view class="homeListBox">
+	    	<view class="home-list-top">
+		    	<view class="type-box">
+		    		<view class="type-item">全部分类</view>
+		    		<view class="type-item">餐饮美食</view>
+		    		<view class="type-item">电影KTV</view>
+		    		<view class="type-item">酒店住宿</view>
+		    	</view>
+		    	<view class="btn">
+	    			<i class="iconfont icon-down-solid"></i>
+	    		</view>
+    		</view>
+    		<view class="classicfy">
+    			<view class="classicfy-item">
+    				<view class="iconbox iconbox-food">
+    					<i class="iconfont iconfont-classicfy icon-food"></i>
+    				</view>
+    				<view class="classicfy-item-text">餐饮美食</view>
+    			</view>
+    			<view class="classicfy-item">
+    				<view class="iconbox iconbox-movie">
+    					<i class="iconfont iconfont-classicfy icon-movie"></i>
+    				</view>
+    				<view class="classicfy-item-text">电影演出</view>
+    			</view>
+    			<view class="classicfy-item">
+    				<view class="iconbox iconbox-hotel">
+    					<i class="iconfont iconfont-classicfy icon-hotel"></i>
+    				</view>
+    				<view class="classicfy-item-text">酒店住宿</view>
+    			</view>
+    			<view class="classicfy-item">
+    				<view class="iconbox iconbox-cup">
+    					<i class="iconfont iconfont-classicfy icon-cup"></i>
+    				</view>
+    				<view class="classicfy-item-text">休闲娱乐</view>
+    			</view>
+    			<view class="classicfy-item">
+    				<view class="iconbox iconbox-camera">
+    					<i class="iconfont iconfont-classicfy icon-camera"></i>
+    				</view>
+    				<view class="classicfy-item-text">结婚摄影</view>
+    			</view>
+    			<view class="classicfy-item">
+    				<view class="iconbox iconbox-board">
+    					<i class="iconfont iconfont-classicfy icon-board"></i>
+    				</view>
+    				<view class="classicfy-item-text">艺术培训</view>
+    			</view>
+    			<view class="classicfy-item">
+    				<view class="iconbox iconbox-sofa">
+    					<i class="iconfont iconfont-classicfy icon-sofa"></i>
+    				</view>
+    				<view class="classicfy-item-text">家具建材</view>
+    			</view>
+    			<view class="classicfy-item">
+    				<view class="iconbox iconbox-tshirt">
+    					<i class="iconfont iconfont-classicfy icon-tshirt"></i>
+    				</view>
+    				<view class="classicfy-item-text">服装饰品</view>
+    			</view>
+    			<view class="classicfy-item">
+    				<view class="iconbox iconbox-fridge">
+    					<i class="iconfont iconfont-classicfy icon-fridge"></i>
+    				</view>
+    				<view class="classicfy-item-text">数码家电</view>
+    			</view>
+    			<view class="classicfy-item">
+    				<view class="iconbox iconbox-medicine">
+    					<i class="iconfont iconfont-classicfy icon-medicine"></i>
+    				</view>
+    				<view class="classicfy-item-text">医疗保健</view>
+    			</view>
+    			<view class="classicfy-item">
+    				<view class="iconbox iconbox-car">
+    					<i class="iconfont iconfont-classicfy icon-car"></i>
+    				</view>
+    				<view class="classicfy-item-text">汽贸汽修</view>
+    			</view>
+    			<view class="classicfy-item">
+    				<view class="iconbox iconbox-fruit">
+    					<i class="iconfont iconfont-classicfy icon-fruit"></i>
+    				</view>
+    				<view class="classicfy-item-text">水果生鲜</view>
+    			</view>
+    			<view class="classicfy-item">
+    				<view class="iconbox iconbox-country">
+    					<i class="iconfont iconfont-classicfy icon-country"></i>
+    				</view>
+    				<view class="classicfy-item-text">农家娱乐</view>
+    			</view>
+    			<view class="classicfy-item">
+    				<view class="iconbox iconbox-money">
+    					<i class="iconfont iconfont-classicfy icon-money"></i>
+    				</view>
+    				<view class="classicfy-item-text">金融服务</view>
+    			</view>
+    			<view class="classicfy-item">
+    				<view class="iconbox iconbox-classicfy">
+    					<i class="iconfont iconfont-classicfy icon-classify"></i>
+    				</view>
+    				<view class="classicfy-item-text">全部分类</view>
+    			</view>
+    		</view>
+	    	<view class="home-list">
+	    		<view class="home-list-item">
+	    			<view class="pic"></view>
+	    			<view class="desc">
+	    				<view class="title">
+	    					<view class="name">贯今网络</view>
+	    					<view class="distance">7.24km</view>
+	    				</view>
+	    				<view class="score-box">
+	    					<view class="score-list">
+	    						<i class="iconfont icon-star"></i>
+	    					</view>
+	    					<view class="score-text">4.7</view>
+	    				</view>
+	    				<view class="tabs">
+	    					<view class="tab-itam">干净卫生</view>
+	    					<view class="tab-itam">环境优雅</view>
+	    					<view class="tab-itam">WIFI</view>
+	    				</view>
+	    			</view>
+	    		</view>
+	    	</view>
+	    </view>
+
 
     </view>
 
     <!--发现-->
     <view class="container-compass" hidden="{{currentTab != 1}}">
-    	发现
+    	<view class='publish'>
+		    <swiper class="swiper2" indicator-dots="{{true}}" indicator-active-color="#fb5100" class="swiper" autoplay="{{true}}">
+			    <block wx:for="{{data.advs}}">
+			        <swiper-item>
+			        	<image src="{{imagesSocket + item.thumb}}" />
+			        </swiper-item>
+			    </block>
+		    </swiper>
+		    <view class='declaration'>
+		    	免责声明:本平台发布信息（收费、免费）展示，内容与平台本身无关，平台不负任何责任
+		  	</view>
+		  
+		    <view class='titleWrapper'>
+			    <view class='line'></view>
+			    <view class='text'>请选择发布类型</view>
+			    <view class='line'></view>
+		    </view>
+		    <swiper autoplay="true" class="cate" interval="3000" duration="1200">
+			    <swiper-item indicator-dots="moduleLen > 1" wx:for="{{moduleLen}}" wx:for-item="i" wx:key="{{index}}">
+			        <view class='category clearfix'>
+				        <block 
+				        	wx:for="{{data.module.length - i * 8 >= 8 ? 8 : data.module.length - i * 8}}" 
+				        	wx:for-item="j"
+			        	>
+				            <view class='catItem'>
+				                <navigator 
+					              	hover-class="none" 
+					              	url='../apply/apply?id={{data.module[i * 8 + j].id}}&title={{data.module[i * 8 + j].name}}&isneedpay={{data.module[i * 8 + j].isneedpay}}&needpay={{data.module[i * 8 + j].needpay}}'
+				              	>
+				                	<view class='imgWrapper'>
+				                		<image src="{{imagesSocket + data.module[i * 8 + j].thumb}}"></image>
+				              		</view>
+				              		<view class='txt'>{{data.module[i * 8 + j].name}}</view>
+				            	</navigator>
+				            </view>
+				        </block>
+			        </view>
+			    </swiper-item>
+		    </swiper>
+			<block>
+			    <view class="secondScroll">
+			        <view class="title">{{scrollName}}</view>
+			        <scroll-view 
+			        	class="list" 
+			        	scroll-x="true" 
+			        	bindtouchend="scrolltouchend" 
+			        	bindtouchstart="scrolltouchstart" 
+			        	scroll-with-animation="{{true}}" 
+			        	scroll-into-view="id{{scrollId}}"
+		        	>
+			        	<text 
+			        		bindtap='categoryTap' 
+			        		data-name="{{item.name}}" 
+			        		data-id="{{item.id}}" 
+			        		wx:for="{{data.module}}" 
+			        		id="id{{item.id}}" 
+			        		class="tex"
+		        		>
+		        			{{item.name}}
+	        			</text>
+			        </scroll-view>
+			    </view>
+			</block>
+		    <block wx:if="{{scrollData.length > 0}}">
+			    <import src="../../resource/template/indexList.wxml" />
+			    <template is="list" data="{{data:scrollData,imagesSocket,newImg: true}}" />
+			    <view class="scrollmore" wx:if="{{scrollMore !== ''}}">
+			        <navigator url="../moduleList/moduleList?id={{scrollMore}}">点击加载更多</navigator>
+			    </view>
+			    <import src="../../resource/template/complete.wxml" />
+			    <template wx:if="{{scrollMore == ''}}" is="complete" />
+			</block>
+		    <block wx:if="{{scrollData.length == 0}}">
+			    <import src="../../resource/template/emptyData.wxml" />
+			    <template is="module" data="{{text:'该板块暂时未有信息'}}" />
+		     </block>
+		</view>
     </view>
 
 	<!--我的-->
