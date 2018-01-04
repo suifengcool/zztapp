@@ -1,0 +1,3 @@
+<template name="module">
+  <view class="emptyData">{{text}}</view>
+</template>

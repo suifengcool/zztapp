@@ -1,0 +1,32 @@
+<!--yc_youliao/page/myPayInfo/myPayInfo.wxml-->
+<view class='myPayInfo'>
+  <view class='title'>
+    <view class='li {{type == 0 ? "checked" : ""}}' data-type='0' bindtap='onTitleTap'>发布</view>
+    <view class='li {{type ==1 ? "checked" : ""}}' data-type='1' bindtap='onTitleTap'>置顶</view>
+  </view>
+  <view hidden="{{!(type == 0)}}">
+    <view class='item' wx:for="{{render0.data}}">
+      <navigator hover-class="none" url="/yc_youliao/page/detail/detail?id={{item.id}}&mid={{item.mid}}&status={{item.status}}">
+        <view class='itemTitle'>
+          <text class='flag'>[{{item.modulename}}]</text>
+          <text class='txt'>{{item.con.title}}</text>
+        </view>
+        <view class='timeWrapper'>添加时间:
+          <text class='time'>{{item.createtime}}</text>
+        </view>
+        <!-- <view class='timeWrapper'>置顶支付:
+        <text class='time col'>￥2</text>
+      </view> -->
+        <!-- <view class='timeWrapper'>交易时间:
+        <text class='time col'>2017-10-09 22:15:48</text>
+      </view> -->
+        <!-- <view class='topTime'>置顶至:
+        <text style='padding-left: 20rpx'>2017-10-09 22:15:48</text>
+      </view> -->
+      </navigator>
+    </view>
+  </view>
+  <view hidden="{{!(type ==1)}}">
+    <view class='warn'>该功能即将上线</view>
+  </view>
+</view>

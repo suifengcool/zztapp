@@ -1,0 +1,72 @@
+/* yc_youliao/myPublish/myPublish.wxss */
+page{
+  background-color: #f5f5f5;
+}
+.myPublish .title{
+  width: 60%;
+  display: flex;
+  margin: 20rpx auto;
+  text-align: center;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  height: 60rpx;
+  border: 1px solid #fb5100;
+  border-radius: 6px;
+  color: #fb5100;
+}
+.myPublish .title .li{
+  flex: 1;
+}
+.myPublish .title .li.checked{
+  background-color: #fb5100;
+  color: #fff;
+}
+.myPublish .item{
+  background-color: #fff;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #eee;
+}
+.myPublish .item:last-child{
+  border-bottom: none;
+}
+.item .itemTitle{
+  line-height: 50rpx;
+  font-size: 30rpx
+}
+.item .itemTitle .flag{
+  font-size: 32rpx;
+  padding-right: 20rpx;
+  color: #fb5100;
+}
+.item .timeWrapper{
+  padding-top: 10rpx;
+  line-height: 50rpx;
+  height: 50rpx;
+  font-size: 30rpx;
+  color: #999;
+}
+.item .time{
+  font-size: 28rpx;
+}
+.item .btns {
+  text-align: right;
+}
+.item .btn{
+  display: inline-block;
+  line-height: 60rpx;
+  padding: 0 20rpx;
+  color: red;
+  border: 1rpx solid red;
+  font-size: 30rpx;
+  border-radius: 6px;
+}
+.item .btn.del{
+  margin-left: 30rpx;
+  border: 1rpx solid #777;
+  color: #777;
+}
+.item .btn.pay{
+  margin-left: 30rpx;
+  border: 1rpx solid #1aad19;
+  color: #1aad19;
+}

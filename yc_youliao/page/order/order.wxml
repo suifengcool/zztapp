@@ -1,0 +1,31 @@
+<!--yc_youliao/page/order/order.wxml-->
+<view class='order'>
+  <view class='title'>单人升级版自助餐</view>
+  <view class='listWrapper'>
+    <view class='list'>
+      <text>单价：</text>
+      <text>￥{{unit}}元</text>
+    </view>
+    <view class='list'>
+      <text>数量：</text>
+      <view class='numChoose'>
+        <text class='btn del {{numVal > 1 ? "" : "disable"}}' bindtap='del'>-</text>
+        <input type="number" class='input' bindinput="input" value='{{numVal}}'></input>
+        <text class='btn add {{numVal < data.total ? "" : "disable"}}' bindtap='add'>+</text>
+      </view>
+    </view>
+    <view class='list' wx:if="{{data.isfirstcut != '0.00'}}">
+      <text>首单优惠：</text>
+      <text style="color:#fb5100">-￥{{data.isfirstcut}}元</text>
+    </view>
+    <view class='list' wx:if="{{data.credit}}" bindtap='onCredit'>
+      <text>购买此商品可使用1积分 抵扣<text style="color: #6bbd00;">￥{{creditNum}}元</text></text>
+      <icon type="success" class='icon' size="20" color='{{credit ? "" : "#ccc"}}'/>
+    </view>
+    <view class='list'>
+      <text>总价：</text>
+      <text>￥{{total}}元</text>
+    </view>
+  </view>
+  <view class='submit' bindtap='submit'>提交订单</view>
+</view>

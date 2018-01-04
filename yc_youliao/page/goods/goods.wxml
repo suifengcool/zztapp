@@ -1,0 +1,132 @@
+<!--yc_youliao/page/goods/goods.wxml-->
+<view class='goods'>
+  <view class='imgWrapper'>
+    <image class='img' src='{{imageSocket + data.thumb}}'></image>
+    <view class='title'>
+      {{data.title}}
+    </view>
+  </view>
+  <view class='secKill' wx:if="{{isSecKill}}">
+    <view class='left'>
+      <view class='killPrice'>￥{{data.time_money}}</view>
+      <view class='b-Wrapper'>
+        <view class='before'>￥{{data.marketprice}}</view>
+        <view class='has'>已售:{{data.sales}}</view>
+      </view>
+    </view>
+    <view class='right'>
+      <view class='txt'>距离结束</view>
+      <view class='spot'>
+        <text class='timeWrapper'>{{time.hour}}</text>：
+        <text class='timeWrapper'>{{time.minute}}</text>：
+        <text class='timeWrapper'>{{time.second}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='priceWrapper' wx:if="{{!isGroup}}">
+    <view class='price'>
+      <text class='now'>{{data.marketprice}}</text>元
+      <text class='before'>门市价{{data.productprice}}元</text>
+    </view>
+    <view class="btn" bindtap='buy'>立即抢购</view>
+  </view>
+  <view class='priceWrapper groupPrice' wx:if="{{isGroup}}">
+    <view class='price'>
+      <view class='now'>￥{{data.groupprice}}团</view>
+      <view class='before'>￥{{data.marketprice}}促销价</view>
+    </view>
+    <view>
+      <view class='single groupBtn' data-type="1" bindtap='buy'>
+        <view class='top'>￥{{data.marketprice}}</view>
+        <view class='bottom'>单独购买</view>
+      </view>
+      <view class='open groupBtn' data-type="2" bindtap='buy'>
+        <view class='top'>￥{{data.groupprice}}</view>
+        <view class='bottom'>一键开团</view>
+      </view>
+    </view>
+  </view>
+  <view class='group'>
+    <view class='li' wx:if="{{data.credit == 1}}">
+      <icon class="icon" type='success_no_circle' size="14" color='#6bbd00'></icon> 使用1积分可抵用现金
+      <text class='col'>{{credit}}元</text>
+    </view>
+    <view class='li' wx:if="{{data.isfirstcut != '0.00'}}">
+      <icon class="icon" type='success_no_circle' size="14" color='#6bbd00'></icon> 首单优惠
+      <text class='col'>{{data.isfirstcut}}元</text>
+    </view>
+    <view class='li sale'>
+      <image src='../../resource/images/sale.png' class='saleIcon'></image>已售{{data.sales}}
+    </view>
+    <view class='inco' wx:if="{{data.inco}}">
+      <view class='item' wx:for="{{data.inco}}">{{item}}</view>
+    </view>
+  </view>
+  <view class='gropuExplain' wx:if="{{isGroup}}">
+    <view class='g-title'>
+      拼团说明
+    </view>
+    <view class='g-explain'>
+      <view class='box'>
+        <text class='spot'>1</text>
+        <view>选择</view>
+        <view>心怡商品</view>
+      </view>
+      <view class='box'>
+        <text class='spot'>2</text>
+        <view>支付开团</view>
+        <view>或参团</view>
+      </view>
+      <view class='box'>
+        <text class='spot'>3</text>
+        <view>等待好友</view>
+        <view>参团支付</view>
+      </view>
+      <view class='box'>
+        <text class='spot'>4</text>
+        <view>达到人数</view>
+        <view>组团成功</view>
+      </view>
+    </view>
+    <view class='li' style="color:#fb5100;">
+      <icon class="icon" type='success_no_circle' size="14" color='#fb5100'></icon> 支付开团并喊好友参团，组团成功后等待商家发货。
+    </view>
+    <view class='li'>
+      <icon class="icon" type='success_no_circle' size="14" color='#6bbd00'></icon> 如组团失败，则系统自动将款项原路退还。
+    </view>
+  </view>
+  <view class='remain'>
+    <view class='title'>商家信息</view>
+    <view class='position'>
+      <view class='address'>
+        <view class='storeName' bindtap='goStore'>{{shopData.shop_name}}</view>
+        <view class='text' bindtap='map' wx:if="{{shopData.address}}">{{shopData.address}}</view>
+      </view>
+      <view class='phone' bindtap='phonetap'>
+        <image class='phoneImg' src='../../resource/images/phone.png'></image>
+      </view>
+    </view>
+  </view>
+  <view class='remain' wx:if="{{des}}">
+    <view class='title'>购买须知</view>
+    <view class='txt'>
+      <block wx:for="{{des}}" wx:for-index="idy" wx:for-item="cellData">
+        <block wx:if="{{cellData.type == 'view'}}">
+          <view class="p">
+            <block wx:for="{{cellData.child}}" wx:key="text">
+              <block wx:if="{{item.type == 'a'}}">
+                <text class="a" data-seccode="{{item.attr['data-seccode']}}" data-secname="{{item.attr['data-secname']}}" bindtap="stockClick">{{item.text}}</text>
+              </block>
+              <block wx:else>
+                <text>{{item.text}}</text>
+              </block>
+            </block>
+          </view>
+        </block>
+        <block wx:if="{{cellData.type == 'img'}}">
+          <image class="img" data-index="{{idy}}" style="height: {{cellData.attr.height?cellData.attr.height:0}}px" mode="aspectFit" src="{{cellData.attr.src}}" bindload="imageLoad"></image>
+        </block>
+      </block>
+    </view>
+  </view>
+</view>

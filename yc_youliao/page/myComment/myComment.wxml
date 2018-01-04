@@ -1,0 +1,13 @@
+<!--yc_youliao/myComment/myComment.wxml-->
+<view class='myComment'>
+  <view class='commentItem' wx:for="{{data}}">
+    <image class='avatar' src="{{item.avatar}}"></image>
+    <view class='des'>
+      <view class='name'>{{item.nickname}}</view>
+      <view class='time'>{{item.addtime}}</view>
+      <view class='content'>{{item.info}}</view>
+    </view>
+  </view>
+  <import src="../../resource/template/complete.wxml" />
+  <template is="complete"  wx:if="{{true}}"/>
+</view>

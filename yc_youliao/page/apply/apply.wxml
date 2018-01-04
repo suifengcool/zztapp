@@ -1,0 +1,11 @@
+<view class='apply house'>
+  <view class='hourseTitle'>{{options.title}}</view>
+  <view class='address item' bindtap='chooseAddress'>
+    <image src='../../resource/images/list_icon2.png'></image>
+    <text>{{location.address}}</text>
+  </view>
+  <import src="../../resource/template/publishItem.wxml"/>
+  <template wx:for="{{data}}" is="{{item.mtype}}" data="{{data: item,form,itemIist:index,imgs,shijian}}"/>
+  <view class='payRemind' wx:if="{{options.isneedpay == 1}}">本次提交需要支付￥{{options.needpay}}</view>
+  <view class='applySubmit' bindtap='submit'>提交</view>
+</view>

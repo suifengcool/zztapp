@@ -1,0 +1,13 @@
+<!--yc_youliao/moduleList/moduleList.wxml-->
+<view class='moduleList'>
+  <block wx:if="{{data.length > 0}}">
+    <import src="../../resource/template/indexList.wxml" />
+    <template is="list" data="{{data:data,imagesSocket,newImg: true}}" />
+    <import src="../../resource/template/complete.wxml" />
+    <template is="complete" wx:if="{{isComplete}}"/>
+  </block>
+  <block wx:if="{{data.length == 0}}">
+    <import src="../../resource/template/emptyData.wxml" />
+    <template is="module" data="{{text:'该板块暂时未有信息'}}" />
+  </block>
+</view>

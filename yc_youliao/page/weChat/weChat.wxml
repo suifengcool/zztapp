@@ -1,0 +1,15 @@
+<!--yc_youliao/weChat/weChat.wxml-->
+<view class="weChat">
+  <scroll-view scroll-y="{{true}}" style="height: {{height}}px" class="contentBox" scroll-into-view="{{toView}}">
+     <block wx:for="{{chatList}}">
+      <view class="contentItem {{item.states == 1 ? 'left' : ''}}" id="id{{item.id}}" >
+        <view class="imgItem"></view>
+        <view class="textWrapper">{{item.content}}</view>
+      </view>
+     </block> 
+  </scroll-view>
+  <view class="inputBox">
+    <input placeholder="点击输入内容" bindinput="bindKeyInput" value="{{inputValue}}" class="input"/> 
+    <text class="btn" bindtap='sendMsg'>发送</text>
+  </view>
+</view>

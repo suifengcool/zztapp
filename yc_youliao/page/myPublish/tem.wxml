@@ -1,0 +1,24 @@
+<template name="li">
+  <view class='item'>
+    <navigator hover-class="none" url="/yc_youliao/page/detail/detail?id={{item.id}}&mid={{item.mid}}&status={{item.status}}">
+      <view class='itemTitle'>
+        <text class='flag'>[{{item.modulename}}]</text>
+        <text class='txt'>{{item.con.title}}</text>
+      </view>
+      <view class='timeWrapper'>添加时间:
+        <block wx:if="{{item.freshtime !== '0' && item.freshtime != undefined}}">
+          <text class='time'>{{item.freshtime}}</text>
+        </block>
+        <block wx:else>
+          <text class='time'>{{item.createtime}}</text>
+        </block>
+      </view>
+    </navigator>
+    <view class='btns'>
+      <view class='btn top' wx:if="{{type == 1 && item.isding == 0}}">置顶</view>
+      <view class='btn top' wx:if="{{type == 1 && item.isding == 1}}">已置顶</view>
+      <view class='btn pay' bindtap='pay' data-itemid="{{item.id}}" data-id="{{item.needpay}}" wx:if="{{item.isneedpay == 1&&item.haspay == 0}}">去支付</view>
+      <view class='btn del' bindtap='del' data-id="{{item.id}}" data-index="{{index}}">删除</view>
+    </view>
+  </view>
+</template>

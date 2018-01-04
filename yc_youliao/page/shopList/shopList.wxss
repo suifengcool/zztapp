@@ -1,0 +1,83 @@
+/* yc_youliao/shopList/shopList.wxss */
+page{
+  background-color: #f4f4f4;
+}
+.scrollWrapper{
+  width: 100%;
+  line-height: 88rpx;
+  height: 88rpx;
+  color: #222;
+  font-size: 30rpx;
+  background-color: #fff;
+  border-bottom: 1rpx solid #eee;
+}
+.scrollWrapper .scollItem{
+  padding: 0 32rpx;
+  white-space: nowrap;
+}
+.scrollWrapper .scollItem.checked{
+  color: #fb5100;
+}
+.shopItem{
+  display: flex;
+  background-color: #fff;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #eee;
+}
+.shopItem .avatar{
+  flex: 0 0 140rpx;
+  height: 140rpx;
+}
+.shopItem .des{
+  flex: 1;
+  padding-left: 30rpx;
+  font-size: 0;
+}
+.shopItem .des .name {
+  line-height: 40rpx;
+  color: #222;
+  font-size: 32rpx;
+  font-weight: 700;
+}
+.shopItem .des .name .distance{
+  float: right;
+  color: #f37b1d;
+  font-size: 28rpx;
+  padding-right: 20rpx;
+  font-weight: 500;
+}
+.shopItem .evaluation{
+  padding-top: 16rpx;
+  height: 28rpx;
+  line-height: 28rpx;
+}
+.shopItem .evaluation .icons{
+  display: inline-block;
+  vertical-align: top;
+}
+.shopItem .evaluation .icons .icon{
+  width: 24rpx;
+  height: 24rpx;
+  vertical-align: top;
+  display: inline-block;
+  margin-right: 4rpx;
+}
+.shopItem .evaluation .price{
+  padding-left: 30rpx;
+  font-size: 26rpx;
+  display: inline-block;
+  color: #999;
+}
+.shopItem .other {
+  padding-top: 14rpx;
+}
+.shopItem .other .i{
+  display: inline-block;
+  border: 1rpx solid #ff7d78;
+  color: #ff7d78;
+  padding: 0 4px;
+  line-height: 40rpx;
+  font-size: 26rpx;
+  border-radius: 4px;
+  margin-right: 20rpx;
+}

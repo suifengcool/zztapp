@@ -1,0 +1,7 @@
+<template name="complete">
+  <view class='titleWrapper'>
+    <view class='line'></view>
+    <view class='text'>数据已加载完</view>
+    <view class='line'></view>
+  </view>
+</template>

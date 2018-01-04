@@ -1,0 +1,67 @@
+{
+  "pages": [
+    "yc_youliao/page/index/index",
+    "yc_youliao/page/goods/goods",
+    "yc_youliao/page/shopStore/shopStore",
+    "yc_youliao/page/storeMoney/storeMoney",
+    "yc_youliao/page/order/order",
+    "yc_youliao/page/pay/pay",
+    "yc_youliao/page/myPublish/myPublish",
+    "yc_youliao/page/myComment/myComment",
+    "yc_youliao/page/my/my",
+    "yc_youliao/page/shopList/shopList",
+    "yc_youliao/page/publish/publish",
+    "yc_youliao/page/apply/apply",
+    "yc_youliao/page/detail/detail",
+    "yc_youliao/page/weChat/weChat",
+    "yc_youliao/page/moduleList/moduleList",
+    "yc_youliao/page/myCollect/myCollect",
+    "yc_youliao/page/myPayInfo/myPayInfo"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTextStyle": "#fff",
+    "enablePullDownRefresh": true,
+    "navigationBarTitleText": "同城社区"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false,
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "yc_youliao/page/index/index",
+        "iconPath": "yc_youliao/resource/images/home_icon1.png",
+        "selectedIconPath": "yc_youliao/resource/images/home_icon.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "yc_youliao/page/shopList/shopList",
+        "iconPath": "yc_youliao/resource/images/near1.png",
+        "selectedIconPath": "yc_youliao/resource/images/near.png",
+        "text": "附近"
+      },
+      {
+        "pagePath": "yc_youliao/page/publish/publish",
+        "iconPath": "yc_youliao/resource/images/publish_icon1.png",
+        "selectedIconPath": "yc_youliao/resource/images/publish_icon.png",
+        "text": "发布"
+      },
+      {
+        "pagePath": "yc_youliao/page/my/my",
+        "iconPath": "yc_youliao/resource/images/my_icon1.png",
+        "selectedIconPath": "yc_youliao/resource/images/my_icon.png",
+        "text": "我的"
+      }
+    ]
+  }
+}

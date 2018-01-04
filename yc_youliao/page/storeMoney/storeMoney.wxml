@@ -1,0 +1,35 @@
+<!--yc_youliao/page/storeMoney/storeMoney.wxml-->
+<view class='storeMoney'>
+  <view class='title'>{{shopName}}</view>
+  <view class='wrapper'>
+    <view class='des'>消费总额</view>
+    <view class='inputWrapper'>
+      <text class='icon'>￥</text>
+      <input type='number'  bindinput="bindKeyInput" class='input'></input>
+    </view>
+    <view class='hint'>请与工作人员确认消费金额</view>
+  </view>
+  <view class='wrapper pdr0' wx:if="{{discount.length > 0}}">
+    <view class='disCountItem' wx:for="{{discount}}" data-type='{{item.cardtype}}' bindtap='choose'>
+      <view class='left'>
+        <view class='d-title'>{{item.cardname}}</view>
+        <view class='d-des'>
+          <text class='d-name'>
+            <text wx:if="{{item.cardtype == 1}}">抵扣{{item.cardvalue}}元</text>
+            <text wx:elif="{{item.cardtype == 3}}">随机最高减{{item.randomnum}}元</text>
+            <text wx:else>{{item.cardvalue *10}}折</text>
+          </text>
+          <text class='d-limit'>
+            <text wx:if="{{item.fullmoney == 0}}">无限制使用</text>
+            <text wx:else>满{{item.fullmoney}}元可用 </text>
+          </text>
+        </view>
+        <view class='d-txt'>{{item.starttime}} 至 {{item.endtime}}</view>
+      </view>
+      <view class='right'>
+        <icon type='success' size='20' color='{{type == item.cardtype ? "" : "#666"}}'></icon>
+      </view>
+    </view>
+  </view>
+  <view class='submit' bindtap='submit'>确认支付{{payValue != '' ? '￥' : ''}}{{payValue}}</view>
+</view>
