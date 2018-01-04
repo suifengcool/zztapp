@@ -1,5 +1,5 @@
 <template name="list">
-  <view class="newItem" wx:for="{{data}}" wx:for-item="item">
+  <view class="newItem" wx:for="{{data}}" wx:for-item="item" wx:key="unique" >
     <navigator hover-class="none" url="/yc_youliao/page/detail/detail?id={{item.id}}&mid={{item.mid}}&status={{item.status}}">
       <view class="top">
         <view class="avatar">

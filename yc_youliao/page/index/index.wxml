@@ -1,115 +1,115 @@
+<!--index.wxml-->
 <view class="container">
-  <view class="search">
-    <view class="icon1">
-      <image style="width: 16px; height: 16px; background-color: #eeeeee;" mode="scaleToFill" src="../../resource/images/search.png"></image>
+	<!--首页-->
+    <view class="container-home" hidden="{{currentTab != 0}}">
+    	<swiper class="swiper" indicator-dots="true" autoplay="true" interval="3000" duration="1000">    
+	        <block wx:for="{{movies}}" wx:key="unique">    
+		        <swiper-item>    
+		          <image src="{{item.url}}" class="slide-image" mode="aspectFill"/>  
+		        </swiper-item>    
+	        </block> 
+	        <view class="swiper-btn">
+	        	<view class="search-box">
+		        	<i class="iconfont icon-search2"></i>
+		        </view>
+		        <view class="scan-box">
+		        	<i class="iconfont icon-scan"></i>
+		        </view>
+	        </view>
+	    </swiper>
+
+	    <view class="shop-box">
+	    	<view class="title-box">
+	    		<view class="title">推荐店铺</view>
+	    		<view class="btn">免费入驻</view>
+	    	</view>
+
+	    	<scroll-view class="type-box" scroll-x='true'>
+	        	<view class="type-item">
+	                <i class="iconfont icon-pcduan" style="color:#979797"></i>
+	                <text class="type-item-text">PC端</text>
+	            </view>
+	            <view class="type-item">
+	                <i class="iconfont icon-yidongduan" style="color:rgb(12, 163, 240)"></i>
+	                <text class="type-item-text">H5移动端</text>
+	            </view>
+	            <view class="type-item">
+	                <i class="iconfont icon-gongzhonghao2" style="color:rgb(114, 189, 99)"></i>
+	                <text class="type-item-text">微信公众号</text>
+	            </view>
+	            <view class="type-item">
+	                <i class="iconfont icon-xiaochengxu" style="color:rgb(22, 211, 40)"></i>
+	                <text class="type-item-text">微信小程序</text>
+	            </view>
+	            <view class="type-item">
+	                <i class="iconfont icon-webapp" style="color:rgb(52, 152, 219)"></i>
+	                <text class="type-item-text">WebApp</text>
+	            </view>
+	            <view class="type-item">
+	                <i class="iconfont icon-xitongguanli" style="color:rgb(36, 167, 242)"></i>
+	                <text class="type-item-text">管理系统</text>
+	            </view>
+		    </scroll-view>
+	    </view>
+
     </view>
-    <view class="icon2" bindtap="scanCode">
-      <image style="width: 16px; height: 16px; background-color: #eeeeee;" mode="scaleToFill" src="../../resource/images/twoCode.png"></image>
+
+    <!--发现-->
+    <view class="container-compass" hidden="{{currentTab != 1}}">
+    	发现
     </view>
-  </view>
-  <view class="swiper">
-    <swiper indicator-dots="true" indicator-active-color="#fb5100" autoplay="true" interval="3000" duration="1200">
-      <swiper-item wx:for="{{data.advs}}" wx:key="{{index}}">
-        <image class="nav-icon" mode="scaleToFill" src="{{imagesSocket + item.thumb}}" />
-      </swiper-item>
-    </swiper>
-  </view>
-  <view class='addMsg'>
-    <view class="weather" wx:if="{{weatherdata}}">
-      <view class="imgWrapper">
-        <image src="{{weatherImg}}"></image>
-      </view>
-      <view class="textWrapper">
-        <view class="text">{{weatherdata.city}}
-          <text class="col999">{{weatherdata.forecast[0].high}} ~ {{weatherdata.forecast[0].low}} </text>
-          <text></text>{{weatherdata.forecast[0].type}}</view>
-        <view class="text">{{date}}</view>
-      </view>
+
+	<!--我的-->
+    <view class="container-user" hidden="{{currentTab != 2}}">
+    	<view class='my'>
+		    <view class='top'>
+				<image src='{{avatar}}' class='avatar'></image>
+				<view class='name'>{{name}}</view>
+		    </view>
+
+		    <view class='itemTitle {{city == true ? "" : "hide"}}' bindtap="onTitleTap" data-name='city'>
+				<i class="iconfont icon-city iconfont-my"></i>同城
+			</view>
+
+		    <view hidden="{{!city}}">
+		    	<view class='item' bindtap='go' data-type="coupon">
+			    	<i class="iconfont icon-coupon iconfont-my"></i>
+			    	我的优惠券
+		    	</view>
+		    	<view class='item' bindtap='go' data-type="publish">
+			    	<i class="iconfont icon-publish iconfont-my"></i>
+			    	我的发布
+		    	</view>
+		    	<view class='item' bindtap='go' data-type="msg">
+		    		<i class="iconfont icon-msg-solid iconfont-my"></i>
+			    	我的消息
+		    	</view>
+		    	<view class='item' bindtap='go' data-type="collect">
+		    		<i class="iconfont icon-star iconfont-my"></i>
+				    我的收藏
+				</view>
+		    	<view class='item' bindtap='go' data-type="pay">
+		    		<i class="iconfont icon-store iconfont-my"></i>
+			    	我的入驻
+		    	</view>
+			</view>
+		</view>
     </view>
-    <view class='checkIn' wx:if="data != null" bindtap='onCheckIn'>
-      <text class='txt'>{{ checkIn ? '今日已签到' : '签到'}}</text>
-      <text class='num' wx:if="{{!checkIn}}">{{data.credit == "-1" ? "获取随机积分" : "+" + data.credit +"积分"}}</text>
-    </view> 
-  </view>
-  <view class="itemSwiper">
-    <swiper autoplay="true" interval="3000" duration="1200">
-      <swiper-item indicator-dots="moduleLen > 1" wx:for="{{moduleLen}}" wx:for-item="i" wx:key="{{index}}">
-        <block wx:for="{{data.module.length - i * 8 >= 8 ? 8 : data.module.length - i * 8}}" wx:for-item="j">
-          <view class="item">
-            <navigator url="../moduleList/moduleList?id={{data.module[i * 8 + j].id}}">
-              <view class="imgWrapper">
-                <image src="{{imagesSocket + data.module[i * 8 + j].thumb}}"></image>
-              </view>
-              <text>{{data.module[i * 8 + j].name}}</text>
-            </navigator>
-          </view>
-        </block>
-      </swiper-item>
-    </swiper>
-  </view>
-  <view class="news">
-    <view class="newsItem {{newsNum == 1 ? 'check' : ''}}" data-newsnum="1" bindtap="newClick">
-      最新
-    </view>
-    <view class="newsItem {{newsNum == 2 ? 'check' : ''}}" data-newsnum="2" bindtap="newClick">
-      置顶
-    </view>
-    <view class="newsItem {{newsNum == 3 ? 'check' : ''}}" data-newsnum="3" bindtap="newClick">
-      热门
-    </view>
-  </view>
-  <view hidden="{{!(newsNum == 1)}}">
-    <import src="../../resource/template/indexList.wxml" />
-    <template is="list" data="{{data:data.newMsg,imagesSocket,newImg: true}}" />
-  </view>
-  <view hidden="{{!(newsNum == 2)}}">
-    <import src="../../resource/template/indexList.wxml" />
-    <template is="list" data="{{data:data.topMsg,imagesSocket,newImg: true}}" />
-  </view>
-  <view hidden="{{!(newsNum == 3)}}">
-    <import src="../../resource/template/indexList.wxml" />
-    <template is="list" data="{{data:data.hotMsg,imagesSocket,newImg: true}}" />
-  </view>
-  <!-- <image mode='widthFix' src='http://www.szmihua.com/attachment/images/43/2017/06/tMydDyMOEEcaMeyTQ6E3OM3MY36QZc.jpg' class='midImg'></image>
-  <view class='seckill'>
-    <navigator url='../seckill/seckill'>
-      <view class='top'>
-        距离结束
-        <text class='timeWrapper'>20</text>：
-        <text class='timeWrapper'>10</text>：
-        <text class='timeWrapper'>30</text>：
-        <text class='timeWrapper'>40</text>
-        <text class='more'>更多</text>
-      </view>
-    </navigator>
-    <view class='bottom clearfix'>
-      <view class='item'>
-        <image class='img' mode='scaleToFill' src='http://www.szmihua.com/attachment/images/43/2017/06/aG1GB0tMl0t2MLb2gbCR1y1TBimbBZ.jpg'>
-        </image>
-        <view class='txt'>芒果芝士蛋糕</view>
-        <view class='price'>
-          <text class='now'>￥ 10.10</text>
-          <text class='before'>￥ 10.10</text>
+
+
+    <!-- 底部tab -->
+    <view class="tab">
+        <view class="tab_item {{currentTab == 0 ? ' active' : ''}}" bindtap="changeTab" data-tab="0" >
+            <i class="iconfont icon-home iconfont-tab"></i>
+            <view class="title">首页</view>
         </view>
-      </view>
-      <view class='item'>
-        <image class='img' mode='scaleToFill' src='http://www.szmihua.com/attachment/images/43/2017/06/aG1GB0tMl0t2MLb2gbCR1y1TBimbBZ.jpg'>
-        </image>
-        <view class='txt'>芒果芝士蛋糕</view>
-        <view class='price'>
-          <text class='now'>￥ 10.10</text>
-          <text class='before'>￥ 10.10</text>
+        <view class="tab_item {{currentTab == 1 ? ' active' : ''}}" bindtap="changeTab" data-tab="1" >
+            <i class="iconfont icon-compass iconfont-tab"></i>
+            <view class="title">发现</view>
         </view>
-      </view>
-      <view class='item'>
-        <image class='img' mode='scaleToFill' src='http://www.szmihua.com/attachment/images/43/2017/06/aG1GB0tMl0t2MLb2gbCR1y1TBimbBZ.jpg'>
-        </image>
-        <view class='txt'>芒果芝士蛋糕</view>
-        <view class='price'>
-          <text class='now'>￥ 10.10</text>
-          <text class='before'>￥ 10.10</text>
+        <view class="tab_item {{currentTab == 2 ? ' active' : ''}}" bindtap="changeTab" data-tab="2" >
+            <i class="iconfont icon-head iconfont-tab"></i>
+            <view class="title">我的</view>
         </view>
-      </view>
     </view>
-  </view>  -->
 </view>

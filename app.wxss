@@ -1,5 +1,55 @@
 /**app.wxss**/
 
+@font-face {
+  font-family: 'iconfont';  /* project id 530216 */
+  src: url('//at.alicdn.com/t/font_530216_v0qt20wus0wfjemi.eot');
+  src: url('//at.alicdn.com/t/font_530216_v0qt20wus0wfjemi.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_530216_v0qt20wus0wfjemi.woff') format('woff'),
+  url('//at.alicdn.com/t/font_530216_v0qt20wus0wfjemi.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_530216_v0qt20wus0wfjemi.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:60rpx;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*本项目使用的18个图标  */
+.icon-down-single:before{content: '\e600';}
+.icon-down-double:before{content: '\e602';}
+.icon-up-double:before{content: '\e604';}
+.icon-down-solid:before{content: '\e662';}
+.icon-up-solid:before{content: '\e661';}
+.icon-right:before{content: '\e61e';}
+
+.icon-plus:before{content: '\e73e';}
+.icon-plus-circle:before{content: '\e61b';}
+.icon-plus-circle-bg:before{content: '\e65b';}
+
+.icon-close:before{content: '\e68d';}
+
+.icon-search:before{content: '\e64c';}
+.icon-search2:before{content: '\e601';}
+
+.icon-scan:before{content: '\e61f';}
+
+.icon-adress:before{content: '\e60e';}
+
+.icon-city:before{content: '\e65e';}
+.icon-coupon:before{content: '\e613';}
+.icon-publish:before{content: '\e62a';}
+.icon-store:before{content: '\e632';}
+.icon-star:before{content: '\e66e';}
+.icon-home:before{content: '\e603';}
+.icon-head:before{content: '\e667';}
+
+.icon-msg:before{content: '\e687';}
+.icon-msg-solid:before{content: '\e6c2';}
+
+.icon-compass:before{content: '\e605';}
+
 .col999 {
   color: #999;
 }
