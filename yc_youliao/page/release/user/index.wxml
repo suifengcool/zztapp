@@ -1,0 +1,10 @@
+<view class="releaser">
+	<view class="releaser-item">
+		<view class="img"></view>
+		<view class="name">顾村幼儿园</view>
+	</view>
+	<view class="releaser-item">
+		<view class="img"></view>
+		<view class="name">顾村幼儿园</view>
+	</view>
+</view>

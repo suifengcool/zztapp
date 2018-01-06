@@ -22,7 +22,12 @@
     "yc_youliao/page/coupon/create/index",
     "yc_youliao/page/moveIn/list/index",
     "yc_youliao/page/moveIn/create/index",
-    "yc_youliao/page/moveIn/detail/index"
+    "yc_youliao/page/moveIn/detail/index",
+    "yc_youliao/page/release/index/index",
+    "yc_youliao/page/release/adress/index",
+    "yc_youliao/page/release/deal/index",
+    "yc_youliao/page/release/type/index",
+    "yc_youliao/page/release/user/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

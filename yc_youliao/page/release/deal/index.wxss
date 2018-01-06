@@ -1,0 +1,14 @@
+page{
+	background-color: #f4f4f4;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	font-family: PingFangSC-Regular;
+}
+.contain-deal{
+	width: 100%;
+}
+.title{
+	text-align: center;
+	font-size: 28rpx;
+}

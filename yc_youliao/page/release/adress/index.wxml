@@ -1,0 +1,22 @@
+<view class="container-coupon">
+	<view class="coupon-area">
+		<view class="info">
+			<view class="head"></view>
+			<view class="name">中国电信</view>
+			<view class="adress">湖北省武汉市江夏区康魅路惠风同庆花园蜜糖镇</view>
+			<view class="tel">13797071376</view>
+		</view>
+		<view class="actives">满200减50</view>
+		<view class="qcord-box">
+			<view class="qcord-img"></view>
+			<view class="qcord-num">2017120112938428</view>
+		</view>
+		<view class="time">2017.12.01-2018.12.01</view>
+		<view class="msg">到店消费时请提前向商家出示</view>
+		<view wx:if="{{isUsed}}" class="caution">优惠券已使用</view>
+	</view>
+	<view wx:if="{{!isUsed}}" class="tips">
+		<view class="tips-item">1、购买商品时，满足使用条件可抵用券面显示金额；</view>
+		<view>2、每张优惠券只能使用一次，且不能与其他优惠方式同时使用。</view>
+	</view>
+</view>

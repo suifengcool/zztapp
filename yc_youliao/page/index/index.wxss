@@ -483,6 +483,19 @@ page{
   font-size: 30rpx;
   line-height: 50rpx;
 }
-
-
-
+.publist-icon-box{
+	position:fixed;
+	right:35rpx;
+	bottom:163rpx;
+	width:80rpx;
+	height:80rpx;
+	line-height:80rpx;
+	text-align:center;
+	color:#FFA500;
+	border-radius:50%;
+	background:#fff;
+	border:0.5rpx solid #dedede;
+}
+.publist-icon-box .iconfont{
+	font-size: 40rpx;
+}

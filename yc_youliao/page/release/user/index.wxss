@@ -1,0 +1,27 @@
+page{
+	background-color: #f4f4f4;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	font-family: PingFangSC-Regular;
+}
+.releaser{
+	box-sizing:border-box;
+	width: 100%;
+}
+.releaser-item{
+	background: #fff;
+	height: 95rpx;
+	line-height: 95rpx;
+	color: #333;
+	border-bottom: 0.5rpx solid #dedede;
+	font-size: 28rpx;
+	display: flex;
+}
+.img{
+	height: 70rpx;
+	width: 70rpx;
+	border-radius: 50%;
+	margin: 12rpx 20rpx 0 20rpx;
+	background: green;
+}

@@ -305,7 +305,11 @@
 				    <template is="module" data="{{text:'该板块暂时未有信息'}}" />
 			     </block>
 			</view>
+			<navigator class="publist-icon-box" url="../release/index/index">
+		    	<i class="iconfont icon-plus"></i>
+		    </navigator>
 	    </view>
+
 
 
 	<!--我的-->
