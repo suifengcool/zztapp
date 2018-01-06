@@ -96,6 +96,7 @@ page{
   	padding: 20rpx 10rpx;
   	display: flex;
   	flex-wrap: wrap;
+  	border-bottom: 0.5rpx solid #dedede;
 }
 .classicfy-item{
 	width: 20%;
@@ -113,6 +114,9 @@ page{
 }
 .iconbox .iconfont{
 	font-size: 50rpx;
+}
+.iconbox .icon-camera{
+	font-size:45rpx;
 }
 .classicfy-item-text{
 	font-size:24rpx;
@@ -207,6 +211,16 @@ page{
 	padding:0 5rpx;
 	margin-right:20rpx;
 	color: #FA8072;
+}
+.mask{
+	position: absolute;
+	width: 100%;
+	height: 50%;
+	left: 0;
+	top: 50%;
+	background: #000;
+	z-index: 1;
+	opacity:0.7;
 }
 .score-box{
 	text-align: left;
@@ -353,11 +367,11 @@ page{
 
 .swiper2{
   width: 100%;
-  height: 256rpx; 
+  height: 256rpx;
 }
 .swiper2 image{
   width: 100%;
-  height: 256rpx; 
+  height: 256rpx;
 }
 .declaration{
   line-height: 42rpx;
@@ -393,7 +407,7 @@ page{
 }
 .category .catItem{
   float: left;
-  width: 25%;
+ width: 25%;
   padding-top: 20rpx;
   border-right: 1rpx solid #eee;
   margin-right: -1rpx;
@@ -407,7 +421,7 @@ page{
  image{
   width: 100%;
   height: 100%;
-} 
+}
 .category .catItem .imgWrapper{
   width: 60rpx;
   height: 60rpx;
@@ -435,7 +449,6 @@ page{
   text-align: center;
   position: relative;
 }
-
 .secondScroll .title:after {
   content: '';
   position: absolute;

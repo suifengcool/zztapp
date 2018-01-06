@@ -51,6 +51,19 @@ Page({
       }
     }
   },
+
+    changeTab: function(e) {
+      if(e.currentTarget.dataset.tab == 0){
+        wx.navigateTo({
+          url: "../index/index"
+        })
+      }else if(e.currentTarget.dataset.tab == 2){
+        wx.navigateTo({
+          url: "../index/index"
+        })
+      }
+    },
+
   renderFun(data) {
     let moduleLen = Math.ceil(data.module.length / 8)
     this.setData({

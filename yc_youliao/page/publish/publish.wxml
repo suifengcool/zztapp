@@ -59,4 +59,19 @@
     <import src="../../resource/template/emptyData.wxml" />
     <template is="module" data="{{text:'该板块暂时未有信息'}}" />
   </block>
+  <!-- 底部tab -->
+    <view class="tab">
+        <view class="tab_item" bindtap="changeTab" data-tab="0" >
+            <i class="iconfont icon-home iconfont-tab"></i>
+            <view class="title">首页</view>
+        </view>
+        <view class="tab_item active">
+            <i class="iconfont icon-compass iconfont-tab"></i>
+            <view class="title">发现</view>
+        </view>
+        <view class="tab_item" bindtap="changeTab" data-tab="2" >
+            <i class="iconfont icon-head iconfont-tab"></i>
+            <view class="title">我的</view>
+        </view>
+    </view>
 </view>

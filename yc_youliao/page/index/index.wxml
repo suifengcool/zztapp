@@ -2,14 +2,14 @@
 <view class="container">
 	<!--首页-->
     <view class="container-home" hidden="{{currentTab != 0}}">
-    	<swiper class="swiper" indicator-dots="true" autoplay="true" interval="3000" duration="1000">    
+    	<swiper wx:if="{{!showClassify}}" class="swiper" indicator-dots="true" autoplay="true" interval="3000" duration="1000">    
 	        <block wx:for="{{movies}}" wx:key="unique">    
 		        <swiper-item>    
 		          <image src="{{item.url}}" class="slide-image" mode="aspectFill"/>  
 		        </swiper-item>    
 	        </block> 
 	    </swiper>
-	    <view class="swiper-btn">
+	    <view wx:if="{{!showClassify}}" class="swiper-btn">
         	<view class="search-box">
 	        	<i class="iconfont icon-search2"></i>
 	        </view>
@@ -18,7 +18,7 @@
 	        </view>
         </view>
 
-	    <view class="shop-box">
+	    <view wx:if="{{!showClassify}}" class="shop-box">
 	    	<view class="title-box">
 	    		<view class="title">推荐店铺</view>
 	    		<view class="btn">免费入驻</view>
@@ -51,21 +51,23 @@
 		    </scroll-view>
 	    </view>
 
-	    <view class="line"></view>
+	    <view wx:if="{{!showClassify}}" class="line"></view>
+	    <view wx:if="{{showClassify}}" class="mask" bindtap="closeClassify"></view>
 
 	    <view class="homeListBox">
 	    	<view class="home-list-top">
 		    	<view class="type-box">
-		    		<view class="type-item">全部分类</view>
+		    		<view class="type-item active">全部分类</view>
 		    		<view class="type-item">餐饮美食</view>
 		    		<view class="type-item">电影KTV</view>
 		    		<view class="type-item">酒店住宿</view>
 		    	</view>
-		    	<view class="btn">
-	    			<i class="iconfont icon-down-solid"></i>
+		    	<view class="btn" bindtap="showAllClassify">
+	    			<i wx:if="{{!showClassify}}" class="iconfont icon-down-solid"></i>
+	    			<i wx:if="{{showClassify}}" class="iconfont icon-up-solid"></i>
 	    		</view>
     		</view>
-    		<view class="classicfy">
+    		<view wx:if="{{showClassify}}" class="classicfy">
     			<view class="classicfy-item">
     				<view class="iconbox iconbox-food">
     					<i class="iconfont iconfont-classicfy icon-food"></i>
@@ -178,6 +180,46 @@
 	    				</view>
 	    			</view>
 	    		</view>
+	    		<view class="home-list-item">
+	    			<view class="pic"></view>
+	    			<view class="desc">
+	    				<view class="title">
+	    					<view class="name">贯今网络</view>
+	    					<view class="distance">7.24km</view>
+	    				</view>
+	    				<view class="score-box">
+	    					<view class="score-list">
+	    						<i class="iconfont icon-star"></i>
+	    					</view>
+	    					<view class="score-text">4.7</view>
+	    				</view>
+	    				<view class="tabs">
+	    					<view class="tab-itam">干净卫生</view>
+	    					<view class="tab-itam">环境优雅</view>
+	    					<view class="tab-itam">WIFI</view>
+	    				</view>
+	    			</view>
+	    		</view>
+	    		<view class="home-list-item">
+	    			<view class="pic"></view>
+	    			<view class="desc">
+	    				<view class="title">
+	    					<view class="name">贯今网络</view>
+	    					<view class="distance">7.24km</view>
+	    				</view>
+	    				<view class="score-box">
+	    					<view class="score-list">
+	    						<i class="iconfont icon-star"></i>
+	    					</view>
+	    					<view class="score-text">4.7</view>
+	    				</view>
+	    				<view class="tabs">
+	    					<view class="tab-itam">干净卫生</view>
+	    					<view class="tab-itam">环境优雅</view>
+	    					<view class="tab-itam">WIFI</view>
+	    				</view>
+	    			</view>
+	    		</view>
 	    	</view>
 	    </view>
 
@@ -185,85 +227,86 @@
     </view>
 
     <!--发现-->
-    <view class="container-compass" hidden="{{currentTab != 1}}">
-    	<view class='publish'>
-		    <swiper class="swiper2" indicator-dots="{{true}}" indicator-active-color="#fb5100" class="swiper" autoplay="{{true}}">
-			    <block wx:for="{{data.advs}}">
-			        <swiper-item>
-			        	<image src="{{imagesSocket + item.thumb}}" />
-			        </swiper-item>
-			    </block>
-		    </swiper>
-		    <view class='declaration'>
-		    	免责声明:本平台发布信息（收费、免费）展示，内容与平台本身无关，平台不负任何责任
-		  	</view>
-		  
-		    <view class='titleWrapper'>
-			    <view class='line'></view>
-			    <view class='text'>请选择发布类型</view>
-			    <view class='line'></view>
-		    </view>
-		    <swiper autoplay="true" class="cate" interval="3000" duration="1200">
-			    <swiper-item indicator-dots="moduleLen > 1" wx:for="{{moduleLen}}" wx:for-item="i" wx:key="{{index}}">
-			        <view class='category clearfix'>
-				        <block 
-				        	wx:for="{{data.module.length - i * 8 >= 8 ? 8 : data.module.length - i * 8}}" 
-				        	wx:for-item="j"
+	    <view class="container-compass" hidden="{{currentTab != 1}}">
+	    	<view class='publish'>
+			    <swiper class="swiper2" indicator-dots="{{true}}" indicator-active-color="#fb5100" class="swiper" autoplay="{{true}}">
+				    <block wx:for="{{data.advs}}">
+				        <swiper-item>
+				        	<image src="{{imagesSocket + item.thumb}}" />
+				        </swiper-item>
+				    </block>
+			    </swiper>
+			    <view class='declaration'>
+			    	免责声明:本平台发布信息（收费、免费）展示，内容与平台本身无关，平台不负任何责任
+			  	</view>
+			  
+			    <view class='titleWrapper'>
+				    <view class='line'></view>
+				    <view class='text'>请选择发布类型</view>
+				    <view class='line'></view>
+			    </view>
+			    <swiper autoplay="true" class="cate" interval="3000" duration="1200">
+				    <swiper-item indicator-dots="moduleLen > 1" wx:for="{{moduleLen}}" wx:for-item="i" wx:key="{{index}}">
+				        <view class='category clearfix'>
+					        <block 
+					        	wx:for="{{data.module.length - i * 8 >= 8 ? 8 : data.module.length - i * 8}}" 
+					        	wx:for-item="j"
+				        	>
+					            <view class='catItem'>
+					                <navigator 
+						              	hover-class="none" 
+						              	url='../apply/apply?id={{data.module[i * 8 + j].id}}&title={{data.module[i * 8 + j].name}}&isneedpay={{data.module[i * 8 + j].isneedpay}}&needpay={{data.module[i * 8 + j].needpay}}'
+					              	>
+					                	<view class='imgWrapper'>
+					                		<image src="{{imagesSocket + data.module[i * 8 + j].thumb}}"></image>
+					              		</view>
+					              		<view class='txt'>{{data.module[i * 8 + j].name}}</view>
+					            	</navigator>
+					            </view>
+					        </block>
+				        </view>
+				    </swiper-item>
+			    </swiper>
+				<block>
+				    <view class="secondScroll">
+				        <view class="title">{{scrollName}}</view>
+				        <scroll-view 
+				        	class="list" 
+				        	scroll-x="true" 
+				        	bindtouchend="scrolltouchend" 
+				        	bindtouchstart="scrolltouchstart" 
+				        	scroll-with-animation="{{true}}" 
+				        	scroll-into-view="id{{scrollId}}"
 			        	>
-				            <view class='catItem'>
-				                <navigator 
-					              	hover-class="none" 
-					              	url='../apply/apply?id={{data.module[i * 8 + j].id}}&title={{data.module[i * 8 + j].name}}&isneedpay={{data.module[i * 8 + j].isneedpay}}&needpay={{data.module[i * 8 + j].needpay}}'
-				              	>
-				                	<view class='imgWrapper'>
-				                		<image src="{{imagesSocket + data.module[i * 8 + j].thumb}}"></image>
-				              		</view>
-				              		<view class='txt'>{{data.module[i * 8 + j].name}}</view>
-				            	</navigator>
-				            </view>
-				        </block>
-			        </view>
-			    </swiper-item>
-		    </swiper>
-			<block>
-			    <view class="secondScroll">
-			        <view class="title">{{scrollName}}</view>
-			        <scroll-view 
-			        	class="list" 
-			        	scroll-x="true" 
-			        	bindtouchend="scrolltouchend" 
-			        	bindtouchstart="scrolltouchstart" 
-			        	scroll-with-animation="{{true}}" 
-			        	scroll-into-view="id{{scrollId}}"
-		        	>
-			        	<text 
-			        		bindtap='categoryTap' 
-			        		data-name="{{item.name}}" 
-			        		data-id="{{item.id}}" 
-			        		wx:for="{{data.module}}" 
-			        		id="id{{item.id}}" 
-			        		class="tex"
-		        		>
-		        			{{item.name}}
-	        			</text>
-			        </scroll-view>
-			    </view>
-			</block>
-		    <block wx:if="{{scrollData.length > 0}}">
-			    <import src="../../resource/template/indexList.wxml" />
-			    <template is="list" data="{{data:scrollData,imagesSocket,newImg: true}}" />
-			    <view class="scrollmore" wx:if="{{scrollMore !== ''}}">
-			        <navigator url="../moduleList/moduleList?id={{scrollMore}}">点击加载更多</navigator>
-			    </view>
-			    <import src="../../resource/template/complete.wxml" />
-			    <template wx:if="{{scrollMore == ''}}" is="complete" />
-			</block>
-		    <block wx:if="{{scrollData.length == 0}}">
-			    <import src="../../resource/template/emptyData.wxml" />
-			    <template is="module" data="{{text:'该板块暂时未有信息'}}" />
-		     </block>
-		</view>
-    </view>
+				        	<text 
+				        		bindtap='categoryTap' 
+				        		data-name="{{item.name}}" 
+				        		data-id="{{item.id}}" 
+				        		wx:for="{{data.module}}" 
+				        		id="id{{item.id}}" 
+				        		class="tex"
+			        		>
+			        			{{item.name}}
+		        			</text>
+				        </scroll-view>
+				    </view>
+				</block>
+			    <block wx:if="{{scrollData.length > 0}}">
+				    <import src="../../resource/template/indexList.wxml" />
+				    <template is="list" data="{{data:scrollData,imagesSocket,newImg: true}}" />
+				    <view class="scrollmore" wx:if="{{scrollMore !== ''}}">
+				        <navigator url="../moduleList/moduleList?id={{scrollMore}}">点击加载更多</navigator>
+				    </view>
+				    <import src="../../resource/template/complete.wxml" />
+				    <template wx:if="{{scrollMore == ''}}" is="complete" />
+				</block>
+			    <block wx:if="{{scrollData.length == 0}}">
+				    <import src="../../resource/template/emptyData.wxml" />
+				    <template is="module" data="{{text:'该板块暂时未有信息'}}" />
+			     </block>
+			</view>
+	    </view>
+
 
 	<!--我的-->
     <view class="container-user" hidden="{{currentTab != 2}}">
@@ -294,7 +337,7 @@
 		    		<i class="iconfont icon-star iconfont-my"></i>
 				    我的收藏
 				</view>
-		    	<view class='item' bindtap='go' data-type="pay">
+		    	<view class='item' bindtap='go' data-type="moveIn">
 		    		<i class="iconfont icon-store iconfont-my"></i>
 			    	我的入驻
 		    	</view>

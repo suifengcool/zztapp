@@ -1,0 +1,42 @@
+<view class="moveInList">
+	<view class="home-list">
+		<view class="home-list-item">
+			<view class="pic"></view>
+			<view class="desc">
+				<view class="title">
+					<view class="name">贯今网络</view>
+				</view>
+				<view class="score-box">
+					<view class="score-list">
+						<i class="iconfont icon-star"></i>
+					</view>
+					<view class="score-text">4.7</view>
+				</view>
+				<view class="tabs">
+					<view class="tab-itam">干净卫生</view>
+					<view class="tab-itam">环境优雅</view>
+					<view class="tab-itam">WIFI</view>
+				</view>
+			</view>
+		</view>
+		<view class="home-list-item">
+			<view class="pic"></view>
+			<view class="desc">
+				<view class="title">
+					<view class="name">贯今网络</view>
+				</view>
+				<view class="score-box">
+					<view class="score-list">
+						<i class="iconfont icon-star"></i>
+					</view>
+					<view class="score-text">4.7</view>
+				</view>
+				<view class="tabs">
+					<view class="tab-itam">干净卫生</view>
+					<view class="tab-itam">环境优雅</view>
+					<view class="tab-itam">WIFI</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

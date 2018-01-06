@@ -1,3 +1,32 @@
-<view>
-	优惠券列表页
+<view class="couponList">
+	<view class="coupon-item" bindtap="goDetail" data-id='1'>
+		<view class="title-box">
+			<view class="headImg"></view>
+			<view class="title">中国电信</view>
+		</view>
+		<view class="coupon-content">
+			<view class="money">5<i>元</i></view>
+			<view class="desc">
+				<view class="detail">满100减5元券</view>
+				<view class="time">2017.11.2.-2017.12.12</view>
+				<view class="tips">到店消费时请提前向商家出示</view>
+			</view>
+			<view class="btn">使用</view>
+		</view>
+	</view>
+	<view class="coupon-item" bindtap="goDetail" data-id='2'>
+		<view class="title-box">
+			<view class="headImg"></view>
+			<view class="title">中国电信</view>
+		</view>
+		<view class="coupon-content">
+			<view class="money">5<i>元</i></view>
+			<view class="desc">
+				<view class="detail">满100减5元券</view>
+				<view class="time">2017.11.2.-2017.12.12</view>
+				<view class="tips">到店消费时请提前向商家出示</view>
+			</view>
+			<view class="btn">使用</view>
+		</view>
+	</view>
 </view>

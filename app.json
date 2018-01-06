@@ -18,7 +18,11 @@
     "yc_youliao/page/myCollect/myCollect",
     "yc_youliao/page/myPayInfo/myPayInfo",
     "yc_youliao/page/coupon/list/index",
-    "yc_youliao/page/coupon/create/index"
+    "yc_youliao/page/coupon/detail/index",
+    "yc_youliao/page/coupon/create/index",
+    "yc_youliao/page/moveIn/list/index",
+    "yc_youliao/page/moveIn/create/index",
+    "yc_youliao/page/moveIn/detail/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -7,6 +7,7 @@ Page({
         name: '',                                     // 我的-用户名
 		avatar: '',                                   // 我的-头像
 		city: true,                                   // 我的-显示同城详情
+		showClassify: false,                          // 显示所有分类
     },
 	
 	onLoad: function(){
@@ -29,8 +30,26 @@ Page({
 			}]
         })
     },
+	
+	showAllClassify(){
+		this.setData({
+			showClassify: !this.data.showClassify
+		})
+	},
+
+	closeClassify(){
+		this.setData({
+			showClassify: false
+		})
+	},
 
     changeTab (e) {
+   //  	if(e.currentTarget.dataset.tab == 1){
+			// wx.navigateTo({
+			// 	url: "../publish/publish"
+		 //    })
+		 //    return
+   //  	}
     	this.setData({
             currentTab : e.currentTarget.dataset.tab
         })
@@ -64,9 +83,9 @@ Page({
 		    wx.navigateTo({
 				url: "/yc_youliao/page/myComment/myComment"
 		    })
-		}else if (type == 'pay') {
+		}else if (type == 'moveIn') {
 		    wx.navigateTo({
-				url: "/yc_youliao/page/myPayInfo/myPayInfo"
+				url: "/yc_youliao/page/moveIn/list/index"
 		    })
 		}else if (type == 'collect') {
 		    wx.navigateTo({
