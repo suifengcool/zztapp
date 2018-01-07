@@ -27,7 +27,9 @@
     "yc_youliao/page/release/adress/index",
     "yc_youliao/page/release/deal/index",
     "yc_youliao/page/release/type/index",
-    "yc_youliao/page/release/user/index"
+    "yc_youliao/page/release/user/index",
+    "yc_youliao/page/shop/detail/index",
+    "yc_youliao/page/shop/edit/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

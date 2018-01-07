@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: 'iconfont';  /* project id 530216 */
-  src: url('//at.alicdn.com/t/font_530216_9dbpm1ms2pxecdi.eot');
-  src: url('//at.alicdn.com/t/font_530216_9dbpm1ms2pxecdi.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_530216_9dbpm1ms2pxecdi.woff') format('woff'),
-  url('//at.alicdn.com/t/font_530216_9dbpm1ms2pxecdi.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_530216_9dbpm1ms2pxecdi.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_530216_1achx3tmbk9sh5mi.eot');
+  src: url('//at.alicdn.com/t/font_530216_1achx3tmbk9sh5mi.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_530216_1achx3tmbk9sh5mi.woff') format('woff'),
+  url('//at.alicdn.com/t/font_530216_1achx3tmbk9sh5mi.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_530216_1achx3tmbk9sh5mi.svg#iconfont') format('svg');
 }
 .iconfont {
   font-family:"iconfont" !important;
@@ -36,6 +36,17 @@
 .icon-scan:before{content: '\e61f';}
 
 .icon-adress:before{content: '\e60e';}
+.icon-adress-solid:before{content: '\e647';}
+
+.icon-tel-right:before{content: '\e620';}
+.icon-tel-left:before{content: '\e652';}
+
+.icon-share:before{content: '\e60f';}
+
+.icon-alipay:before{content: '\e65c';}
+.icon-weixinpay:before{content: '\e6f4';}
+
+.icon-edit:before{content: '\e60b';}
 
 .icon-city:before{content: '\e65e';}
 .icon-coupon:before{content: '\e613';}

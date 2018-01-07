@@ -160,7 +160,7 @@
     			</view>
     		</view>
 	    	<view class="home-list">
-	    		<view class="home-list-item">
+	    		<navigator url="../shop/detail/index" class="home-list-item">
 	    			<view class="pic"></view>
 	    			<view class="desc">
 	    				<view class="title">
@@ -179,7 +179,7 @@
 	    					<view class="tab-itam">WIFI</view>
 	    				</view>
 	    			</view>
-	    		</view>
+	    		</navigator>
 	    		<view class="home-list-item">
 	    			<view class="pic"></view>
 	    			<view class="desc">

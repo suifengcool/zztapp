@@ -1,0 +1,42 @@
+<view class="container-shop">
+	<swiper class="swiper" indicator-dots="true" autoplay="true" interval="3000" duration="1000">    
+        <block wx:for="{{movies}}" wx:key="unique">    
+	        <swiper-item>    
+	            <image src="{{item.url}}" class="slide-image" mode="aspectFill"/>  
+	        </swiper-item>    
+        </block> 
+    </swiper>
+    <view class="swiper-btn">
+    	9张图
+    </view>
+    <view class="shop-title-box">
+        <view class="title">黄陂鑫荣茶油坊</view>
+        <view class="score-box">
+            <view class="score-list">
+                <view class="score-item">
+                    <i class="iconfont icon-star"></i>
+                </view>
+            </view>
+            <view class="score">4.5</view>
+        </view>
+        <view class="btn">收藏</view>
+    </view>
+    <view class="shop-adress-box">
+        <view class="icon">
+            <i class="iconfont icon-adress"></i>
+        </view>
+        <view class="adress">
+            江西省赣州市宁都县小康路与225省道交叉口西南100米
+        </view>
+        <i class="iconfont icon-tel"></i>
+        <i class="iconfont icon-adress"></i>
+    </view>
+    <view class="footer-box">
+        <view class="edit-btn">
+            <i class="iconfont icon-edit"></i>编辑店铺
+        </view>
+        <navigator url="../../coupon/create/index" class="coupon-btn">
+            <i class="iconfont icon-coupon"></i>发放优惠券
+        </navigator>
+    </view>
+</view>
