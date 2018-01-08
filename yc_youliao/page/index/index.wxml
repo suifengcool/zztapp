@@ -21,7 +21,7 @@
 	    <view wx:if="{{!showClassify}}" class="shop-box">
 	    	<view class="title-box">
 	    		<view class="title">推荐店铺</view>
-	    		<view class="btn">免费入驻</view>
+	    		<navigator url="../moveIn/create/index" class="btn">免费入驻</navigator>
 	    	</view>
 	    	<scroll-view class="shopList" scroll-x='true'>
 	        	<view class="shop-item">
@@ -365,4 +365,28 @@
             <view class="title">我的</view>
         </view>
     </view>
+   <!--
+
+<view class="mask" wx:if="{{hasMask}}">
+    我是遮罩层
+</view>
+<view class="content" style="{{hasMask?'height:100%;overflow:hidden':''}}">
+    我是页面内容
+</view>
+<!-- js -->
+Page{
+    ...
+    showMask(e){
+        //显示遮罩
+        this.setData({
+            hasMask:true
+        })
+    },
+    hideMask(e){
+    //隐藏遮罩
+        this.setData({
+            hasMask:false
+        })
+    },
+}    -->
 </view>

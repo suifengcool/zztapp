@@ -1,0 +1,65 @@
+<view class="containner-movein-create">
+	<view class="header">
+		<view>填写门店信息</view>
+		<view>免费入驻镇镇通平台微信小程序</view>
+	</view>
+	<view class="logo-box">	
+		<view class="pic">
+			<view class="pic-text">上传LOGO</view>
+		</view>
+		<view class="logo-box-right">
+			<view class="item item-shop-name">
+				<input type="text" placeholder="请输入门店名称" />
+			</view>
+			<view class="item">
+				<input type="text" placeholder="请输入手机号码"/>
+				<view class="btn">验证</view>
+			</view>
+		</view>
+	</view>
+	<view class="identify">
+		<view class="label">验证码<i>*</i></view>
+		<input type="text"  placeholder="请输入短信验证码" />
+	</view>
+	<view class="adress-box">
+		<view class="title">店铺位置信息</view>
+		<view class="msg">未选择位置，请选择您的位置信息</view>
+		<view class="btn-box">
+			<view class="btn-left">选择</view>
+			<view class="btn-right">清空</view>
+		</view>
+	</view>
+	<view class="shop">
+		<view class="label">店内设施</view>
+		<view class="item-box">
+			<view class="item">WIFI</view>
+			<view class="item">停车位</view>
+			<view class="item">支付宝支付</view>
+			<view class="item">微信支付</view>
+		</view>
+	</view>
+	<view class="time-box">
+		<view class="label">营业时间</view>
+		<input type="text" placeholder="请输入营业时间（如:10:00 - 23:00）" />
+	</view>
+	<view class="desc-box">
+		<view class="label">门店简介</view>
+		<textarea placeholder-style="font-size:22rpx" placeholder="请输入门店简介~~" name="textarea"/>
+	</view>
+	<view class="shop-pic">
+		<view class="label">门店图片</view>
+		<view class="text">为保证显示效果，建议上传3张以上图片</view>
+		<view class="pic-box">
+			<view class="plus"><i class="iconfont icon-plus"></i></view>
+		</view>
+	</view>
+	<view class="classify">
+		<view class="label">选择分类</view>
+		<view class="text">请选择入驻分类</view>
+		<i class="iconfont icon -right"></i>
+	</view>
+	<view class="caution">
+		我已阅读并同意《平台用户服务协议》
+	</view>
+	<view class="footer-btn">马上入驻</view>
+</view>
