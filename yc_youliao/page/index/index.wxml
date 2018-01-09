@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
 	<!--首页-->
-    <view class="container-home" hidden="{{currentTab != 0}}">
+    <view class="container-home" hidden="{{currentTab != 0}}" style="{{showClassify?'height:100%;overflow:hidden':''}}">
     	<swiper wx:if="{{!showClassify}}" class="swiper" indicator-dots="true" autoplay="true" interval="3000" duration="1000">    
 	        <block wx:for="{{movies}}" wx:key="unique">    
 		        <swiper-item>    
@@ -52,9 +52,8 @@
 	    </view>
 
 	    <view wx:if="{{!showClassify}}" class="line"></view>
-	    <view wx:if="{{showClassify}}" class="mask" bindtap="closeClassify"></view>
-
-	    <view class="homeListBox">
+	    <view wx:if="{{showClassify}}" class="mask" bindtap="closeClassify" disable-scroll="true"></view>
+	    <view wx:if="{{showClassify}}" class="classicfy-box">
 	    	<view class="home-list-top">
 		    	<view class="type-box">
 		    		<view class="type-item active">全部分类</view>
@@ -67,7 +66,7 @@
 	    			<i wx:if="{{showClassify}}" class="iconfont icon-up-solid"></i>
 	    		</view>
     		</view>
-    		<view wx:if="{{showClassify}}" class="classicfy">
+    		<view class="classicfy">
     			<view class="classicfy-item">
     				<view class="iconbox iconbox-food">
     					<i class="iconfont iconfont-classicfy icon-food"></i>
@@ -159,6 +158,20 @@
     				<view class="classicfy-item-text">全部分类</view>
     			</view>
     		</view>
+	    </view>
+	    <view class="homeListBox" style="{{showClassify?'margin-top:620rpx':''}}">
+	    	<view wx:if="{{!showClassify}}" class="home-list-top">
+		    	<view class="type-box">
+		    		<view class="type-item active">全部分类</view>
+		    		<view class="type-item">餐饮美食</view>
+		    		<view class="type-item">电影KTV</view>
+		    		<view class="type-item">酒店住宿</view>
+		    	</view>
+		    	<view class="btn" bindtap="showAllClassify">
+	    			<i wx:if="{{!showClassify}}" class="iconfont icon-down-solid"></i>
+	    			<i wx:if="{{showClassify}}" class="iconfont icon-up-solid"></i>
+	    		</view>
+    		</view>
 	    	<view class="home-list">
 	    		<navigator url="../shop/detail/index" class="home-list-item">
 	    			<view class="pic"></view>
@@ -222,14 +235,12 @@
 	    		</view>
 	    	</view>
 	    </view>
-
-
     </view>
 
     <!--发现-->
 	    <view class="container-compass" hidden="{{currentTab != 1}}">
 	    	<view class='publish'>
-			    <swiper class="swiper2" indicator-dots="{{true}}" indicator-active-color="#fb5100" class="swiper" autoplay="{{true}}">
+			    <swiper class="swiper2" indicator-dots="true" indicator-active-color="#fb5100" autoplay="true">
 				    <block wx:for="{{data.advs}}">
 				        <swiper-item>
 				        	<image src="{{imagesSocket + item.thumb}}" />
@@ -365,28 +376,4 @@
             <view class="title">我的</view>
         </view>
     </view>
-   <!--
-
-<view class="mask" wx:if="{{hasMask}}">
-    我是遮罩层
-</view>
-<view class="content" style="{{hasMask?'height:100%;overflow:hidden':''}}">
-    我是页面内容
-</view>
-<!-- js -->
-Page{
-    ...
-    showMask(e){
-        //显示遮罩
-        this.setData({
-            hasMask:true
-        })
-    },
-    hideMask(e){
-    //隐藏遮罩
-        this.setData({
-            hasMask:false
-        })
-    },
-}    -->
 </view>

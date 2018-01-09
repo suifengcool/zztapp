@@ -31,11 +31,13 @@
 	</view>
 	<view class="shop">
 		<view class="label">店内设施</view>
+		
 		<view class="item-box">
-			<view class="item">WIFI</view>
-			<view class="item">停车位</view>
-			<view class="item">支付宝支付</view>
-			<view class="item">微信支付</view>
+			<checkbox-group bindchange="checkboxChange">
+		    <label class="checkbox" wx:for="{{items}}">
+		   		<checkbox value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+		    </label>
+		</checkbox-group>
 		</view>
 	</view>
 	<view class="time-box">
@@ -44,22 +46,25 @@
 	</view>
 	<view class="desc-box">
 		<view class="label">门店简介</view>
-		<textarea placeholder-style="font-size:22rpx" placeholder="请输入门店简介~~" name="textarea"/>
+		<textarea placeholder-style="font-size:24rpx" placeholder="请输入门店简介~~" name="textarea"/>
 	</view>
 	<view class="shop-pic">
 		<view class="label">门店图片</view>
-		<view class="text">为保证显示效果，建议上传3张以上图片</view>
-		<view class="pic-box">
-			<view class="plus"><i class="iconfont icon-plus"></i></view>
+		<view class="pic-upload">
+			<view class="text">为保证显示效果，建议上传3张以上图片</view>
+			<view class="pic-box">
+				<view class="plus pic-item"><i class="iconfont icon-plus"></i></view>
+				<view class="pic-item"></view>
+			</view>
 		</view>
 	</view>
-	<view class="classify">
+	<navigator url="../type/index"  class="classify">
 		<view class="label">选择分类</view>
 		<view class="text">请选择入驻分类</view>
-		<i class="iconfont icon -right"></i>
-	</view>
+		<i class="iconfont icon-right"></i>
+	</navigator>
 	<view class="caution">
-		我已阅读并同意《平台用户服务协议》
+		我已阅读并同意<i>《平台用户服务协议》</i>
 	</view>
 	<view class="footer-btn">马上入驻</view>
 </view>

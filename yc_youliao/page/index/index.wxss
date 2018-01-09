@@ -28,18 +28,19 @@ page{
 }
 .swiper-btn .iconfont{
 	font-size: 13pt;
-	color: #222;
+	color: #000;
 }
 .search-box, .scan-box{
 	width: 70rpx;
 	height: 50rpx;
 	line-height: 50rpx;
-	background: #dedede;
+	background: #ADADAD;
 	text-align: center;
 }
 .search-box{
 	border-top-left-radius:25rpx;
 	border-bottom-left-radius:25rpx;
+	border-right: 1rpx solid #979797;
 }
 .scan-box{
 	border-top-right-radius:25rpx;
@@ -59,11 +60,12 @@ page{
 .shop-box .title-box .btn{
 	font-size:23rpx;
 	padding:10rpx 15rpx;
-	background:#FF8C00;
+	background:#ff7803;
 	color:#fff;
 	height:23rpx;
 	line-height:23rpx;
 	margin-top:5rpx;
+	border-radius: 10rpx;
 }
 .shopList{
 	width: 100%;
@@ -180,7 +182,16 @@ page{
 .homeListBox{
 	text-align: center;
 }
-.homeListBox .home-list-top{
+.classicfy-box{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	z-index: 2;
+	background: #fff;
+	text-align: center;
+}
+.home-list-top{
 	width: 100%;
 	height: 90rpx;
 	line-height: 90rpx;
@@ -231,7 +242,7 @@ page{
 .home-list-item .desc .tabs .tab-itam{
 	font-size:23rpx;
 	padding:0 5rpx;
-	border:0.5rpx solid #FA8072;
+	border:0.5rpx solid #ff7c77;
 	border-radius:10rpx;
 	height:34rpx;
 	line-height:34rpx;
@@ -243,9 +254,9 @@ page{
 .mask{
 	position: absolute;
 	width: 100%;
-	height: 50%;
+	height: 100%;
 	left: 0;
-	top: 52%;
+	top: 0;
 	background: #000;
 	z-index: 1;
 	opacity:0.7;
@@ -263,7 +274,7 @@ page{
 }
 .score-text{
 	font-size: 20rpx;
-	color: #FF8C00;
+	color: #f9984b;
 }
 .score-box .iconfont{
 	color: #FF8C00;
@@ -378,7 +389,7 @@ page{
 	text-align: center;
 }
 .active {
-	color: #FFA500;
+	color: #fa5305;
 }
 .iconfont-tab {
 	margin-top: 14rpx;
@@ -393,15 +404,15 @@ page{
 	font-size:45rpx;
 }
 
-.swiper2{
+.container-compass .swiper2{
   width: 100%;
   height: 256rpx;
 }
-.swiper2 image{
+.container-compass .swiper2 image{
   width: 100%;
   height: 256rpx;
 }
-.declaration{
+.container-compass .declaration{
   line-height: 42rpx;
   font-size: 30rpx;
   text-indent: 2em;
@@ -409,59 +420,59 @@ page{
   background-color: #fff;
   margin-bottom: 20rpx;
 }
-.checkIn{
+.container-compass .checkIn{
   background-color: #fff;
   padding: 10rpx 20rpx;
   display: flex;
 }
-.checkIn .img{
+.container-compass .checkIn .img{
   display: inline-block;
   padding-top: 10rpx;
   flex: 0 0 80rpx;
   height: 80rpx;
 }
-.checkIn .txt{
+.container-compass .checkIn .txt{
   line-height: 50rpx;
   font-size: 30rpx;
   text-indent: 2em;
 }
-.category{
+.container-compass .category{
   padding: 20rpx 10rpx;
   background-color: #fff
 }
-.cate{
+.container-compass .cate{
   background-color: #fff;
   height: 340rpx;
 }
-.category .catItem{
+.container-compass .category .catItem{
   float: left;
  width: 25%;
   padding-top: 20rpx;
   border-right: 1rpx solid #eee;
   margin-right: -1rpx;
 }
-.category .catItem:nth-child(4n) {
+.container-compass .category .catItem:nth-child(4n) {
   border-right: none;
 }
-.category .catItem:nth-child(-n + 4) {
+.container-compass .category .catItem:nth-child(-n + 4) {
   border-bottom: 1rpx solid #eee;
 }
- image{
+.container-compass image{
   width: 100%;
   height: 100%;
 }
-.category .catItem .imgWrapper{
+.container-compass .category .catItem .imgWrapper{
   width: 60rpx;
   height: 60rpx;
   margin: 0 auto;
 }
-.category .catItem .txt{
+.container-compass .category .catItem .txt{
   padding-top: 10rpx;
   font-size: 28rpx;
   line-height: 50rpx;
   text-align: center
 }
-.secondScroll {
+.container-compass .secondScroll {
   line-height: 80rpx;
   height: 80rpx;
   width: 100%;
@@ -469,7 +480,7 @@ page{
   background-color: #fff;
 }
 
-.secondScroll .title {
+.container-compass .secondScroll .title {
   width: 23%;
   display: inline-block;
   color: #fb5100;
@@ -477,7 +488,7 @@ page{
   text-align: center;
   position: relative;
 }
-.secondScroll .title:after {
+.container-compass .secondScroll .title:after {
   content: '';
   position: absolute;
   left: 0;
@@ -488,24 +499,24 @@ page{
   background-color: #fb5100;
 }
 
-.secondScroll .list {
+.container-compass .secondScroll .list {
   vertical-align: top;
   display: inline-block;
   white-space: nowrap;
   width: 76%;
 }
 
-.secondScroll .list .tex {
+.container-compass .secondScroll .list .tex {
   display: inline-block;
   color: black;
   padding: 0 20rpx;
   font-size: 28rpx;
   text-align: center;
 }
-.newItem{
+.container-compass .newItem{
   background-color: #fff;
 }
-.scrollmore{
+.container-compass .scrollmore{
   text-align: center;
   padding: 20rpx 0;
   font-size: 30rpx;

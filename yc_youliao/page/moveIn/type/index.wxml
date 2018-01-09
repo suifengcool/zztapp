@@ -1,0 +1,13 @@
+<view class="container-type">
+	<view class="typeList">
+		<view class="type-item">
+			<view class="name">不选择分类（默认）</view>
+		</view>
+		<view class="type-item">
+			<view class="name">餐饮美食</view>
+		</view>
+		<view class="type-item">
+			<view class="name">艺术培训</view>
+		</view>
+	</view>
+</view>
