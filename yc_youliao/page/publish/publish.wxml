@@ -1,7 +1,7 @@
 <!--yc_youliao/publish/publish.wxml-->
 <view class='publish'>
   <swiper indicator-dots="{{true}}" indicator-active-color="#fb5100" class="swiper" autoplay="{{true}}">
-    <block wx:for="{{data.advs}}">
+    <block wx:for="{{data.advs}}" wx:key="unique">
       <swiper-item>
         <image src="{{imagesSocket + item.thumb}}" />
       </swiper-item>
@@ -25,7 +25,7 @@
   <swiper autoplay="true" class="cate" interval="3000" duration="1200">
     <swiper-item indicator-dots="moduleLen > 1" wx:for="{{moduleLen}}" wx:for-item="i" wx:key="{{index}}">
       <view class='category clearfix'>
-        <block wx:for="{{data.module.length - i * 8 >= 8 ? 8 : data.module.length - i * 8}}" wx:for-item="j">
+        <block wx:for="{{data.module.length - i * 8 >= 8 ? 8 : data.module.length - i * 8}}" wx:for-item="j" wx:key="unique">
           <view class='catItem'>
             <navigator hover-class="none" url='../apply/apply?id={{data.module[i * 8 + j].id}}&title={{data.module[i * 8 + j].name}}&isneedpay={{data.module[i * 8 + j].isneedpay}}&needpay={{data.module[i * 8 + j].needpay}}'>
               <view class='imgWrapper'>
@@ -42,7 +42,7 @@
     <view class="secondScroll">
       <view class="title">{{scrollName}}</view>
       <scroll-view class="list" scroll-x="true" bindtouchend="scrolltouchend" bindtouchstart="scrolltouchstart" scroll-with-animation="{{true}}" scroll-into-view="id{{scrollId}}">
-        <text bindtap='categoryTap' data-name="{{item.name}}" data-id="{{item.id}}" wx:for="{{data.module}}" id="id{{item.id}}" class="tex">{{item.name}}</text>
+        <text bindtap='categoryTap' data-name="{{item.name}}" data-id="{{item.id}}" wx:for="{{data.module}}" id="id{{item.id}}" class="tex" wx:key="unique">{{item.name}}</text>
       </scroll-view>
     </view>
   </block>
@@ -59,19 +59,4 @@
     <import src="../../resource/template/emptyData.wxml" />
     <template is="module" data="{{text:'该板块暂时未有信息'}}" />
   </block>
-  <!-- 底部tab -->
-    <view class="tab">
-        <view class="tab_item" bindtap="changeTab" data-tab="0" >
-            <i class="iconfont icon-home iconfont-tab"></i>
-            <view class="title">首页</view>
-        </view>
-        <view class="tab_item active">
-            <i class="iconfont icon-compass iconfont-tab"></i>
-            <view class="title">发现</view>
-        </view>
-        <view class="tab_item" bindtap="changeTab" data-tab="2" >
-            <i class="iconfont icon-head iconfont-tab"></i>
-            <view class="title">我的</view>
-        </view>
-    </view>
 </view>

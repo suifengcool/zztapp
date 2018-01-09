@@ -44,5 +44,31 @@
     "uploadFile": 10000,
     "downloadFile": 10000
   },
+  "tabBar": {
+    "color": "#333",
+    "selectedColor": "#fa5305",
+    "borderStyle": "black",
+    "backgroundColor": "#f4f4f4",
+    "list": [
+      {
+        "pagePath": "yc_youliao/page/index/index",
+        "iconPath": "yc_youliao/resource/images/tabbarIcon/home.png",
+        "selectedIconPath": "yc_youliao/resource/images/tabbarIcon/home_active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "yc_youliao/page/publish/publish",
+        "iconPath": "yc_youliao/resource/images/tabbarIcon/compass.png",
+        "selectedIconPath": "yc_youliao/resource/images/tabbarIcon/compass_active.png",
+        "text": "发现"
+      },
+      {
+        "pagePath": "yc_youliao/page/my/my",
+        "iconPath": "yc_youliao/resource/images/tabbarIcon/my.png",
+        "selectedIconPath": "yc_youliao/resource/images/tabbarIcon/my_active.png",
+        "text": "我的"
+      }
+    ]
+  },
   "debug": false
 }

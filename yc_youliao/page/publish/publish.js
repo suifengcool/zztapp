@@ -78,7 +78,7 @@ Page({
       if (i == data.length - 3) {
         i = 0
       }
-      this.setData({
+      data && data[i] && data[i].id && this.setData({
         scrollId: data[i].id
       })
       i++

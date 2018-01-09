@@ -35,9 +35,9 @@ Page({
 		    wx.navigateTo({
 				url: "/yc_youliao/page/myComment/myComment"
 		    })
-		}else if (type == 'pay') {
+		}else if (type == 'moveIn') {
 		    wx.navigateTo({
-				url: "/yc_youliao/page/myPayInfo/myPayInfo"
+				url: "/yc_youliao/page/moveIn/list/index"
 		    })
 		}else if (type == 'collect') {
 		    wx.navigateTo({

@@ -1,4 +1,5 @@
 <view class='apply house'>
+	<view>啊啊啊</view>
   <view class='hourseTitle'>{{options.title}}</view>
   <view class='address item' bindtap='chooseAddress'>
     <image src='../../resource/images/list_icon2.png'></image>

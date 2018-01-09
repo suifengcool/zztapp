@@ -6,9 +6,8 @@ page{
 	justify-content: flex-start;
 	font-family: PingFangSC-Regular;
 }
-.container-home, .container-user{
+.container-home{
 	width: 100%;
-	margin-bottom: 100rpx;
 	box-sizing: border-box;
 }
 .swiper {
@@ -99,6 +98,7 @@ page{
   	display: flex;
   	flex-wrap: wrap;
   	border-bottom: 0.5rpx solid #dedede;
+  	background: #fff;
 }
 .classicfy-item{
 	width: 20%;
@@ -183,13 +183,17 @@ page{
 	text-align: center;
 }
 .classicfy-box{
-	position: absolute;
+	position: fixed;
 	left: 0;
 	top: 0;
 	width: 100%;
+	height: 120%;
 	z-index: 2;
-	background: #fff;
+	background-color:rgba(15, 15, 26, 0.7); 
 	text-align: center;
+}
+.classicfy-box .home-list-top{
+	background: #fff;
 }
 .home-list-top{
 	width: 100%;
@@ -373,168 +377,6 @@ page{
 	color: #FF6347;
 }
 
-.tab {
-	position: fixed;
-	bottom: 0;
-	height: 100rpx;
-	width: 100%;
-	background: #F8F8FA;
-	font-size: 24rpx;
-	white-space: nowrap;
-	border-top: .5rpx solid #dedede;
-}
-.tab_item {
-	display: inline-block;
-	width: 33.333%;
-	text-align: center;
-}
 .active {
 	color: #fa5305;
-}
-.iconfont-tab {
-	margin-top: 14rpx;
-	width: 55rpx;
-	height: 55rpx;
-	line-height: 55rpx;
-	display: inline-block;
-	font-size: 40rpx;
-	text-aglin: center;
-}
-.icon-compass{
-	font-size:45rpx;
-}
-
-.container-compass .swiper2{
-  width: 100%;
-  height: 256rpx;
-}
-.container-compass .swiper2 image{
-  width: 100%;
-  height: 256rpx;
-}
-.container-compass .declaration{
-  line-height: 42rpx;
-  font-size: 30rpx;
-  text-indent: 2em;
-  color: #666;
-  background-color: #fff;
-  margin-bottom: 20rpx;
-}
-.container-compass .checkIn{
-  background-color: #fff;
-  padding: 10rpx 20rpx;
-  display: flex;
-}
-.container-compass .checkIn .img{
-  display: inline-block;
-  padding-top: 10rpx;
-  flex: 0 0 80rpx;
-  height: 80rpx;
-}
-.container-compass .checkIn .txt{
-  line-height: 50rpx;
-  font-size: 30rpx;
-  text-indent: 2em;
-}
-.container-compass .category{
-  padding: 20rpx 10rpx;
-  background-color: #fff
-}
-.container-compass .cate{
-  background-color: #fff;
-  height: 340rpx;
-}
-.container-compass .category .catItem{
-  float: left;
- width: 25%;
-  padding-top: 20rpx;
-  border-right: 1rpx solid #eee;
-  margin-right: -1rpx;
-}
-.container-compass .category .catItem:nth-child(4n) {
-  border-right: none;
-}
-.container-compass .category .catItem:nth-child(-n + 4) {
-  border-bottom: 1rpx solid #eee;
-}
-.container-compass image{
-  width: 100%;
-  height: 100%;
-}
-.container-compass .category .catItem .imgWrapper{
-  width: 60rpx;
-  height: 60rpx;
-  margin: 0 auto;
-}
-.container-compass .category .catItem .txt{
-  padding-top: 10rpx;
-  font-size: 28rpx;
-  line-height: 50rpx;
-  text-align: center
-}
-.container-compass .secondScroll {
-  line-height: 80rpx;
-  height: 80rpx;
-  width: 100%;
-  border-bottom: 1rpx solid #ccc;
-  background-color: #fff;
-}
-
-.container-compass .secondScroll .title {
-  width: 23%;
-  display: inline-block;
-  color: #fb5100;
-  font-size: 28rpx;
-  text-align: center;
-  position: relative;
-}
-.container-compass .secondScroll .title:after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 2rpx;
-  width: 100%;
-  height: 1px;
-  background-color: #fb5100;
-}
-
-.container-compass .secondScroll .list {
-  vertical-align: top;
-  display: inline-block;
-  white-space: nowrap;
-  width: 76%;
-}
-
-.container-compass .secondScroll .list .tex {
-  display: inline-block;
-  color: black;
-  padding: 0 20rpx;
-  font-size: 28rpx;
-  text-align: center;
-}
-.container-compass .newItem{
-  background-color: #fff;
-}
-.container-compass .scrollmore{
-  text-align: center;
-  padding: 20rpx 0;
-  font-size: 30rpx;
-  line-height: 50rpx;
-}
-.publist-icon-box{
-	position:fixed;
-	right:35rpx;
-	bottom:163rpx;
-	width:80rpx;
-	height:80rpx;
-	line-height:80rpx;
-	text-align:center;
-	color:#FFA500;
-	border-radius:50%;
-	background:#fff;
-	border:0.5rpx solid #dedede;
-}
-.publist-icon-box .iconfont{
-	font-size: 40rpx;
 }

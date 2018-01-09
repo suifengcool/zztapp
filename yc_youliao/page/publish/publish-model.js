@@ -19,7 +19,6 @@ class Publish extends Base {
     }
   }
   getModuleData(id,callback) {
-    console.log(id)
     moduleList.getModuleData({ id, LENGTH: 10}, (data) => {
       callback && callback(data)
     })

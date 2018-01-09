@@ -121,30 +121,3 @@ swiper.cate{
   font-size: 30rpx;
   line-height: 50rpx;
 }
-.tab {
-  position: fixed;
-  bottom: 0;
-  height: 100rpx;
-  width: 100%;
-  background: #F8F8FA;
-  font-size: 24rpx;
-  white-space: nowrap;
-  border-top: .5rpx solid #dedede;
-}
-.tab_item {
-  display: inline-block;
-  width: 33.333%;
-  text-align: center;
-}
-.active {
-  color: #FFA500;
-}
-.iconfont-tab {
-  margin-top: 14rpx;
-  width: 55rpx;
-  height: 55rpx;
-  line-height: 55rpx;
-  display: inline-block;
-  font-size: 40rpx;
-  text-aglin: center;
-}

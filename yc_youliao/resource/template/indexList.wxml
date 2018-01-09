@@ -27,10 +27,10 @@
     <block wx:if="{{item.con.thumbs}}">
       <view class="images clearfix" wx:if="{{imagesSocket && imagesSocket != ''}}">
         <block wx:if="{{newImg == true}}">
-          <image bindtap="previewImg" wx:for-item="img" wx:for="{{item.con.thumbs}}" data-src="{{img}}" src="{{img}}" />
+          <image bindtap="previewImg" wx:for-item="img" wx:key="unique" wx:for="{{item.con.thumbs}}" data-src="{{img}}" src="{{img}}" />
         </block>
         <block wx:else>
-           <image bindtap="previewImg" wx:for-item="img" wx:for="{{item.con.thumbs}}" data-src="{{imagesSocket + img}}" src="{{imagesSocket + img}}" />
+           <image bindtap="previewImg" wx:key="unique" wx:for-item="img" wx:for="{{item.con.thumbs}}" data-src="{{imagesSocket + img}}" src="{{imagesSocket + img}}" />
         </block>
       </view>
     </block>

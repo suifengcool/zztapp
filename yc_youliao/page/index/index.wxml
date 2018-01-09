@@ -1,6 +1,5 @@
 <!--index.wxml-->
 <view class="container">
-	<!--首页-->
     <view class="container-home" hidden="{{currentTab != 0}}" style="{{showClassify?'height:100%;overflow:hidden':''}}">
     	<swiper wx:if="{{!showClassify}}" class="swiper" indicator-dots="true" autoplay="true" interval="3000" duration="1000">    
 	        <block wx:for="{{movies}}" wx:key="unique">    
@@ -52,8 +51,7 @@
 	    </view>
 
 	    <view wx:if="{{!showClassify}}" class="line"></view>
-	    <view wx:if="{{showClassify}}" class="mask" bindtap="closeClassify" disable-scroll="true"></view>
-	    <view wx:if="{{showClassify}}" class="classicfy-box">
+	    <view wx:if="{{showClassify}}" class="classicfy-box" bindtap="closeClassify" catchtouchmove="preventD">
 	    	<view class="home-list-top">
 		    	<view class="type-box">
 		    		<view class="type-item active">全部分类</view>
@@ -235,145 +233,5 @@
 	    		</view>
 	    	</view>
 	    </view>
-    </view>
-
-    <!--发现-->
-	    <view class="container-compass" hidden="{{currentTab != 1}}">
-	    	<view class='publish'>
-			    <swiper class="swiper2" indicator-dots="true" indicator-active-color="#fb5100" autoplay="true">
-				    <block wx:for="{{data.advs}}">
-				        <swiper-item>
-				        	<image src="{{imagesSocket + item.thumb}}" />
-				        </swiper-item>
-				    </block>
-			    </swiper>
-			    <view class='declaration'>
-			    	免责声明:本平台发布信息（收费、免费）展示，内容与平台本身无关，平台不负任何责任
-			  	</view>
-			  
-			    <view class='titleWrapper'>
-				    <view class='line'></view>
-				    <view class='text'>请选择发布类型</view>
-				    <view class='line'></view>
-			    </view>
-			    <swiper autoplay="true" class="cate" interval="3000" duration="1200">
-				    <swiper-item indicator-dots="moduleLen > 1" wx:for="{{moduleLen}}" wx:for-item="i" wx:key="{{index}}">
-				        <view class='category clearfix'>
-					        <block 
-					        	wx:for="{{data.module.length - i * 8 >= 8 ? 8 : data.module.length - i * 8}}" 
-					        	wx:for-item="j"
-				        	>
-					            <view class='catItem'>
-					                <navigator 
-						              	hover-class="none" 
-						              	url='../apply/apply?id={{data.module[i * 8 + j].id}}&title={{data.module[i * 8 + j].name}}&isneedpay={{data.module[i * 8 + j].isneedpay}}&needpay={{data.module[i * 8 + j].needpay}}'
-					              	>
-					                	<view class='imgWrapper'>
-					                		<image src="{{imagesSocket + data.module[i * 8 + j].thumb}}"></image>
-					              		</view>
-					              		<view class='txt'>{{data.module[i * 8 + j].name}}</view>
-					            	</navigator>
-					            </view>
-					        </block>
-				        </view>
-				    </swiper-item>
-			    </swiper>
-				<block>
-				    <view class="secondScroll">
-				        <view class="title">{{scrollName}}</view>
-				        <scroll-view 
-				        	class="list" 
-				        	scroll-x="true" 
-				        	bindtouchend="scrolltouchend" 
-				        	bindtouchstart="scrolltouchstart" 
-				        	scroll-with-animation="{{true}}" 
-				        	scroll-into-view="id{{scrollId}}"
-			        	>
-				        	<text 
-				        		bindtap='categoryTap' 
-				        		data-name="{{item.name}}" 
-				        		data-id="{{item.id}}" 
-				        		wx:for="{{data.module}}" 
-				        		id="id{{item.id}}" 
-				        		class="tex"
-			        		>
-			        			{{item.name}}
-		        			</text>
-				        </scroll-view>
-				    </view>
-				</block>
-			    <block wx:if="{{scrollData.length > 0}}">
-				    <import src="../../resource/template/indexList.wxml" />
-				    <template is="list" data="{{data:scrollData,imagesSocket,newImg: true}}" />
-				    <view class="scrollmore" wx:if="{{scrollMore !== ''}}">
-				        <navigator url="../moduleList/moduleList?id={{scrollMore}}">点击加载更多</navigator>
-				    </view>
-				    <import src="../../resource/template/complete.wxml" />
-				    <template wx:if="{{scrollMore == ''}}" is="complete" />
-				</block>
-			    <block wx:if="{{scrollData.length == 0}}">
-				    <import src="../../resource/template/emptyData.wxml" />
-				    <template is="module" data="{{text:'该板块暂时未有信息'}}" />
-			     </block>
-			</view>
-			<navigator class="publist-icon-box" url="../release/index/index">
-		    	<i class="iconfont icon-plus"></i>
-		    </navigator>
-	    </view>
-
-
-
-	<!--我的-->
-    <view class="container-user" hidden="{{currentTab != 2}}">
-    	<view class='my'>
-		    <view class='top'>
-				<image src='{{avatar}}' class='avatar'></image>
-				<view class='name'>{{name}}</view>
-		    </view>
-
-		    <view class='itemTitle {{city == true ? "" : "hide"}}' bindtap="onTitleTap" data-name='city'>
-				<i class="iconfont icon-city iconfont-my"></i>同城
-			</view>
-
-		    <view hidden="{{!city}}">
-		    	<view class='item' bindtap='go' data-type="coupon">
-			    	<i class="iconfont icon-coupon iconfont-my"></i>
-			    	我的优惠券
-		    	</view>
-		    	<view class='item' bindtap='go' data-type="publish">
-			    	<i class="iconfont icon-publish iconfont-my"></i>
-			    	我的发布
-		    	</view>
-		    	<view class='item' bindtap='go' data-type="msg">
-		    		<i class="iconfont icon-msg-solid iconfont-my"></i>
-			    	我的消息
-		    	</view>
-		    	<view class='item' bindtap='go' data-type="collect">
-		    		<i class="iconfont icon-star iconfont-my"></i>
-				    我的收藏
-				</view>
-		    	<view class='item' bindtap='go' data-type="moveIn">
-		    		<i class="iconfont icon-store iconfont-my"></i>
-			    	我的入驻
-		    	</view>
-			</view>
-		</view>
-    </view>
-
-
-    <!-- 底部tab -->
-    <view class="tab">
-        <view class="tab_item {{currentTab == 0 ? ' active' : ''}}" bindtap="changeTab" data-tab="0" >
-            <i class="iconfont icon-home iconfont-tab"></i>
-            <view class="title">首页</view>
-        </view>
-        <view class="tab_item {{currentTab == 1 ? ' active' : ''}}" bindtap="changeTab" data-tab="1" >
-            <i class="iconfont icon-compass iconfont-tab"></i>
-            <view class="title">发现</view>
-        </view>
-        <view class="tab_item {{currentTab == 2 ? ' active' : ''}}" bindtap="changeTab" data-tab="2" >
-            <i class="iconfont icon-head iconfont-tab"></i>
-            <view class="title">我的</view>
-        </view>
     </view>
 </view>
