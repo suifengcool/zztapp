@@ -1,10 +1,17 @@
 <!--index.wxml-->
 <view class="container">
-    <view class="container-home" hidden="{{currentTab != 0}}" style="{{showClassify?'height:100%;overflow:hidden':''}}">
-    	<swiper wx:if="{{!showClassify}}" class="swiper" indicator-dots="true" autoplay="true" interval="3000" duration="1000">    
+    <view class="container-home" style="{{showClassify?'height:100%;overflow:hidden':''}}">
+    	<swiper 
+    		wx:if="{{!showClassify}}" 
+    		class="swiper" 
+    		indicator-dots="true" 
+    		autoplay="true" 
+    		interval="3000" 
+    		duration="1000"
+		>    
 	        <block wx:for="{{movies}}" wx:key="unique">    
 		        <swiper-item>    
-		          <image src="{{item.url}}" class="slide-image" mode="aspectFill"/>  
+		             <image src="{{item.url}}" class="slide-image" mode="aspectFill"/> 
 		        </swiper-item>    
 	        </block> 
 	    </swiper>
@@ -23,29 +30,9 @@
 	    		<navigator url="../moveIn/create/index" class="btn">免费入驻</navigator>
 	    	</view>
 	    	<scroll-view class="shopList" scroll-x='true'>
-	        	<view class="shop-item">
-	                <view class="pic"></view>
-	                <text class="shop-item-text">顾村新街幼儿园</text>
-	            </view>
-	            <view class="shop-item">
-	            	<view class="pic"></view>
-	                <view class="shop-item-text">中国电信</view>
-	            </view>
-	            <view class="shop-item">
-	            	<view class="pic"></view>
-	                <view class="shop-item-text">家乐福超市</view>
-	            </view>
-	            <view class="shop-item">
-	            	<view class="pic"></view>
-	                <view class="shop-item-text">沃尔玛</view>
-	            </view>
-	            <view class="shop-item">
-	            	<view class="pic"></view>
-	                <view class="shop-item-text">永红幼儿园</view>
-	            </view>
-	            <view class="shop-item">
-	            	<view class="pic"></view>
-	                <view class="shop-item-text">青青家园网吧</view>
+	        	<view class="shop-item"  wx:for="{{movies}}" wx:key="unique">
+                	<image class="pic" src="{{item.url}}" mode="aspectFill"/> 
+                	<view class="shop-item-text">{{item.name}}</view>
 	            </view>
 		    </scroll-view>
 	    </view>
@@ -53,12 +40,9 @@
 	    <view wx:if="{{!showClassify}}" class="line"></view>
 	    <view wx:if="{{showClassify}}" class="classicfy-box" bindtap="closeClassify" catchtouchmove="preventD">
 	    	<view class="home-list-top">
-		    	<view class="type-box">
-		    		<view class="type-item active">全部分类</view>
-		    		<view class="type-item">餐饮美食</view>
-		    		<view class="type-item">电影KTV</view>
-		    		<view class="type-item">酒店住宿</view>
-		    	</view>
+		    	<scroll-view scroll-x='true' class="type-box">
+		    		<view class="type-item" wx:for="{{cate}}" wx:key="{{index}}">{{item.cate_name}}</view>
+		    	</scroll-view>
 		    	<view class="btn" bindtap="showAllClassify">
 	    			<i wx:if="{{!showClassify}}" class="iconfont icon-down-solid"></i>
 	    			<i wx:if="{{showClassify}}" class="iconfont icon-up-solid"></i>
@@ -159,78 +143,37 @@
 	    </view>
 	    <view class="homeListBox" style="{{showClassify?'margin-top:620rpx':''}}">
 	    	<view wx:if="{{!showClassify}}" class="home-list-top">
-		    	<view class="type-box">
-		    		<view class="type-item active">全部分类</view>
-		    		<view class="type-item">餐饮美食</view>
-		    		<view class="type-item">电影KTV</view>
-		    		<view class="type-item">酒店住宿</view>
-		    	</view>
+		    	<scroll-view scroll-x='true' class="type-box">
+		    		<view class="type-item" wx:for="{{cate}}" wx:key="{{index}}">{{item.cate_name}}</view>
+		    	</scroll-view>
 		    	<view class="btn" bindtap="showAllClassify">
 	    			<i wx:if="{{!showClassify}}" class="iconfont icon-down-solid"></i>
 	    			<i wx:if="{{showClassify}}" class="iconfont icon-up-solid"></i>
 	    		</view>
     		</view>
 	    	<view class="home-list">
-	    		<navigator url="../shop/detail/index" class="home-list-item">
-	    			<view class="pic"></view>
+	    		<navigator url="../shop/detail/index" class="home-list-item" wx:for="{{shopList}}" wx:key="{{index}}">
+	    			<view class="pic">
+	    				<image src="{{imagesSocket + item.logo}}" class='pic-avatar'></image>
+	    			</view>
 	    			<view class="desc">
 	    				<view class="title">
-	    					<view class="name">贯今网络</view>
-	    					<view class="distance">7.24km</view>
+	    					<view class="name">{{item.shop_name}}</view>
+	    					<view class="distance">{{item.distance}}km</view>
 	    				</view>
 	    				<view class="score-box">
 	    					<view class="score-list">
 	    						<i class="iconfont icon-star"></i>
 	    					</view>
-	    					<view class="score-text">4.7</view>
+	    					<view class="score-text">{{item.renjun}}</view>
 	    				</view>
 	    				<view class="tabs">
-	    					<view class="tab-itam">干净卫生</view>
-	    					<view class="tab-itam">环境优雅</view>
-	    					<view class="tab-itam">WIFI</view>
+	    					<view class="tab-itam" wx:for="{{item.inco}}" wx:key="{{index}}" wx:for-item="i">{{i}}</view>
 	    				</view>
 	    			</view>
 	    		</navigator>
-	    		<view class="home-list-item">
-	    			<view class="pic"></view>
-	    			<view class="desc">
-	    				<view class="title">
-	    					<view class="name">贯今网络</view>
-	    					<view class="distance">7.24km</view>
-	    				</view>
-	    				<view class="score-box">
-	    					<view class="score-list">
-	    						<i class="iconfont icon-star"></i>
-	    					</view>
-	    					<view class="score-text">4.7</view>
-	    				</view>
-	    				<view class="tabs">
-	    					<view class="tab-itam">干净卫生</view>
-	    					<view class="tab-itam">环境优雅</view>
-	    					<view class="tab-itam">WIFI</view>
-	    				</view>
-	    			</view>
-	    		</view>
-	    		<view class="home-list-item">
-	    			<view class="pic"></view>
-	    			<view class="desc">
-	    				<view class="title">
-	    					<view class="name">贯今网络</view>
-	    					<view class="distance">7.24km</view>
-	    				</view>
-	    				<view class="score-box">
-	    					<view class="score-list">
-	    						<i class="iconfont icon-star"></i>
-	    					</view>
-	    					<view class="score-text">4.7</view>
-	    				</view>
-	    				<view class="tabs">
-	    					<view class="tab-itam">干净卫生</view>
-	    					<view class="tab-itam">环境优雅</view>
-	    					<view class="tab-itam">WIFI</view>
-	    				</view>
-	    			</view>
-	    		</view>
+	    		<import src="../../resource/template/complete.wxml" />
+  				<template is="complete" wx:if="{{isComplete}}"/>
 	    	</view>
 	    </view>
     </view>

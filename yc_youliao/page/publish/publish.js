@@ -30,7 +30,7 @@ Page({
       this.infiniteScroll(data.module)
       this.renderFun(data)
     })
-    publish.setNavigationBarTitle()
+    // publish.setNavigationBarTitle()
   },
   /**
    * 用户点击右上角分享
