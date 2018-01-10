@@ -10,7 +10,7 @@
     	9张图
     </view>
     <view class="shop-title-box">
-        <view class="title">黄陂鑫荣茶油坊</view>
+        <view class="title">{{data.shop_name}}</view>
         <view class="score-box">
             <view class="score-list">
                 <view class="score-item">
@@ -19,16 +19,16 @@
             </view>
             <view class="score">4.5</view>
         </view>
-        <view class="btn">收藏</view>
+        <view class="btn {{isCollect ? 'collected': ''}}" bindtap='onCollectTap'>{{isCollect? '已收藏': '收藏'}}</view>
     </view>
     <view class="shop-adress-box">
-        <view class="icon">
+        <view class="icon" bindtap='map'>
             <i class="iconfont icon-adress-solid"></i>
         </view>
-        <view class="adress">
-            江西省赣州市宁都县小康路与225省道交叉口西南100米江西省赣州市宁都县
+        <view class="adress" bindtap='map'>
+            {{data.address || '商家地址正在维护中'}} 
         </view>
-        <view class="tel-box icon-box"><i class="iconfont icon-tel-right"></i></view>
+        <view class="tel-box icon-box" bindtap='phonetap'><i class="iconfont icon-tel-right"></i></view>
         <view class="share-box icon-box"><i class="iconfont icon-share"></i></view>
     </view>
     <view class="line"></view>

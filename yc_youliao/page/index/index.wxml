@@ -11,7 +11,7 @@
 		>    
 	        <block wx:for="{{movies}}" wx:key="unique">    
 		        <swiper-item>    
-		             <image src="{{item.url}}" class="slide-image" mode="aspectFill"/> 
+		            <image src="{{item.url}}" class="slide-image" mode="aspectFill"/> 
 		        </swiper-item>    
 	        </block> 
 	    </swiper>
@@ -19,7 +19,7 @@
         	<view class="search-box">
 	        	<i class="iconfont icon-search2"></i>
 	        </view>
-	        <view class="scan-box">
+	        <view class="scan-box" bindtap="scanCode">
 	        	<i class="iconfont icon-scan"></i>
 	        </view>
         </view>
@@ -144,7 +144,15 @@
 	    <view class="homeListBox" style="{{showClassify?'margin-top:620rpx':''}}">
 	    	<view wx:if="{{!showClassify}}" class="home-list-top">
 		    	<scroll-view scroll-x='true' class="type-box">
-		    		<view class="type-item" wx:for="{{cate}}" wx:key="{{index}}">{{item.cate_name}}</view>
+		    		<view 
+                        class="type-item" 
+                        wx:for="{{cate}}" 
+                        wx:key="{{index}}" 
+                        data-id='{{item.cate_id}}' 
+                        bindtap='scrollTap'
+                    >
+                        {{item.cate_name}}
+                    </view>
 		    	</scroll-view>
 		    	<view class="btn" bindtap="showAllClassify">
 	    			<i wx:if="{{!showClassify}}" class="iconfont icon-down-solid"></i>
@@ -152,7 +160,13 @@
 	    		</view>
     		</view>
 	    	<view class="home-list">
-	    		<navigator url="../shop/detail/index" class="home-list-item" wx:for="{{shopList}}" wx:key="{{index}}">
+	    		<view 
+                    class="home-list-item" 
+                    wx:for="{{shopList}}" 
+                    wx:key="{{index}}" 
+                    data-id="{{item.shop_id}}" 
+                    bindtap='tap'
+                >
 	    			<view class="pic">
 	    				<image src="{{imagesSocket + item.logo}}" class='pic-avatar'></image>
 	    			</view>
@@ -163,7 +177,7 @@
 	    				</view>
 	    				<view class="score-box">
 	    					<view class="score-list">
-	    						<i class="iconfont icon-star"></i>
+	    						<i wx:if="{{item.renjun>j}}" class="iconfont {{Math.round(item.renjun) > j ? 'icon-star' : 'icon-star'}}"  wx:for="[0,1,2,3,4]" wx:for-item="j" wx:key="{{index}}"></i>
 	    					</view>
 	    					<view class="score-text">{{item.renjun}}</view>
 	    				</view>
@@ -171,7 +185,7 @@
 	    					<view class="tab-itam" wx:for="{{item.inco}}" wx:key="{{index}}" wx:for-item="i">{{i}}</view>
 	    				</view>
 	    			</view>
-	    		</navigator>
+	    		</view>
 	    		<import src="../../resource/template/complete.wxml" />
   				<template is="complete" wx:if="{{isComplete}}"/>
 	    	</view>

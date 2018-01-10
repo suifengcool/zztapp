@@ -55,6 +55,10 @@ page{
 	color:#fff;
 	font-size:24rpx;
 }
+.collected{
+	background:#dedede;
+	color: #979797;
+}
 .score-box{
 	display: flex;
 	color: #FFA500;

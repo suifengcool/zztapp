@@ -1,62 +1,78 @@
-<!--yc_youliao/publish/publish.wxml-->
 <view class='publish'>
-  <swiper indicator-dots="{{true}}" indicator-active-color="#fb5100" class="swiper" autoplay="{{true}}">
-    <block wx:for="{{data.advs}}" wx:key="unique">
-      <swiper-item>
-        <image src="{{imagesSocket + item.thumb}}" />
-      </swiper-item>
+    <swiper indicator-dots="{{true}}" indicator-active-color="#fb5100" class="swiper" autoplay="{{true}}">
+		<block wx:for="{{data.advs}}" wx:key="unique">
+		    <swiper-item>
+				<image src="{{imagesSocket + item.thumb}}" />
+		    </swiper-item>
+		</block>
+    </swiper>
+    <view class='declaration'>免责声明:本平台发布信息（收费、免费）展示，内容与平台本身无关，平台不负任何责任</view>
+
+    <!-- 
+	    <view class='checkIn'>
+			<image class='img' src="../../resource/images/fabu_2.png"></image>
+			<view class='des'>
+			  <view class='txt col222'>我是商家,点击入驻商圈</view>
+			  <view class='txt col999'>本地宣传,简单有效,方便快捷</view>
+			</view>
+	    </view>
+    -->
+
+    <view class='titleWrapper'>
+		<view class='line'></view>
+		<view class='text'>请选择发布类型</view>
+		<view class='line'></view>
+    </view>
+
+    <swiper autoplay="true" class="cate" interval="3000" duration="1200">
+		<swiper-item indicator-dots="moduleLen > 1" wx:for="{{moduleLen}}" wx:for-item="i" wx:key="{{index}}">
+		    <view class='category clearfix'>
+				<block 
+					wx:for="{{data.module.length - i * 8 >= 8 ? 8 : data.module.length - i * 8}}" 
+					wx:for-item="j" 
+					wx:key="unique"
+				>
+				    <view class='catItem'>
+						<navigator 
+							hover-class="none" 
+							url='../apply/apply?id={{data.module[i * 8 + j].id}}&title={{data.module[i * 8 + j].name}}&isneedpay={{data.module[i * 8 + j].isneedpay}}&needpay={{data.module[i * 8 + j].needpay}}'
+						>
+						    <view class='imgWrapper'>
+								<image src="{{imagesSocket + data.module[i * 8 + j].thumb}}"></image>
+						    </view>
+						    <view class='txt'>{{data.module[i * 8 + j].name}}</view>
+						</navigator>
+				    </view>
+				</block>
+		    </view>
+		</swiper-item>
+    </swiper>
+
+    <block>
+		<view class="secondScroll">
+        <view class="title">{{scrollName}}</view>
+	        <scroll-view class="list" scroll-x="true" bindtouchend="scrolltouchend" bindtouchstart="scrolltouchstart" scroll-with-animation="{{true}}" scroll-into-view="id{{scrollId}}">
+	        	<text bindtap='categoryTap' data-name="{{item.name}}" data-id="{{item.id}}" wx:for="{{data.module}}" id="id{{item.id}}" class="tex" wx:key="unique">{{item.name}}</text>
+	        </scroll-view>
+    	</view>
     </block>
-  </swiper>
-  <view class='declaration'>
-    免责声明:本平台发布信息（收费、免费）展示，内容与平台本身无关，平台不负任何责任
-  </view>
-  <!-- <view class='checkIn'>
-    <image class='img' src="../../resource/images/fabu_2.png"></image>
-    <view class='des'>
-      <view class='txt col222'>我是商家,点击入驻商圈</view>
-      <view class='txt col999'>本地宣传,简单有效,方便快捷</view>
-    </view>
-  </view> -->
-  <view class='titleWrapper'>
-    <view class='line'></view>
-    <view class='text'>请选择发布类型</view>
-    <view class='line'></view>
-  </view>
-  <swiper autoplay="true" class="cate" interval="3000" duration="1200">
-    <swiper-item indicator-dots="moduleLen > 1" wx:for="{{moduleLen}}" wx:for-item="i" wx:key="{{index}}">
-      <view class='category clearfix'>
-        <block wx:for="{{data.module.length - i * 8 >= 8 ? 8 : data.module.length - i * 8}}" wx:for-item="j" wx:key="unique">
-          <view class='catItem'>
-            <navigator hover-class="none" url='../apply/apply?id={{data.module[i * 8 + j].id}}&title={{data.module[i * 8 + j].name}}&isneedpay={{data.module[i * 8 + j].isneedpay}}&needpay={{data.module[i * 8 + j].needpay}}'>
-              <view class='imgWrapper'>
-                <image src="{{imagesSocket + data.module[i * 8 + j].thumb}}"></image>
-              </view>
-              <view class='txt'>{{data.module[i * 8 + j].name}}</view>
-            </navigator>
-          </view>
-        </block>
-      </view>
-    </swiper-item>
-  </swiper>
-  <block>
-    <view class="secondScroll">
-      <view class="title">{{scrollName}}</view>
-      <scroll-view class="list" scroll-x="true" bindtouchend="scrolltouchend" bindtouchstart="scrolltouchstart" scroll-with-animation="{{true}}" scroll-into-view="id{{scrollId}}">
-        <text bindtap='categoryTap' data-name="{{item.name}}" data-id="{{item.id}}" wx:for="{{data.module}}" id="id{{item.id}}" class="tex" wx:key="unique">{{item.name}}</text>
-      </scroll-view>
-    </view>
-  </block>
-  <block wx:if="{{scrollData.length > 0}}">
-    <import src="../../resource/template/indexList.wxml" />
-    <template is="list" data="{{data:scrollData,imagesSocket,newImg: true}}" />
-    <view class="scrollmore" wx:if="{{scrollMore !== ''}}">
-      <navigator url="../moduleList/moduleList?id={{scrollMore}}">点击加载更多</navigator>
-    </view>
-    <import src="../../resource/template/complete.wxml" />
-    <template wx:if="{{scrollMore == ''}}" is="complete" />
-  </block>
-  <block wx:if="{{scrollData.length == 0}}">
-    <import src="../../resource/template/emptyData.wxml" />
-    <template is="module" data="{{text:'该板块暂时未有信息'}}" />
-  </block>
+
+    <block wx:if="{{scrollData.length > 0}}">
+		<import src="../../resource/template/indexList.wxml" />
+		<template is="list" data="{{data:scrollData,imagesSocket,newImg: true}}" />
+		<view class="scrollmore" wx:if="{{scrollMore !== ''}}">
+		    <navigator url="../moduleList/moduleList?id={{scrollMore}}">点击加载更多</navigator>
+		</view>
+		<import src="../../resource/template/complete.wxml" />
+		<template wx:if="{{scrollMore == ''}}" is="complete" />
+    </block>
+
+    <block wx:if="{{scrollData.length == 0}}">
+		<import src="../../resource/template/emptyData.wxml" />
+		<template is="module" data="{{text:'该板块暂时未有信息'}}" />
+    </block>
+
+    <navigator url='../release/index/index' class="release-btn">
+    	<i class="iconfont icon-plus"></i>
+	</navigator>
 </view>

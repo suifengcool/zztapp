@@ -347,7 +347,7 @@
   display: flex;
   padding: 20rpx 50rpx;
 }
-.titleWrapper .line{
+.titleWrapper .line2{
   flex: 1;
   border-bottom: 1rpx solid #ccc;
   transform: translateY(-28rpx);

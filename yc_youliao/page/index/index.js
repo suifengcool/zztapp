@@ -1,6 +1,8 @@
-import { getUserInfo, getImageSocket, getLocation } from '../../resource/utils/comment.js'
+import { getUserInfo, getImageSocket, getLocation , dateToStr} from '../../resource/utils/comment.js'
 import { ShopList } from 'shopList-model.js'
+import { Index } from 'index-model.js'
 
+var index = new Index()
 var shopList = new ShopList();
 let app = getApp();
 let animationShowHeight = 300; 
@@ -57,33 +59,13 @@ Page({
 			cate_id: 14
 	    }],
 	    cateId: -1,
-	    page: 1,
+	    page: 0,
 	    location: null,
 	    imagesSocket: '',
 	    isComplete: false
 	},
 	
 	onLoad: function(){
-		// 获取seid(测试接口)
-		app.util.getUserInfo((userInfo) => {
-			var data = {}
-			if (userInfo.memberInfo.uid) {
-			    data.uid = userInfo.memberInfo.uid
-			}
-			var param = {
-			    url: 'entry/wxapp/getSeid',
-			    data,
-			    sCallback: (res) => {
-					wx.setStorage({
-					    key: "index",
-					    data: res
-					})
-					callback && callback(res.data.data)
-			    }
-			}
-			app.util.request(param)
-	    });
-		
 		// 获取用户信息
 		getUserInfo((data) => {
 			let userInfo = data
@@ -132,6 +114,18 @@ Page({
 	        })
 	    })
 	},
+
+	// 二维码
+	scanCode() {
+	    wx.scanCode({
+	        success: (res) => {
+	        	console.log(res)
+	        },
+	        fail: (res) => {
+	        	console.log(res)
+	        }
+	    })
+	},
 	
     // 用户点击右上角分享
 	onShareAppMessage: function (res) {
@@ -140,7 +134,7 @@ Page({
 		    console.log(res.target)
 		}
 		return {
-		    title: '更多的精彩尽在社区',
+		    title: '更多的精彩尽在镇镇通',
 		    // 转发成功
 		    success: function (res) {
 				console.log('转发成功:',res)
@@ -238,4 +232,34 @@ Page({
 		    })
 	    })
 	},
+
+	// 点击选择分类
+	scrollTap(e) {
+	    let id = parseInt(e.currentTarget.dataset.id);
+
+	    this.setData({
+	      	cateId: id
+	    })
+	    this.getData(true)
+	},
+
+	// 点击门店列表，查看店铺详情
+	tap (e) {
+	    let id = e.currentTarget.dataset.id;
+	    wx.navigateTo({
+	        url: `/yc_youliao/page/shop/detail/index?shop_id=${id}`
+    	})
+    },
+
+    // 页面上拉触底事件的处理函数
+    onReachBottom: function () {
+    	this.getData(false)
+    },
+
+    // 下拉更新
+    onPullDownRefresh: function () {
+	    index.getIndexData((data) => {
+        	wx.stopPullDownRefresh()
+        })
+    },
 })

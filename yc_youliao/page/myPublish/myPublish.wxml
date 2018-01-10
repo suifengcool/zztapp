@@ -1,8 +1,8 @@
 <!--yc_youliao/myPublish/myPublish.wxml-->
 <view class='myPublish'>
   <view class='title'>
-    <view class='li {{type == 1 ? "checked" : ""}}' data-type='1' bindtap='onTitleTap'>已审核</view>
-    <view class='li {{type == 0 ? "checked" : ""}}' data-type='0' bindtap='onTitleTap'>未审核</view>
+    <view class='li {{type == 1 ? "checked" : ""}}' data-type='1' bindtap='onTitleTap'>未审核</view>
+    <view class='li {{type == 0 ? "checked" : ""}}' data-type='0' bindtap='onTitleTap'>已审核</view>
   </view>
   <import src="./tem.wxml"/> 
   <import src="../../resource/template/complete.wxml" />

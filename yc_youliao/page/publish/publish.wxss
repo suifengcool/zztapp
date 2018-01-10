@@ -121,3 +121,18 @@ swiper.cate{
   font-size: 30rpx;
   line-height: 50rpx;
 }
+.release-btn{
+  position: fixed;
+  bottom: 55rpx;
+  right: 20rpx;
+  height: 90rpx;
+  width: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  border: 1rpx solid #dedede;
+  border-radius: 50%;
+  background:#fff;
+}
+.release-btn .iconfont{
+  color: #fa5305;
+}
