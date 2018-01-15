@@ -9,17 +9,20 @@ page{
 	width: 100%;
 	box-sizing: border-box;
 }
+.swiper-contain{
+	width: 100%;
+	position: relative;
+}
 .swiper {
 	height: 300rpx;
 	width: 100%;
-	position: relative;
 }
 .swiper image {
 	height: 100%;
 	width: 100%;
 }
 .swiper-btn{
-	position: fixed;
+	position: absolute;
 	top: 15rpx;
 	right: 30rpx;
 	display: flex;
@@ -83,7 +86,7 @@ page{
 	height: 150rpx;
 	width: 100%;
 	overflow: hidden;
-	background: red;
+	background: #dedede;
 	border-radius: 15rpx;
 }
 .shop-item-text{

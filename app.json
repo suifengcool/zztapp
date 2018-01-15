@@ -34,6 +34,7 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
+    "backgroundColor":"#000",
     "navigationBarBackgroundColor": "#000",
     "navigationBarTextStyle": "#fff",
     "navigationBarTitleText": "镇镇通",

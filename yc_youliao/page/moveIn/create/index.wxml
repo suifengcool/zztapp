@@ -4,29 +4,41 @@
 		<view>免费入驻镇镇通平台微信小程序</view>
 	</view>
 	<view class="logo-box">	
-		<view class="pic">
+		<view wx:if="{{!logoImg}}" class="pic" bindtap="imgUpload" data-type="add">
 			<view class="pic-text">上传LOGO</view>
+		</view>
+		<view wx:if="{{logoImg}}" class="pic" bindtap="imgUpload" data-type="add">
+			<image
+	            class="logo-img"
+	            src="{{logoImg}}"
+	            background-size="cover"
+	        ></image>
 		</view>
 		<view class="logo-box-right">
 			<view class="item item-shop-name">
-				<input type="text" placeholder="请输入门店名称" />
+				<input type="text" placeholder="请输入门店名称" bindinput="listenerShopNameInput" />
 			</view>
 			<view class="item">
-				<input type="text" placeholder="请输入手机号码"/>
-				<view class="btn">验证</view>
+				<input type="number" placeholder="请输入手机号码" bindinput="listenerPhoneInput" />
+				<!--<view class="btn">验证</view>-->
 			</view>
 		</view>
 	</view>
-	<view class="identify">
-		<view class="label">验证码<i>*</i></view>
-		<input type="text"  placeholder="请输入短信验证码" />
-	</view>
+
+	<!--
+		<view class="identify">
+			<view class="label">验证码<i>*</i></view>
+			<input type="text"  placeholder="请输入短信验证码" />
+		</view>
+	-->
+
 	<view class="adress-box">
 		<view class="title">店铺位置信息</view>
-		<view class="msg">未选择位置，请选择您的位置信息</view>
+		<view wx:if="{{!latitude}}" class="msg" bindtap="chooseLocation">未选择位置，请选择您的位置信息</view>
+		<view wx:if="{{latitude}}" class="msg" bindtap="chooseLocation">经度：{{latitude}}，纬度：{{longitude}}</view>
 		<view class="btn-box">
-			<view class="btn-left">选择</view>
-			<view class="btn-right">清空</view>
+			<view class="btn-left" bindtap="makeSureLocation">选择</view>
+			<view class="btn-right" bindtap="giveUpLocation">清空</view>
 		</view>
 	</view>
 	<view class="shop">
@@ -34,7 +46,7 @@
 		
 		<view class="item-box">
 			<checkbox-group bindchange="checkboxChange">
-		    <label class="checkbox" wx:for="{{items}}">
+		    <label class="checkbox" wx:for="{{items}}" wx:key="{{index}}">
 		   		<checkbox value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
 		    </label>
 		</checkbox-group>
@@ -46,15 +58,25 @@
 	</view>
 	<view class="desc-box">
 		<view class="label">门店简介</view>
-		<textarea placeholder-style="font-size:24rpx" placeholder="请输入门店简介~~" name="textarea"/>
+		<textarea placeholder-style="font-size:24rpx" placeholder="请输入门店简介~~" name="textarea" bindblur="bindShopDescBlur"/>
 	</view>
 	<view class="shop-pic">
 		<view class="label">门店图片</view>
 		<view class="pic-upload">
 			<view class="text">为保证显示效果，建议上传3张以上图片</view>
 			<view class="pic-box">
-				<view class="plus pic-item"><i class="iconfont icon-plus"></i></view>
-				<view class="pic-item"></view>
+				<block wx:if="{{imgs !== undefined}}">
+			        <image 
+			        	wx:for="{{imgs}}" 
+			        	wx:key="{{item}}" 
+			        	class='pic-item' 
+			        	src='{{item}}'
+		        	>
+		        	<i class="iconfont icon-del" bindtap="delImg" data-item="{{item}}"></i>
+		        	</image>
+		        	
+			    </block>
+			    <view class="plus pic-item" bindtap="imgUpload2"><i class="iconfont icon-plus"></i></view>
 			</view>
 		</view>
 	</view>

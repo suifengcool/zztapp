@@ -12,52 +12,58 @@ Page({
 	data: {
 		movies: [],                                   // 轮播图数据
 		shopList: [],
-	    cate: [{
+		cate: [{
 			cate_name: '全部分类',
 			cate_id: 0
-	    },{
-	    	cate_name: '餐饮美食',
-	    	cate_id: 1
-	    },{
-	    	cate_name: '电影KTV',
-	    	cate_id: 2
-	    },{
-	    	cate_name: '酒店住宿',
-	    	cate_id: 3
-	    },{
-			cate_name: '休闲娱乐',
-			cate_id: 4
-	    },{
-			cate_name: '结婚摄影',
-			cate_id: 5
-	    },{
-			cate_name: '艺术培训',
-			cate_id: 6
-	    },{
-	    	cate_name: '家居建材',
-	    	cate_id: 7
-	    },{
-			cate_name: '服装饰品',
-			cate_id: 8
-	    },{
-			cate_name: '数码家电',
-			cate_id: 9
-	    },{
-			cate_name: '医疗保健',
-			cate_id: 10
-	    },{
-	    	cate_name: '汽贸汽修',
-	    	cate_id: 11
-	    },{
-			cate_name: '水果生鲜',
-			cate_id: 12
-	    },{
-			cate_name: '农家娱乐',
-			cate_id: 13
-	    },{
-			cate_name: '金融服务',
-			cate_id: 14
-	    }],
+		}],
+		advs: [],
+		hotshop: [],
+	  //   cate: [{
+			// cate_name: '全部分类',
+			// cate_id: 0
+	  //   },{
+	  //   	cate_name: '餐饮美食',
+	  //   	cate_id: 1
+	  //   },{
+	  //   	cate_name: '电影KTV',
+	  //   	cate_id: 2
+	  //   },{
+	  //   	cate_name: '酒店住宿',
+	  //   	cate_id: 3
+	  //   },{
+			// cate_name: '休闲娱乐',
+			// cate_id: 4
+	  //   },{
+			// cate_name: '结婚摄影',
+			// cate_id: 5
+	  //   },{
+			// cate_name: '艺术培训',
+			// cate_id: 6
+	  //   },{
+	  //   	cate_name: '家居建材',
+	  //   	cate_id: 7
+	  //   },{
+			// cate_name: '服装饰品',
+			// cate_id: 8
+	  //   },{
+			// cate_name: '数码家电',
+			// cate_id: 9
+	  //   },{
+			// cate_name: '医疗保健',
+			// cate_id: 10
+	  //   },{
+	  //   	cate_name: '汽贸汽修',
+	  //   	cate_id: 11
+	  //   },{
+			// cate_name: '水果生鲜',
+			// cate_id: 12
+	  //   },{
+			// cate_name: '农家娱乐',
+			// cate_id: 13
+	  //   },{
+			// cate_name: '金融服务',
+			// cate_id: 14
+	  //   }],
 	    cateId: -1,
 	    page: 0,
 	    location: null,
@@ -75,12 +81,25 @@ Page({
 			})
 		});
 
+		wx.setNavigationBarColor({
+            frontColor: '#ffffff',
+            backgroundColor: '#000000'
+        })
+
 		// 获取图片头
 		getImageSocket((data) => {
 		    this.setData({
 				imagesSocket: data
 		    })
 		});
+
+		index.getIndexData((data)=>{
+			this.setData({
+	       		cate: [...this.data.cate, ...data.cate],
+	       		advs: [...this.data.advs, ...data.advs],
+	       		hotshop: [...this.data.hotshop, ...data.hotshop]
+	        })
+		})
 
 		// 获取首页轮播图数据源
 		this.setData({
@@ -258,7 +277,9 @@ Page({
 
     // 下拉更新
     onPullDownRefresh: function () {
+    	wx.showNavigationBarLoading()
 	    index.getIndexData((data) => {
+	    	wx.hideNavigationBarLoading()
         	wx.stopPullDownRefresh()
         })
     },

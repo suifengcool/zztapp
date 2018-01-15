@@ -18,8 +18,8 @@ page{
 }
 .logo-box{
 	display: flex;
-	border-bottom: 0.5rpx solid #dedede;
 	background: #fff;
+	margin-bottom: 15rpx;
 }
 .logo-box .pic{
 	width: 120rpx;
@@ -27,6 +27,11 @@ page{
 	background: #dedede;
 	margin: 20rpx 30rpx 0 20rpx;
 }
+.logo-img{
+	height: 100%;
+	width: 100%;
+}
+
 .pic-text{
 	text-align:center;
 	width:68rpx;
@@ -96,7 +101,7 @@ page{
 .msg{
 	font-size: 22rpx;
 	color: #979797;
-	margin: 20rpx 0 10rpx 0;
+	margin: 15rpx 0;
 }
 .checkbox{
 	width:50%;
@@ -142,6 +147,7 @@ page{
 }
 .pic-box{
 	display: flex;
+	flex-wrap: wrap;
 }
 .plus{
 	border: 0.5rpx solid #dedede;
@@ -156,6 +162,16 @@ page{
 	width: 130rpx;
 	height: 130rpx;
 	margin-right: 20rpx;
+	margin-bottom: 20rpx;
+	position: relative;
+	overflow: visible;
+}
+.pic-item .icon-del{
+	position:absolute;
+	right: -17rpx;
+	top: -39rpx;
+	font-size: 30rpx;
+	color: #999;
 }
 .classify{
 	color: #979797;

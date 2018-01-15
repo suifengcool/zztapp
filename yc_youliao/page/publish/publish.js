@@ -27,7 +27,8 @@ Page({
       })
     })
     publish.getPublishData((data) => {
-      this.infiniteScroll(data.module)
+      console.log('data:',data)
+      this.infiniteScroll(data.cate)
       this.renderFun(data)
     })
     // publish.setNavigationBarTitle()
@@ -65,7 +66,7 @@ Page({
     },
 
   renderFun(data) {
-    let moduleLen = Math.ceil(data.module.length / 8)
+    let moduleLen = Math.ceil(data.cate.length / 8)
     this.setData({
       data,
       moduleLen,

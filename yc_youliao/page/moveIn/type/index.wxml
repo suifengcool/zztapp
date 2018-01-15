@@ -3,11 +3,8 @@
 		<view class="type-item">
 			<view class="name">不选择分类（默认）</view>
 		</view>
-		<view class="type-item">
-			<view class="name">餐饮美食</view>
-		</view>
-		<view class="type-item">
-			<view class="name">艺术培训</view>
+		<view class="type-item" wx:for="{{cateList}}" wx:key="{{index}}">
+			<view class="name" bindtap="chooseCate" data-item="{{item}}">{{item.cate_name}}</view>
 		</view>
 	</view>
 </view>
