@@ -1,4 +1,4 @@
-import { getLocation, getUserInfo, getImageSocket } from '../../../resource/utils/comment.js'
+import { getLocation, getUserInfo, getImageSocket , getWxUrl} from '../../../resource/utils/comment.js'
 import { Create } from 'moveInCreate-model.js'
 var index = new Create()
 const app = getApp()
@@ -35,12 +35,20 @@ Page({
 	    toastText: '',
 	    start_time: '06:00',
 	    end_time: '18:00',
-	    opendtime: ''
+	    opendtime: '',
+	    imgUrl: [],
+	    logo:''
 
     },
 
     // 生命周期函数--监听页面加载
     onLoad: function (options) {
+    	// 获取图片头
+		getImageSocket((data) => {
+		    this.setData({
+				imagesSocket: data
+		    })
+		});
     	let moveInData = wx.getStorageSync('moveInData')
     	if(moveInData){
     		this.setData({
@@ -94,6 +102,8 @@ Page({
 	    })
 	},
 
+
+
 	chooseLocation(){
 		wx.getLocation({
 		    type: 'gcj02', //返回可以用于wx.openLocation的经纬度
@@ -124,9 +134,12 @@ Page({
 	    if (type == 'add') {
 	        wx.chooseImage({
 		        success: (res) => {
-		        	this.setData({
-		        		logoImg: res.tempFilePaths[0]
-		        	})
+		        	this.uploadDIY(res.tempFilePaths, (dir) => {
+			            this.setData({
+			                logo: [dir[0]],
+			                logoImg: res.tempFilePaths[0]
+			            })
+			        })
 		        }
 	        })
 	    }
@@ -137,14 +150,61 @@ Page({
 	    
 	        wx.chooseImage({
 		        success: (res) => {
-		        	console.log('res:',res)
-		        	this.setData({
-		        		imgs: [...this.data.imgs, ...res.tempFilePaths]
-		        	})
+		        	this.uploadDIY(res.tempFilePaths, (dir) => {
+		        		console.log('dir:',dir)
+		        		let arr = []
+		        		dir.forEach((item,index)=>{
+							arr.push(this.data.imagesSocket+ '/' + item)
+		        		})
+			            this.setData({
+			                imgs: [...this.data.imgs, ...res.tempFilePaths],
+			                imgUrl: [...this.data.imgUrl, ...arr]
+			            })
+			        })
 		        }
 	        })
 
     },
+
+    uploadDIY(filePaths,callback) {
+    let url = getWxUrl('entry/wxapp/Submit_imgs')
+    let i = 0
+    let length = filePaths.length
+    let successUp = 0
+    let failUp = 0
+    let imgArr = []
+    wx.showLoading({
+      title: '图片上传中...',
+    })
+    console.log(url)
+    uploadFile()
+    function uploadFile() {
+      wx.uploadFile({
+        url: url,
+        filePath: filePaths[i],
+        name: 'file',
+        success: (resp) => {
+          console.log('suc->图片上传')
+          imgArr.push(JSON.parse(resp.data.trim()).data.img_dir)
+          successUp++;
+        },
+        fail: (res) => {
+          failUp++;
+        },
+        complete: () => {
+          i++;
+          if (i == length) {
+            wx.hideLoading()
+            callback(imgArr)
+            console.log('总共' + successUp + '张上传成功,' + failUp + '张上传失败！')
+          }
+          else {  //递归调用
+            uploadFile();
+          }
+        },
+      })
+    }
+  },
 
     delImg(e){
     	console.log('e:',e)
@@ -225,6 +285,8 @@ Page({
     	// data.start_time = this.data.start_time;
     	// data.end_time = this.data.end_time;
     	data.opendtime = this.data.opendtime;
+    	data.imgUrl = this.data.imgUrl;
+    	data.logo = this.data.logo;
 		wx.setStorage({
             key: "moveInData",
             data: data
@@ -296,8 +358,13 @@ Page({
     	form.cate_name = this.data.cate_name;
     	form.cate_id = this.data.cate_id;
     	form.opendtime = this.data.opendtime;
+    	form.imgUrl = this.data.imgUrl;
+    	form.logo = this.data.imagesSocket + '/' +this.data.logo;
     	// form.start_time = this.data.start_time;
     	// form.end_time = this.data.end_time;
+    	console.log('this.data.imgUrl:',this.data.imgUrl)
+    	console.log('this.data.logo:',this.data.logo)
+
     	index.submit(form,(data)=>{
 			console.log('data:',data)
     	})

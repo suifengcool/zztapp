@@ -35,12 +35,28 @@ class Create extends Base {
 	}
 
 	submit(form,cb){
+		let data = {}
+		console.log('form:',form)
+		this.store({ type: 'GET_SEID' }, (seid) => {
+            data.seid = seid
+            data.shop_name = form.shopName
+            data.logo = "https://tongcheng.iweiji.cc/attachment//images/2/2018/011516027127CR-Zz6bLHQn.jpg"
+            data.telphone = form.cate_id
+            data.lat = form.latitude
+            data.lng = form.longitude
+            data['imgUrl'+'[]'] = "https://tongcheng.iweiji.cc/attachment//images/2/2018/011516027127CR-Zz6bLHQn.jpg"
+            data['inco'+'[]'] = '微信支付'
+            data.opendtime = form.cate_id
+            data.intro = form.shopDesc
+            data.address = ''
+            data.cate_id = form.cate_id
+		console.log('data:',data)
 		// app.util.getUserInfo((userInfo) => {
 
-			let data = form;
-			// if (userInfo.memberInfo.uid) {
-			//     data.uid = userInfo.memberInfo.uid
-			// }
+			// let data = form;
+			// // if (userInfo.memberInfo.uid) {
+			// //     data.uid = userInfo.memberInfo.uid
+			// // }
 			var param = {
 			    url: 'entry/wxapp/AddShopInfo',
 			    type: 'post',
@@ -51,7 +67,7 @@ class Create extends Base {
 			    }
 			}
 			this.request(param)
-	    // })
+	    })
 	}
 
     // 请求图片socket

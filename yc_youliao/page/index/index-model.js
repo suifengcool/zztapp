@@ -18,7 +18,7 @@ class Index extends Base {
           data.uid = userInfo.memberInfo.uid
         }
         var param = {
-          url: 'entry/wxapp/GetIndex',
+          url: 'entry/wxapp/index',
           data,
           sCallback: (res) => {
             wx.setStorage({
