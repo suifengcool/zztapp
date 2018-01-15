@@ -51,95 +51,20 @@
 	    		</view>
     		</view>
     		<view class="classicfy">
-    			<view class="classicfy-item">
-    				<view class="iconbox iconbox-food">
-    					<i class="iconfont iconfont-classicfy icon-food"></i>
+    			<view class="classicfy-item" wx:for="{{cate}}" wx:key="{{index}}">
+    				<view 
+                        class="iconbox iconbox-food"
+                        data-id='{{item.cate_id}}' 
+                        data-index='{{index}}' 
+                        bindtap='scrollTap'
+                    >
+    					<image
+                            class="cate-img"
+                            src="{{imagesSocket+'/'+ item.thumb}}"
+                            background-size="cover"
+                        ></image>
     				</view>
-    				<view class="classicfy-item-text">餐饮美食</view>
-    			</view>
-    			<view class="classicfy-item">
-    				<view class="iconbox iconbox-movie">
-    					<i class="iconfont iconfont-classicfy icon-movie"></i>
-    				</view>
-    				<view class="classicfy-item-text">电影演出</view>
-    			</view>
-    			<view class="classicfy-item">
-    				<view class="iconbox iconbox-hotel">
-    					<i class="iconfont iconfont-classicfy icon-hotel"></i>
-    				</view>
-    				<view class="classicfy-item-text">酒店住宿</view>
-    			</view>
-    			<view class="classicfy-item">
-    				<view class="iconbox iconbox-cup">
-    					<i class="iconfont iconfont-classicfy icon-cup"></i>
-    				</view>
-    				<view class="classicfy-item-text">休闲娱乐</view>
-    			</view>
-    			<view class="classicfy-item">
-    				<view class="iconbox iconbox-camera">
-    					<i class="iconfont iconfont-classicfy icon-camera"></i>
-    				</view>
-    				<view class="classicfy-item-text">结婚摄影</view>
-    			</view>
-    			<view class="classicfy-item">
-    				<view class="iconbox iconbox-board">
-    					<i class="iconfont iconfont-classicfy icon-board"></i>
-    				</view>
-    				<view class="classicfy-item-text">艺术培训</view>
-    			</view>
-    			<view class="classicfy-item">
-    				<view class="iconbox iconbox-sofa">
-    					<i class="iconfont iconfont-classicfy icon-sofa"></i>
-    				</view>
-    				<view class="classicfy-item-text">家具建材</view>
-    			</view>
-    			<view class="classicfy-item">
-    				<view class="iconbox iconbox-tshirt">
-    					<i class="iconfont iconfont-classicfy icon-tshirt"></i>
-    				</view>
-    				<view class="classicfy-item-text">服装饰品</view>
-    			</view>
-    			<view class="classicfy-item">
-    				<view class="iconbox iconbox-fridge">
-    					<i class="iconfont iconfont-classicfy icon-fridge"></i>
-    				</view>
-    				<view class="classicfy-item-text">数码家电</view>
-    			</view>
-    			<view class="classicfy-item">
-    				<view class="iconbox iconbox-medicine">
-    					<i class="iconfont iconfont-classicfy icon-medicine"></i>
-    				</view>
-    				<view class="classicfy-item-text">医疗保健</view>
-    			</view>
-    			<view class="classicfy-item">
-    				<view class="iconbox iconbox-car">
-    					<i class="iconfont iconfont-classicfy icon-car"></i>
-    				</view>
-    				<view class="classicfy-item-text">汽贸汽修</view>
-    			</view>
-    			<view class="classicfy-item">
-    				<view class="iconbox iconbox-fruit">
-    					<i class="iconfont iconfont-classicfy icon-fruit"></i>
-    				</view>
-    				<view class="classicfy-item-text">水果生鲜</view>
-    			</view>
-    			<view class="classicfy-item">
-    				<view class="iconbox iconbox-country">
-    					<i class="iconfont iconfont-classicfy icon-country"></i>
-    				</view>
-    				<view class="classicfy-item-text">农家娱乐</view>
-    			</view>
-    			<view class="classicfy-item">
-    				<view class="iconbox iconbox-money">
-    					<i class="iconfont iconfont-classicfy icon-money"></i>
-    				</view>
-    				<view class="classicfy-item-text">金融服务</view>
-    			</view>
-    			<view class="classicfy-item">
-    				<view class="iconbox iconbox-classicfy">
-    					<i class="iconfont iconfont-classicfy icon-classify"></i>
-    				</view>
-    				<view class="classicfy-item-text">全部分类</view>
+    				<view class="classicfy-item-text">{{item.cate_name}}</view>
     			</view>
     		</view>
 	    </view>
@@ -147,10 +72,11 @@
 	    	<view wx:if="{{!showClassify}}" class="home-list-top">
 		    	<scroll-view scroll-x='true' class="type-box">
 		    		<view 
-                        class="type-item" 
+                        class="type-item {{currentIndex == index ? 'type-item-active' : ''}}" 
                         wx:for="{{cate}}" 
                         wx:key="{{index}}" 
                         data-id='{{item.cate_id}}' 
+                        data-index='{{index}}' 
                         bindtap='scrollTap'
                     >
                         {{item.cate_name}}

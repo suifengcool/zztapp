@@ -16,10 +16,10 @@
 		</view>
 		<view class="logo-box-right">
 			<view class="item item-shop-name">
-				<input type="text" placeholder="请输入门店名称" bindinput="listenerShopNameInput" />
+				<input type="text" placeholder="请输入门店名称" bindinput="listenerShopNameInput" value="{{shopName}}"/>
 			</view>
 			<view class="item">
-				<input type="number" placeholder="请输入手机号码" bindinput="listenerPhoneInput" />
+				<input type="number" placeholder="请输入手机号码" bindinput="listenerPhoneInput" value="{{phone}}"/>
 				<!--<view class="btn">验证</view>-->
 			</view>
 		</view>
@@ -54,11 +54,22 @@
 	</view>
 	<view class="time-box">
 		<view class="label">营业时间</view>
-		<input type="text" placeholder="请输入营业时间（如:10:00 - 23:00）" />
+		<!--
+			<view class="time-box-right">
+				<picker mode="time" value="{{start_time}}" bindchange="bindStartTimeChange">
+	                <view class="picker-left">{{start_time}}</view>
+	            </picker>
+	            至
+	            <picker mode="time" value="{{start_time}}" bindchange="bindStartTimeChange">
+	                <view class="picker-right">{{end_time}}</view>
+	            </picker>
+			</view>
+		-->
+		<input type="text" placeholder="请输入营业时间（如:10:00 - 23:00）" bindinput="listenerTimeInput" value="{{opendtime}}"/>
 	</view>
 	<view class="desc-box">
 		<view class="label">门店简介</view>
-		<textarea placeholder-style="font-size:24rpx" placeholder="请输入门店简介~~" name="textarea" bindblur="bindShopDescBlur"/>
+		<textarea placeholder-style="font-size:24rpx" placeholder="请输入门店简介~~" name="textarea" value="{{shopDesc}}" bindblur="bindShopDescBlur"/>
 	</view>
 	<view class="shop-pic">
 		<view class="label">门店图片</view>
@@ -80,13 +91,14 @@
 			</view>
 		</view>
 	</view>
-	<navigator url="../type/index"  class="classify">
+	<view class="classify" bindtap="getShopType">
 		<view class="label">选择分类</view>
-		<view class="text">请选择入驻分类</view>
+		<view class="text {{cate_name ? 'text-active' : ''}}">{{cate_name || '请选择入驻分类'}}</view>
 		<i class="iconfont icon-right"></i>
-	</navigator>
+	</view>
 	<view class="caution">
 		我已阅读并同意<i>《平台用户服务协议》</i>
 	</view>
-	<view class="footer-btn">马上入驻</view>
+	<view class="footer-btn" bindtap="moveInHandle">马上入驻</view>
+	<toast hidden="{{hiddenToast}}" duration="2000" bindchange="toastHidden" >{{toastText}}</toast>
 </view>

@@ -67,12 +67,22 @@ page{
 	border-radius: 15rpx;
 	width: 100rpx;
 }
-.identify, .shop, .time-box, .desc-box, .shop-pic, .classify{
+.identify, .shop, .time-box, .desc-box, .shop-pic, .classify, .time-box-right{
 	display: flex;
 	line-height: 80rpx;
 	background: #fff;
 	padding-left: 20rpx;
 }
+.time-box-right{
+	padding: 0;
+}
+.time-box-right .picker-left{
+	margin-right: 30rpx;
+}
+.time-box-right .picker-right{
+	margin-left: 30rpx;
+}
+
 .identify, .time-box, .classify{
 	height: 80rpx;
 }
@@ -144,6 +154,9 @@ page{
 }
 .shop-pic .text{
 	color: #979797;
+}
+.text-active{
+	color: #333;
 }
 .pic-box{
 	display: flex;

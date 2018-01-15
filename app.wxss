@@ -355,7 +355,7 @@
   transform: translateY(-28rpx);
 }
 .titleWrapper .text{
-  font-size: 30rpx;
+  font-size: 24rpx;
   color: #666;
   line-height: 60rpx;
   padding: 0 20rpx;

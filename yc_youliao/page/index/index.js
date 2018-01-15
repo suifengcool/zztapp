@@ -10,65 +10,17 @@ const LENGTH = 10;
 
 Page({
 	data: {
-		movies: [],                                   // 轮播图数据
 		shopList: [],
-		cate: [{
-			cate_name: '全部分类',
-			cate_id: 0
-		}],
+		cate: [],
 		advs: [],
 		hotshop: [],
-	  //   cate: [{
-			// cate_name: '全部分类',
-			// cate_id: 0
-	  //   },{
-	  //   	cate_name: '餐饮美食',
-	  //   	cate_id: 1
-	  //   },{
-	  //   	cate_name: '电影KTV',
-	  //   	cate_id: 2
-	  //   },{
-	  //   	cate_name: '酒店住宿',
-	  //   	cate_id: 3
-	  //   },{
-			// cate_name: '休闲娱乐',
-			// cate_id: 4
-	  //   },{
-			// cate_name: '结婚摄影',
-			// cate_id: 5
-	  //   },{
-			// cate_name: '艺术培训',
-			// cate_id: 6
-	  //   },{
-	  //   	cate_name: '家居建材',
-	  //   	cate_id: 7
-	  //   },{
-			// cate_name: '服装饰品',
-			// cate_id: 8
-	  //   },{
-			// cate_name: '数码家电',
-			// cate_id: 9
-	  //   },{
-			// cate_name: '医疗保健',
-			// cate_id: 10
-	  //   },{
-	  //   	cate_name: '汽贸汽修',
-	  //   	cate_id: 11
-	  //   },{
-			// cate_name: '水果生鲜',
-			// cate_id: 12
-	  //   },{
-			// cate_name: '农家娱乐',
-			// cate_id: 13
-	  //   },{
-			// cate_name: '金融服务',
-			// cate_id: 14
-	  //   }],
 	    cateId: -1,
 	    page: 0,
 	    location: null,
 	    imagesSocket: '',
-	    isComplete: false
+	    isComplete: false,
+	    currentIndex: 0,
+
 	},
 	
 	onLoad: function(){
@@ -95,29 +47,12 @@ Page({
 
 		index.getIndexData((data)=>{
 			this.setData({
-	       		cate: [...this.data.cate, ...data.cate],
+	       		cate: [...data.cate],
 	       		advs: [...this.data.advs, ...data.advs],
 	       		hotshop: [...this.data.hotshop, ...data.hotshop]
 	        })
 		})
 
-		// 获取首页轮播图数据源
-		this.setData({
-			movies: [{
-				url:'http://img04.tooopen.com/images/20130712/tooopen_17270713.jpg',
-				name: '顾村新街幼儿园'
-			},{
-				url:'http://img04.tooopen.com/images/20130617/tooopen_21241404.jpg',
-				name: '中国电信'
-			},{
-				url:'http://img04.tooopen.com/images/20130701/tooopen_20083555.jpg',
-				name: '家乐福超市'
-			},{
-				url:'http://img02.tooopen.com/images/20141231/sy_78327074576.jpg',
-				name: '沃尔玛'
-			}]
-		});
-		
 		// 获取店铺位置
 	    getLocation((location) => {
 	        this.setData({
@@ -236,10 +171,9 @@ Page({
 	        num: LENGTH
 	    }
 
-	    if(this.data.cateId != -1) form.cid = this.data.cateId
+	    if(this.data.cateId != 31) form.cid = this.data.cateId
 
 	    shopList.getPageData(form, (data) => {
-	        console.log(form,data)
 	        if (data.length < LENGTH) {
 		        this.setData({
 		            isComplete: true
@@ -255,9 +189,13 @@ Page({
 	// 点击选择分类
 	scrollTap(e) {
 	    let id = parseInt(e.currentTarget.dataset.id);
+	    let index = parseInt(e.currentTarget.dataset.index);
+
+	    console.log('index:',index)
 
 	    this.setData({
-	      	cateId: id
+	      	cateId: id,
+	      	currentIndex: index
 	    })
 	    this.getData(true)
 	},
