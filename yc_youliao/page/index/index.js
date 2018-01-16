@@ -179,8 +179,15 @@ Page({
 		            isComplete: true
 		        })
 	        }
+	        let arr = [];
+	        arr = [...this.data.shopList, ...data];
+	        arr.map((item,index)=>{
+	        	if(item.logo.indexOf('http') < 0 ){
+					item.logo = this.data.imagesSocket + '/' + item.logo
+	        	}
+			})
 	        this.setData({
-		        shopList: [...this.data.shopList, ...data],
+		        shopList: arr,
 	        	page: this.data.page + 1
 		    })
 	    })
