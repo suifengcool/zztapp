@@ -4,11 +4,11 @@
 
 @font-face {
   font-family: 'iconfont';  /* project id 530216 */
-  src: url('//at.alicdn.com/t/font_530216_sr09vu7513piudi.eot');
-  src: url('//at.alicdn.com/t/font_530216_sr09vu7513piudi.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_530216_sr09vu7513piudi.woff') format('woff'),
-  url('//at.alicdn.com/t/font_530216_sr09vu7513piudi.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_530216_sr09vu7513piudi.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_530216_r4fx5gxh9ak5u3di.eot');
+  src: url('//at.alicdn.com/t/font_530216_r4fx5gxh9ak5u3di.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_530216_r4fx5gxh9ak5u3di.woff') format('woff'),
+  url('//at.alicdn.com/t/font_530216_r4fx5gxh9ak5u3di.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_530216_r4fx5gxh9ak5u3di.svg#iconfont') format('svg');
 }
 .iconfont {
   font-family:"iconfont" !important;
@@ -80,6 +80,10 @@
 .icon-medicine:before{content: '\e606';}
 
 .icon-del:before{content: '\e690';}
+
+.icon-shop:before{content: '\e61c';}
+.icon-note:before{content: '\e6cc';}
+.icon-clock:before{content: '\e7eb';}
 
 
 .col999 {
@@ -369,3 +373,14 @@
   box-sizing: border-box;
   overflow-x:hidden;
 } 
+.border-bottom{
+  border-bottom: 0.5rpx solid #dedede;
+}
+.bg_line{
+  width: 100%;
+  height: 15rpx;
+  background: #dedede;
+}
+.bg_white{
+  background: #fff;
+}

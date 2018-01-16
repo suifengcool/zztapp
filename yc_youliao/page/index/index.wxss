@@ -32,16 +32,23 @@ page{
 	color: #000;
 }
 .search-box, .scan-box{
-	width: 70rpx;
+	padding: 0 20rpx;
 	height: 50rpx;
 	line-height: 50rpx;
-	background: #ADADAD;
+	background: rgba(0,0,0,0.5);
 	text-align: center;
 }
 .search-box{
+	font-size: 22rpx;
+	color: #fff;
 	border-top-left-radius:25rpx;
 	border-bottom-left-radius:25rpx;
-	border-right: 1rpx solid #979797;
+	border-radius: 25rpx;
+}
+.search-box .iconfont{
+	vertical-align: -8%;
+	color: #fff;
+	margin-right: 20rpx;
 }
 .scan-box{
 	border-top-right-radius:25rpx;

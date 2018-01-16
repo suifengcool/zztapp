@@ -17,12 +17,14 @@
     	        </block> 
     	    </swiper>
     	    <view wx:if="{{!showClassify}}" class="swiper-btn">
-            	<view class="search-box">
-    	        	<i class="iconfont icon-search2"></i>
-    	        </view>
-    	        <view class="scan-box" bindtap="scanCode">
-    	        	<i class="iconfont icon-scan"></i>
-    	        </view>
+            	<navigator url="../search/index/index" class="search-box">
+    	        	<i class="iconfont icon-search2"></i>搜索店铺、商品
+    	        </navigator>
+                <!--
+        	        <view class="scan-box" bindtap="scanCode">
+        	        	<i class="iconfont icon-scan"></i>
+        	        </view>
+                -->
             </view>
         </view>
 

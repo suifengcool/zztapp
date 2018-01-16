@@ -1,0 +1,33 @@
+<!--index.wxml-->
+<view class="container container-search">
+    <view class="search-box border-bottom bg_white">
+    	<input type="text" placeholder="请输入关键字" placeholder-style="font-size:26rpx"  bindinput="listenerInput" class="input" />
+    	<view class="btn {{!isKeywordEmpty ? 'active' : ''}}" bindtap="search">搜索</view>
+    </view>
+    <view class="pannel-box border-bottom bg_white">
+    	<view class="pannel-item {{index == tab ? 'active' : ''}}" wx:for="{{tabList}}" wx:key="{{index}}" bindtap="changeTab" data-tab="{{index}}">{{item.name}}</view>
+    </view>
+    <view class="type-box bg_white">
+    	<view class="title">
+    		<i class="iconfont {{tab ? 'icon-note' : 'icon-shop'}}"></i>信息分类
+    	</view>
+    	<view class="type-list">
+    		<view wx:if="{{!tab}}" class="type-item" wx:for="{{cateTypeList}}" wx:key="{{index}}">{{item.cate_name}}</view>
+    		<view wx:if="{{tab}}" class="type-item" wx:for="{{msgTypeList}}" wx:key="{{index}}" wx:for-item="i">{{i.name}}</view>
+    	</view>
+    </view>
+
+    <view wx:if="{{searchList && searchList.length}}" class="bg_line"></view>
+
+    <view wx:if="{{searchList && searchList.length}}" class="history-box bg_white">
+    	<view class="history-item border-bottom">
+    		<i class="iconfont icon-clock"></i>历史记录
+    	</view>
+    	<view class="history-item border-bottom history-record" wx:for='{{searchList}}' wx:key="{{index}}">
+    		<view class="text" bindtap="goToSearch" data-item="{{item}}">{{item.name}}</view>
+    		<view class="btn" bindtap="del" data-item="{{item}}"><i class="iconfont icon-close"></i></view>
+    	</view>
+    	<view wx:if="{{searchList && searchList.length}}" class="clear" bindtap="clear">清空历史</view>
+    </view>
+
+</view>
