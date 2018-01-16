@@ -1,3 +1,4 @@
+// import { ToastPannel } from './resource/components/toast/toast'
 App({
 	onLaunch: function () {
 
@@ -24,5 +25,6 @@ App({
 		"version": "1.0",
 		"siteroot": "https://tongcheng.iweiji.cc/app/index.php",
 		"design_method": "3"
-	}
+	},
+
 })

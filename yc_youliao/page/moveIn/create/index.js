@@ -20,294 +20,309 @@ Page({
 			name: '微信支付', 
 			value: '微信支付'
 		}],
+        location: {
+            lat: 0,
+            lng: 0,
+            address: ''
+        },
+        confirmAdress: true,
 		form: {},
-	    logoImg: '',
-	    phone: '',
-	    shopName: '',
-	    latitude: '',
-	    longitude: '',
-	    inco: [],                         // 店内设施，标签
-	    shopDesc: '',                     // 门店简介
-	    imgs: [],
 	    cate_name: '',
 	    cate_id: '',
 	    hiddenToast: true,
 	    toastText: '',
 	    start_time: '06:00',
 	    end_time: '18:00',
-	    opendtime: '',
 	    imgUrl: [],
-	    logo:''
+        imgs:[],
+        logoImg: '',
+        shop_id: ''
 
     },
 
     // 生命周期函数--监听页面加载
     onLoad: function (options) {
-        let _this = this
-        console.log('options:',options)
+        // 获取图片头
+        getImageSocket((data) => {
+            this.setData({
+                imagesSocket: data
+            })
+        });
+
         if(options.id){
             let id = options.id
             index.getShop(id,(data)=>{
-                console.log('data1111:',data)
-                _this.setData({
-                    form: data
+                let arr1 = []
+                data.qr_code.forEach((item,index)=>{
+                    if(item.indexOf('http') < 0){
+                        arr1.push(this.data.imagesSocket+ '/' + item)
+                    }else{
+                        arr1.push(item)
+                    }
+                    
+                })
+                this.setData({
+                    shop_id: id,
+                    form: data,
+                    logoImg: data.logo.indexOf('http') > -1 ? data.logo : this.data.imagesSocket + '/' + data.logo,
+                    imgs: arr1,
+                    imgUrl: arr1
+                })
+                let arr = [];
+                this.data.items.forEach((item,index)=>{
+                    data.inco.forEach((ele,i)=>{
+                        if(ele == item.value){
+                            item.checked = true
+                        }
+                    })
+                    arr.push(item);
+                })
+                this.setData({
+                    items: arr
                 })
             })
+
+            return
+        }else{
+            let moveInData = wx.getStorageSync('moveInData');
+            if(moveInData){
+                this.setData({
+                    form: moveInData,
+                    logoImg: moveInData.logoImg.indexOf('http') > -1 ? moveInData.logoImg : this.data.imagesSocket + '/' + moveInData.logoImg,
+                    imgs: moveInData.imgs,
+                    imgUrl: moveInData.imgUrl
+                })          
+            }
+            if(this.data.form && this.data.form.inco && this.data.form.inco.length){
+                let arr = [];
+                this.data.items.forEach((item,index)=>{
+                    this.data.form.inco.forEach((ele,i)=>{
+                        if(ele == item.value){
+                            item.checked = true
+                        }
+                    })
+                    arr.push(item);
+                })
+                this.setData({
+                    items: arr
+                })
+            }
+
         }
-    	// 获取图片头
-		getImageSocket((data) => {
-		    this.setData({
-				imagesSocket: data
-		    })
-		});
-    	let moveInData = wx.getStorageSync('moveInData')
-    	if(moveInData){
-    		this.setData({
-    			logoImg: moveInData.logoImg ? moveInData.logoImg : '',
-			    phone: moveInData.phone ? moveInData.phone : '',
-			    shopName: moveInData.shopName ? moveInData.shopName: '',
-			    latitude: moveInData.latitude ? moveInData.latitude : '',
-			    longitude: moveInData.longitude ? moveInData.longitude : '',
-			    inco: moveInData.inco ? moveInData.inco : [],                         
-			    shopDesc: moveInData.shopDesc ? moveInData.shopDesc : '',           
-			    imgs: moveInData.imgs ? moveInData.imgs : [],
-			    cate_name: moveInData.cate_name ? moveInData.cate_name : '',
-			    cate_id: moveInData.cate_id ? moveInData.cate_id : '',
-			    // start_time: moveInData.start_time ? moveInData.start_time : '06:00',
-			    // end_time: moveInData.end_time ? moveInData.end_time : '18:00',
-			    opendtime: moveInData.opendtime ? moveInData.opendtime : ''
-			})			
-    	}
-    	if(this.data.inco.length){
-    		let arr = [];
-			this.data.items.forEach((item,index)=>{
-				this.data.inco.forEach((ele,i)=>{
-					if(ele == item.value){
-						item.checked = true
-					}
-				})
-				arr.push(item);
-			})
-			this.setData({
-				items: arr
-			})
-    	}
-    	console.log('this.data.items:',this.data.items)
+    	
     	if(options && options.cate_name){
     		this.setData({
-				cate_name: options.cate_name,
-				cate_id: options.cate_id
+				'form.cate_name': options.cate_name,
+				'form.cate_id': options.cate_id
     		})
     	}
-		this.getLocation()
+		this.init()
     },
 
-    getLocation(callback) {
-	    getLocation(false, (res) => {
-            let nowLocation = { 
-                lat: res.latitude, 
-                lng: res.longitude 
+    // 一些初始化的信息
+    init(options) {
+        getLocation(true, (location) => {
+            if(location) {
+                index.getSeid((seid) => {
+                    this.setData({
+                        options: options,
+                        'location.lat': location.latitude,
+                        'location.lng': location.longitude,
+                        'form.seid': seid
+                    })
+                    this.setAddress(false)
+                })  
             }
-            index.getDetailLocation(nowLocation, (data) => {
-                console.log('data:',data)
-            })
-	    	this.setData({
-	    		latitude: res.latitude,
-		    	longitude: res.longitude
-	    	})
-
-	    	
-		    
-	    })
-	},
-
-
-	chooseLocation(){
-		wx.getLocation({
-		    type: 'gcj02', //返回可以用于wx.openLocation的经纬度
-		    success: function(res) {
-			    var latitude = res.latitude
-			    var longitude = res.longitude
-			    wx.openLocation({
-			        latitude: latitude,
-			        longitude: longitude
-			    })
-		    }
-	    })
-	},
-
-    
-
-	// 选择店内设施
-    checkboxChange: function(e) {
-	    console.log('checkbox发生change事件，携带value值为：', e.detail.value)
-	    this.setData({
-	    	inco: e.detail.value
-	    })
+        })
     },
 
-    // 图片上传
+    // 设置form的地址 reset -- boolean 是否重新请求详细地址
+    setAddress(reset) {
+        let address = wx.getStorageSync('address')
+        if (!reset && address) {
+            let data = address
+            let nowLocation = { lat: this.data.location.lat, lng: this.data.location.lng }
+            this.setLocationData(data, nowLocation)
+        } else {
+            let nowLocation = { lat: this.data.location.lat, lng: this.data.location.lng }
+            index.getDetailLocation(nowLocation, (data) => {
+                this.setLocationData(data, nowLocation)
+                wx.setStorage({
+                    key: "address",
+                    data: data
+                })  
+            })
+        }
+    },
+
+    setLocationData(data, nowLocation) {
+        this.setData({
+            'form.lat': nowLocation.lat,
+            'form.lng': nowLocation.lng,
+            'form.address': data.province + data.city + data.district + data.address,
+            'location.address': data.formatted_address,
+            confirmAdress: true
+        })
+      },
+
+    // 地址选择
+    chooseAddress() {
+        wx.chooseLocation({
+            success: (res) => {
+                console.log(res)
+                this.setData({
+                    'location.lat': res.latitude,
+                    'location.lng': res.longitude
+                })
+                this.setAddress(true)
+            }
+        })
+    },
+
+    // 图片上传logo
     imgUpload: function (e) {
 	    let type = e.currentTarget.dataset.type
-	    if (type == 'add') {
-	        wx.chooseImage({
-		        success: (res) => {
-		        	this.uploadDIY(res.tempFilePaths, (dir) => {
-			            this.setData({
-			                logo: [dir[0]],
-			                logoImg: res.tempFilePaths[0]
-			            })
-			        })
-		        }
-	        })
-	    }
+        wx.chooseImage({
+	        success: (res) => {
+	        	this.uploadDIY(res.tempFilePaths, (dir) => {
+		            this.setData({
+		                'form.logo': [dir[0]],
+		                logoImg: res.tempFilePaths[0]
+		            })
+		        })
+	        }
+        })
     },
 
+    // 图片上传  
     imgUpload2: function (e) {
 	    let type = e.currentTarget.dataset.type
-	    
-	        wx.chooseImage({
-		        success: (res) => {
-		        	this.uploadDIY(res.tempFilePaths, (dir) => {
-		        		console.log('dir:',dir)
-		        		let arr = []
-		        		dir.forEach((item,index)=>{
-							arr.push(this.data.imagesSocket+ '/' + item)
-		        		})
-			            this.setData({
-			                imgs: [...this.data.imgs, ...res.tempFilePaths],
-			                imgUrl: [...this.data.imgUrl, ...arr]
-			            })
-			        })
-		        }
-	        })
+        console.log('this.data.imgUrl:',this.data.imgUrl)
+        wx.chooseImage({
+	        success: (res) => {
+	        	this.uploadDIY(res.tempFilePaths, (dir) => {
+	        		let arr = []
+	        		dir.forEach((item,index)=>{
+						arr.push(this.data.imagesSocket+ '/' + item)
+	        		})
+                    console.log('arr:',arr)
+		            this.setData({
+		                imgs: [...this.data.imgs, ...res.tempFilePaths],
+		                imgUrl: [...this.data.imgUrl, ...arr]
+		            })
+		        })
+	        }
+        })
 
     },
 
     uploadDIY(filePaths,callback) {
-    let url = getWxUrl('entry/wxapp/Submit_imgs')
-    let i = 0
-    let length = filePaths.length
-    let successUp = 0
-    let failUp = 0
-    let imgArr = []
-    wx.showLoading({
-      title: '图片上传中...',
-    })
-    console.log(url)
-    uploadFile()
-    function uploadFile() {
-      wx.uploadFile({
-        url: url,
-        filePath: filePaths[i],
-        name: 'file',
-        success: (resp) => {
-          console.log('suc->图片上传')
-          imgArr.push(JSON.parse(resp.data.trim()).data.img_dir)
-          successUp++;
-        },
-        fail: (res) => {
-          failUp++;
-        },
-        complete: () => {
-          i++;
-          if (i == length) {
-            wx.hideLoading()
-            callback(imgArr)
-            console.log('总共' + successUp + '张上传成功,' + failUp + '张上传失败！')
-          }
-          else {  //递归调用
-            uploadFile();
-          }
-        },
-      })
-    }
-  },
+        let url = getWxUrl('entry/wxapp/Submit_imgs')
+        let i = 0
+        let length = filePaths.length
+        let successUp = 0
+        let failUp = 0
+        let imgArr = []
+        wx.showLoading({
+            title: '图片上传中...',
+        })
+        uploadFile();
+        function uploadFile() {
+            wx.uploadFile({
+                url: url,
+                filePath: filePaths[i],
+                name: 'file',
+                success: (resp) => {
+                    imgArr.push(JSON.parse(resp.data.trim()).data.img_dir)
+                    successUp++;
+                },
+                fail: (res) => {
+                    failUp++;
+                },
+                complete: () => {
+                    i++;
+                    if(i == length) {
+                        wx.hideLoading()
+                        callback(imgArr)
+                        console.log('总共' + successUp + '张上传成功,' + failUp + '张上传失败！')
+                    }else {  
+                        uploadFile();  //递归调用
+                    }
+                },
+            })
+        }
+    },
 
     delImg(e){
-    	console.log('e:',e)
     	let target = e.target.dataset.item
 		const arr2 = this.data.imgs.filter((item)=>{
 			return item != target
 		})
 		this.setData({
-			imgs: arr2
+			imgs: arr2,
+            'form.imgUrl': arr2
 		})
     },
 
+    // 电话
     listenerPhoneInput: function(e) {
     	this.setData({
-    		phone: e.detail.value
+    		'form.telphone': e.detail.value
     	})
-    	console.log('this.data.phone:',this.data.phone)
 
     },
 
+    // 店名
     listenerShopNameInput(e){
     	this.setData({
-    		shopName: e.detail.value
+    		'form.shop_name': e.detail.value
     	})
-    	console.log('this.data.shopName:',this.data.shopName)
+    },
+
+    // 选择店内设施
+    checkboxChange: function(e) {
+        console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+        this.setData({
+            'form.inco': e.detail.value
+        })
+    },
+
+    // 门店描述
+    bindShopDescBlur(e){
+        this.setData({
+            'form.intro': e.detail.value
+        })
+    },
+
+    // 营业时间
+    listenerTimeInput(e){
+        this.setData({
+            'form.opendtime': e.detail.value
+        })
     },
 
 	// 选择地址
 	makeSureLocation(){
-
+        
 	},
 
 	// 清空地址
     giveUpLocation(){
     	this.setData({
-    		latitude: '',
-	    	longitude: ''
+    		confirmAdress: false,
+            'form.adress': ''
     	})
     },
-
-    bindShopDescBlur(e){
-    	this.setData({
-    		shopDesc: e.detail.value
-    	})
-    },
-
-    bindStartTimeChange: function(e) {
-	    this.setData({
-	        start_time: e.detail.value
-	    })
-    },
-
-    bindEndTimeChange: function(e) {
-        this.setData({
-            end_time: e.detail.value
-        })
-    },
-
-    listenerTimeInput(e){
-		this.setData({
-    		opendtime: e.detail.value
-    	})
-    },
-
+    
+    // 选择分类
     getShopType(){
-    	console.log('this.data.shopName:',this.data.shopName)
-    	let data = {};
-    	data.logoImg = this.data.logoImg;
-    	data.phone = this.data.phone;
-    	data.shopName = this.data.shopName;
-    	data.latitude = this.data.latitude;
-    	data.longitude = this.data.longitude;
-    	data.inco = this.data.inco;
-    	data.shopDesc = this.data.shopDesc;
-    	data.imgs = this.data.imgs;
-    	data.cate_name = this.data.cate_name;
-    	data.cate_id = this.data.cate_id;
-    	// data.start_time = this.data.start_time;
-    	// data.end_time = this.data.end_time;
-    	data.opendtime = this.data.opendtime;
-    	data.imgUrl = this.data.imgUrl;
-    	data.logo = this.data.logo;
+        let obj = this.data.form;
+        obj.imgUrl = this.data.imgUrl;
+        obj.logoImg = this.data.logoImg;
+        obj.imgs = this.data.imgs;
 		wx.setStorage({
             key: "moveInData",
-            data: data
+            data: obj
         })
         wx.navigateTo({
 	        url: `/yc_youliao/page/moveIn/type/index`
@@ -315,35 +330,42 @@ Page({
     },
 
     moveInHandle(){
-    	if(!this.data.logoImg){
-			this.setData({
-				hiddenToast: false,
-				toastText: '请上传门店Logo'
-			})
+    	if(!this.data.form.logo){
+            wx.showToast({
+              title: '请上传门店Logo',
+              icon: 'success',
+              image: '../../../resource/images/成功.png',
+              duration: 2000000,
+              mask: true
+            })
+			// this.setData({
+			// 	hiddenToast: false,
+			// 	toastText: '请上传门店Logo'
+			// })
 			return
     	}
-    	if(!this.data.shopName.trim()){
+    	if(!this.data.form.shop_name.trim()){
 			this.setData({
 				hiddenToast: false,
 				toastText: '请填写门店名称'
 			})
 			return
     	}
-    	if(!this.data.phone){
+    	if(!this.data.form.telphone){
 			this.setData({
 				hiddenToast: false,
 				toastText: '请填写门店电话'
 			})
 			return
     	}
-    	if(!this.data.latitude){
+    	if(!this.data.form.address){
 			this.setData({
 				hiddenToast: false,
 				toastText: '请选择门店位置'
 			})
 			return
     	}
-    	if(!this.data.shopDesc.trim()){
+    	if(!this.data.form.intro.trim()){
     		this.setData({
 				hiddenToast: false,
 				toastText: '请填写门店简介'
@@ -357,34 +379,33 @@ Page({
 			})
 			return
     	}
-    	if(!this.data.cate_name){
+    	if(!this.data.form.cate_name){
     		this.setData({
 				hiddenToast: false,
 				toastText: '请选择入驻类型'
 			})
 			return
     	}
-    	let form = {};
-    	form.logoImg = this.data.logoImg;
-    	form.phone = this.data.phone;
-    	form.shopName = this.data.shopName;
-    	form.latitude = this.data.latitude;
-    	form.longitude = this.data.longitude;
-    	form.inco = this.data.inco;
-    	form.shopDesc = this.data.shopDesc;
-    	form.imgs = this.data.imgs;
-    	form.cate_name = this.data.cate_name;
-    	form.cate_id = this.data.cate_id;
-    	form.opendtime = this.data.opendtime;
-    	form.imgUrl = this.data.imgUrl;
-    	form.logo = this.data.imagesSocket + '/' +this.data.logo;
-    	// form.start_time = this.data.start_time;
-    	// form.end_time = this.data.end_time;
-    	console.log('this.data.imgUrl:',this.data.imgUrl)
-    	console.log('this.data.logo:',this.data.logo)
 
+        let form = this.data.form
+        if(this.data.shop_id){
+            form.shop_id = this.data.shop_id
+        }
+    	
     	index.submit(form,(data)=>{
-			console.log('data:',data)
+            if(data == 'success'){
+                wx.showToast({
+                    title: this.data.shop_id ? '修改成功' : '上传成功',
+                    icon: 'success',
+                    duration: 2000,
+                    complete: function(){
+                        wx.removeStorageSync('moveInData')
+                        wx.navigateTo({
+                            url: `/yc_youliao/page/index/index`
+                        })
+                    }
+                })
+            }
     	})
     },
 
@@ -393,5 +414,17 @@ Page({
     		hiddenToast: true
     	})
     }
+
+    // bindStartTimeChange: function(e) {
+       //  this.setData({
+       //      start_time: e.detail.value
+       //  })
+    // },
+
+    // bindEndTimeChange: function(e) {
+    //     this.setData({
+    //         end_time: e.detail.value
+    //     })
+    // },
 
 })

@@ -22,7 +22,7 @@
 					<view class="score-list">
 						<i class="iconfont icon-star"></i>
 					</view>
-					<view class="score-text">4.7</view>
+					<view class="score-text">{{item.dp}}</view>
 				</view>
 				<view class="tabs">
 					<view class="tab-itam" wx:for="{{item.inco}}" wx:key="{{index}}" wx:for-item="i">{{i}}</view>

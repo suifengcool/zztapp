@@ -15,7 +15,7 @@ Page({
 		advs: [],
 		hotshop: [],
 	    cateId: -1,
-	    page: 0,
+	    page: 1,
 	    location: null,
 	    imagesSocket: '',
 	    isComplete: false,

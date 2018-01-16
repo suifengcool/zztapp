@@ -16,10 +16,10 @@
 		</view>
 		<view class="logo-box-right">
 			<view class="item item-shop-name">
-				<input type="text" placeholder="请输入门店名称" bindinput="listenerShopNameInput" value="{{shopName}}"/>
+				<input type="text" placeholder="请输入门店名称" bindinput="listenerShopNameInput" value="{{form.shop_name}}"/>
 			</view>
 			<view class="item">
-				<input type="number" placeholder="请输入手机号码" bindinput="listenerPhoneInput" value="{{phone}}"/>
+				<input type="number" placeholder="请输入手机号码" bindinput="listenerPhoneInput" value="{{form.telphone}}"/>
 				<!--<view class="btn">验证</view>-->
 			</view>
 		</view>
@@ -34,8 +34,8 @@
 
 	<view class="adress-box">
 		<view class="title">店铺位置信息</view>
-		<view wx:if="{{!latitude}}" class="msg" bindtap="chooseLocation">未选择位置，请选择您的位置信息</view>
-		<view wx:if="{{latitude}}" class="msg" bindtap="chooseLocation">经度：{{latitude}}，纬度：{{longitude}}</view>
+		<view wx:if="{{!confirmAdress}}" class="msg" bindtap='chooseAddress'>未选择位置，请选择您的位置信息</view>
+		<view wx:if="{{confirmAdress}}" class="msg" bindtap='chooseAddress'>{{shop_id ? form.address : location.address}}</view>
 		<view class="btn-box">
 			<view class="btn-left" bindtap="makeSureLocation">选择</view>
 			<view class="btn-right" bindtap="giveUpLocation">清空</view>
@@ -65,11 +65,11 @@
 	            </picker>
 			</view>
 		-->
-		<input type="text" placeholder="请输入营业时间（如:10:00 - 23:00）" bindinput="listenerTimeInput" value="{{opendtime}}"/>
+		<input type="text" placeholder="请输入营业时间（如:10:00 - 23:00）" bindinput="listenerTimeInput" value="{{form.opendtime}}"/>
 	</view>
 	<view class="desc-box">
 		<view class="label">门店简介</view>
-		<textarea placeholder-style="font-size:24rpx" placeholder="请输入门店简介~~" name="textarea" value="{{shopDesc}}" bindblur="bindShopDescBlur"/>
+		<textarea placeholder-style="font-size:24rpx" placeholder="请输入门店简介~~" name="textarea" value="{{form.intro}}" bindblur="bindShopDescBlur"/>
 	</view>
 	<view class="shop-pic">
 		<view class="label">门店图片</view>
@@ -93,12 +93,13 @@
 	</view>
 	<view class="classify" bindtap="getShopType">
 		<view class="label">选择分类</view>
-		<view class="text {{cate_name ? 'text-active' : ''}}">{{cate_name || '请选择入驻分类'}}</view>
+		<view class="text {{cate_name ? 'text-active' : ''}}">{{form.cate_name || '请选择入驻分类'}}</view>
 		<i class="iconfont icon-right"></i>
 	</view>
 	<view class="caution">
 		我已阅读并同意<i>《平台用户服务协议》</i>
 	</view>
-	<view class="footer-btn" bindtap="moveInHandle">马上入驻</view>
+	<view wx:if="{{shop_id}}" class="footer-btn" bindtap="moveInHandle">确认修改</view>
+	<view wx:else class="footer-btn" bindtap="moveInHandle">马上入驻</view>
 	<toast hidden="{{hiddenToast}}" duration="2000" bindchange="toastHidden" >{{toastText}}</toast>
 </view>

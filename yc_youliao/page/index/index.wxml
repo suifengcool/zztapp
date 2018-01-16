@@ -96,7 +96,10 @@
                     bindtap='tap'
                 >
 	    			<view class="pic">
-	    				<image src="{{imagesSocket + item.logo}}" class='pic-avatar'></image>
+	    				<image 
+                            src="{{item.logo ? item.logo : '../../resource/images/lazyDefault.png'}}" 
+                            class='pic-avatar'
+                        ></image>
 	    			</view>
 	    			<view class="desc">
 	    				<view class="title">

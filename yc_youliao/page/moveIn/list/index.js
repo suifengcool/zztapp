@@ -32,6 +32,7 @@ Page({
     },
 
     longTap(e){
+        let _this = this;
         let id = e.currentTarget.dataset.item.shop_id;
         let shop_name = e.currentTarget.dataset.item.shop_name;
         wx.vibrateShort({
@@ -47,7 +48,7 @@ Page({
                             index.DelMyShop(id,(data)=>{
                                 if(data === '删除店铺成功!'){
                                     index.getMyShopList((data)=>{
-                                        this.setData({
+                                        _this.setData({
                                             shopList: data
                                         })
                                     })
