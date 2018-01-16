@@ -43,6 +43,17 @@ Page({
 
     // 生命周期函数--监听页面加载
     onLoad: function (options) {
+        let _this = this
+        console.log('options:',options)
+        if(options.id){
+            let id = options.id
+            index.getShop(id,(data)=>{
+                console.log('data1111:',data)
+                _this.setData({
+                    form: data
+                })
+            })
+        }
     	// 获取图片头
 		getImageSocket((data) => {
 		    this.setData({
@@ -93,15 +104,22 @@ Page({
 
     getLocation(callback) {
 	    getLocation(false, (res) => {
+            let nowLocation = { 
+                lat: res.latitude, 
+                lng: res.longitude 
+            }
+            index.getDetailLocation(nowLocation, (data) => {
+                console.log('data:',data)
+            })
 	    	this.setData({
 	    		latitude: res.latitude,
 		    	longitude: res.longitude
 	    	})
+
 	    	
 		    
 	    })
 	},
-
 
 
 	chooseLocation(){

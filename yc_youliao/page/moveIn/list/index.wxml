@@ -1,10 +1,22 @@
 <view class="moveInList">
 	<view class="home-list">
-		<view class="home-list-item">
-			<view class="pic"></view>
+		<view 
+			class="home-list-item" 
+			wx:for="{{shopList}}" 
+			wx:key="{{index}}" 
+			bindlongtap="longTap"
+			data-item="{{item}}"
+		>
+			<view class="pic">
+				<image
+		            class = "img"
+		            src = "{{imagesSocket + '/' + item.logo}}"
+		            background-size = "cover"
+		        ></image>
+			</view>
 			<view class="desc">
 				<view class="title">
-					<view class="name">贯今网络</view>
+					<view class="name">{{item.shop_name}}</view>
 				</view>
 				<view class="score-box">
 					<view class="score-list">
@@ -13,29 +25,11 @@
 					<view class="score-text">4.7</view>
 				</view>
 				<view class="tabs">
-					<view class="tab-itam">干净卫生</view>
-					<view class="tab-itam">环境优雅</view>
-					<view class="tab-itam">WIFI</view>
+					<view class="tab-itam" wx:for="{{item.inco}}" wx:key="{{index}}" wx:for-item="i">{{i}}</view>
 				</view>
 			</view>
-		</view>
-		<view class="home-list-item">
-			<view class="pic"></view>
-			<view class="desc">
-				<view class="title">
-					<view class="name">贯今网络</view>
-				</view>
-				<view class="score-box">
-					<view class="score-list">
-						<i class="iconfont icon-star"></i>
-					</view>
-					<view class="score-text">4.7</view>
-				</view>
-				<view class="tabs">
-					<view class="tab-itam">干净卫生</view>
-					<view class="tab-itam">环境优雅</view>
-					<view class="tab-itam">WIFI</view>
-				</view>
+			<view class="btn-box" bindtap = 'editShop' data-item = '{{item}}'>
+				<view class="edit">编辑</view>
 			</view>
 		</view>
 	</view>

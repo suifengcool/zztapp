@@ -14,7 +14,7 @@ class MyCollect extends Base {
         sCallback: (res) => {
           console.log(res)
           // 处理数字
-          let arr = res.data.data
+          let arr = res.data.data.info
           arr.forEach(function (v) {
             handleTime(v)
             // 设置id

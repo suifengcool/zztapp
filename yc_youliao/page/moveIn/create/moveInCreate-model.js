@@ -34,6 +34,36 @@ class Create extends Base {
 		})
 	}
 
+	// 请求地址
+    getDetailLocation(nowLocation, callback) {
+	    console.log(nowLocation)
+	    var param = {
+	        url: 'entry/wxapp/GetLaction',
+	        data: nowLocation,
+        	sCallback: function (res) {
+		        console.log(res)
+		        callback && callback(res.data.data)
+	        }
+	    }
+	    this.request(param)
+    }
+
+	getShop(id,cb) {
+        let data = {}
+        this.store({ type: 'GET_SEID' }, (seid) => {
+            data.seid = seid
+            data.shop_id = id
+            var param = {
+                url: 'entry/wxapp/getShop',
+                data,
+                sCallback: (res) => {
+                    cb && cb(res.data.data)
+                }
+            }
+            this.request(param)
+        })
+    }
+
 	submit(form,cb){
 		let data = {}
 		console.log('form:',form)
