@@ -122,6 +122,17 @@ Page({
 		wx.navigateTo({
 	        url: `/yc_youliao/page/search/${type}/index?keyword=${keyword}`
     	})
+	},
+
+	goToSearchList(e){
+		let key = e.currentTarget.dataset.key
+		let type = e.currentTarget.dataset.type
+		let id = e.currentTarget.dataset.id
+		wx.navigateTo({
+	        url: id 
+	        	? `/yc_youliao/page/search/${type}/index?keyword=${key}&from=index&cate_id=${id}`
+				: `/yc_youliao/page/search/${type}/index?keyword=${key}&from=index`
+    	})
 	}
 	
 })

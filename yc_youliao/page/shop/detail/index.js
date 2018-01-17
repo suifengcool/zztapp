@@ -9,9 +9,22 @@ const app = getApp()
 Page({
     data: {
 		movies: [],                                   // 轮播图数据
+		tabList: [{
+			name: '主页',
+			tab: 0
+		},{
+			name: '发现',
+			tab: 1
+		}],
 		data: null,
 		shop_id: '',
 		isCollect: false,
+		tab:0,
+		msgList: [{
+			avatar:"https://wx.qlogo.cn/mmopen/vi_32/3hE5bd8Np4fEsibJQcDq18mMExLgIrlRfk896McfIzh6TiblSfoN9q8iaL3JKxMHV04blonHlxfKtwcaua4Df87Nw/0",
+			city:"武汉市"
+
+		}]
     },
 
     /**
@@ -53,6 +66,13 @@ Page({
 		        })	
 	        }
 	    })
+    },
+
+    changeTab(e){
+    	let tab = e.currentTarget.dataset.tab
+		this.setData({
+			tab: tab
+		})
     },
 
     // 电话拨打

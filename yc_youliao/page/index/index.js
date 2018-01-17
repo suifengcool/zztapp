@@ -157,7 +157,7 @@ Page({
 	getData(newId) {
 	    if(newId){
 	        this.setData({
-		        page: 0,
+		        page: 1,
 		        isComplete: false,
 		        shopList: []
 	        })

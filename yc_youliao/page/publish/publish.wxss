@@ -118,7 +118,7 @@ swiper.cate{
 .scrollmore{
   text-align: center;
   padding: 20rpx 0;
-  font-size: 30rpx;
+  font-size: 26rpx;
   line-height: 50rpx;
 }
 .release-btn{

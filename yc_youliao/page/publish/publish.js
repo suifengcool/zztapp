@@ -70,7 +70,7 @@ Page({
     this.setData({
       data,
       moduleLen,
-      scrollData: data.hotMsg
+      scrollData: data.newMsg
     })
   },
   infiniteScroll(data) {

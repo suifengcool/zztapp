@@ -187,4 +187,5 @@ page{
 .none{
 	margin-top:50%;
 	color:#777;
+	text-align:center;
 }

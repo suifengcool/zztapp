@@ -5,6 +5,7 @@ import { Index } from 'index-model.js'
 var index = new Index()
 
 let app = getApp();
+const LENGTH = 10;
 
 Page({
 	data: {
@@ -12,31 +13,39 @@ Page({
 		tab: 0,
 		isKeywordEmpty: true,
 		shopList: [],
-		showSearch: true
+		showSearch: true,
+		page: 1,
+		isComplete: false,
+		imagesSocket: '',
+		cate_id: 0,
 
 	},
 	
 	onLoad: function(option){
 		console.log('option:',option)
+		// 获取图片头
+		getImageSocket((data) => {
+		    this.setData({
+				imagesSocket: data
+		    })
+		});
+
 		if(option && option.keyword){
 			this.setData({
 				keyword: option.keyword,
 				isKeywordEmpty: false,
-				showSearch: true
+				showSearch: option.from ? false : true
 			})
-			let key = option.keyword
-			index.search(key,(data)=>{
-				console.log('data:',data)
+
+			if(option.from){
 				this.setData({
-					shopList: data
+					cate_id: option.cate_id
 				})
-			})
-		}else{
-			this.setData({
-				showSearch: false
-			})
+				this.getDataByCateId()
+			}else{
+				this.getData()
+			}
 		}
-		
 	},
 
 	listenerInput(e){
@@ -45,12 +54,78 @@ Page({
         })
 	},
 
-	search(props){
-		let key = this.data.keyword
-		index.search(key,(data)=>{
-			this.setData({
-				shopList: data
+	search(){
+		this.setData({
+			isComplete: false,
+			page: 1,
+			shopList: []
+		})
+		this.getData()
+	},
+
+	getData(){
+		if(this.data.isComplete) return
+
+		let form = {};
+		if(this.data.keyword.trim()){
+			form.key = this.data.keyword
+		}
+		form.page = this.data.page
+        form.num = LENGTH
+		index.search(form,(data)=>{
+
+			if (data.length < LENGTH) {
+		        this.setData({
+		            isComplete: true
+		        })
+	        }
+
+	        let arr = [];
+	        arr = [...this.data.shopList, ...data];
+	        arr.map((item,index)=>{
+	        	if(item.logo.indexOf('http') < 0 ){
+					item.logo = this.data.imagesSocket + '/' + item.logo
+	        	}
 			})
+
+	        this.setData({
+		        shopList: [...this.data.shopList,...data],
+	        	page: this.data.page + 1
+		    })
+		})
+	},
+
+	getDataByCateId(){
+		if(this.data.isComplete) return
+
+		let form = {};
+		form.page = this.data.page
+        form.num = LENGTH
+
+        if(this.data.cate_id != 31){
+        	form.cid = this.data.cate_id
+        }
+        
+		index.getPageData(form,(data)=>{
+
+			if (data.length < LENGTH) {
+		        this.setData({
+		            isComplete: true
+		        })
+	        }
+
+	        let arr = [];
+	        arr = [...this.data.shopList, ...data];
+	        arr.map((item,index)=>{
+	        	if(item.logo.indexOf('http') < 0 ){
+					item.logo = this.data.imagesSocket + '/' + item.logo
+	        	}
+			})
+
+	        this.setData({
+		        shopList: [...this.data.shopList,...data],
+	        	page: this.data.page + 1
+		    })
 		})
 	},
 
@@ -60,6 +135,15 @@ Page({
 	    wx.navigateTo({
 	        url: `/yc_youliao/page/shop/detail/index?shop_id=${id}`
     	})
+    },
+
+    // 页面上拉触底事件的处理函数
+    onReachBottom: function () {
+    	if(this.data.cate_id){
+    		this.getDataByCateId()
+    	}else{
+    		this.getData()
+    	}
     },
 
 	

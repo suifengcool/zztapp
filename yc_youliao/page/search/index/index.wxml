@@ -12,8 +12,26 @@
     		<i class="iconfont {{tab ? 'icon-note' : 'icon-shop'}}"></i>信息分类
     	</view>
     	<view class="type-list">
-    		<view wx:if="{{!tab}}" class="type-item" wx:for="{{cateTypeList}}" wx:key="{{index}}">{{item.cate_name}}</view>
-    		<view wx:if="{{tab}}" class="type-item" wx:for="{{msgTypeList}}" wx:key="{{index}}" wx:for-item="i">{{i.name}}</view>
+    		<view 
+                wx:if="{{!tab}}" 
+                class="type-item" 
+                wx:for="{{cateTypeList}}" 
+                wx:key="{{index}}"
+                bindtap = "goToSearchList"
+                data-key = '{{item.cate_name}}'
+                data-type = 'shop'
+                data-id = '{{item.cate_id}}'
+            >{{item.cate_name}}</view>
+    		<view 
+                wx:if="{{tab}}" 
+                class="type-item" 
+                wx:for="{{msgTypeList}}" 
+                wx:key="{{index}}" 
+                wx:for-item="i"
+                bindtap = "goToSearchList"
+                data-key = '{{i.name}}'
+                data-type = 'msg'
+            >{{i.name}}</view>
     	</view>
     </view>
 

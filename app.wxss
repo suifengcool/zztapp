@@ -348,7 +348,7 @@
 .emptyData{
   padding-top: 20rpx;
   line-height: 50rpx;
-  font-size: 32rpx;
+  font-size: 26rpx;
   text-align: center;
 }
 .titleWrapper{
