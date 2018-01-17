@@ -11,99 +11,52 @@ page{
 .color{
 	color: #979797;
 }
-.container-release{
+.container-release-list{
 	width: 100%;
 	color: #000;
 	font-size: 26rpx;
 }
-.textarea{
-	width: 100%;
-	padding: 20rpx;
-	box-sizing: border-box;
-}
-.pic-upload-area{
-	margin: 20rpx 0;
+.infoList-title{
 	display: flex;
-	flex-wrap: wrap;
 	width: 100%;
-	box-sizing: border-box;
-	padding: 25rpx 20rpx;
-}
-.pic{
-	width: 25%;
-	height: 0;
-	padding-bottom: 25%;
-	margin-right: 20rpx;
-}
-.plus{
-	background: #dedede;
-	text-align: center;
-	color: #fff;
-}
-.plus .iconfont{
-	font-size: 90rpx;
-	display:inline-block;
-	margin-top:25%;
-}
-.item{
-	display: flex;	
-	padding-left: 30rpx;
-	height: 90rpx;
-	line-height: 90rpx;
-	margin-bottom:0.5rpx;
-	color: #979797;
-}
-.item .icon-adress{
-	font-size:30rpx;
-	margin-right:12rpx;
-	margin-left:-4rpx;
-}
-.item .icon-classify, .item .icon-tel-right{
-	color: #979797;
-}
-.container-release .item .active{
-	color: #333;
-}
-.input{
-	height: 100%;
-}
-.iconLeft{
-	font-size:24rpx;
-	margin-right:15rpx;
-	vertical-align:11%;
-	margin-top:-2rpx;
-}
-.text{
-	flex: 1;
-	font-size: 28rpx;
-}
-.icon-right-box{
-	width: 70rpx;
-	height: 100%;
-	text-align: center;
-}
-.icon-right-box .iconfont{
-	font-size: 28rpx;
-}
-.deal{
-	font-size: 23rpx;
-	margin: 20rpx 0 0 20rpx;
-}
-.container-release .on{
-	background: #fa5305;
-	color: #fff;
-}
-.btn{
+	border-bottom: 0.5rpx solid #dedede;
 	position: fixed;
-	bottom: 0;
-	left: 50%;
-	transform: translateX(-50%);
-	width: 94%;
-	background: #dedede;
+	top: 0;
+	left: 0;
+	background: #fff;
+	opacity:1;
+}
+.infoList-title-item{
+	position: relative;
+	text-align: center;
+	color: #979797;
+	width: 25%;
 	height: 90rpx;
 	line-height: 90rpx;
-	text-align: center;
-	font-size: 30rpx;
-	color: #fff;
-	border-radius: 15rpx;
+}
+.infoList-title .active{
+	color: #fa5305;
+}
+.infoList-title .active:after{
+	position: absolute;
+	content: '';
+	display: inline-block;
+	left: 50%;
+	bottom: 0;
+	transform: translateX(-50%);
+	width: 80%;
+	height: 2rpx;
+	background: #fa5305;
+}
+.newItem{
+    background-color: #fff;
+    padding-top: 100rpx;
+}
+.none{
+	margin-top:50%;
+	color:#777;
+	text-align:center;
+}
+.titleWrapper{
+	width: 75%;
 }

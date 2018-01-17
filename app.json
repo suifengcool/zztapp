@@ -62,7 +62,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "yc_youliao/page/publish/publish",
+        "pagePath": "yc_youliao/page/release/index/index",
         "iconPath": "yc_youliao/resource/images/tabbarIcon/compass.png",
         "selectedIconPath": "yc_youliao/resource/images/tabbarIcon/compass_active.png",
         "text": "发现"

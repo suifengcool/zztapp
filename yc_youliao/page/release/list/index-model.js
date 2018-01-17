@@ -4,13 +4,49 @@ const app = getApp()
 class Index extends Base {
 	constructor() {
 		super()
+		this.location = null
+	    this.page = 1
+	    this.id = null
+	    this.data = null
+	    this.length = 10
 	}
 
-	getSeid(callback) {
-	    this.store({ type: 'GET_SEID' }, (seid) => {
-	        callback(seid)
-	    })
-	}
+	// 请求模块信息
+  getModuleData(options, callback) {
+    this.store({ type: 'GET_SEID' }, (seid) => {
+      console.log(seid)
+    })
+    if (options && options.id) {
+      this.id = options.id
+      this.page = 1
+      this.length = options.LENGTH
+    }
+    let data = {
+      id: this.id,
+      page: this.page,
+      num: this.length
+    }
+    getLocation((location) => {
+      if (location) {
+        data.lat = location.latitude
+        data.lng = location.longitude
+      }
+      this._requestModule(data, callback)
+    })
+  }
+  _requestModule(data, callback) {
+    console.log(data)
+    var param = {
+      url: 'entry/wxapp/GetModuleById',
+      data: data,
+      sCallback: (res) => {
+        console.log(res)
+        this.page++
+        callback && callback(res.data.data)
+      }
+    }
+    this.request(param)
+  }
 
 	// 请求地址
     getDetailLocation(nowLocation, callback) {
@@ -66,70 +102,6 @@ class Index extends Base {
 	    }
 	    this.request(param)
     }
-
-	getShop(id,cb) {
-        let data = {}
-        this.store({ type: 'GET_SEID' }, (seid) => {
-            data.seid = seid
-            data.shop_id = id
-            var param = {
-                url: 'entry/wxapp/getShop',
-                data,
-                sCallback: (res) => {
-                    cb && cb(res.data.data)
-                }
-            }
-            this.request(param)
-        })
-    }
-
-	submit(form,cb){
-		let data = {}
-		console.log('form:',form)
-		if(form.imgUrl && form.imgUrl.length){
-			form.imgUrl.forEach((item,index)=>{
-				data['imgUrl'+'[]'] = item
-			})
-		}
-		if(form.inco && form.inco.length){
-			form.inco.forEach((item,index)=>{
-				data['inco'+'[]'] = item
-			})
-		}
-		if(form.shop_id){
-			data.shop_id = form.shop_id
-		}
-		this.store({ type: 'GET_SEID' }, (seid) => {
-            data.seid = seid
-            data.shop_name = form.shop_name
-            data.logo = form.logo[0]
-            data.telphone = form.telphone
-            data.lat = form.lat
-            data.lng = form.lng
-            data.opendtime = form.opendtime
-            data.intro = form.intro
-            data.address = form.address
-            data.cate_id = form.cate_id
-			
-			var param = {
-			    url: 'entry/wxapp/AddShopInfo',
-			    type: 'post',
-			    data,
-			    sCallback: (res) => {
-					cb && cb(res.data.message)
-			    }
-			}
-			this.request(param)
-	    })
-	}
-
-    // 请求图片socket
-	getAttachurl(callback) {
-		getImageSocket((data) => {
-		    console.log(data)
-		    callback(data)
-		})
-	}
 
     // 获取用户信息
     indexGetUserInfo() {

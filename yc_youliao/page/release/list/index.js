@@ -5,93 +5,49 @@ const app = getApp()
 
 Page({
     data: {
-		form:{},
-		isNotEmpty: true,
+		tabList: [{
+            name: '最新',
+            id: 0
+        },{
+            name: '热门主题',
+            id: 1
+        },{
+            name: '热门评论',
+            id: 2
+        },{
+            name: '离我最近',
+            id: 3
+        }],
+        tab: 0,
+        list: []
     },
 
     /**
     * 生命周期函数--监听页面加载
     */
     onLoad: function (options) {
-        let release = wx.getStorageSync('release')
-        console.log('release:',release)
-        if(release){
-            if(release.nickName){
-                this.setData({
-                    'form.nickName':release.nickName,
-                    'form.shop_id':release.shop_id,
-                })
-            }
-            if(release.type_name){
-                this.setData({
-                    'form.type_name':release.type_name,
-                    'form.type_id':release.type_id,
-                })
-                
-            }
-            if(release.intro){
-                this.setData({
-                    'form.intro':release.intro
-                })
-            }
-            if(release.telphone){
-                this.setData({
-                    'form.telphone':release.telphone
-                })
-            }
-            
+        console.log('options:',options)
+        wx.setNavigationBarTitle({
+            title: options.name
+        })
 
-            
-        }
-        if(options && options.user_name){
+        let form = {}
+        form.LENGTH = 10
+        form.id = options.id
+        index.getModuleData(form,(data)=>{
+            console.log('data:',data)
             this.setData({
-                'form.nickName':options.user_name,
-                'form.shop_id':options.user_id,
+                list: data
             })
-        }
-        if(options && options.type_name){
-            this.setData({
-                'form.type_name':options.type_name,
-                'form.type_id':options.type_id,
-            })
-        }
+        })
 	
     },
 
-    // 门店描述
-    bindShopDescBlur(e){
+    changeTap(e){
+        let item = e.currentTarget.dataset.item;
         this.setData({
-            'form.intro': e.detail.value,
-            isNotEmpty: e.detail.value.trim() ? false : true
+            tab: item.id
         })
     },
 
-    // 电话
-    listenerPhoneInput: function(e) {
-    	this.setData({
-    		'form.telphone': e.detail.value,
-    		isNotEmpty: e.detail.value.trim() ? false : true
-    	})
-
-    },
-
-    goToChooseType(){
-        wx.setStorage({
-            key: "release",
-            data: this.data.form
-        })  
-        wx.navigateTo({
-            url: `/yc_youliao/page/release/type/index`
-        })
-    },
-
-    goToChooseUser(){
-        wx.setStorage({
-            key: "release",
-            data: this.data.form
-        })
-        wx.navigateTo({
-            url: `/yc_youliao/page/release/user/index`
-        })
-    }
 })

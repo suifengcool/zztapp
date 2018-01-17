@@ -1,41 +1,89 @@
-<view class="container-release">
-	<textarea placeholder-style="font-size:26rpx" placeholder="要发布的内容" name="textarea" class="textarea bg" value="{{form.intro}}" bindblur="bindShopDescBlur"/>
-	<view class="pic-upload-area bg">
-		<view class="plus pic"><i class="iconfont icon-plus"></i></view>
-		<view class="pic"></view>
+<view class="container container-release-list">
+	<view class="infoList-title bg_white">
+		<view 
+			class="infoList-title-item {{index == tab ? 'active' : ''}}" 
+			wx:for="{{tabList}}"  
+			wx:key="{{index}}" 
+			bindtap="changeTap"
+			data-item="{{item}}"
+		>{{item.name}}</view>
 	</view>
-	<view class="itemList">
-		<view class="item bg" bindtap="goToChooseUser">
-			<i class="iconfont icon-head iconLeft"></i>
-			<view class="text {{form.nickName?'active':''}}">{{form.nickName || '请选择发布人'}}</view>
-			<view class="icon-right-box">
-				<i class="iconfont icon-right color"></i>
+
+	<view class="newItem" wx:for="{{list}}" wx:for-item="item" wx:key="unique" >
+		<navigator 
+			hover-class="none" 
+			url="/yc_youliao/page/detail/detail?id={{item.id}}&mid={{item.mid}}&status={{item.status}}"
+		>
+			<view class="top">
+				<view class="avatar">
+					<image src="{{item.avatar}}" />
+				</view>
+				<view class='topRight'>
+					<text class='txt1'>{{item.nickname}}</text>
+					<view class='txt2'>
+					<block wx:if="{{item.freshtime !== '0' && item.freshtime != undefined}}">
+						<text>{{item.freshtime}}</text>
+					</block>
+					<block wx:else>
+						<text>{{item.createtime}}</text>
+					</block>
+					<block wx:if="{{item.isding == 1}}">
+						<text class="ding">置顶</text>
+					</block>
+			    </view>
 			</view>
-		</view>
-		<view class="item bg">
-			<i class="iconfont icon-adress iconLeft"></i>
-			<view class="text color {{form.adress?'active':''}}">请选择您的位置信息</view>
-			<view class="icon-right-box">
-				<i class="iconfont icon-right color"></i>
-			</view>
-		</view>
-		<view class="item bg">
-			<i class="iconfont icon-tel-right iconLeft"></i>
-			<input class="text input" type="number" placeholder-style="color:#979797" placeholder="请输入手机号码" bindinput="listenerPhoneInput" value="{{form.telphone}}"/>
-		</view>
-		<view class="item bg" bindtap="goToChooseType">
-			<i class="iconfont icon-classify iconLeft"></i>
-			<view class="text color {{form.type_name?'active':''}}">{{form.type_name || '选择发布类别'}}</view>
-			<view class="icon-right-box">
-				<i class="iconfont icon-right color"></i>
-			</view>
-		</view>
-	</view>
-	<view class="deal color">
-		<i class="iconfont adress"></i>
-		<navigator url="../deal/index">
-			我已阅读并同意《平台用户服务协议》
+			<view class='wechat'>
+			 	<image class='img' src="../../../resource/images/phone.png" />联系他</view>
+		    </view>
+	    	<view class="contentTxt">{{item.con.title}}</view>
 		</navigator>
-	</view>
-	<view class="btn {{!isNotEmpty? 'on' : ''}}">立即发布</view>
+
+	    <block wx:if="{{item.con.thumbs}}">
+		    <view class="images clearfix" wx:if="{{imagesSocket && imagesSocket != ''}}">
+				<block wx:if="{{newImg == true}}">
+				    <image 
+				    	bindtap="previewImg" 
+				    	wx:for-item="img" 
+				    	wx:key="unique" 
+				    	wx:for="{{item.con.thumbs}}" 
+				    	data-src="{{img}}" 
+				    	src="{{img}}" 
+			    	/>
+				</block>
+				<block wx:else>
+				    <image 
+				    	bindtap="previewImg" 
+				    	wx:key="unique" 
+				    	wx:for-item="img" 
+				    	wx:for="{{item.con.thumbs}}" 
+				    	data-src="{{img}}" 
+				    	src="{{img}}" 
+			    	/>
+				</block>
+        	</view>
+		</block>
+		<block wx:if="{{item.city}}">
+		    <view class='address'>
+				<image class="img" src="../../../resource/images/location.png" />
+				{{item.city + item.district }}
+				<block wx:if="{{item.distance}}">
+					(距您{{item.distance}}km)
+				</block>
+		    </view>
+		</block>
+
+		<view class="info">
+		    <view class='module'>
+				<navigator url="/yc_youliao/page/moduleList/moduleList?id={{item.mid}}">
+				  #{{item.modulename}}
+				</navigator>
+		    </view>
+		    <view style="float: right;padding-right: 20rpx">
+				<block wx:if="{{item.views}}">
+				    <image class="img" src="../../../resource/images/liulan.png" />
+				    <text style="padding-right: 16rpx">{{item.views}}人浏览</text>
+				</block>
+		    </view>
+		</view>
+    </view>
 </view>

@@ -2,10 +2,124 @@
 	<view class="banner-box">
 		<image
             class="banner-img"
-            src="{{imagesSocket+'/'+ item.thumb}}"
+            src="{{imagesSocket+'/'+ 'images/2/2018/01/drMj4Uj4r0pmLL4n9PLM2mPgMJ3mSM.jpg'}}"
             background-size="cover"
         ></image>
+        <view class="search">
+        	<i class="iconfont icon-search2"></i>搜索信息
+        </view>
+        <view class="title">镇镇通便民信息总汇</view>
+        <view class="num-box">
+        	<view class="num-item">帖子：2338</view>
+        	<view class="num-item">人气：197772</view>
+        	<view class="num-item">成员：99987</view>
+        </view>
 	</view>
+
+	<view class="type-box bg_white">
+		<view class="type-item" wx:for="{{moduleList}}" wx:key="{{index}}" data-item="{{item}}" bindtap="goToModule">
+			<view class="type-img">
+				<image
+		            class="type-item-img"
+		            src="{{item.thumb}}"
+		            background-size="cover"
+		        ></image>
+			</view>
+			<view class="type-text">{{item.name}}</view>
+		</view>
+	</view>
+
+	<view class="bg_line"></view>
+
+	<view class="infoList-box bg_white">
+		<view class="infoList-title">
+			<view 
+				class="infoList-title-item {{index == tab ? 'active' : ''}}" 
+				wx:for="{{tabList}}"  
+				wx:key="{{index}}" 
+				bindtap="changeTap"
+				data-item="{{item}}"
+			>{{item.name}}</view>
+		</view>
+		<view class="newItem" wx:for="{{dataList}}" wx:for-item="item" wx:key="unique" >
+			<navigator 
+				hover-class="none" 
+				url="/yc_youliao/page/detail/detail?id={{item.id}}&mid={{item.mid}}&status={{item.status}}"
+			>
+				<view class="top">
+					<view class="avatar">
+						<image src="{{item.avatar}}" />
+					</view>
+					<view class='topRight'>
+						<text class='txt1'>{{item.nickname}}</text>
+						<view class='txt2'>
+						<block wx:if="{{item.freshtime !== '0' && item.freshtime != undefined}}">
+							<text>{{item.freshtime}}</text>
+						</block>
+						<block wx:else>
+							<text>{{item.createtime}}</text>
+						</block>
+						<block wx:if="{{item.isding == 1}}">
+							<text class="ding">置顶</text>
+						</block>
+				    </view>
+				</view>
+				<view class='wechat'>
+				 	<image class='img' src="../../../resource/images/phone.png" />联系他</view>
+			    </view>
+		    	<view class="contentTxt">{{item.con.title}}</view>
+			</navigator>
+
+		    <block wx:if="{{item.con.thumbs}}">
+			    <view class="images clearfix" wx:if="{{imagesSocket && imagesSocket != ''}}">
+					<block wx:if="{{newImg == true}}">
+					    <image 
+					    	bindtap="previewImg" 
+					    	wx:for-item="img" 
+					    	wx:key="unique" 
+					    	wx:for="{{item.con.thumbs}}" 
+					    	data-src="{{img}}" 
+					    	src="{{img}}" 
+				    	/>
+					</block>
+					<block wx:else>
+					    <image 
+					    	bindtap="previewImg" 
+					    	wx:key="unique" 
+					    	wx:for-item="img" 
+					    	wx:for="{{item.con.thumbs}}" 
+					    	data-src="{{img}}" 
+					    	src="{{img}}" 
+				    	/>
+					</block>
+	        	</view>
+			</block>
+			<block wx:if="{{item.city}}">
+			    <view class='address'>
+					<image class="img" src="../../../resource/images/location.png" />
+					{{item.city + item.district }}
+					<block wx:if="{{item.distance}}">
+						(距您{{item.distance}}km)
+					</block>
+			    </view>
+			</block>
+
+			<view class="info">
+			    <view class='module'>
+					<navigator url="/yc_youliao/page/moduleList/moduleList?id={{item.mid}}">
+					  #{{item.modulename}}
+					</navigator>
+			    </view>
+			    <view style="float: right;padding-right: 20rpx">
+					<block wx:if="{{item.views}}">
+					    <image class="img" src="../../../resource/images/liulan.png" />
+					    <text style="padding-right: 16rpx">{{item.views}}人浏览</text>
+					</block>
+			    </view>
+			</view>
+	    </view>
+	</view>
+	<view wx:if="{{!dataList.length}}" class="none">暂无信息</view>
 
 	<navigator url="../create/index" class="create"><i class="iconfont icon-plus-circle-bg"></i></navigator>
 </view>
