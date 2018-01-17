@@ -46,6 +46,13 @@ Page({
 		});
 
 		index.getIndexData((data)=>{
+			let arr = [];
+	        arr = [...this.data.hotshop, ...data.hotshop];
+	        arr.map((item,index)=>{
+	        	if(item.logo.indexOf('http') < 0 ){
+					item.logo = this.data.imagesSocket + '/' + item.logo
+	        	}
+			})
 			this.setData({
 	       		cate: [...data.cate],
 	       		advs: [...this.data.advs, ...data.advs],

@@ -1,10 +1,10 @@
 <view class="container-type">
 	<view class="typeList">
 		<view class="type-item">
-			<view class="name">不选择分类（默认）</view>
+			<view class="name" data-item="{{allType}}" bindtap="chooseType">不选择分类（默认）</view>
 		</view>
-		<view class="type-item">
-			<view class="name">中国电信</view>
+		<view class="type-item" wx:for="{{typeList}}" wx:key="{{index}}" data-item="{{item}}" bindtap="chooseType">
+			<view class="name">{{item.name}}</view>
 		</view>
 	</view>
 </view>

@@ -23,5 +23,10 @@ page{
 	width: 70rpx;
 	border-radius: 50%;
 	margin: 12rpx 20rpx 0 20rpx;
-	background: green;
+	background: #dedede;
+}
+.logo-img{
+	width: 100%;
+	height:100%;
+	border-radius:50%;
 }

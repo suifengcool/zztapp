@@ -1,10 +1,12 @@
 <view class="releaser">
-	<view class="releaser-item">
-		<view class="img"></view>
-		<view class="name">顾村幼儿园</view>
-	</view>
-	<view class="releaser-item">
-		<view class="img"></view>
-		<view class="name">顾村幼儿园</view>
+	<view class="releaser-item" wx:for="{{userList}}" wx:key="{{index}}" data-item="{{item}}" bindtap="chooseUser">
+		<view class="img">
+			<image
+	            class="logo-img"
+	            src="{{item.logo}}"
+	            background-size="cover"
+	        ></image>
+		</view>
+		<view class="name">{{item.nickname}}</view>
 	</view>
 </view>

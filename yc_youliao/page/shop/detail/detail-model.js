@@ -110,12 +110,17 @@ class Detail extends Base {
     this.getSeid((seid) => {
       var param = {
         url: 'entry/wxapp/GetCollect',
-        data: { seid, message_id: id },
+        data: { seid, shop_id: id },
         sCallback: (res) => {
           console.log(res)
           let flag = false
-          if (res.data.data.length > 0) {
-            flag = true
+          if (res.data.data.shop.length > 0) {
+            const arr2 = res.data.data.shop.filter((item)=>{
+              return item.shop_id === id
+            });
+            if(arr2.length){
+              flag = true
+            }
           }
           callback && callback(flag)
         }
@@ -128,7 +133,7 @@ class Detail extends Base {
     this.getSeid((seid) => {
       var param = {
         url: 'entry/wxapp/ProCollect',
-        data: { seid, message_id: id },
+        data: { seid, shop_id: id },
         sCallback: (res) => {
           callback && callback(res)
         }
