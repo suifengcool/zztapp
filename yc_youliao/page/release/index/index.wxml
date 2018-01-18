@@ -5,7 +5,7 @@
             src="{{imagesSocket+'/'+ 'images/2/2018/01/drMj4Uj4r0pmLL4n9PLM2mPgMJ3mSM.jpg'}}"
             background-size="cover"
         ></image>
-        <view class="search">
+        <view class="search" bindtap="goToSearch">
         	<i class="iconfont icon-search2"></i>搜索信息
         </view>
         <view class="title">镇镇通便民信息总汇</view>

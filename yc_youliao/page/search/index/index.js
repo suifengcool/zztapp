@@ -24,7 +24,12 @@ Page({
 
 	},
 	
-	onLoad: function(){
+	onLoad: function(options){
+		if(options && options.fromPage){
+			this.setData({
+				tab: 1
+			})
+		}
 		index.getIndexData((data)=>{
 			this.setData({
 				cateTypeList: data.cate,

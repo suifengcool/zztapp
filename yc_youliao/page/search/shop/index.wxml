@@ -25,7 +25,15 @@
 				</view>
 				<view class="score-box">
 					<view class="score-list">
-						<i wx:if="{{item.renjun>j}}" class="iconfont {{Math.round(item.renjun) > j ? 'icon-star' : 'icon-star'}}"  wx:for="[0,1,2,3,4]" wx:for-item="j" wx:key="{{index}}"></i>
+						<view class="score-item" wx:for="{{item.score_solid}}" wx:key="{{index}}">
+                            <i class="iconfont icon-star2"></i>
+                        </view>
+                        <view class="score-item" wx:for="{{item.score_solid_half}}" wx:key="{{index}}">
+                            <i class="iconfont icon-star1"></i>
+                        </view>
+                        <view class="score-item" wx:for="{{item.score_solid_none}}" wx:key="{{index}}">
+                            <i class="iconfont icon-star0"></i>
+                        </view>
 					</view>
 					<view class="score-text">{{item.dp}}</view>
 				</view>

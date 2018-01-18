@@ -62,24 +62,27 @@ page{
 .score-list{
 	height: 26rpx;
 	line-height: 26rpx;
+	display: flex;
 }
 .score-text{
-	font-size: 20rpx;
+	font-size: 23rpx;
 	color: #FF8C00;
+	margin-top:7rpx;
+	margin-left: 4rpx;
 }
 .score-box .iconfont{
 	color: #FF8C00;
-	font-size: 20rpx;
+	font-size: 23rpx;
 }
 .btn-box{
 	position: absolute;
 	right: 0;
 	top: 0;
-	height: 38rpx;
-	line-height: 38rpx;
+	height: 40rpx;
+	line-height: 40rpx;
 	width: 95rpx;
 	text-align: center;
 	color: #fff;
-	background: rgba(0,0,0,0.4);
-	font-size: 22rpx;
+	background: rgba(0,0,0,0.6);
+	font-size: 24rpx;
 }

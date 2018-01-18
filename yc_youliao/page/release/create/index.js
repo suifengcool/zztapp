@@ -284,7 +284,19 @@ Page({
         let form = this.data.form
         index.submit(form,(data)=>{
             if(data == 'sucess'){
-                this.toast('添加成功')
+                wx.showToast({
+                    title: '添加成功',
+                    icon: 'success',
+                    image: '../../../resource/images/成功.png',
+                    duration: 2000,
+                    mask: true,
+                    compelte: function(){
+                        wx.removeStorageSync('release')
+                        wx.switchTab({
+                            url: `/yc_youliao/page/release/index/index`
+                        })
+                    }
+                })
             }else{
                 this.toast(data)
             }

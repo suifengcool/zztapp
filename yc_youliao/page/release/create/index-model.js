@@ -40,6 +40,10 @@ class Index extends Base {
 
 	submit(form,cb){
 		let data = {};
+		this.indexGetUserInfo((obj)=>{
+			data.logo = obj.avatarUrl
+		})
+		
 		if(form.type_id){
 			data.mid = form.type_id
 		}
@@ -80,10 +84,11 @@ class Index extends Base {
 	}
 
     // 获取用户信息
-    indexGetUserInfo() {
-		// getUserInfo(true, (res) => {
-		  // console.log(res)
-		// })
+    indexGetUserInfo(cb) {
+		getUserInfo(true, (res) => {
+			cb && cb(res)
+		  console.log('res222222:',res)
+		})
     }
 
 	// 获取经纬度信息

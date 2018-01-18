@@ -35,6 +35,7 @@ page{
 	width: 25%;
 	height: 90rpx;
 	line-height: 90rpx;
+	font-size: 30rpx;
 }
 .infoList-title .active{
 	color: #fa5305;

@@ -89,5 +89,11 @@ Page({
 		wx.navigateTo({
             url: `/yc_youliao/page/release/list/index?name=${item.name}&id=${item.id}`
         })
+    },
+
+    goToSearch(e){
+    	wx.navigateTo({
+            url: `/yc_youliao/page/search/index/index?fromPage=release`
+        })
     }
 })

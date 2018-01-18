@@ -44,6 +44,7 @@ page{
 	height: 95rpx;
 	line-height: 95rpx;
 	position: relative;
+	font-size: 30rpx;
 }
 .pannel-box .active{
 	color: #fa5305;
@@ -66,12 +67,14 @@ page{
 .type-box .title{
 	padding: 20rpx;
 	color: #333;
+	font-size:28rpx;
 	box-sizing: border-box;
 
 }
 .type-box .title .iconfont{
 	margin-right: 10rpx;
-	font-size: 28rpx;
+	font-size: 32rpx;
+	vertical-align:-4%;
 }
 .type-list{
 	display: flex;
@@ -84,13 +87,13 @@ page{
 	width: 20%;
 	height: 50rpx;
 	line-height: 50rpx;
-	background: #dedede;
+	background: #f4f4f4;
 	margin-right: 30rpx;
 	margin-bottom: 30rpx;
 	border-radius: 10rpx;
 	text-align:center;
 	font-size:26rpx;
-	color: #777;
+	color: #555;
 }
 
 .history-box{
@@ -100,6 +103,7 @@ page{
 	font-size:33rpx;
 	margin-right:6rpx;
 	color:#333;
+	vertical-align:-2%;
 }
 .history-item{
 	height:90rpx;

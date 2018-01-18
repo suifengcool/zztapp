@@ -1,11 +1,11 @@
-import { getImageSocket } from '../../../resource/utils/comment.js'
+import { getImageSocket, handleTime } from '../../../resource/utils/comment.js'
 import { html2json } from '../../../../we7/resource/js/htmlToWxml.js'
 import { ShopStore } from 'shopStore-model.js'
 import { Detail } from 'detail-model.js'
 const shopStore = new ShopStore()
 var detail = new Detail()
 const app = getApp()
-
+let pageOptions = null
 Page({
     data: {
 		tabList: [],
@@ -14,14 +14,15 @@ Page({
 		isCollect: false,
 		imagesSocket: '',
 		tab:0,
-		msgList: [{
-			avatar:"https://wx.qlogo.cn/mmopen/vi_32/3hE5bd8Np4fEsibJQcDq18mMExLgIrlRfk896McfIzh6TiblSfoN9q8iaL3JKxMHV04blonHlxfKtwcaua4Df87Nw/0",
-			city:"武汉市"
-
-		}]
+		msgList: [],
+		score: 5,
+		score_solid: [],
+		score_solid_half: [],
+		score_solid_none: [],
     },
 
     onLoad: function (options) {
+    	pageOptions = options
     	console.log('options:',options)
     	// 获取图片头
 		getImageSocket((data) => {
@@ -46,13 +47,30 @@ Page({
 
         // 加载商户信息
 	    shopStore.getData(id,(data) => {
-	    	console.log('data111:',data)
-	        if(data && data.qr_code.length){
+	        if(data && data.qr_code && data.qr_code.length){
+	        	if(data.qr_code.length>5){
+	        		data.qr_code = data.qr_code.slice(0,5)
+	        	}
 		        data.qr_code.map((item,index)=>{
 		        	if(item.indexOf('http') < 0 ){
 						item = this.data.imagesSocket + '/' + item
 		        	}
 				})
+	        }
+			
+			data.dp = data.dp > 5 ? 5 : data.dp;
+	        let num1 = Math.floor(data.dp);
+	        let	num2 = Math.ceil(data.dp - num1); 
+	        let	num3 = Math.floor(5 - data.dp); 
+	        let	arr = [], arr1 = [], arr2 = []
+	        for(let i=0;i<num1;i++){
+				arr.push('solid_star')
+	        }
+	        for(let i=0;i<num2;i++){
+				arr1.push('solid_star')
+	        }
+	        for(let i=0;i<num3;i++){
+				arr2.push('solid_star')
 	        }
 	        this.setData({
 	        	shopInfo: data,
@@ -63,6 +81,9 @@ Page({
 					name: '发现(' + data.infoNum + '条)',
 					tab: 1
 				}],
+				score_solid: arr,
+				score_solid_half: arr1,
+				score_solid_none: arr2,
 	        })
 	        if (data.intro) {
 	        	let des = data.intro
@@ -70,7 +91,6 @@ Page({
 		            des: html2json(data.intro)
 		        })	
 	        }
-	        console.log('this.data.shopInfo:',this.data.shopInfo)
 	    })
     },
 
@@ -78,16 +98,19 @@ Page({
     	let tab = e.currentTarget.dataset.tab
     	let id = this.data.shop_id
     	let type = this.data.shopInfo.infoNum
-  //   	type && tab && shopStore.getPublishData(id,(data) => {
-		// 	this.setData({
-		// 		tab: tab,
-		// 		msgList: data
-		// 	})
-		// })
-		this.setData({
-				tab: tab
+
+    	type && tab && shopStore.getPublishData(id,(data) => {
+    		data.map((item)=>{
+    			if(item.freshtime){
+	    			item.freshtime = handleTime(item).freshtime;
+	    		}
+    		})
+    		
+			this.setData({
+				tab: tab,
+				msgList: data
 			})
-		
+		})
     },
 
     // 电话拨打
@@ -121,6 +144,31 @@ Page({
 		        duration: 2000
 	        })
 	    })
+    },
+
+    // 分享按钮
+    onShareAppMessage: function (res) {
+        if (res.from === 'button') {
+          // 来自页面内转发按钮
+            console.log(res.target)
+        }
+
+        let params = ''
+        for (let i in pageOptions) {
+            params += i + '=' +pageOptions[i] + '&'
+        }
+        params = params.slice(0, -1)
+
+        return {
+            title: '更多精彩尽在镇镇通',
+            path: '/yc_youliao/page/shop/detail/index?' + params,
+            success: function (res) {
+                console.log('/yc_youliao/page/shop/detail/index?' + params)
+            },
+            fail: function (res) {
+            // 转发失败
+            }
+        }
     },
 
 })

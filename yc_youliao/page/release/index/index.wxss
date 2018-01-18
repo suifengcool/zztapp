@@ -64,6 +64,7 @@ page{
 }
 .num-item{
 	width: 33.333%;
+	font-size: 26rpx;
 }
 
 .type-box{
@@ -92,7 +93,7 @@ page{
 	width: 100%;
 	overflow: hidden;
 	color: #333;
-	font-size:24rpx;
+	font-size:26rpx;
 }
 .infoList-box{
 	width: 100%;
@@ -109,6 +110,7 @@ page{
 	width: 25%;
 	height: 90rpx;
 	line-height: 90rpx;
+	font-size: 30rpx;
 }
 .infoList-title .active{
 	color: #fa5305;

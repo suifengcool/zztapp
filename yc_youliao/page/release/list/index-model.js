@@ -9,6 +9,7 @@ class Index extends Base {
 	    this.id = null
 	    this.data = null
 	    this.length = 10
+	    this.type = 'new'
 	}
 
 	// 请求模块信息
@@ -21,10 +22,14 @@ class Index extends Base {
       this.page = 1
       this.length = options.LENGTH
     }
+    if(options && options.type){
+    	this.type = options.type
+    }
     let data = {
       id: this.id,
       page: this.page,
-      num: this.length
+      num: this.length,
+      type: this.type
     }
     getLocation((location) => {
       if (location) {

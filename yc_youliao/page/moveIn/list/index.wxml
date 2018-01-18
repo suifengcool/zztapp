@@ -10,7 +10,7 @@
 			<view class="pic">
 				<image
 		            class = "img"
-		            src = "{{imagesSocket + '/' + item.logo}}"
+		            src = "{{item.logo}}"
 		            background-size = "cover"
 		        ></image>
 			</view>
@@ -20,7 +20,15 @@
 				</view>
 				<view class="score-box">
 					<view class="score-list">
-						<i class="iconfont icon-star"></i>
+						<view class="score-item" wx:for="{{item.score_solid}}" wx:key="{{index}}">
+                            <i class="iconfont icon-star2"></i>
+                        </view>
+                        <view class="score-item" wx:for="{{item.score_solid_half}}" wx:key="{{index}}">
+                            <i class="iconfont icon-star1"></i>
+                        </view>
+                        <view class="score-item" wx:for="{{item.score_solid_none}}" wx:key="{{index}}">
+                            <i class="iconfont icon-star0"></i>
+                        </view>
 					</view>
 					<view class="score-text">{{item.dp}}</view>
 				</view>

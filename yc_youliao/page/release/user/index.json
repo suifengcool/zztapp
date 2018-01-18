@@ -1,3 +1,4 @@
 {
-	"navigationBarTitleText": "选择发布人"
+	"navigationBarTitleText": "选择发布人",
+	"enablePullDownRefresh": false
 }

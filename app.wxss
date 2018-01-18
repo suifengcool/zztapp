@@ -4,11 +4,11 @@
 
 @font-face {
   font-family: 'iconfont';  /* project id 530216 */
-  src: url('//at.alicdn.com/t/font_530216_29x441bpq58z1tt9.eot');
-  src: url('//at.alicdn.com/t/font_530216_29x441bpq58z1tt9.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_530216_29x441bpq58z1tt9.woff') format('woff'),
-  url('//at.alicdn.com/t/font_530216_29x441bpq58z1tt9.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_530216_29x441bpq58z1tt9.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_530216_wqeajbgfo2giizfr.eot');
+  src: url('//at.alicdn.com/t/font_530216_wqeajbgfo2giizfr.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_530216_wqeajbgfo2giizfr.woff') format('woff'),
+  url('//at.alicdn.com/t/font_530216_wqeajbgfo2giizfr.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_530216_wqeajbgfo2giizfr.svg#iconfont') format('svg');
 }
 .iconfont {
   font-family:"iconfont" !important;
@@ -91,6 +91,10 @@
 .icon-collect-solid:before{content: '\e675';}
 .icon-collect:before{content: '\e615';}
 .icon-comment:before{content: '\e619';}
+
+.icon-star0:before{content: '\e723';}
+.icon-star1:before{content: '\e6c9';}
+.icon-star2:before{content: '\e659';}
 
 
 .col999 {

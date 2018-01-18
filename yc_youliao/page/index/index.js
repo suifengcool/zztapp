@@ -71,7 +71,7 @@ Page({
 		// 获取分类信息
 	    shopList.getGetCateData((data) => {
 	        this.setData({
-	       		cate: [...this.data.cate, ...data]
+	       		cate: data
 	        })
 	    })
 	},
@@ -186,12 +186,31 @@ Page({
 		            isComplete: true
 		        })
 	        }
+
 	        let arr = [];
 	        arr = [...this.data.shopList, ...data];
 	        arr.map((item,index)=>{
 	        	if(item.logo.indexOf('http') < 0 ){
 					item.logo = this.data.imagesSocket + '/' + item.logo
 	        	}
+				
+				item.dp = item.dp > 5 ? 5 : item.dp;
+	        	let num1 = Math.floor(item.dp);
+		        let	num2 = Math.ceil(item.dp - num1); 
+		        let	num3 = Math.floor(5 - item.dp); 
+		        let	arr = [], arr1 = [], arr2 = []
+		        for(let i=0;i<num1;i++){
+					arr.push('solid_star')
+		        }
+		        for(let i=0;i<num2;i++){
+					arr1.push('solid_star')
+		        }
+		        for(let i=0;i<num3;i++){
+					arr2.push('solid_star')
+		        }
+		        item.score_solid = arr;
+		        item.score_solid_half = arr1;
+		        item.score_solid_none = arr2;
 			})
 	        this.setData({
 		        shopList: arr,
@@ -204,9 +223,6 @@ Page({
 	scrollTap(e) {
 	    let id = parseInt(e.currentTarget.dataset.id);
 	    let index = parseInt(e.currentTarget.dataset.index);
-
-	    console.log('index:',index)
-
 	    this.setData({
 	      	cateId: id,
 	      	currentIndex: index

@@ -20,10 +20,16 @@ Page({
         }],
         tab: 0,
         list: [],
-        imagesSocket: ''
+        imagesSocket: '',
+        id: ''
     },
 
     onLoad: function (options) {
+        if(options && options.id){
+            this.setData({
+                id: options.id 
+            })
+        }
         // 获取图片头
         getImageSocket((data) => {
             this.setData({
@@ -35,20 +41,41 @@ Page({
             title: options.name
         })
 
+        this.getData()
+    },
+
+    getData(tab){
         let form = {}
         form.LENGTH = 10
-        form.id = options.id
+        form.id = this.data.id
+        if(tab){
+            switch(tab){
+                case 0:
+                    form.type = 'new'
+                    break;
+                case 1:
+                    form.type = 'hot'
+                    break;
+                case 2:
+                    form.type = 'comment'
+                    break;
+                case 3:
+                    form.type = 'near'
+                    break;
+            }
+        }
+        console.log('form:',form)
         index.getModuleData(form,(data)=>{
             console.log('data:',data)
             this.setData({
                 list: data
             })
         })
-	
     },
 
     changeTap(e){
         let item = e.currentTarget.dataset.item;
+        this.getData(item.id)
         this.setData({
             tab: item.id
         })

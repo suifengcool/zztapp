@@ -5,34 +5,43 @@
 	            <image src="{{item}}" class="slide-image" mode="aspectFill"/>  
 	        </swiper-item>    
         </block> 
+        <view class="swiper-btn">
+            {{shopInfo.qr_code.length}}张图
+        </view>
     </swiper>
-    <view class="swiper-btn">
-    	{{shopInfo.qr_code.length}}张图
-    </view>
-    <view class="shop-title-box">
+    
+    <view class="shop-title-box bg_white">
         <view class="title">{{shopInfo.shop_name}}</view>
-        <view class="score-box">
-            <view class="score-list">
-                <view class="score-item">
-                    <i class="iconfont icon-star"></i>
+        <view class="score-box-contain">
+            <view class="score-box">
+                <view class="score-list">
+                    <view class="score-item" wx:for="{{score_solid}}" wx:key="{{index}}">
+                        <i class="iconfont icon-star2"></i>
+                    </view>
+                    <view class="score-item" wx:for="{{score_solid_half}}" wx:key="{{index}}">
+                        <i class="iconfont icon-star1"></i>
+                    </view>
+                    <view class="score-item" wx:for="{{score_solid_none}}" wx:key="{{index}}">
+                        <i class="iconfont icon-star0"></i>
+                    </view>
                 </view>
+                <view class="score">{{shopInfo.dp}}</view>
             </view>
-            <view class="score">{{shopInfo.dp}}</view>
         </view>
         <view class="btn {{isCollect ? 'collected': ''}}" bindtap='onCollectTap'>{{isCollect? '已收藏': '收藏'}}</view>
     </view>
-    <view class="shop-adress-box">
+    <view class="shop-adress-box bg_white">
         <view class="icon" bindtap='map'>
             <i class="iconfont icon-adress-solid"></i>
         </view>
         <view class="adress" bindtap='map'>
-            {{shopInfo.address || '商家地址正在维护中'}} 
+            <view class="address-detail">{{shopInfo.address || '商家地址正在维护中'}}</view> 
         </view>
         <view class="tel-box icon-box" bindtap='phonetap'><i class="iconfont icon-tel-right"></i></view>
-        <view class="share-box icon-box"><i class="iconfont icon-share"></i></view>
+        <button class="share-box icon-box" open-type= 'share'><i class="iconfont icon-share"></i></button>
     </view>
     <view class="line"></view>
-    <view class="tab-box">
+    <view class="tab-box bg_white">
         <view 
             class="tab-item tab-left {{index == tab ? 'choosed' : ''}}"
             wx:for="{{tabList}}" 
@@ -41,7 +50,7 @@
             data-tab="{{index}}"
         >{{item.name}}</view>
     </view>
-    <view wx:if="{{!tab}}" class="shop-content">
+    <view wx:if="{{!tab}}" class="shop-content bg_white">
         <view class="shop-desc">
             <view wx:if="{{shopInfo.inco && shopInfo.inco.length}}" class="shop-desc-item"><i class="iconfont icon-weixinpay"></i>微信支付</view>
             <view wx:if="{{shopInfo.opendtime}}" class="shop-desc-item">营业时间：{{shopInfo.opendtime}}</view>
@@ -54,7 +63,7 @@
         </view>
     </view>
 
-    <view wx:if="{{tab}}" class="publish-list">
+    <view wx:if="{{tab}}" class="publish-list bg_white">
         <view class="newItem" wx:for="{{msgList}}" wx:for-item="item" wx:key="unique" >
         <navigator 
             hover-class="none" 
@@ -116,13 +125,11 @@
       </view>
     </view>
   </view>
-  <view wx:if="{{!shopList.length}}" class="none">暂无搜索记录</view>
   <import src="../../../resource/template/complete.wxml" />
     <template is="complete" wx:if="{{isComplete}}"/>
     </view>
 
-    <view class="bg_line"></view>
-    <navigator url="../../moveIn/create/index" class="goToMoveIn">我是商家，我要入驻</navigator>
+    <navigator url="../../moveIn/create/index" class="goToMoveIn bg_white">我是商家，我要入驻</navigator>
 
 
     <view wx:if="{{data.myself}}" class="footer-box">

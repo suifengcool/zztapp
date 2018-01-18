@@ -16,7 +16,8 @@ class ShopStore extends Base {
 			    data: data,
 			    sCallback: (res) => {
 			    	console.log('res33333:',res)
-					this.handleData(res.data.data, callback)
+					// this.handleData(res.data.data, callback)
+					callback && callback(res.data.data)
 			    }
 			}
 			this.request(param)
@@ -42,13 +43,18 @@ class ShopStore extends Base {
 
     // 处理数据
     handleData(data, callback) {
+    	console.log('data33444:',data)
 		// 评分转为小数点一位
-		data.dp = parseFloat(data.dp).toFixed(1)
-		data.dpFor = parseFloat(data.dp)
+		if(data.dp && data.dpFor){
+			data.dp = parseFloat(data.dp).toFixed(1)
+			data.dpFor = parseFloat(data.dp)
+		}
 		// 评价转为数组
-		data.inco = JSON.parse(data.inco)
-
+		if(data.inco){
+			data.inco = JSON.parse(data.inco)
+		}
 		callback && callback(data)
+		
 
 		// 判断有无地址
 		// if(data.lat && data.lng) {

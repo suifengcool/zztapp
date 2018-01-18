@@ -8,6 +8,7 @@ page{
 .container-shop{
 	box-sizing:border-box;
 	width: 100%;
+	background: #fff;
 }
 .swiper {
 	height: 345rpx;
@@ -45,7 +46,7 @@ page{
 .btn{
 	position: absolute;
 	right: 0;
-	top: 50%;
+	top: 61%;
 	transform: translateY(-50%);
 	width:95rpx;
 	height:45rpx;
@@ -66,7 +67,7 @@ page{
 	line-height:35rpx;
 }
 .score{
-	font-size: 23rpx;
+	font-size: 24rpx;
 }
 .score-item .iconfont{
 	font-size: 26rpx;
@@ -78,9 +79,19 @@ page{
 }
 .adress{
 	line-height:32rpx;
-	font-size:25rpx;
+	font-size:26rpx;
 	flex:1;
-	padding-top:20rpx;
+	height: 100%;
+	position: relative;
+}
+.adress .address-detail{
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 100%;
+	transform: translateY(-50%);
+	max-height:90rpx;
+	overflow:hidden;
 }
 .icon-box{
 	width: 100rpx;
@@ -90,12 +101,17 @@ page{
 	font-size: 40rpx;
 	color: #979797;
 }
+.share-box{
+	background: #fff;
+}
+.share-box:after{
+	border: none;
+}
 .share-box .iconfont{
 	color: #FFA500;
 }
 .tel-box{
 	position: relative;
-	margin-left: 10rpx;
 }
 .tel-box:after{
 	position: absolute;
@@ -131,7 +147,7 @@ page{
 	line-height: 70rpx;
 	text-align: center;
 	position: relative;
-	font-size: 26rpx;
+	font-size: 28rpx;
 }
 .tab-box .choosed{
 	color: #FFA500;
@@ -148,7 +164,7 @@ page{
 	background: #FFA500;
 }
 .shop-content{
-	font-size: 24rpx;
+	font-size: 25rpx;
 	color: #333;
 	padding: 0 20rpx;
 }
@@ -253,11 +269,19 @@ page{
 	margin-right:20rpx;
 	color: #FA8072;
 }
-
+.score-box-contain{
+	width: 100%;
+	position: relative;
+	margin:10rpx 0 20rpx;
+	height: 50rpx;
+}
 .score-box{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
 	text-align: left;
 	line-height: 26rpx;
-	margin: 10rpx 0 20rpx 0;
 	display: flex;
 	height: 26rpx;
 }
@@ -265,6 +289,7 @@ page{
 	height: 26rpx;
 	line-height: 26rpx;
 	margin-right: 5rpx;
+	display: flex;
 }
 .score-text{
 	font-size: 20rpx;
@@ -272,8 +297,8 @@ page{
 }
 .score-box .iconfont{
 	color: #FF8C00;
-	font-size: 20rpx;
-	vertical-align:23%;
+	font-size: 24rpx;
+	vertical-align:24%;
 }
 
 .iconfont-my{
@@ -378,11 +403,11 @@ page{
 
 .goToMoveIn{
 	width: 38%;
-	margin: 30rpx auto 30rpx;
+	margin: 40rpx auto 40rpx;
 	text-align: center;
 	border-radius: 30rpx;
-	height: 50rpx;
-	line-height: 50rpx;
+	height: 60rpx;
+	line-height: 60rpx;
 	color: #fa5305;
 	border: 1rpx solid #fa5305;
 	font-size:26rpx;
