@@ -160,7 +160,7 @@ page{
   color: #222;
 }
 .commentInputWrapper{
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   height: 100%;

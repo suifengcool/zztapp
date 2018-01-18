@@ -12,6 +12,8 @@ Page({
         isCollect: false,
         showCommentBox: false,
         scanNum: 100,
+        isInput: false,
+        comment: ''
     },
 
     /**
@@ -79,9 +81,18 @@ Page({
     },
 
     showComment(){
+        let _this = this
+
         this.setData({
             showCommentBox: !this.data.showCommentBox
         })
+
+        setTimeout(function(){
+            _this.setData({
+                showCommentBox: false
+            })
+        },2000)
+
     },
 
     // 收藏按钮
@@ -105,6 +116,30 @@ Page({
             })
         })
     },
+
+    // 评论点击
+    inputTap() {
+        this.setData({
+            isInput: !this.data.isInput,
+            showCommentBox: false
+        })
+    },
+
+    // 评论点击确认
+    commentSure() {
+        index.sendComment(this.data.comment)
+        this.setData({
+            commentList: [...this.data.commentList, { nickname: this.data.userInfo.nickName, addtime: dateToStr(), info: this.data.comment, avatar: this.data.userInfo.avatarUrl }],
+            isInput: false,
+            comment: ''
+        })
+    },
+  // 失去保存评论文字
+  bindTextAreaInput: function (e) {
+    this.setData({
+      comment: e.detail.value
+    })
+  },
 
     
 })

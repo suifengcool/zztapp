@@ -130,10 +130,10 @@
   color: #fb5100;
   position: absolute;
   width: 140rpx;
-  height: 60rpx;
-  line-height: 60rp;
+  height: 40rpx;
+  line-height: 40rpx;
   right: 0;
-  bottom: 0;
+  bottom: 45rpx;
   border: 1px solid #fb5100;
   border-radius: 4px;
   text-align: center;
@@ -144,13 +144,13 @@
   display: inline-block;
   vertical-align: top;
   width: 40rpx;
-  height: 40rpx;
-  padding-top: 10rpx;
+  height: 30rpx;
   padding-right: 5rpx;
   z-index: 10;
+  padding-top:7rpx;
 }
 .newItem .contentTxt{
-  font-size: 32rpx;
+  font-size: 28rpx;
   line-height: 50rpx;
 }
 .newItem .top .avatar{

@@ -23,7 +23,7 @@
 		<view class="msg" bindtap="showComment"><i class="iconfont icon-msg-solid2"></i></view>
 		<view wx:if="{{showCommentBox}}" class="bomb-box">
 			<view class="collect bomb-item" bindtap="onCollectTap"><i class="iconfont {{isCollect ? 'icon-collect-solid' :'icon-collect'}}"></i>{{isCollect?'取消收藏':'收藏'}}</view>
-			<view class="comm bomb-item"><i class="iconfont icon-comment"></i>评论</view>
+			<view class="comm bomb-item" bindtap='inputTap'><i class="iconfont icon-comment"></i>评论</view>
 		</view>
 	</view>
 
@@ -44,4 +44,15 @@
 	        </view>
         </view>
     </view>
+    <view wx:if="{{isInput}}" class='commentInputWrapper'>
+	    <view class='cancleArea' bindtap='inputTap'></view>
+	    <view class='inputWrapper'>
+	        <view class='title'>评论</view>
+	        <textarea class='area' cursor-spacing="122" bindinput="bindTextAreaInput" value="{{comment}}" auto-focus placeholder="输入评论内容" />
+	      <view style='text-align: center;'>
+	        <view class='cancle' bindtap='inputTap'>取消</view>
+	        <view class='sure' bindtap='commentSure'>确定</view>
+	      </view>
+	    </view>
+	</view>
 </view>

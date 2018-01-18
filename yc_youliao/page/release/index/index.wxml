@@ -31,8 +31,8 @@
 
 	<view class="bg_line"></view>
 
-	<view class="infoList-box bg_white">
-		<view class="infoList-title">
+	<view class="infoList-box">
+		<view class="infoList-title bg_white">
 			<view 
 				class="infoList-title-item {{index == tab ? 'active' : ''}}" 
 				wx:for="{{tabList}}"  
