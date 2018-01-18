@@ -5,93 +5,106 @@ const app = getApp()
 
 Page({
     data: {
-		form:{},
-		isNotEmpty: true,
+		info:{},
+        imagesSocket: '',
+        commentList: [],
+        id: '',
+        isCollect: false,
+        showCommentBox: false,
+        scanNum: 100,
     },
 
     /**
     * 生命周期函数--监听页面加载
     */
     onLoad: function (options) {
-        let release = wx.getStorageSync('release')
-        console.log('release:',release)
-        if(release){
-            if(release.nickName){
-                this.setData({
-                    'form.nickName':release.nickName,
-                    'form.shop_id':release.shop_id,
-                })
-            }
-            if(release.type_name){
-                this.setData({
-                    'form.type_name':release.type_name,
-                    'form.type_id':release.type_id,
-                })
-                
-            }
-            if(release.intro){
-                this.setData({
-                    'form.intro':release.intro
-                })
-            }
-            if(release.telphone){
-                this.setData({
-                    'form.telphone':release.telphone
-                })
-            }
-            
 
-            
-        }
-        if(options && options.user_name){
+        wx.setNavigationBarTitle({
+            title: '详情'
+        })
+
+        // 获取图片头
+        getImageSocket((data) => {
             this.setData({
-                'form.nickName':options.user_name,
-                'form.shop_id':options.user_id,
+                imagesSocket: data
             })
-        }
-        if(options && options.type_name){
+        });
+
+        let id = options.id
+        this.setData({
+            id: id
+        })
+
+        // 详情信息加载
+        index.getDetailData(id, (data) => {
+            // 有经纬度显示导航
+            if (data.lat !== '' && data.lng !== '') {
+                this.getLocation({ lat: data.lng, lng: data.lat }) // 后端要求反过来
+            }
             this.setData({
-                'form.type_name':options.type_name,
-                'form.type_id':options.type_id,
+                info: data
             })
-        }
+        })
+
+        //评论加载
+        index.getCommentData({id}, (data) => {
+            this.setData({
+                commentList: [...this.data.commentList, ...data]
+            })
+        })
+
+        // 收藏判断
+        index.isCollect(id,(flag) => {
+            this.setData({
+                isCollect: flag
+            })
+        })
+
+        // 浏览量
+        index.addviews(id,(data) => {
+            this.setData({
+                scanNum: data
+            })
+        })
 	
     },
 
-    // 门店描述
-    bindShopDescBlur(e){
+    // 经纬度求详细地址
+    getLocation(location) {
+        index.getLocationData(location, (data) => {
+            this.setData({
+                'address': data.formatted_address
+            })
+        })
+    },
+
+    showComment(){
         this.setData({
-            'form.intro': e.detail.value,
-            isNotEmpty: e.detail.value.trim() ? false : true
+            showCommentBox: !this.data.showCommentBox
         })
     },
 
-    // 电话
-    listenerPhoneInput: function(e) {
-    	this.setData({
-    		'form.telphone': e.detail.value,
-    		isNotEmpty: e.detail.value.trim() ? false : true
-    	})
-
-    },
-
-    goToChooseType(){
-        wx.setStorage({
-            key: "release",
-            data: this.data.form
-        })  
-        wx.navigateTo({
-            url: `/yc_youliao/page/release/type/index`
+    // 收藏按钮
+    onCollectTap() {
+        let _this = this
+        index.collect((res) => {
+            this.setData({
+                isCollect: !this.data.isCollect
+            })
+            wx.showToast({
+                title: this.data.isCollect ? '收藏成功' : '取消收藏成功',
+                icon: 'success',
+                duration: 2000,
+                complete: function(){
+                    setTimeout(function(){
+                        _this.setData({
+                            showCommentBox: false
+                        })
+                    },2000)
+                }
+            })
         })
     },
 
-    goToChooseUser(){
-        wx.setStorage({
-            key: "release",
-            data: this.data.form
-        })
-        wx.navigateTo({
-            url: `/yc_youliao/page/release/user/index`
-        })
-    }
+    
 })

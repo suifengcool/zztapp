@@ -127,6 +127,10 @@ page{
 .newItem{
     background-color: #fff;
 }
+.avatar-img{
+	width: 100%;
+	height: 100%;
+}
 .none{
 	margin-top:30rpx;
 	color:#777;

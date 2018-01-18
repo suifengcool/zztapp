@@ -19,14 +19,18 @@ Page({
             id: 3
         }],
         tab: 0,
-        list: []
+        list: [],
+        imagesSocket: ''
     },
 
-    /**
-    * 生命周期函数--监听页面加载
-    */
     onLoad: function (options) {
-        console.log('options:',options)
+        // 获取图片头
+        getImageSocket((data) => {
+            this.setData({
+                imagesSocket: data
+            })
+        });
+
         wx.setNavigationBarTitle({
             title: options.name
         })

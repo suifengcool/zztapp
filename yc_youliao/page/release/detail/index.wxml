@@ -1,41 +1,47 @@
-<view class="container-release">
-	<textarea placeholder-style="font-size:26rpx" placeholder="要发布的内容" name="textarea" class="textarea bg" value="{{form.intro}}" bindblur="bindShopDescBlur"/>
-	<view class="pic-upload-area bg">
-		<view class="plus pic"><i class="iconfont icon-plus"></i></view>
-		<view class="pic"></view>
+<view class="container container-release-detail">
+	<view class="userInfo">
+		<view class="head">
+			<image 
+				class="headImg"
+		    	src="{{info.avatar}}" 
+	    	/>
+		</view>
+		<view class="name">{{info.nickname}}</view>
 	</view>
-	<view class="itemList">
-		<view class="item bg" bindtap="goToChooseUser">
-			<i class="iconfont icon-head iconLeft"></i>
-			<view class="text {{form.nickName?'active':''}}">{{form.nickName || '请选择发布人'}}</view>
-			<view class="icon-right-box">
-				<i class="iconfont icon-right color"></i>
-			</view>
-		</view>
-		<view class="item bg">
-			<i class="iconfont icon-adress iconLeft"></i>
-			<view class="text color {{form.adress?'active':''}}">请选择您的位置信息</view>
-			<view class="icon-right-box">
-				<i class="iconfont icon-right color"></i>
-			</view>
-		</view>
-		<view class="item bg">
-			<i class="iconfont icon-tel-right iconLeft"></i>
-			<input class="text input" type="number" placeholder-style="color:#979797" placeholder="请输入手机号码" bindinput="listenerPhoneInput" value="{{form.telphone}}"/>
-		</view>
-		<view class="item bg" bindtap="goToChooseType">
-			<i class="iconfont icon-classify iconLeft"></i>
-			<view class="text color {{form.type_name?'active':''}}">{{form.type_name || '选择发布类别'}}</view>
-			<view class="icon-right-box">
-				<i class="iconfont icon-right color"></i>
-			</view>
+	<view class="title">{{info.content.title}}</view>
+	<view class="imgBox">
+		<view class="img-item-box" wx:for="{{info.content.thumbs}}" wx:key="{{index}}">
+			<image 
+				class="img-item"
+		    	src="{{imagesSocket + item}}" 
+	    	/>
 		</view>
 	</view>
-	<view class="deal color">
-		<i class="iconfont adress"></i>
-		<navigator url="../deal/index">
-			我已阅读并同意《平台用户服务协议》
-		</navigator>
+	<view class="num-box">
+		<view class="time">47天前</view>
+		<view class="scan"><i class="iconfont icon-scan"></i>{{scanNum}}</view>
+		<view class="msg" bindtap="showComment"><i class="iconfont icon-msg-solid2"></i></view>
+		<view wx:if="{{showCommentBox}}" class="bomb-box">
+			<view class="collect bomb-item" bindtap="onCollectTap"><i class="iconfont {{isCollect ? 'icon-collect-solid' :'icon-collect'}}"></i>{{isCollect?'取消收藏':'收藏'}}</view>
+			<view class="comm bomb-item"><i class="iconfont icon-comment"></i>评论</view>
+		</view>
 	</view>
-	<view class="btn {{!isNotEmpty? 'on' : ''}}">立即发布</view>
+
+	<view class="bg_line"></view>
+
+	<view class='comment'>
+        <view class='txt'>全部评论（{{commentList.length}}）</view>
+	        <view class='con' wx:for="{{commentList}}">
+		        <view class='avatarWrapper'>
+		          <image src='{{item.avatar}}' class="img"></image>
+		        </view>
+	        <view class='right'>
+	            <view class='top clearfix'>
+		            <view class='name'>{{item.nickname}}</view>
+		            <view class='time'>{{item.addtime}}</view>
+	            </view>
+	            <view class='bom'>{{item.info}}</view>
+	        </view>
+        </view>
+    </view>
 </view>

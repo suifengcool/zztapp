@@ -10,9 +10,9 @@
         </view>
         <view class="title">镇镇通便民信息总汇</view>
         <view class="num-box">
-        	<view class="num-item">帖子：2338</view>
-        	<view class="num-item">人气：197772</view>
-        	<view class="num-item">成员：99987</view>
+        	<view class="num-item">帖子：{{count.infoCount}}</view>
+        	<view class="num-item">人气：{{count.Popularity}}</view>
+        	<view class="num-item">成员：{{count.memberCount}}</view>
         </view>
 	</view>
 
@@ -21,7 +21,7 @@
 			<view class="type-img">
 				<image
 		            class="type-item-img"
-		            src="{{item.thumb}}"
+		            src="{{imagesSocket + '/' + item.thumb}}"
 		            background-size="cover"
 		        ></image>
 			</view>
@@ -44,11 +44,11 @@
 		<view class="newItem" wx:for="{{dataList}}" wx:for-item="item" wx:key="unique" >
 			<navigator 
 				hover-class="none" 
-				url="/yc_youliao/page/detail/detail?id={{item.id}}&mid={{item.mid}}&status={{item.status}}"
+				url="/yc_youliao/page/release/detail/index?id={{item.id}}&mid={{item.mid}}&status={{item.status}}"
 			>
 				<view class="top">
 					<view class="avatar">
-						<image src="{{item.avatar}}" />
+						<image src="{{item.avatar}}" class="avatar-img"/>
 					</view>
 					<view class='topRight'>
 						<text class='txt1'>{{item.nickname}}</text>

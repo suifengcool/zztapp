@@ -16,7 +16,7 @@
 		>
 			<view class="top">
 				<view class="avatar">
-					<image src="{{item.avatar}}" />
+					<image src="{{item.avatar}}" class="avatar-headImg"/>
 				</view>
 				<view class='topRight'>
 					<text class='txt1'>{{item.nickname}}</text>

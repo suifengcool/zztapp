@@ -25,7 +25,8 @@ Page({
 		hotMsgList: [],
 		nearMsgList: [],
 		dataList: [],
-		moduleList: []
+		moduleList: [],
+		count: {}
     },
 
     /**
@@ -45,7 +46,8 @@ Page({
 				hotMsgList: data.hotMsg,
 				nearMsgList: data.nearMsg,
 				dataList: data.newMsg,
-				moduleList: data.module
+				moduleList: data.module,
+				count: data.count
 			})
 		})
     },
