@@ -69,7 +69,7 @@
 	</view>
 	<view class="desc-box">
 		<view class="label">门店简介</view>
-		<textarea placeholder-style="font-size:24rpx" placeholder="请输入门店简介~~" name="textarea" value="{{form.intro}}" bindblur="bindShopDescBlur"/>
+		<textarea placeholder-style="font-size:24rpx" placeholder="请输入门店简介" name="textarea" value="{{form.intro}}" bindblur="bindShopDescBlur"/>
 	</view>
 	<view class="shop-pic">
 		<view class="label">门店图片</view>

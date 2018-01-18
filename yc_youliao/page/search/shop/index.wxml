@@ -27,7 +27,7 @@
 					<view class="score-list">
 						<i wx:if="{{item.renjun>j}}" class="iconfont {{Math.round(item.renjun) > j ? 'icon-star' : 'icon-star'}}"  wx:for="[0,1,2,3,4]" wx:for-item="j" wx:key="{{index}}"></i>
 					</view>
-					<view class="score-text">{{item.renjun}}</view>
+					<view class="score-text">{{item.dp}}</view>
 				</view>
 				<view class="tabs">
 					<view class="tab-itam" wx:for="{{item.inco}}" wx:key="{{index}}" wx:for-item="i">{{i}}</view>

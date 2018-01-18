@@ -26,35 +26,6 @@ class Index extends Base {
 	    this.request(param)
     }
 
-	/*得到首页信息*/
-	getIndexData(callback) {
-		this._indexGetLocation((location) => {
-			let data = {}
-			if (location) {
-				data.lat = location.latitude
-				data.lng = location.longitude
-			}
-
-		    app.util.getUserInfo((userInfo) => {
-				if (userInfo.memberInfo.uid) {
-				    data.uid = userInfo.memberInfo.uid
-				}
-				var param = {
-				    url: 'entry/wxapp/GetIndex',
-				    data,
-				    sCallback: (res) => {
-						wx.setStorage({
-						  key: "index",
-						  data: res
-						})
-						callback && callback(res.data.data)
-				    }
-				}
-				this.request(param)
-		    })
-		})
-	}
-
 	// 请求地址
     getDetailLocation(nowLocation, callback) {
 	    var param = {
@@ -67,52 +38,29 @@ class Index extends Base {
 	    this.request(param)
     }
 
-	getShop(id,cb) {
-        let data = {}
-        this.store({ type: 'GET_SEID' }, (seid) => {
-            data.seid = seid
-            data.shop_id = id
-            var param = {
-                url: 'entry/wxapp/getShop',
-                data,
-                sCallback: (res) => {
-                    cb && cb(res.data.data)
-                }
-            }
-            this.request(param)
-        })
-    }
-
 	submit(form,cb){
-		let data = {}
-		console.log('form:',form)
+		let data = {};
+		if(form.type_id){
+			data.mid = form.type_id
+		}
+		data.nickname = form.nickName
+		data.telphone = form.telphone
+		data.shop_id = form.shop_id
+		data.lat = form.lat
+		data.lng = form.lng
+		data.province = form.province 
+		data.city = form.city
+		data.district = form.district
+		data.text = form.intro
 		if(form.imgUrl && form.imgUrl.length){
 			form.imgUrl.forEach((item,index)=>{
-				data['imgUrl'+'[]'] = item
+				data['thumbs'+'[]'] = item
 			})
-		}
-		if(form.inco && form.inco.length){
-			form.inco.forEach((item,index)=>{
-				data['inco'+'[]'] = item
-			})
-		}
-		if(form.shop_id){
-			data.shop_id = form.shop_id
 		}
 		this.store({ type: 'GET_SEID' }, (seid) => {
             data.seid = seid
-            data.shop_name = form.shop_name
-            data.logo = form.logo[0]
-            data.telphone = form.telphone
-            data.lat = form.lat
-            data.lng = form.lng
-            data.opendtime = form.opendtime
-            data.intro = form.intro
-            data.address = form.address
-            data.cate_id = form.cate_id
-			
 			var param = {
-			    url: 'entry/wxapp/AddShopInfo',
+			    url: 'entry/wxapp/AddInfo',
 			    type: 'post',
 			    data,
 			    sCallback: (res) => {

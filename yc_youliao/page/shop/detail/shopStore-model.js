@@ -15,6 +15,7 @@ class ShopStore extends Base {
 			    url: 'entry/wxapp/getShop',
 			    data: data,
 			    sCallback: (res) => {
+			    	console.log('res33333:',res)
 					this.handleData(res.data.data, callback)
 			    }
 			}

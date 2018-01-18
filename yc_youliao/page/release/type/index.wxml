@@ -1,5 +1,5 @@
 <view class="container-type">
-	<view class="typeList">
+	<view class="typeList bg_white">
 		<view class="type-item">
 			<view class="name" data-item="{{allType}}" bindtap="chooseType">不选择分类（默认）</view>
 		</view>

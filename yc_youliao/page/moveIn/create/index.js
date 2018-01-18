@@ -335,7 +335,7 @@ Page({
               title: '请上传门店Logo',
               icon: 'success',
               image: '../../../resource/images/成功.png',
-              duration: 2000000,
+              duration: 2000,
               mask: true
             })
 			// this.setData({
@@ -344,7 +344,7 @@ Page({
 			// })
 			return
     	}
-    	if(!this.data.form.shop_name.trim()){
+    	if(!this.data.form.shop_name || !this.data.form.shop_name.trim()){
 			this.setData({
 				hiddenToast: false,
 				toastText: '请填写门店名称'
@@ -365,7 +365,7 @@ Page({
 			})
 			return
     	}
-    	if(!this.data.form.intro.trim()){
+    	if(!this.data.form.intro || !this.data.form.intro.trim()){
     		this.setData({
 				hiddenToast: false,
 				toastText: '请填写门店简介'

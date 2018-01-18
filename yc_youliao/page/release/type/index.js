@@ -30,8 +30,8 @@ Page({
 
     chooseType(e){
     	let item = e.currentTarget.dataset.item
-    	wx.navigateTo({
-	        url: `/yc_youliao/page/release/index/index?type_name=${item.name}&type_id=${item.id}`
+    	wx.redirectTo({
+	        url: `/yc_youliao/page/release/create/index?type_name=${item.name}&type_id=${item.id}`
     	})
     }
 })

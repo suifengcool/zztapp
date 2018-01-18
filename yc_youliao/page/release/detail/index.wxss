@@ -56,11 +56,11 @@ page{
 }
 .bomb-box{
 	position: absolute;
-	right: 100rpx;
+	right: 80rpx;
 	top: 50%;
 	transform: translateY(-50%);
-	height: 50rpx;
-	line-height: 50rpx;
+	height: 55rpx;
+	line-height: 55rpx;
 	border-radius: 15rpx;
 	background: rgba(0,0,0,0.7);
 	color: #fff;
@@ -101,8 +101,8 @@ page{
 	vertical-align:-3%;
 }
 .scan{
-	flex: 1;
 	margin-left:20rpx;
+    flex: 1;
 }
 .scan .iconfont{
 	margin-right: 10rpx;
@@ -110,113 +110,96 @@ page{
 .msg{
 	width: 90rpx;
 	height: 100%;
-	text-align: center;
+	text-align: right;
 }
-.comment{
-  width: 100%;
+
+.btn-box{
+    width: 100%;
+    display: flex;
 }
-.comment .txt{
-  font-size: 28rpx;
-  line-height: 80rpx;
-  color: #333;
-  border-bottom: 1rpx solid #eee;
+.btn-item{
+    width: 33.333%;
+    text-align: center;
+    font-size: 24rpx;
 }
-.comment .con{
-  display: flex;
-  padding: 10rpx 0;
-  border-bottom: 1rpx solid #eee;
+.share-btn{
+    background-color: #fff;
 }
-.comment .con:last-child{
-  border-bottom: none;
-  padding-bottom: 0;
+.share-btn:after{
+    border:none;
 }
-.comment .avatarWrapper{
-  width: 60rpx;
-  height: 60rpx;
-  border-radius: 50%;
-  overflow: hidden;
+.icon-box{
+    width: 100rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    border-radius: 50%;
+    background: #dedede;
+    margin: 50rpx auto 25rpx;
 }
-.avatarWrapper .img{
-  width: 100%;
-  height: 100%;
+.icon-box .iconfont{
+    font-size: 42rpx;
+    color:#333;
 }
-.comment .right{
-  padding-left: 32rpx;
-  flex: 1;
-  padding-right: 32rpx;
+.share-btn .icon-box{
+    background: #F4f4f4；
 }
-.comment .top .name{
-  float: left;
-  font-size: 30rpx;
+.share-btn .text, .share-btn .iconfont{
+    color: #fa5305;
 }
-.comment .top .time{
-  float: right;
-  font-size: 24rpx;
-  color: #999;
+.tel-box{
+    width: 40%;
+    height: 100rpx;
+    line-height: 100rpx;
+    margin: 60rpx auto 80rpx;
+    color: #fa5305;
+    font-size: 24rpx;
+    text-align: center;
+    border-top: 1rpx solid #dedede;
 }
-.comment .bom{
-  padding-top: 10rpx;
-  line-height: 56rpx;
-  color: #222;
+.tel-box .iconfont{
+    color: #fa5305;
+    font-size: 24rpx;
+    margin-right: 20rpx;
 }
-.commentInputWrapper{
-  position: fixed;
-  left: 0;
-  right: 0;
-  height: 100%;
-  z-index: 100;
-  top: 0;
-  background-color: rgba(42, 42, 42, 0.6);
-  display: flex;
-  flex-direction: column;
+.comment-box{
+    width: 100%;
+    background: #F4f4f4;
 }
-.commentInputWrapper .title{
-  line-height: 60rpx;
-  font-size: 32rpx;
-  color: #222;
-  padding-bottom: 15rpx;
+.comment-box .img-box{
+    padding: 15rpx 15rpx 5rpx 5rpx;
+    border-bottom: 1rpx solid #dedede;
+    display: flex;
+    width: 100%;
+    box-sizing:border-box;
 }
-.commentInputWrapper .inputWrapper{
-  width: 100%;
-  background-color: #eee;
-  padding: 5px 10px;
-  box-sizing: border-box;
-  padding-bottom: 10px;
-  z-index: 200;
+.comment-box .img-box .comment-img-item{
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 10rpx;
+    margin-bottom: 10rpx;
+    text-align: center;
 }
-.commentInputWrapper .area{
-  width: 100%;
-  height: 100px;
-  background-color: #fff;
-  line-height: 26px;
-  font-size: 13px;
-  color: #333;
-  border-radius: 4px;
-  border: 1rpx solid #ddd;
-  padding: 5px 10px;
-  box-sizing: border-box;
-  margin-bottom: 10px;
+.comment-box .img-box .comment-img-item .iconfont{
+    font-size:29rpx;
+    color:#777;
+    vertical-align:-7%;
 }
-.commentInputWrapper .cancle,.commentInputWrapper .sure{
-  display: inline-block;
-  width: 40%;
-  height: 32px;
-  line-height: 32px;
-  color: #222;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
+.comment-box .img-box .comment-img-item .img{
+    width: 100%;
+    height: 100%;
+    border-radius: 8rpx;
 }
-.commentInputWrapper .sure{
-  margin-left: 20px;
-  background-color: #01a901;
-  color: #fff;
-  border: 1px solid #01a901;
+.word-box{
+    padding: 10rpx;
 }
-.commentInputWrapper .cancleArea{
-  flex: 1;
+.word-box, .word-item{
+    width: 100%;
+    box-sizing:border-box;
 }
-.bg_line{
-  width: 110%;
+.word-item{
+    line-height: 45rpx;
+    color: #333;
+}
+.word-item i{
+    color: #000079;
 }

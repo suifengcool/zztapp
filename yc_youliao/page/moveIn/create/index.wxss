@@ -164,16 +164,19 @@ page{
 }
 .plus{
 	border: 0.5rpx solid #dedede;
-	line-height: 120rpx;
 	text-align: center;
 }
 .plus .iconfont{
 	color: #979797;
 	font-size: 65rpx;
 }
+.pic-upload{
+	flex: 1;
+}
 .pic-item{
-	width: 130rpx;
-	height: 130rpx;
+	width: 160rpx;
+	height: 160rpx;
+	line-height:160rpx;
 	margin-right: 20rpx;
 	margin-bottom: 20rpx;
 	position: relative;
@@ -181,8 +184,8 @@ page{
 }
 .pic-item .icon-del{
 	position:absolute;
-	right: -17rpx;
-	top: -39rpx;
+	right: -19rpx;
+	top: -80rpx;
 	font-size: 30rpx;
 	color: #999;
 }

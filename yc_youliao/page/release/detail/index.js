@@ -1,7 +1,8 @@
-import { getLocation, getUserInfo, getImageSocket , getWxUrl} from '../../../resource/utils/comment.js'
+import { getLocation, getUserInfo, getImageSocket , getWxUrl, dateToStr, handleTime} from '../../../resource/utils/comment.js'
 import { Index } from 'index-model.js'
 var index = new Index()
 const app = getApp()
+let pageOptions = null
 
 Page({
     data: {
@@ -13,13 +14,16 @@ Page({
         showCommentBox: false,
         scanNum: 100,
         isInput: false,
-        comment: ''
+        comment: '',
+        userInfo: null,
+        createTime: ''
     },
 
     /**
     * 生命周期函数--监听页面加载
     */
     onLoad: function (options) {
+        pageOptions = options
 
         wx.setNavigationBarTitle({
             title: '详情'
@@ -32,6 +36,12 @@ Page({
             })
         });
 
+        getUserInfo((data) => {
+            this.setData({
+                userInfo: data
+            })
+        })
+
         let id = options.id
         this.setData({
             id: id
@@ -43,8 +53,11 @@ Page({
             if (data.lat !== '' && data.lng !== '') {
                 this.getLocation({ lat: data.lng, lng: data.lat }) // 后端要求反过来
             }
+            let time = this.getFormatDays(data.freshtime)
+            console.log('time:',time)
             this.setData({
-                info: data
+                info: data,
+                createTime: time
             })
         })
 
@@ -134,12 +147,59 @@ Page({
             comment: ''
         })
     },
-  // 失去保存评论文字
-  bindTextAreaInput: function (e) {
-    this.setData({
-      comment: e.detail.value
-    })
-  },
 
-    
+    // 保存评论文字
+    bindTextAreaInput: function (e) {
+        this.setData({
+            comment: e.detail.value
+        })
+    },
+
+    // 电话点击
+    phonetap() {
+        if (this.data.info.content.shouji) {
+            wx.makePhoneCall({
+                phoneNumber: this.data.info.content.shouji
+            })
+        }
+    },
+
+    // 分享按钮
+    onShareAppMessage: function (res) {
+        if (res.from === 'button') {
+          // 来自页面内转发按钮
+            console.log(res.target)
+        }
+
+        let params = ''
+        for (let i in pageOptions) {
+            params += i + '=' +pageOptions[i] + '&'
+        }
+        params = params.slice(0, -1)
+
+        return {
+            title: '更多精彩尽在镇镇通',
+            path: '/yc_youliao/page/release/detail/index?' + params,
+            success: function (res) {
+                console.log('/yc_youliao/page/release/detail/index?' + params)
+            },
+            fail: function (res) {
+            // 转发失败
+            }
+        }
+    },
+
+    getFormatDays(timesamp){
+        var timestampNow = Date.parse(new Date()); 
+        var days = (timestampNow-timesamp*1000)/(24*60*60*1000);
+
+        days = Math.floor(days)
+        return days
+    },
+
+    goHome(){
+        wx.switchTab({
+            url: `/yc_youliao/page/index/index`
+        })
+    }
 })

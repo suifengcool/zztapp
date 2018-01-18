@@ -24,7 +24,7 @@ page{
 .swiper-btn{
 	position: absolute;
 	top: 15rpx;
-	right: 30rpx;
+	left: 30rpx;
 	display: flex;
 }
 .swiper-btn .iconfont{

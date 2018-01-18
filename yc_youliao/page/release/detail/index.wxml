@@ -18,8 +18,9 @@
 		</view>
 	</view>
 	<view class="num-box">
-		<view class="time">47天前</view>
+		<view class="time">{{createTime}}天前</view>
 		<view class="scan"><i class="iconfont icon-scan"></i>{{scanNum}}</view>
+		
 		<view class="msg" bindtap="showComment"><i class="iconfont icon-msg-solid2"></i></view>
 		<view wx:if="{{showCommentBox}}" class="bomb-box">
 			<view class="collect bomb-item" bindtap="onCollectTap"><i class="iconfont {{isCollect ? 'icon-collect-solid' :'icon-collect'}}"></i>{{isCollect?'取消收藏':'收藏'}}</view>
@@ -27,32 +28,77 @@
 		</view>
 	</view>
 
-	<view class="bg_line"></view>
-
-	<view class='comment'>
-        <view class='txt'>全部评论（{{commentList.length}}）</view>
-	        <view class='con' wx:for="{{commentList}}">
-		        <view class='avatarWrapper'>
-		          <image src='{{item.avatar}}' class="img"></image>
+	<!--
+		<view class='comment'>
+	        <view class='txt'>全部评论（{{commentList.length}}）</view>
+		        <view class='con' wx:for="{{commentList}}">
+			        <view class='avatarWrapper'>
+			          <image src='{{item.avatar}}' class="img"></image>
+			        </view>
+		        <view class='right'>
+		            <view class='top clearfix'>
+			            <view class='name'>{{item.nickname}}</view>
+			            <view class='time'>{{item.addtime}}</view>
+		            </view>
+		            <view class='bom'>{{item.info}}</view>
 		        </view>
-	        <view class='right'>
-	            <view class='top clearfix'>
-		            <view class='name'>{{item.nickname}}</view>
-		            <view class='time'>{{item.addtime}}</view>
-	            </view>
-	            <view class='bom'>{{item.info}}</view>
 	        </view>
-        </view>
+	    </view>
+    -->
+
+    <view wx:if="{{commentList.length}}" class="comment-box">
+    	<view class="img-box">
+    		<view class="comment-img-item">
+    			<i class="iconfont icon-msg-solid2"></i>
+    		</view>
+    		<view class="comment-img-item" wx:for="{{commentList}}" wx:key="{{index}}">
+    			<image 
+					class="img"
+			    	src="{{item.avatar}}" 
+		    	/>
+    		</view>
+    	</view>
+    	<view class="word-box">
+    		<view class="word-item" wx:for="{{commentList}}" wx:key="{{index}}">
+    			<i>{{item.nickname}}</i> {{':'  +item.info}}
+    		</view>
+    	</view>
+    </view>
+
+    <view class="btn-box">
+    	<view class="home-btn btn-item" bindtap="goHome">
+    		<view class="icon-box"><i class="iconfont icon-home"></i></view>
+    		<view class="text">主页</view>
+    	</view>
+    	<button open-type= 'share' class="share-btn btn-item" bindtap="onShareAppMessage">
+    		<view class="icon-box"><i class="iconfont icon-share2"></i></view>
+    		<view class="text">分享好友</view>
+    	</button>
+    	<navigator url="../../moveIn/create/index" class="shop-btn btn-item">
+    		<view class="icon-box"><i class="iconfont icon-shop"></i></view>
+    		<view class="text">商家入驻</view>
+    	</navigator>
+    </view>
+
+    <view class="tel-box" bindtap="phonetap">
+    	<i class="iconfont icon-tel-right"></i>{{info.content.shouji}}
     </view>
     <view wx:if="{{isInput}}" class='commentInputWrapper'>
 	    <view class='cancleArea' bindtap='inputTap'></view>
 	    <view class='inputWrapper'>
 	        <view class='title'>评论</view>
-	        <textarea class='area' cursor-spacing="122" bindinput="bindTextAreaInput" value="{{comment}}" auto-focus placeholder="输入评论内容" />
-	      <view style='text-align: center;'>
-	        <view class='cancle' bindtap='inputTap'>取消</view>
-	        <view class='sure' bindtap='commentSure'>确定</view>
-	      </view>
+	        <textarea 
+	        	class='area' 
+	        	cursor-spacing="122"
+	        	bindinput="bindTextAreaInput" 
+	        	value="{{comment}}" 
+	        	auto-focus 
+        		placeholder="输入评论内容" 
+			/>
+	        <view style='text-align: center;'>
+		        <view class='cancle' bindtap='inputTap'>取消</view>
+		        <view class='sure' bindtap='commentSure'>确定</view>
+	        </view>
 	    </view>
 	</view>
 </view>

@@ -41,8 +41,8 @@ Page({
 
     chooseUser(e){
     	let item = e.currentTarget.dataset.item
-    	wx.navigateTo({
-	        url: `/yc_youliao/page/release/index/index?user_name=${item.nickname}&user_id=${item.shop_id}`
+    	wx.redirectTo({
+	        url: `/yc_youliao/page/release/create/index?user_name=${item.nickname}&user_id=${item.shop_id}`
     	})
     }
 
