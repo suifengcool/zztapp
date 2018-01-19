@@ -3,22 +3,23 @@
 		<view class="head">
 			<image 
 				class="headImg"
-		    	src="{{info.avatar}}" 
+		    	src="{{info.avatar ? info.avatar : '../../../resource/images/user-default.png'}}" 
 	    	/>
 		</view>
 		<view class="name">{{info.nickname}}</view>
 	</view>
-	<view class="title">{{info.content.title}}</view>
+	<view class="title">{{info.content.text || info.content.title}}</view>
 	<view class="imgBox">
 		<view class="img-item-box" wx:for="{{info.content.thumbs}}" wx:key="{{index}}">
 			<image 
-				class="img-item"
-		    	src="{{imagesSocket + item}}" 
+				class="img-item image_pic"
+				mode="aspectFill"
+		    	src="{{item.length <= 50? imagesSocket + item : item}}" 
 	    	/>
 		</view>
 	</view>
 	<view class="num-box">
-		<view class="time">{{createTime}}天前</view>
+		<view class="time">{{createTime}}</view>
 		<view class="scan"><i class="iconfont icon-scan"></i>{{scanNum}}</view>
 		
 		<view class="msg" bindtap="showComment"><i class="iconfont icon-msg-solid2"></i></view>
@@ -54,7 +55,7 @@
     		<view class="comment-img-item" wx:for="{{commentList}}" wx:key="{{index}}">
     			<image 
 					class="img"
-			    	src="{{item.avatar}}" 
+			    	src="{{item.avatar ? item.avatar : '../../../resource/images/user-default.png'}}" 
 		    	/>
     		</view>
     	</view>
@@ -81,7 +82,7 @@
     </view>
 
     <view class="tel-box" bindtap="phonetap">
-    	<i class="iconfont icon-tel-right"></i>{{info.content.shouji}}
+    	<i class="iconfont icon-tel-right"></i>{{info.content.shouji || info.content.telphone}}
     </view>
     <view wx:if="{{isInput}}" class='commentInputWrapper'>
 	    <view class='cancleArea' bindtap='inputTap'></view>

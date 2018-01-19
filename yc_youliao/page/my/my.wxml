@@ -1,7 +1,7 @@
 <!--yc_youliao/my/my.wxml-->
 <view class='my'>
     <view class='top'>
-		<image src='{{avatar}}' class='avatar'></image>
+		<image src="{{avatar ? avatar : '../../resource/images/user-default.png'}}" class='avatar'></image>
 		<view class='name'>{{name}}</view>
     </view>
 

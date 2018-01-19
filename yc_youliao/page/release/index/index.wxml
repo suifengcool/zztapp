@@ -1,7 +1,7 @@
 <view class="container container-release-index">
 	<view class="banner-box">
 		<image
-            class="banner-img"
+            class="banner-img image_pic"
             src="{{imagesSocket+'/'+ 'images/2/2018/01/drMj4Uj4r0pmLL4n9PLM2mPgMJ3mSM.jpg'}}"
             background-size="cover"
         ></image>
@@ -20,7 +20,7 @@
 		<view class="type-item" wx:for="{{moduleList}}" wx:key="{{index}}" data-item="{{item}}" bindtap="goToModule">
 			<view class="type-img">
 				<image
-		            class="type-item-img"
+		            class="type-item-img image_pic"
 		            src="{{imagesSocket + '/' + item.thumb}}"
 		            background-size="cover"
 		        ></image>
@@ -48,7 +48,7 @@
 			>
 				<view class="top">
 					<view class="avatar">
-						<image src="{{item.avatar}}" class="avatar-img"/>
+						<image src="{{item.avatar ? item.avatar : '../../../resource/images/user-default.png' }}" class="avatar-img"/>
 					</view>
 					<view class='topRight'>
 						<text class='txt1'>{{item.nickname}}</text>
@@ -74,6 +74,7 @@
 			    <view class="images clearfix" wx:if="{{imagesSocket && imagesSocket != ''}}">
 					<block wx:if="{{newImg == true}}">
 					    <image 
+					    	class="image_pic"
 					    	bindtap="previewImg" 
 					    	wx:for-item="img" 
 					    	wx:key="unique" 
@@ -84,6 +85,7 @@
 					</block>
 					<block wx:else>
 					    <image 
+					    	class="image_pic"
 					    	bindtap="previewImg" 
 					    	wx:key="unique" 
 					    	wx:for-item="img" 
@@ -106,7 +108,7 @@
 
 			<view class="info">
 			    <view class='module'>
-					<navigator url="/yc_youliao/page/moduleList/moduleList?id={{item.mid}}">
+					<navigator url="/yc_youliao/page/release/list/index?id={{item.mid}}&name={{item.modulename}}">
 					  #{{item.modulename}}
 					</navigator>
 			    </view>

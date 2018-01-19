@@ -16,6 +16,8 @@ page{
 	display: flex;
 	border-bottom: 0.5rpx solid #dedede;
 	position:relative;
+	width:100%;
+	box-sizing:border-box;
 }
 .home-list .home-list-item .pic{
 	width: 140rpx;
@@ -76,7 +78,7 @@ page{
 }
 .btn-box{
 	position: absolute;
-	right: 0;
+	right: 10rpx;
 	top: 0;
 	height: 40rpx;
 	line-height: 40rpx;

@@ -64,7 +64,7 @@
       {
         "pagePath": "yc_youliao/page/release/index/index",
         "iconPath": "yc_youliao/resource/images/tabbarIcon/publish.png",
-        "selectedIconPath": "yc_youliao/resource/images/tabbarIcon/publish_active.png",
+        "selectedIconPath": "yc_youliao/resource/images/tabbarIcon/publish-active.png",
         "text": "发现"
       },
       {

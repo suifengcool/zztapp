@@ -60,7 +60,7 @@
         <view wx:if="{{shopInfo.intro}}" class="shop-instruction">{{shopInfo.intro}}</view>
         <view class="shop-pic-box">
             <view class="shop-pic-item" wx:for="{{shopInfo.qr_code}}" wx:key="{{index}}">
-                <image src="{{item}}" class="pic"/>
+                <image src="{{item}}" class="pic" mode="aspectFill"/>
             </view>
         </view>
     </view>

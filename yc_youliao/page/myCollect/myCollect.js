@@ -53,6 +53,20 @@ Page({
                 item.score_solid_half = arr1;
                 item.score_solid_none = arr2;
             })
+            
+            infoData.map((item,inde)=>{
+                if(item.con.thumbs && item.con.thumbs.length){
+                    let picArr = item.con.thumbs; let arr2 = [];
+                    picArr.forEach((ele,i)=>{
+                        if(ele.indexOf('http')<0){
+                            arr2.push(this.data.imagesSocket + ele)
+                        }else{
+                            arr2.push(ele)
+                        }
+                    })
+                    item.con.thumbs = arr2;
+                }
+            })
 
             this.setData({
                 infoList: infoData,
@@ -69,8 +83,15 @@ Page({
 
     // 图片预览
     previewImg(e) {
+        let arr = e.currentTarget.dataset.src; let arr2 = arr;
+        arr.map((item)=>{
+            if(item.indexOf('http')<0){
+                arr2.length = 0;
+                arr2.push(this.data.imagesSocket + '/' + item)
+            }
+        })
         wx.previewImage({
-            urls: [e.currentTarget.dataset.src]        // 需要预览的图片http链接列表
+            urls: arr2       // 需要预览的图片http链接列表
         })
     },
 

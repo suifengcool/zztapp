@@ -393,14 +393,14 @@ Page({
         }
     	
     	index.submit(form,(data)=>{
-            if(data == 'success'){
+            if(data.message == 'sucess' || data.errno == 0){
                 wx.showToast({
                     title: this.data.shop_id ? '修改成功' : '上传成功',
                     icon: 'success',
-                    duration: 2000,
+                    duration: 3000,
                     complete: function(){
                         wx.removeStorageSync('moveInData')
-                        wx.navigateTo({
+                        wx.switchTab({
                             url: `/yc_youliao/page/index/index`
                         })
                     }

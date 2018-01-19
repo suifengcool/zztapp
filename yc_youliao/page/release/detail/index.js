@@ -54,7 +54,19 @@ Page({
                 this.getLocation({ lat: data.lng, lng: data.lat }) // 后端要求反过来
             }
             let time = this.getFormatDays(data.freshtime)
-            console.log('time:',time)
+
+            if(data.content.thumbs && data.content.thumbs.length){
+                let picArr = data.content.thumbs; let arr2 = [];
+                picArr.map((ele,i)=>{
+                    if(ele.indexOf('http')<0){
+                        arr2.push(this.data.imagesSocket + ele)
+                    }else{
+                        arr2.push(ele)
+                    }
+                })
+                data.content.thumbs = arr2;
+            }
+
             this.setData({
                 info: data,
                 createTime: time
@@ -157,9 +169,9 @@ Page({
 
     // 电话点击
     phonetap() {
-        if (this.data.info.content.shouji) {
+        if (this.data.info.content.shouji || this.data.info.content.telphone){
             wx.makePhoneCall({
-                phoneNumber: this.data.info.content.shouji
+                phoneNumber: this.data.info.content.shouji ? this.data.info.content.shouji : this.data.info.content.telphone
             })
         }
     },
@@ -191,10 +203,26 @@ Page({
 
     getFormatDays(timesamp){
         var timestampNow = Date.parse(new Date()); 
-        var days = (timestampNow-timesamp*1000)/(24*60*60*1000);
+    
+        var num1 = (timestampNow-timesamp*1000)/(24*60*60*1000);
+        var num2 = (timestampNow-timesamp*1000)/(60*60*1000);
+        var num3 = (timestampNow-timesamp*1000)/(60*1000);
 
-        days = Math.floor(days)
-        return days
+        let time = '';
+        if(Math.floor(num1)>=1){
+            time = Math.floor(num1) + '天前'
+        }else{
+            if(Math.floor(num2)>=1){
+                time = Math.floor(num2) + '小时前'
+            }else{
+                if(Math.floor(num3)>=1){
+                    time = Math.floor(num3) + '分钟前'
+                }else{
+                    time = '刚刚'
+                }
+            }
+        }
+        return time;
     },
 
     goHome(){

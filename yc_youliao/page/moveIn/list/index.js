@@ -16,8 +16,11 @@ Page({
                 imagesSocket: data
             })
         });
+        this.getData()
+    },
 
-	    index.getMyShopList((data)=>{
+    getData(){
+        index.getMyShopList((data)=>{
             let arr = [];
             arr = [...this.data.shopList, ...data];
             arr.map((item,index)=>{
@@ -73,11 +76,7 @@ Page({
                         if(res.confirm){
                             index.DelMyShop(id,(data)=>{
                                 if(data === '删除店铺成功!'){
-                                    index.getMyShopList((data)=>{
-                                        _this.setData({
-                                            shopList: data
-                                        })
-                                    })
+                                    _this.getData()
                                 }else{
                                     wx.showModal({
                                         title: '删除失败',
