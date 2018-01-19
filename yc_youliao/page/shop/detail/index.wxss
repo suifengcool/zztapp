@@ -10,17 +10,20 @@ page{
 	width: 100%;
 	background: #fff;
 }
+.swiper-contain{
+	width: 100%;
+	position: relative;
+}
 .swiper {
 	height: 345rpx;
 	width: 100%;
-	position: relative;
 }
 .swiper image {
 	height: 100%;
 	width: 100%;
 }
 .swiper-btn{
-	position:fixed;
+	position:absolute;
 	top: 15rpx;
 	right: 0;
 	width:116rpx;

@@ -58,7 +58,7 @@ Page({
 				})
 	        }
 			
-			data.dp = data.dp > 5 ? 5 : data.dp;
+			data.dp = data.dp > 5 ? '5.0' : data.dp;
 	        let num1 = Math.floor(data.dp);
 	        let	num2 = Math.ceil(data.dp - num1); 
 	        let	num3 = Math.floor(5 - data.dp); 

@@ -1,13 +1,149 @@
-<!--yc_youliao/page/myCollect/myCollect.wxml-->
 <view class='myCollect'>
-  <block wx:if="{{data.length > 0}}">
-    <import src="../../resource/template/indexList.wxml" />
-    <template is="list" data="{{data:data,imagesSocket}}" />
-    <import src="../../resource/template/complete.wxml" />
-    <template is="complete"  wx:if="{{isComplete}}"/>
-  </block>
-  <block wx:if="{{data.length == 0}}">
-    <import src="../../resource/template/emptyData.wxml" />
-    <template is="module" data="{{text:'该板块暂时未有信息'}}" />
-  </block>
+	<view class="tab-box">
+		<view 
+			class="tab-item {{index == tab ? 'active' : ''}}" 
+			wx:for="{{tabList}}" 
+			wx:key="{{index}}"
+			data-tab = "{{index}}"
+			bindtap="changeTab"
+		>{{item.name}}</view>
+	</view>
+
+	<view wx:if="{{tab}}" class="infoList-box">
+		<view class="newItem" wx:for="{{data}}" wx:for-item="item" wx:key="unique" >
+			<navigator 
+				hover-class="none" 
+				url="/yc_youliao/page/release/detail/index?id={{item.id}}&mid={{item.mid}}&status={{item.status}}"
+			>
+				<view class="top">
+					<view class="avatar">
+						<image src="{{item.avatar}}" class="avatar-img"/>
+					</view>
+					<view class='topRight'>
+						<text class='txt1'>{{item.nickname}}</text>
+						<view class='txt2'>
+						<block wx:if="{{item.freshtime !== '0' && item.freshtime != undefined}}">
+							<text>{{item.freshtime}}</text>
+						</block>
+						<block wx:else>
+							<text>{{item.createtime}}</text>
+						</block>
+						<block wx:if="{{item.isding == 1}}">
+							<text class="ding">置顶</text>
+						</block>
+				    </view>
+				</view>
+				<view class='wechat'>
+				 	<image class='img' src="../../resource/images/phone.png" />联系他</view>
+			    </view>
+			    
+		    	<view class="contentTxt">{{item.con.title}}</view>
+			</navigator>
+
+		    <block wx:if="{{item.con.thumbs}}">
+			    <view class="images clearfix" wx:if="{{imagesSocket && imagesSocket != ''}}">
+					<block wx:if="{{newImg == true}}">
+					    <image 
+					    	bindtap="previewImg" 
+					    	wx:for-item="img" 
+					    	wx:key="unique" 
+					    	wx:for="{{item.con.thumbs}}" 
+					    	data-src="{{imagesSocket + img}}" 
+					    	src="{{imagesSocket + img}}" 
+				    	/>
+					</block>
+					<block wx:else>
+					    <image 
+					    	bindtap="previewImg" 
+					    	wx:key="unique" 
+					    	wx:for-item="img" 
+					    	wx:for="{{item.con.thumbs}}" 
+					    	data-src="{{imagesSocket + img}}" 
+					    	src="{{imagesSocket + img}}" 
+				    	/>
+					</block>
+	        	</view>
+			</block>
+			<block wx:if="{{item.city}}">
+			    <view class='address'>
+					<image class="img" src="../../resource/images/location.png" />
+					{{item.city + item.district }}
+					<block wx:if="{{item.distance}}">
+						(距您{{item.distance}}km)
+					</block>
+			    </view>
+			</block>
+
+			<view class="info">
+			    <view class='module'>
+					<navigator url="/yc_youliao/page/moduleList/moduleList?id={{item.mid}}">
+					  #{{item.modulename}}
+					</navigator>
+			    </view>
+			    <view style="float: right;padding-right: 20rpx">
+					<block wx:if="{{item.views}}">
+					    <image class="img" src="../../../resource/images/liulan.png" />
+					    <text style="padding-right: 16rpx">{{item.views}}人浏览</text>
+					</block>
+			    </view>
+			</view>
+	    </view>
+    </view>
+
+    <view wx:if="{{!tab}}" class="shop-box">
+    	<view class="home-list">
+			<view 
+				class="home-list-item" 
+				wx:for="{{data}}" 
+				wx:key="{{index}}" 
+				bindtap="goToShopDetail"
+				data-item="{{item}}"
+			>
+				<view class="pic">
+					<image
+			            class = "img"
+			            src = "{{item.logo}}"
+			            background-size = "cover"
+			        ></image>
+				</view>
+				<view class="desc">
+					<view class="title">
+						<view class="name">{{item.shop_name}}</view>
+					</view>
+					<view class="score-box">
+						<view class="score-list">
+							<view class="score-item" wx:for="{{item.score_solid}}" wx:key="{{index}}">
+	                            <i class="iconfont icon-star2"></i>
+	                        </view>
+	                        <view class="score-item" wx:for="{{item.score_solid_half}}" wx:key="{{index}}">
+	                            <i class="iconfont icon-star1"></i>
+	                        </view>
+	                        <view class="score-item" wx:for="{{item.score_solid_none}}" wx:key="{{index}}">
+	                            <i class="iconfont icon-star0"></i>
+	                        </view>
+						</view>
+						<view class="score-text">{{item.dp}}</view>
+					</view>
+					<view class="tabs">
+						<view class="tab-itam" wx:for="{{item.inco}}" wx:key="{{index}}" wx:for-item="i">{{i}}</view>
+					</view>
+				</view>
+				<view class="btn-box" catchtap = 'onCollectTap' data-item = '{{item}}'>
+					<view class="edit">取消收藏</view>
+				</view>
+			</view>
+		</view>
+    </view>
+
+    <view wx:if="{{none}}" class="noStatus">
+    	<view class="pic-box">
+    		<image
+	            class = "pic"
+	            src = "../../resource/images/nostatus1.png"
+	            background-size = "cover"
+	        ></image>
+    	</view>
+    	<view class="text">暂无收藏</view>
+    	<view wx:if="{{!tab}}" class="text">快去收集你喜爱的店铺吧~</view>
+    </view>
 </view>

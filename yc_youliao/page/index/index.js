@@ -194,7 +194,7 @@ Page({
 					item.logo = this.data.imagesSocket + '/' + item.logo
 	        	}
 				
-				item.dp = item.dp > 5 ? 5 : item.dp;
+				item.dp = item.dp > 5 ? '5.0' : item.dp;
 	        	let num1 = Math.floor(item.dp);
 		        let	num2 = Math.ceil(item.dp - num1); 
 		        let	num3 = Math.floor(5 - item.dp); 

@@ -63,14 +63,14 @@
       },
       {
         "pagePath": "yc_youliao/page/release/index/index",
-        "iconPath": "yc_youliao/resource/images/tabbarIcon/compass.png",
-        "selectedIconPath": "yc_youliao/resource/images/tabbarIcon/compass_active.png",
+        "iconPath": "yc_youliao/resource/images/tabbarIcon/publish.png",
+        "selectedIconPath": "yc_youliao/resource/images/tabbarIcon/publish_active.png",
         "text": "发现"
       },
       {
         "pagePath": "yc_youliao/page/my/my",
-        "iconPath": "yc_youliao/resource/images/tabbarIcon/my.png",
-        "selectedIconPath": "yc_youliao/resource/images/tabbarIcon/my_active.png",
+        "iconPath": "yc_youliao/resource/images/tabbarIcon/head.png",
+        "selectedIconPath": "yc_youliao/resource/images/tabbarIcon/head_active.png",
         "text": "我的"
       }
     ]

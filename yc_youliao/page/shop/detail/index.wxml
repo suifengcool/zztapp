@@ -1,14 +1,16 @@
 <view class="container-shop">
-	<swiper class="swiper" indicator-dots="true" autoplay="true" interval="3000" duration="1000">    
-        <block wx:for="{{shopInfo.qr_code}}" wx:key="unique">    
-	        <swiper-item>    
-	            <image src="{{item}}" class="slide-image" mode="aspectFill"/>  
-	        </swiper-item>    
-        </block> 
+    <view class="swiper-contain">
+    	<swiper class="swiper" indicator-dots="true" autoplay="true" interval="3000" duration="1000">    
+            <block wx:for="{{shopInfo.qr_code}}" wx:key="unique">    
+    	        <swiper-item>    
+    	            <image src="{{item}}" class="slide-image" mode="aspectFill"/>  
+    	        </swiper-item>    
+            </block> 
+        </swiper>
         <view class="swiper-btn">
             {{shopInfo.qr_code.length}}张图
         </view>
-    </swiper>
+    </view>
     
     <view class="shop-title-box bg_white">
         <view class="title">{{shopInfo.shop_name}}</view>
