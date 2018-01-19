@@ -81,13 +81,22 @@ Page({
             tab: tab,
             data : tab ? this.data.infoList : this.data.shopList
         })
+        this.setData({
+            none: this.data.data.length ? false : true
+        })
     },
 
     // 收藏(取消收藏)按钮
     onCollectTap(e) {
         let _this = this;
-        let id = e.currentTarget.dataset.item.shop_id
-        myCollect.collect(id,(res) => {
+        let type = e.currentTarget.dataset.item.type;
+        let id = !type ? e.currentTarget.dataset.item.shop_id : e.currentTarget.dataset.item.message_id;
+        let form = {
+            id: id,
+            type: type
+        }
+        console.log('form:',form)
+        myCollect.collect(form,(res) => {
             if(!res.data.errno){
                 wx.showToast({
                     title:'取消收藏成功',
@@ -95,13 +104,28 @@ Page({
                     image: '../../resource/images/smile.png',
                     duration: 2000,
                     complete: function(){
-                        const arr = _this.data.shopList.filter((item)=>{
-                            return item.shop_id != id
-                        });
-                        _this.setData({
-                            data: arr,
-                            shopList: arr
-                        })
+                        let arr = [];
+                        if(type){
+                            arr = _this.data.infoList.filter((item)=>{
+                                return item.message_id != id
+                            });
+                            _this.setData({
+                                data: arr,
+                                infoList: arr,
+                                none: !arr.length ? true : false
+
+                            })
+                        }else{
+                            arr = _this.data.shopList.filter((item)=>{
+                                return item.shop_id != id
+                            });
+                            _this.setData({
+                                data: arr,
+                                shopList: arr,
+                                none: !arr.length ? true : false
+
+                            })
+                        }
                     }
                 })
             }else{

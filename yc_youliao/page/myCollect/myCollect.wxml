@@ -33,10 +33,11 @@
 						</block>
 				    </view>
 				</view>
-				<view class='wechat'>
-				 	<image class='img' src="../../resource/images/phone.png" />联系他</view>
-			    </view>
-			    
+				<view class="btn-box" catchtap = 'onCollectTap' data-item = '{{item}}' data-type='1'>
+					<view class="edit">取消收藏</view>
+				</view>
+		    </view>
+
 		    	<view class="contentTxt">{{item.con.title}}</view>
 			</navigator>
 

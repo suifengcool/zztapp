@@ -32,11 +32,18 @@ class MyCollect extends Base {
     }
 
     // 收藏
-    collect(id,callback) {
+    collect(form,callback) {
         this.getSeid((seid) => {
+            let data = {};
+            data.seid = seid;
+            if(form.type){
+                data.message_id = form.id;
+            }else{
+                data.shop_id = form.id
+            }
           var param = {
             url: 'entry/wxapp/ProCollect',
-            data: { seid, shop_id: id },
+            data: data,
             sCallback: (res) => {
               callback && callback(res)
             }
