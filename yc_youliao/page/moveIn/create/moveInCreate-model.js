@@ -90,9 +90,7 @@ class Create extends Base {
 			data['imgUrl'] = form.imgUrl.join(',')
 		}
 		if(form.inco && form.inco.length){
-			form.inco.forEach((item,index)=>{
-				data['inco'+'[]'] = item
-			})
+			data['inco'] = form.inco.join(',')
 		}
 		if(form.shop_id){
 			data.shop_id = form.shop_id
