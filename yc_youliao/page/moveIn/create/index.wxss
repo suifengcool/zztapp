@@ -7,14 +7,31 @@ page{
 }
 .containner-movein-create{
 	width: 100%;
-	font-size: 24rpx;
+	font-size: 26rpx;
 }
 .header{
 	color: #fff;
 	text-align: center;
 	background: #FFA500;
-	padding:42rpx 0;
-	line-height:41rpx;
+	position: relative;
+	height:250rpx;
+}
+.banner-img{
+	width: 100%;
+	height: 250rpx;
+}
+.header .title , .header .info{
+	position: absolute;
+	left: 50%;
+	width:100%;
+	font-size: 28rpx;
+	transform: translateX(-50%);
+}
+.header .title{
+	top: 30%;
+}
+.header .info{
+	top: 50%;
 }
 .logo-box{
 	display: flex;
@@ -22,8 +39,8 @@ page{
 	margin-bottom: 15rpx;
 }
 .logo-box .pic{
-	width: 120rpx;
-	height: 120rpx;
+	width: 130rpx;
+	height: 130rpx;
 	background: #dedede;
 	margin: 20rpx 30rpx 0 20rpx;
 }
@@ -37,7 +54,7 @@ page{
 	width:68rpx;
 	height:50rpx;
 	margin:30rpx auto 0;
-	color:#979797;
+	color:#777;
 }
 .logo-box-right{
 	flex: 1;
@@ -86,12 +103,20 @@ page{
 .identify, .time-box, .classify{
 	height: 80rpx;
 }
+.desc-box{
+	position: relative;
+}
 .desc-box, .shop{
-	margin-top: 20rpx;
+	margin-top: 15rpx;
 }
 .desc-box textarea{
-	margin-top: 27rpx;
 	height: 220rpx;
+}
+.placeholder{
+	position: absolute;
+	left:167rpx;
+	top:-1rpx;
+	color:#777;
 }
 .shop{
 	padding:10rpx 0 10rpx 20rpx;
@@ -104,12 +129,17 @@ page{
 	padding-top: 20rpx;
 	padding-bottom: 20rpx;
 }
+.adress-box .title{
+	font-size: 28rpx;
+}
 .time-box input{
 	height: 100%;
-	width: 73%;
+	width:100%;
+	padding-left:25rpx;
+	box-sizing:border-box;
 }
 .msg{
-	font-size: 22rpx;
+	font-size: 25rpx;
 	color: #979797;
 	margin: 15rpx 0;
 }
@@ -123,8 +153,8 @@ page{
 	margin:0 auto;
 }
 .btn-left, .btn-right{
-	height: 55rpx;
-	line-height: 55rpx;
+	height: 45rpx;
+	line-height: 45rpx;
 	width: 130rpx;
 	text-align: center;
 	border-radius: 10rpx;
@@ -139,7 +169,7 @@ page{
 .label{
 	width: 150rpx;
 	height: 100%;
-	font-size: 25rpx;
+	font-size: 28rpx;
 }
 .identify{
 	margin-bottom: 20rpx;
@@ -149,7 +179,7 @@ page{
 	flex: 1;
 }
 .shop-pic{
-	margin: 20rpx 0;
+	margin: 15rpx 0;
 	padding-bottom: 20rpx;
 }
 .shop-pic .text{
@@ -168,7 +198,7 @@ page{
 }
 .plus .iconfont{
 	color: #979797;
-	font-size: 65rpx;
+	font-size: 80rpx;
 }
 .pic-upload{
 	flex: 1;
@@ -192,6 +222,9 @@ page{
 .classify{
 	color: #979797;
 	position: relative;
+}
+.classify .text{
+	margin-left: -2rpx;
 }
 .classify .iconfont{
 	position: absolute;
@@ -221,4 +254,7 @@ page{
 }
 .caution i{
 	color: #000080;
+}
+.textarea-placeholder{
+	margin-top: 27rpx;
 }

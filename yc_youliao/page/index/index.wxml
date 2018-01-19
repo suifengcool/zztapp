@@ -103,6 +103,7 @@
 	    				<image 
                             src="{{item.logo ? item.logo : '../../resource/images/zzt_logo2.png'}}" 
                             class='pic-avatar image_pic'
+                            mode="aspectFill"
                         ></image>
 	    			</view>
 	    			<view class="desc">

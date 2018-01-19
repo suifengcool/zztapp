@@ -36,7 +36,8 @@ Page({
 	    imgUrl: [],
         imgs:[],
         logoImg: '',
-        shop_id: ''
+        shop_id: '',
+        textareaEmpty: true
 
     },
 
@@ -292,6 +293,19 @@ Page({
         this.setData({
             'form.intro': e.detail.value
         })
+    },
+
+    bindTextinput(e){
+        console.log('e:',e.detail.value)
+        if(e.detail.value.length){
+            this.setData({
+                textareaEmpty: false
+            })
+        }else{
+            this.setData({
+                textareaEmpty: true
+            })
+        }
     },
 
     // 营业时间

@@ -1,7 +1,13 @@
 <view class="containner-movein-create">
 	<view class="header">
-		<view>填写门店信息</view>
-		<view>免费入驻镇镇通平台微信小程序</view>
+		<image
+            class="banner-img image_pic"
+            src="{{'../../../resource/images/bg-income.png'}}"
+            background-size="cover"
+            mode="aspectFill"
+        ></image>
+		<view class="title">填写门店信息</view>
+		<view class="info">免费入驻镇镇通平台微信小程序</view>
 	</view>
 	<view class="logo-box">	
 		<view wx:if="{{!logoImg}}" class="pic" bindtap="imgUpload" data-type="add">
@@ -16,7 +22,7 @@
 		</view>
 		<view class="logo-box-right">
 			<view class="item item-shop-name">
-				<input type="text" placeholder="请输入门店名称" bindinput="listenerShopNameInput" value="{{form.shop_name}}"/>
+				<input type="text" placeholder="请输入门店名称(最多20字)" bindinput="listenerShopNameInput" value="{{form.shop_name}}"/>
 			</view>
 			<view class="item">
 				<input type="number" placeholder="请输入手机号码" bindinput="listenerPhoneInput" value="{{form.telphone}}"/>
@@ -69,7 +75,8 @@
 	</view>
 	<view class="desc-box">
 		<view class="label">门店简介</view>
-		<textarea placeholder-style="font-size:24rpx" placeholder="请输入门店简介" name="textarea" value="{{form.intro}}" bindblur="bindShopDescBlur"/>
+		<textarea name="textarea" value="{{form.intro}}" bindblur="bindShopDescBlur" bindinput="bindTextinput"/>
+		<view wx:if="{{textareaEmpty}}" class="placeholder">请输入门店简介</view>
 	</view>
 	<view class="shop-pic">
 		<view class="label">门店图片</view>
