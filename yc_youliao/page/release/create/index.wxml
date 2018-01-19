@@ -1,5 +1,5 @@
 <view class="container-release">
-	<textarea placeholder-style="font-size:26rpx" placeholder="要发布的内容" name="textarea" class="textarea bg" value="{{form.intro}}" bindblur="bindShopDescBlur"/>
+	<textarea placeholder-style="font-size:28rpx" placeholder="要发布的内容" name="textarea" class="textarea bg" value="{{form.intro}}" bindblur="bindShopDescBlur"/>
 	<view class="pic-upload-area bg">
 		<view class="pic" wx:for="{{imgs}}" wx:key="{{item}}" >
 			<block wx:if="{{imgs !== undefined}}">

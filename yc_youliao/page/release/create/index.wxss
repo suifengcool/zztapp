@@ -14,7 +14,7 @@ page{
 .container-release{
 	width: 100%;
 	color: #000;
-	font-size: 26rpx;
+	font-size: 28rpx;
 }
 .textarea{
 	width: 100%;
@@ -22,7 +22,7 @@ page{
 	box-sizing: border-box;
 }
 .pic-upload-area{
-	margin: 20rpx 0;
+	margin: 15rpx 0;
 	display: flex;
 	flex-wrap: wrap;
 	width: 100%;
@@ -105,10 +105,11 @@ page{
 	transform: translateX(-50%);
 	width: 94%;
 	background: #dedede;
-	height: 90rpx;
-	line-height: 90rpx;
+	height: 80rpx;
+	line-height: 80rpx;
 	text-align: center;
 	font-size: 30rpx;
 	color: #fff;
 	border-radius: 15rpx;
+	margin: 10rpx 0;
 }

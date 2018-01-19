@@ -57,9 +57,7 @@ class Index extends Base {
 		data.district = form.district
 		data.text = form.intro
 		if(form.imgUrl && form.imgUrl.length){
-			form.imgUrl.forEach((item,index)=>{
-				data['thumbs'+'[]'] = item
-			})
+			data['thumbs'] = form.imgUrl.join(',')
 		}
 		this.store({ type: 'GET_SEID' }, (seid) => {
             data.seid = seid

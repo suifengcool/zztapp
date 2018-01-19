@@ -346,58 +346,74 @@ Page({
     moveInHandle(){
     	if(!this.data.form.logo){
             wx.showToast({
-              title: '请上传门店Logo',
-              icon: 'success',
-              image: '../../../resource/images/成功.png',
-              duration: 2000,
-              mask: true
+                title: '请上传门店Logo',
+                image: '../../../resource/images/warn.png',
+                duration: 2000,
+                mask: true
             })
-			// this.setData({
-			// 	hiddenToast: false,
-			// 	toastText: '请上传门店Logo'
-			// })
 			return
     	}
     	if(!this.data.form.shop_name || !this.data.form.shop_name.trim()){
-			this.setData({
-				hiddenToast: false,
-				toastText: '请填写门店名称'
-			})
+            wx.showToast({
+                title: '请填写门店名称',
+                image: '../../../resource/images/warn.png',
+                duration: 2000,
+                mask: true
+            })
 			return
     	}
     	if(!this.data.form.telphone){
-			this.setData({
-				hiddenToast: false,
-				toastText: '请填写门店电话'
-			})
+            wx.showToast({
+                title: '请填写门店电话',
+                image: '../../../resource/images/warn.png',
+                duration: 2000,
+                mask: true
+            })
 			return
     	}
+        if(this.data.form.telphone && !(/^1[3|5][0-9]\d{4,8}$/.test(this.data.form.telphone))){
+            wx.showToast({
+                title: '请填写正确的手机号码',
+                image: '../../../resource/images/warn.png',
+                duration: 2000,
+                mask: true
+            })
+            return
+        }
     	if(!this.data.form.address){
-			this.setData({
-				hiddenToast: false,
-				toastText: '请选择门店位置'
-			})
+            wx.showToast({
+                title: '请选择门店位置',
+                image: '../../../resource/images/warn.png',
+                duration: 2000,
+                mask: true
+            })
 			return
     	}
     	if(!this.data.form.intro || !this.data.form.intro.trim()){
-    		this.setData({
-				hiddenToast: false,
-				toastText: '请填写门店简介'
-			})
+            wx.showToast({
+                title: '请填写门店简介',
+                image: '../../../resource/images/warn.png',
+                duration: 2000,
+                mask: true
+            })
 			return
     	}
     	if(!this.data.imgs.length){
-    		this.setData({
-				hiddenToast: false,
-				toastText: '请上传门店照片'
-			})
+            wx.showToast({
+                title: '请上传门店照片',
+                image: '../../../resource/images/warn.png',
+                duration: 2000,
+                mask: true
+            })
 			return
     	}
     	if(!this.data.form.cate_name){
-    		this.setData({
-				hiddenToast: false,
-				toastText: '请选择入驻类型'
-			})
+            wx.showToast({
+                title: '请选择入驻类型',
+                image: '../../../resource/images/warn.png',
+                duration: 2000,
+                mask: true
+            })
 			return
     	}
 

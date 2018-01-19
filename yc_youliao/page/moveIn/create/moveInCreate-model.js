@@ -87,9 +87,7 @@ class Create extends Base {
 		let data = {}
 		console.log('form:',form)
 		if(form.imgUrl && form.imgUrl.length){
-			form.imgUrl.forEach((item,index)=>{
-				data['imgUrl'+'[]'] = item
-			})
+			data['imgUrl'] = form.imgUrl.join(',')
 		}
 		if(form.inco && form.inco.length){
 			form.inco.forEach((item,index)=>{

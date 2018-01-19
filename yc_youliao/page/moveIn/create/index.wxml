@@ -106,7 +106,10 @@
 	<view class="caution">
 		我已阅读并同意<i>《平台用户服务协议》</i>
 	</view>
-	<view wx:if="{{shop_id}}" class="footer-btn" bindtap="moveInHandle">确认修改</view>
-	<view wx:else class="footer-btn" bindtap="moveInHandle">马上入驻</view>
+	<view class="footer-btn-box">
+		<view wx:if="{{shop_id}}" class="footer-btn" bindtap="moveInHandle">确认修改</view>
+		<view wx:else class="footer-btn" bindtap="moveInHandle">马上入驻</view>
+	</view>
+	
 	<toast hidden="{{hiddenToast}}" duration="2000" bindchange="toastHidden" >{{toastText}}</toast>
 </view>
