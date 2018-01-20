@@ -9,6 +9,7 @@ page{
 	box-sizing:border-box;
 	width: 100%;
 	background: #fff;
+	padding-bottom: 100rpx;
 }
 .swiper-contain{
 	width: 100%;
@@ -177,9 +178,15 @@ page{
 	border-bottom: 0.5rpx solid #dedede;
 }
 .shop-desc .iconfont{
-	font-size:25rpx;
+	font-size:29rpx;
 	margin-right:5rpx;
 	color:#979797;
+}
+.shop-desc .icon-alipay{
+	font-size:38rpx;
+	margin-left:-6rpx;
+	margin-right:-2rpx;
+	vertical-align:-5%;
 }
 .shop-instruction{
 	padding: 20rpx 0;
@@ -187,6 +194,15 @@ page{
 }
 .shop-pic-box{
 
+}
+.iconList{
+	display: flex;
+	width: 100%;
+	height:80rpx;
+	line-height:80rpx;
+}
+.shop-desc-item{
+	margin-right:30rpx;
 }
 .shop-pic-item{
 	margin-bottom: 5rpx;
@@ -205,6 +221,8 @@ page{
 	text-align: center;
 	font-size: 28rpx;
 	border-top: 0.5rpx solid #dedede;
+	background:#fff;
+	z-index:100;
 }
 .footer-box .iconfont{
 	font-size: 30rpx;

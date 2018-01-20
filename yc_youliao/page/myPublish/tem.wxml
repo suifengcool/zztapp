@@ -3,7 +3,7 @@
     <navigator hover-class="none" url="/yc_youliao/page/detail/detail?id={{item.id}}&mid={{item.mid}}&status={{item.status}}">
       <view class='itemTitle'>
         <text class='flag'>[{{item.modulename}}]</text>
-        <text class='txt'>{{item.con.title}}</text>
+        <text class='txt'>{{item.con.title ? item.con.title : item.con.text}}</text>
       </view>
       <view class='timeWrapper'>添加时间:
         <block wx:if="{{item.freshtime !== '0' && item.freshtime != undefined}}">

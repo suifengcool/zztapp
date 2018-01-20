@@ -1,6 +1,8 @@
 // yc_youliao/myPublish/myPublish.js
 import { MyPublish } from 'myPublish-model.js'
+import { Index } from '../index/index-model.js'
 var myPublish = new MyPublish()
+var index = new Index()
 const LENGTH = 10
 Page({
 
@@ -58,6 +60,9 @@ Page({
                 [name + '.data']: [...this.data[name].data.slice(0, index), ...this.data[name].data.slice(index + 1)]
               })
             }
+          })
+          index.getIndexData((data)=>{
+            console.log('重置index数据')
           })
         } else if (res.cancel) {
           console.log('用户点击取消')

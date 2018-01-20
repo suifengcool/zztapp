@@ -4,11 +4,11 @@
 
 @font-face {
   font-family: 'iconfont';  /* project id 530216 */
-  src: url('//at.alicdn.com/t/font_530216_wqeajbgfo2giizfr.eot');
-  src: url('//at.alicdn.com/t/font_530216_wqeajbgfo2giizfr.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_530216_wqeajbgfo2giizfr.woff') format('woff'),
-  url('//at.alicdn.com/t/font_530216_wqeajbgfo2giizfr.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_530216_wqeajbgfo2giizfr.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_530216_dzgm4f69ywpfd2t9.eot');
+  src: url('//at.alicdn.com/t/font_530216_dzgm4f69ywpfd2t9.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_530216_dzgm4f69ywpfd2t9.woff') format('woff'),
+  url('//at.alicdn.com/t/font_530216_dzgm4f69ywpfd2t9.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_530216_dzgm4f69ywpfd2t9.svg#iconfont') format('svg');
 }
 .iconfont {
   font-family:"iconfont" !important;
@@ -48,6 +48,8 @@
 
 .icon-alipay:before{content: '\e65c';}
 .icon-weixinpay:before{content: '\e6f4';}
+.icon-wifi:before{content: '\e63e';}
+.icon-stop:before{content: '\e67f';}
 
 .icon-edit:before{content: '\e60b';}
 

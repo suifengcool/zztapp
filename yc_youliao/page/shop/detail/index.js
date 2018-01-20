@@ -19,6 +19,8 @@ Page({
 		score_solid: [],
 		score_solid_half: [],
 		score_solid_none: [],
+		// icon-weixinpay
+		icon: ''
     },
 
     onLoad: function (options) {
@@ -76,6 +78,26 @@ Page({
 	        }
 	        for(let i=0;i<num3;i++){
 				arr2.push('solid_star')
+	        }
+
+	        if(obj.inco && obj.inco.length){
+	        	let arr = [], icon = '';
+	        	obj.inco.forEach((item,index)=>{
+	        		if(item == 'WIFI'){
+						icon = 'icon-wifi'
+	        		}else if(item == '支付宝支付'){
+						icon = 'icon-alipay'
+	        		}else if(item == '停车位'){
+						icon = 'icon-stop'
+	        		}else if(item == '微信支付'){
+						icon = 'icon-weixinpay'
+	        		}
+	        		arr.push({
+	        			icon: icon,
+	        			text: item
+	        		})
+	        	})
+	        	obj.icon = arr
 	        }
 	        this.setData({
 	        	shopInfo: obj,

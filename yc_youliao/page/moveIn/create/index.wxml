@@ -76,7 +76,7 @@
 	<view class="desc-box">
 		<view class="label">门店简介</view>
 		<textarea name="textarea" value="{{form.intro}}" bindblur="bindShopDescBlur" bindinput="bindTextinput"/>
-		<view wx:if="{{textareaEmpty}}" class="placeholder">请输入门店简介</view>
+		<view wx:if="{{textareaEmpty && !form.intro || !form.intro.length}}" class="placeholder">请输入门店简介</view>
 	</view>
 	<view class="shop-pic">
 		<view class="label">门店图片</view>

@@ -54,7 +54,11 @@
     </view>
     <view wx:if="{{!tab}}" class="shop-content bg_white">
         <view class="shop-desc">
-            <view wx:if="{{shopInfo.inco && shopInfo.inco.length}}" class="shop-desc-item"><i class="iconfont icon-weixinpay"></i>微信支付</view>
+            <view class="iconList">
+                <view wx:if="{{shopInfo.inco && shopInfo.inco.length}}" class="shop-desc-item" wx:for="{{shopInfo.icon}}" wx:key="{{index}}">
+                    <i class="iconfont {{item.icon}}"></i>{{item.text}}
+                </view>
+            </view>
             <view wx:if="{{shopInfo.opendtime}}" class="shop-desc-item">营业时间：{{shopInfo.opendtime}}</view>
         </view>
         <view wx:if="{{shopInfo.intro}}" class="shop-instruction">{{shopInfo.intro}}</view>
@@ -151,8 +155,8 @@
     <navigator url="../../moveIn/create/index" class="goToMoveIn bg_white">我是商家，我要入驻</navigator>
 
 
-    <view wx:if="{{data.myself}}" class="footer-box">
-        <navigator url="../../moveIn/create/index" class="edit-btn">
+    <view wx:if="{{shopInfo.myself}}" class="footer-box">
+        <navigator url="../../moveIn/create/index?id={{shopInfo.shop_id}}" class="edit-btn">
             <i class="iconfont icon-edit"></i>编辑店铺
         </navigator>
         <!--
