@@ -173,6 +173,10 @@ page{
 .newItem{
     background-color: #fff;
 }
+.newItem .images .img{
+	padding-right: 12rpx;
+	padding-bottom: 10rpx;
+}
 .avatar-img{
 	width: 100%;
 	height: 100%;

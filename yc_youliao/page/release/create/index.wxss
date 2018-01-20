@@ -15,6 +15,7 @@ page{
 	width: 100%;
 	color: #000;
 	font-size: 28rpx;
+	padding-bottom: 110rpx;
 }
 .textarea{
 	width: 100%;

@@ -47,21 +47,26 @@ Page({
 
         // 加载商户信息
 	    shopStore.getData(id,(data) => {
-	        if(data && data.qr_code && data.qr_code.length){
-	        	if(data.qr_code.length>5){
-	        		data.qr_code = data.qr_code.slice(0,5)
-	        	}
-		        data.qr_code.map((item,index)=>{
+	    	let obj = data;
+	    	obj.bannerImg = [];
+	        if(obj && obj.qr_code && obj.qr_code.length){
+	        	obj.qr_code.map((item,index)=>{
 		        	if(item.indexOf('http') < 0 ){
 						item = this.data.imagesSocket + '/' + item
 		        	}
 				})
+	        	if(obj.qr_code.length>5){
+	        		obj.bannerImg = obj.qr_code.slice(0,5)
+	        	}else{
+	        		obj.bannerImg = obj.qr_code
+	        	}
+		        
 	        }
 			
-			data.dp = data.dp > 5 ? '5.0' : data.dp;
-	        let num1 = Math.floor(data.dp);
-	        let	num2 = Math.ceil(data.dp - num1); 
-	        let	num3 = Math.floor(5 - data.dp); 
+			obj.dp = obj.dp > 5 ? '5.0' : obj.dp;
+	        let num1 = Math.floor(obj.dp);
+	        let	num2 = Math.ceil(obj.dp - num1); 
+	        let	num3 = Math.floor(5 - obj.dp); 
 	        let	arr = [], arr1 = [], arr2 = []
 	        for(let i=0;i<num1;i++){
 				arr.push('solid_star')
@@ -73,7 +78,7 @@ Page({
 				arr2.push('solid_star')
 	        }
 	        this.setData({
-	        	shopInfo: data,
+	        	shopInfo: obj,
 	        	tabList: [{
 					name: '主页',
 					tab: 0
@@ -86,9 +91,9 @@ Page({
 				score_solid_none: arr2,
 	        })
 	        if (data.intro) {
-	        	let des = data.intro
+	        	let des = obj.intro
 		        this.setData({
-		            des: html2json(data.intro)
+		            des: html2json(obj.intro)
 		        })	
 	        }
 	    })
@@ -98,19 +103,24 @@ Page({
     	let tab = e.currentTarget.dataset.tab
     	let id = this.data.shop_id
     	let type = this.data.shopInfo.infoNum
-
-    	type && tab && shopStore.getPublishData(id,(data) => {
-    		data.map((item)=>{
-    			if(item.freshtime){
-	    			item.freshtime = handleTime(item).freshtime;
-	    		}
-    		})
-    		
-			this.setData({
-				tab: tab,
-				msgList: data
+    	if(!tab){
+    		this.setData({
+				tab: tab
 			})
-		})
+    	}else{
+    		type && shopStore.getPublishData(id,(data) => {
+	    		data.map((item)=>{
+	    			if(item.freshtime){
+		    			item.freshtime = handleTime(item).freshtime;
+		    		}
+	    		})
+	    		
+				this.setData({
+					tab: tab,
+					msgList: data
+				})
+			})
+    	}
     },
 
     // 电话拨打

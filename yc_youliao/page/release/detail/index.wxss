@@ -44,7 +44,7 @@ page{
 .img-item{
 	width: 100%;
 	min-height: 200rpx;
-	margin-bottom: 15rpx;
+	margin-bottom: 5rpx;
 }
 .num-box{
 	display: flex;

@@ -66,7 +66,7 @@ class Index extends Base {
 			    type: 'post',
 			    data,
 			    sCallback: (res) => {
-					cb && cb(res.data.message)
+					cb && cb(res.data)
 			    }
 			}
 			this.request(param)

@@ -283,14 +283,15 @@ Page({
         }
         let form = this.data.form
         index.submit(form,(data)=>{
-            if(data == 'sucess'){
+            console.log('data:',data)
+            if(data.message == 'sucess' || data.errno == 0){
                 wx.showToast({
                     title: '添加成功',
                     icon: 'success',
                     image: '../../../resource/images/成功.png',
                     duration: 2000,
                     mask: true,
-                    compelte: function(){
+                    complete: function(){
                         wx.removeStorageSync('release')
                         wx.switchTab({
                             url: `/yc_youliao/page/release/index/index`

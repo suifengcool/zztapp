@@ -17,7 +17,7 @@
 			>
 				<view class="top">
 					<view class="avatar">
-						<image src="{{item.avatar ? item.avatar : '../../resource/images/user-default.png'}}" class="avatar-img"/>
+						<image src="{{item.avatar ? item.avatar : '../../resource/images/user-default.png'}}" class="avatar-img" mode="aspectFill"/>
 					</view>
 					<view class='topRight'>
 						<text class='txt1'>{{item.nickname}}</text>
@@ -51,6 +51,8 @@
 					    	wx:for="{{item.con.thumbs}}" 
 					    	data-src="{{item.con.thumbs}}" 
 					    	src="{{img}}" 
+					    	mode="aspectFill"
+					    	class="img"
 				    	/>
 					</block>
 					<block wx:else>
@@ -61,6 +63,8 @@
 					    	wx:for="{{item.con.thumbs}}" 
 					    	data-src="{{item.con.thumbs}}" 
 					    	src="{{img}}" 
+					    	mode="aspectFill"
+					    	class="img"
 				    	/>
 					</block>
 	        	</view>

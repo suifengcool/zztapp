@@ -4,6 +4,7 @@
             class="banner-img image_pic"
             src="{{imagesSocket+'/'+ 'images/2/2018/01/drMj4Uj4r0pmLL4n9PLM2mPgMJ3mSM.jpg'}}"
             background-size="cover"
+            mode="aspectFill"
         ></image>
         <view class="search" bindtap="goToSearch">
         	<i class="iconfont icon-search2"></i>搜索信息
@@ -23,6 +24,7 @@
 		            class="type-item-img image_pic"
 		            src="{{imagesSocket + '/' + item.thumb}}"
 		            background-size="cover"
+		            mode="aspectFill"
 		        ></image>
 			</view>
 			<view class="type-text">{{item.name}}</view>
@@ -48,7 +50,8 @@
 			>
 				<view class="top">
 					<view class="avatar">
-						<image src="{{item.avatar ? item.avatar : '../../../resource/images/user-default.png' }}" class="avatar-img"/>
+						<image src="{{item.avatar ? item.avatar : '../../../resource/images/user-default.png' }}" class="avatar-img"
+						mode="aspectFill"/>
 					</view>
 					<view class='topRight'>
 						<text class='txt1'>{{item.nickname}}</text>
@@ -81,6 +84,8 @@
 					    	wx:for="{{item.con.thumbs}}" 
 					    	data-src="{{img}}" 
 					    	src="{{img}}" 
+					    	mode="aspectFill"
+					    	class="img"
 				    	/>
 					</block>
 					<block wx:else>
@@ -92,6 +97,8 @@
 					    	wx:for="{{item.con.thumbs}}" 
 					    	data-src="{{img}}" 
 					    	src="{{img}}" 
+					    	mode="aspectFill"
+					    	class="img"
 				    	/>
 					</block>
 	        	</view>
