@@ -172,7 +172,7 @@
         </navigator>
     </view>
     <view wx:if="{{!shopInfo.myself}}" class="footer-box">
-        <navigator url="../../moveIn/create/index?id={{shopInfo.shop_id}}" class="edit-btn">
+        <navigator url="../comment/index?id={{shopInfo.shop_id}}" class="edit-btn">
             <i class="iconfont icon-edit"></i>发表评论
         </navigator>
         <view class="coupon-btn">
