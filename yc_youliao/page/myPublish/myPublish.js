@@ -10,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    type: 0,
+    type: 1,
     render0: {
       isComplete: false,
       page: 1,
@@ -33,6 +33,16 @@ Page({
    */
   onLoad: function (options) {
     this.getData()
+  },
+  // tab切换
+  changeTab(e){
+    let type = e.currentTarget.dataset.type
+    this.setData({
+      type,
+    })
+    if (this.data['render' + type].page == 1) {
+      this.getData()
+    }
   },
   // 切换类型
   onTitleTap(e) {

@@ -37,9 +37,9 @@ class MyCollect extends Base {
             let data = {};
             data.seid = seid;
             if(form.type){
-                data.message_id = form.id;
+                data.shop_id= form.id;
             }else{
-                data.shop_id = form.id
+                data.message_id = form.id
             }
           var param = {
             url: 'entry/wxapp/ProCollect',
@@ -63,7 +63,5 @@ class MyCollect extends Base {
         }
     }
 }
-
-
 
 export { MyCollect }

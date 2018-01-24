@@ -130,5 +130,5 @@
 	</view>
 	<view wx:if="{{!dataList.length}}" class="none">暂无信息</view>
 
-	<navigator url="../create/index" class="create"><i class="iconfont icon-plus-circle-bg"></i></navigator>
+	<!--<navigator url="../create/index" class="create"><i class="iconfont icon-plus-circle-bg"></i></navigator>-->
 </view>

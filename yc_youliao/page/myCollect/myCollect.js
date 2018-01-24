@@ -6,17 +6,17 @@ Page({
     data: {
         data: [],
         none: false,
+        tab: 0,
+        infoList: [],
+        shopList: [],
+        text: '暂无收藏，快去收集你喜爱的店铺吧~',
         tabList: [{
             name: '店铺',
             tab: 0
         },{
             name: '信息',
             tab:1
-        }],
-        tab: 0,
-        infoList: [],
-        shopList: [],
-        text: '暂无收藏，快去收集你喜爱的店铺吧~'
+        }]
     },
 
     onLoad: function (options) {
@@ -28,6 +28,7 @@ Page({
         this.getCollect()
     },
 
+    // 获取收藏数据
     getCollect() {
         myCollect.getMyCollectData((infoData,shopData) => {
             shopData.map((item,index)=>{
@@ -109,9 +110,10 @@ Page({
 
     // 收藏(取消收藏)按钮
     onCollectTap(e) {
+        console.log('e.currentTarget.dataset.item:',e.currentTarget.dataset.item)
         let _this = this;
-        let type = e.currentTarget.dataset.item.type;
-        let id = !type ? e.currentTarget.dataset.item.shop_id : e.currentTarget.dataset.item.message_id;
+        let type = Number(e.currentTarget.dataset.type);
+        let id = type ? e.currentTarget.dataset.item.shop_id : e.currentTarget.dataset.item.message_id;
         let form = {
             id: id,
             type: type
@@ -122,21 +124,10 @@ Page({
                 wx.showToast({
                     title:'取消收藏成功',
                     icon: 'success',
-                    image: '../../resource/images/smile.png',
                     duration: 2000,
                     complete: function(){
                         let arr = [];
                         if(type){
-                            arr = _this.data.infoList.filter((item)=>{
-                                return item.message_id != id
-                            });
-                            _this.setData({
-                                data: arr,
-                                infoList: arr,
-                                none: !arr.length ? true : false
-
-                            })
-                        }else{
                             arr = _this.data.shopList.filter((item)=>{
                                 return item.shop_id != id
                             });
@@ -144,7 +135,15 @@ Page({
                                 data: arr,
                                 shopList: arr,
                                 none: !arr.length ? true : false
-
+                            })
+                        }else{
+                            arr = _this.data.infoList.filter((item)=>{
+                                return item.message_id != id
+                            });
+                            _this.setData({
+                                data: arr,
+                                infoList: arr,
+                                none: !arr.length ? true : false
                             })
                         }
                     }
@@ -160,6 +159,7 @@ Page({
         })
     },
 
+    // 查看店铺详情
     goToShopDetail(e){
         let item = e.currentTarget.dataset.item;
         wx.navigateTo({

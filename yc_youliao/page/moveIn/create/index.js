@@ -256,6 +256,7 @@ Page({
 
     delImg(e){
     	let target = e.target.dataset.item
+        console.log('target:',target)
 		const arr2 = this.data.imgs.filter((item)=>{
 			return item != target
 		})
@@ -344,6 +345,7 @@ Page({
     },
 
     moveInHandle(){
+        console.log('this.data.form11111:',this.data.form)
     	if(!this.data.form.logo){
             wx.showToast({
                 title: '请上传门店Logo',
@@ -418,6 +420,9 @@ Page({
     	}
 
         let form = this.data.form
+        if(form.shop_id){
+            form.imgUrl = this.data.imgUrl
+        }
         if(this.data.shop_id){
             form.shop_id = this.data.shop_id
         }

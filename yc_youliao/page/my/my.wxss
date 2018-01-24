@@ -24,7 +24,8 @@ page{
 
 .item,.itemTitle{
     padding: 20rpx;
-    line-height: 66rpx;
+    line-height: 60rpx;
+    height: 60rpx;
     font-size: 32rpx;
     padding-left: 80rpx;
     background-color: #fff;

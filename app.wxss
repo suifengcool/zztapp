@@ -4,11 +4,11 @@
 
 @font-face {
   font-family: 'iconfont';  /* project id 530216 */
-  src: url('//at.alicdn.com/t/font_530216_dzgm4f69ywpfd2t9.eot');
-  src: url('//at.alicdn.com/t/font_530216_dzgm4f69ywpfd2t9.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_530216_dzgm4f69ywpfd2t9.woff') format('woff'),
-  url('//at.alicdn.com/t/font_530216_dzgm4f69ywpfd2t9.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_530216_dzgm4f69ywpfd2t9.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_530216_lqv5zgpfapx03sor.eot');
+  src: url('//at.alicdn.com/t/font_530216_lqv5zgpfapx03sor.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_530216_lqv5zgpfapx03sor.woff') format('woff'),
+  url('//at.alicdn.com/t/font_530216_lqv5zgpfapx03sor.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_530216_lqv5zgpfapx03sor.svg#iconfont') format('svg');
 }
 .iconfont {
   font-family:"iconfont" !important;
@@ -28,6 +28,7 @@
 
 .icon-plus:before{content: '\e73e';}
 .icon-plus-circle:before{content: '\e61b';}
+.icon-plus-circle2:before{content: '\e617';}
 .icon-plus-circle-bg:before{content: '\e65b';}
 
 .icon-close:before{content: '\e68d';}
@@ -35,7 +36,7 @@
 .icon-search:before{content: '\e64c';}
 .icon-search2:before{content: '\e601';}
 
-.icon-scan:before{content: '\e61f';}
+.icon-scanqcord:before{content: '\e61f';}
 
 .icon-adress:before{content: '\e60e';}
 .icon-adress-solid:before{content: '\e647';}
@@ -55,17 +56,21 @@
 
 .icon-city:before{content: '\e65e';}
 .icon-coupon:before{content: '\e613';}
+.icon-coupon2:before{content: '\e63f';}
 .icon-publish:before{content: '\e62a';}
 .icon-store:before{content: '\e632';}
 .icon-star:before{content: '\e66e';}
 .icon-home:before{content: '\e603';}
+.icon-home-active:before{content: '\e62b';}
 .icon-head:before{content: '\e667';}
+.icon-head-active:before{content: '\e61d';}
 
 .icon-msg:before{content: '\e687';}
 .icon-msg-solid:before{content: '\e6c2';}
 .icon-msg-solid2:before{content: '\e7a7';}
 
 .icon-compass:before{content: '\e605';}
+.icon-compass-active:before{content: '\e746';}
 
 .icon-movie:before{content: '\e60a';}
 .icon-classify:before{content: '\e614';}
@@ -97,6 +102,8 @@
 .icon-star0:before{content: '\e723';}
 .icon-star1:before{content: '\e6c9';}
 .icon-star2:before{content: '\e659';}
+
+.icon-notice:before{content: '\e637';}
 
 
 .col999 {

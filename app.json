@@ -1,5 +1,6 @@
 {
   "pages": [
+    "yc_youliao/page/load/index",
     "yc_youliao/page/index/index",
     "yc_youliao/page/goods/goods",
     "yc_youliao/page/shopStore/shopStore",
@@ -31,6 +32,7 @@
     "yc_youliao/page/release/detail/index",
     "yc_youliao/page/release/list/index",
     "yc_youliao/page/shop/detail/index",
+    "yc_youliao/page/shop/comment/index",
     "yc_youliao/page/search/index/index",
     "yc_youliao/page/search/shop/index",
     "yc_youliao/page/search/msg/index"
@@ -49,7 +51,7 @@
     "uploadFile": 10000,
     "downloadFile": 10000
   },
-  "tabBar": {
+   "tabBar": {
     "color": "#333",
     "selectedColor": "#fa5305",
     "borderStyle": "black",
@@ -66,6 +68,12 @@
         "iconPath": "yc_youliao/resource/images/tabbarIcon/publish.png",
         "selectedIconPath": "yc_youliao/resource/images/tabbarIcon/publish-active.png",
         "text": "发现"
+      },
+      {
+        "pagePath": "yc_youliao/page/release/create/index",
+        "iconPath": "yc_youliao/resource/images/tabbarIcon/plus1.png",
+        "selectedIconPath": "yc_youliao/resource/images/tabbarIcon/plus-active1.png",
+        "text": "发布"
       },
       {
         "pagePath": "yc_youliao/page/my/my",

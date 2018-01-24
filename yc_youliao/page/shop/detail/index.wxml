@@ -10,6 +10,13 @@
         <view class="swiper-btn">
             {{shopInfo.bannerImg.length}}张图
         </view>
+        <view wx:if="{{text && text.length}}" class="swiper-notice">
+            <view class="swiper-notice-box">
+                <view class="swiper-notice-text" style="{{orientation}}:{{marqueeDistance}}px;">
+                    <i class="iconfont icon-notice"></i>{{text}}
+                </view>
+            </view>
+        </view>
     </view>
     
     <view class="shop-title-box bg_white">
@@ -31,6 +38,7 @@
             </view>
         </view>
         <view class="btn {{isCollect ? 'collected': ''}}" bindtap='onCollectTap'>{{isCollect? '已收藏': '收藏'}}</view>
+        <view class="btnNum">{{collectCount}}人收藏</view>
     </view>
     <view class="shop-adress-box bg_white">
         <view class="icon" bindtap='map'>
@@ -159,10 +167,16 @@
         <navigator url="../../moveIn/create/index?id={{shopInfo.shop_id}}" class="edit-btn">
             <i class="iconfont icon-edit"></i>编辑店铺
         </navigator>
-        <!--
-            <navigator url="../../coupon/create/index" class="coupon-btn">
-                <i class="iconfont icon-coupon"></i>发放优惠券
-            </navigator>
-        -->
+        <navigator url="../../coupon/create/index" class="coupon-btn">
+            <i class="iconfont icon-coupon2"></i>发放优惠券
+        </navigator>
+    </view>
+    <view wx:if="{{!shopInfo.myself}}" class="footer-box">
+        <navigator url="../../moveIn/create/index?id={{shopInfo.shop_id}}" class="edit-btn">
+            <i class="iconfont icon-edit"></i>发表评论
+        </navigator>
+        <view class="coupon-btn">
+            <i class="iconfont icon-coupon2"></i>领取优惠券
+        </view>
     </view>
 </view>

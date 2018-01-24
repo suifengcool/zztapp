@@ -85,7 +85,8 @@ class Create extends Base {
 
 	submit(form,cb){
 		let data = {}
-		console.log('form:',form)
+		console.log('form1111:',form)
+		data.logo = form.logo[0]
 		if(form.imgUrl && form.imgUrl.length){
 			data['imgUrl'] = form.imgUrl.join(',')
 		}
@@ -94,11 +95,11 @@ class Create extends Base {
 		}
 		if(form.shop_id){
 			data.shop_id = form.shop_id
+			data.logo = form.logo
 		}
 		this.store({ type: 'GET_SEID' }, (seid) => {
             data.seid = seid
             data.shop_name = form.shop_name
-            data.logo = form.logo[0]
             data.telphone = form.telphone
             data.lat = form.lat
             data.lng = form.lng

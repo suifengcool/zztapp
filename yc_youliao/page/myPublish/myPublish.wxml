@@ -1,17 +1,16 @@
-<!--yc_youliao/myPublish/myPublish.wxml-->
 <view class='myPublish'>
-  <view class='title'>
-    <view class='li {{type == 1 ? "checked" : ""}}' data-type='1' bindtap='onTitleTap'>未审核</view>
-    <view class='li {{type == 0 ? "checked" : ""}}' data-type='0' bindtap='onTitleTap'>已审核</view>
-  </view>
-  <import src="./tem.wxml"/> 
-  <import src="../../resource/template/complete.wxml" />
-  <view hidden="{{!(type == 0)}}">
-    <template wx:for="{{render0.data}}" is="li" data="{{item,type,index}}"/>
-    <template is="complete" wx:if="{{render0.isComplete}}"/>
-  </view>
-  <view hidden="{{!(type == 1)}}">
-    <template wx:for="{{render1.data}}" is="li" data="{{item,type,index}}"/>
-    <template is="complete"  wx:if="{{render1.isComplete}}"/>
-  </view>
+    <view class="tab-box">
+        <view class="tab-item {{type == 1 ? 'active' : ''}}" data-type='1' bindtap='onTitleTap'>未审核</view>
+        <view class="tab-item {{type == 0 ? 'active' : ''}}" data-type='0' bindtap='onTitleTap'>已审核</view>
+    </view>
+    <import src="./tem.wxml"/> 
+    <import src="../../resource/template/complete.wxml" />
+    <view hidden="{{!(type == 0)}}">
+        <template wx:for="{{render0.data}}" is="li" data="{{item,type,index}}" wx:key="{{index}}"/>
+        <template is="complete" wx:if="{{render0.isComplete}}"/>
+    </view>
+    <view hidden="{{!(type == 1)}}">
+        <template wx:for="{{render1.data}}" is="li" data="{{item,type,index}}" wx:key="{{index}}"/>
+        <template is="complete"  wx:if="{{render1.isComplete}}"/>
+    </view>
 </view>

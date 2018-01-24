@@ -33,7 +33,7 @@
 						</block>
 				    </view>
 				</view>
-				<view class="btn-box" catchtap = 'onCollectTap' data-item = '{{item}}' data-type='1'>
+				<view class="btn-box" catchtap = 'onCollectTap' data-item = '{{item}}' data-type='0'>
 					<view class="edit">取消收藏</view>
 				</view>
 		    </view>
@@ -133,7 +133,7 @@
 						<view class="tab-itam" wx:for="{{item.inco}}" wx:key="{{index}}" wx:for-item="i">{{i}}</view>
 					</view>
 				</view>
-				<view class="btn-box" catchtap = 'onCollectTap' data-item = '{{item}}'>
+				<view class="btn-box" catchtap = 'onCollectTap' data-item = '{{item}}' data-type='1'>
 					<view class="edit">取消收藏</view>
 				</view>
 			</view>

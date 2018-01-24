@@ -10,7 +10,7 @@ page{
   background-color: #fff;
 }
 .myCollect{
-	padding-top: 105rpx;
+	padding-top: 95rpx;
 }
 .tab-box{
 	width: 100%;
@@ -24,8 +24,8 @@ page{
 .tab-item{
 	width: 50%;
 	text-align: center;
-	height: 100rpx;
-	line-height: 100rpx;
+	height: 90rpx;
+	line-height: 90rpx;
 	font-size: 30rpx;
 	position: relative;
 	border-bottom: 1rpx solid #dedede;

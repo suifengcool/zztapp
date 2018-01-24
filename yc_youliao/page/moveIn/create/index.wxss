@@ -85,11 +85,19 @@ page{
 	border-radius: 15rpx;
 	width: 100rpx;
 }
-.identify, .shop, .time-box, .desc-box, .shop-pic, .classify, .time-box-right{
+.identify, .shop, .time-box, .shop-pic, .classify, .time-box-right{
 	display: flex;
 	line-height: 80rpx;
 	background: #fff;
 	padding-left: 20rpx;
+}
+.desc-box{
+	display: flex;
+	background: #fff;
+	padding-left: 20rpx;
+}
+.desc-box .label{
+	line-height: 80rpx;
 }
 .time-box-right{
 	padding: 0;
@@ -112,6 +120,8 @@ page{
 }
 .desc-box textarea{
 	height: 220rpx;
+	padding-top: 23rpx;
+	line-height: 35rpx;
 }
 .placeholder{
 	position: absolute;

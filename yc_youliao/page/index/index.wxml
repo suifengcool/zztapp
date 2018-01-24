@@ -19,16 +19,44 @@
     	    </swiper>
     	    <view wx:if="{{!showClassify}}" class="swiper-btn">
             	<navigator url="../search/index/index" class="search-box">
-    	        	<i class="iconfont icon-search2"></i>搜索店铺、商品
+    	        	<i class="iconfont icon-search2"></i>
     	        </navigator>
-                <!--
-        	        <view class="scan-box" bindtap="scanCode">
-        	        	<i class="iconfont icon-scan"></i>
-        	        </view>
-                -->
+    	        <view class="scan-box" bindtap="scanCode">
+    	        	<i class="iconfont icon-scanqcord"></i>
+    	        </view>
+            </view>
+            <view wx:if="{{!showClassify}}" class="adress-btn" bindtap="chooseTown">
+                <i class="iconfont icon-adress"></i>{{townName}}
             </view>
         </view>
 
+        <view class="hotClassify-list">
+            <view class="hotClassify-item" wx:for="{{hotClassifyList}}" wx:key="{{index}}">
+                <image
+                    class="pic"
+                    src="{{item.thumb ? imagesSocket+'/'+item.thumb : '../../resource/images/zzt_logo2.png'}}"
+                    background-size="cover"
+                ></image>
+                <view class="text">{{item.cate_name}}</view>
+            </view>
+        </view>
+
+        <view wx:if="{{!showClassify}}" class="advert-box">
+            <view class="advert-item">
+                <image
+                    class="pic"
+                    src="{{'../../resource/images/redPack1.png'}}"
+                    background-size="cover"
+                ></image>
+            </view>
+            <view class="advert-item">
+                <image
+                    class="pic"
+                    src="{{'../../resource/images/redPack2.png'}}"
+                    background-size="cover"
+                ></image>
+            </view>
+        </view>
 	    <view wx:if="{{!showClassify}}" class="shop-box bg_white">
 	    	<view class="title-box">
 	    		<view class="title">推荐店铺</view>
@@ -135,4 +163,36 @@
 	    	</view>
 	    </view>
     </view>
+    <!--
+        <view class="footer-box">
+            <view class="footer-item" data-tab='0' bindtap="changeTabbar">
+                <i class="iconfont {{tabbar == 0? 'icon-home-active':'icon-home'}}"></i>
+                <view class="text {{tabbar == 0? 'active':''}}">首页</view>
+            </view>
+            <view class="footer-item" data-tab='1' bindtap="changeTabbar">
+                <i class="iconfont {{tabbar == 1? 'icon-compass-active':'icon-compass'}}"></i>
+                <view class="text {{tabbar == 1? 'active':''}}">发现</view>
+            </view>
+            <view class="footer-item" data-tab='2' bindtap="changeTabbar">
+                <i class="iconfont {{tabbar == 2? 'icon-plus-circle-bg':'icon-plus-circle2'}}"></i>
+                <view class="text {{tabbar == 2? 'active':''}}">发布</view>
+            </view>
+            <view class="footer-item" data-tab='3' bindtap="changeTabbar">
+                <i class="iconfont {{tabbar == 3? 'icon-head-active':'icon-head'}}"></i>
+                <view class="text {{tabbar == 3? 'active':''}}">我的</view>
+            </view>
+        </view>
+    --> 
+     
+  
+<!--mask-->  
+<view class="toast_mask" wx:if="{{isShowToast}}"></view>  
+<!--以下为toast显示的内容-->  
+<view class="toast_content_box" wx:if="{{isShowToast}}">  
+  <view class="toast_content">  
+    <view class="toast_content_text">  
+      {{toastText}}  
+    </view>  
+  </view>  
+</view> 
 </view>
