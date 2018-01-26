@@ -121,9 +121,23 @@ Page({
 		}
 	},
 
+	aaa(){
+		console.log('11111111')
+		wx.pageScrollTo({
+		  scrollTop: 495,
+		  duration: 300
+		})
+		wx.getSystemInfo({
+			success:function(res){
+				console.log('res:',res)
+			}
+		})
+	},
+
 	// 显示遮罩层  
 	showAllClassify(){ 
 		var _this = this;
+		
 		var animation = wx.createAnimation({  
 			duration: 200,  
 			timingFunction: "linear",  
@@ -235,6 +249,10 @@ Page({
 
 	// 点击选择分类
 	scrollTap(e) {
+		wx.pageScrollTo({
+		  scrollTop: 495,
+		  duration: 1
+		})
 	    let id = parseInt(e.currentTarget.dataset.id);
 	    let index = parseInt(e.currentTarget.dataset.index);
 	    this.setData({

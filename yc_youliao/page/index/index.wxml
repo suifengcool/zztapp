@@ -31,7 +31,7 @@
         </view>
 
         <view class="hotClassify-list">
-            <view class="hotClassify-item" wx:for="{{hotClassifyList}}" wx:key="{{index}}">
+            <view class="hotClassify-item" wx:for="{{hotClassifyList}}" wx:key="{{index}}" bindtap="aaa">
                 <image
                     class="pic"
                     src="{{item.thumb ? imagesSocket+'/'+item.thumb : '../../resource/images/zzt_logo2.png'}}"
@@ -52,7 +52,7 @@
             <view class="advert-item">
                 <image
                     class="pic"
-                    src="{{'../../resource/images/redPack2.png'}}"
+                    src="{{'../../resource/images/redPack1.png'}}"
                     background-size="cover"
                 ></image>
             </view>
