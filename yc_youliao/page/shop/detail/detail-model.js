@@ -87,6 +87,24 @@ class Detail extends Base {
       this.request(param)
     })
   }
+  // 请求/发送评论
+  getComment(options, callback) {
+    this.getSeid((seid) => {
+      let data = {
+        seid,
+        id: options.id
+      }
+        data.type = 2
+      var param = {
+        url: 'entry/wxapp/ShopComment',
+        data,
+        sCallback: (res) => {
+          callback && callback(res.data)
+        }
+      }
+      this.request(param)
+    })
+  }
   // 评论发送
   sendComment(comment) {
     if (comment == '') {

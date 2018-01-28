@@ -10,10 +10,10 @@
         <view class="swiper-btn">
             {{shopInfo.bannerImg.length}}张图
         </view>
-        <view wx:if="{{text && text.length}}" class="swiper-notice">
+        <view wx:if="{{shopInfo.bulletin && shopInfo.bulletin.length}}" class="swiper-notice">
             <view class="swiper-notice-box">
                 <view class="swiper-notice-text" style="{{orientation}}:{{marqueeDistance}}px;">
-                    <i class="iconfont icon-notice"></i>{{text}}
+                    <i class="iconfont icon-notice"></i>{{shopInfo.bulletin}}
                 </view>
             </view>
         </view>
@@ -38,7 +38,7 @@
             </view>
         </view>
         <view class="btn {{isCollect ? 'collected': ''}}" bindtap='onCollectTap'>{{isCollect? '已收藏': '收藏'}}</view>
-        <view class="btnNum">{{collectCount}}人收藏</view>
+        <view class="btnNum">{{shopInfo.collect}}人收藏</view>
     </view>
     <view class="shop-adress-box bg_white">
         <view class="icon" bindtap='map'>
@@ -77,7 +77,7 @@
         </view>
     </view>
 
-    <view wx:if="{{tab}}" class="publish-list bg_white">
+    <view wx:if="{{tab == 1}}" class="publish-list bg_white">
         <view class="newItem" wx:for="{{msgList}}" wx:for-item="item" wx:key="unique" >
             <navigator 
                 hover-class="none" 
@@ -157,6 +157,34 @@
                     </block>
                 </view>
             </view>
+        </view>
+    </view>
+
+    <view wx:if="{{tab == 2}}" class="comment-list bg_white">
+        <view class="comment-item" wx:for="{{commentList}}" wx:key="{{index}}">
+            <view class="user-box">
+                <view class="pic-box">
+                    <image 
+                        src="{{item.avatar}}" 
+                        mode="aspectFill"
+                        class="img"
+                    />
+                </view>
+                <view class="msg-box">
+                    <view class="name">{{item.nickname}}</view>
+                    <view class="time-box">
+                        <view class="time">{{item.addtime}}</view>
+                        <view class="star">
+                            <i 
+                                class="iconfont icon-star2 {{ item.dp > index ? 'active' : ''}}" 
+                                wx:for="{{[0,1,2,3,4]}}"
+                                wx:key = "{{index}}"
+                            ></i>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="content">{{item.info}}</view>
         </view>
     </view>
 

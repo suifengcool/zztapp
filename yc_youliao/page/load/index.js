@@ -44,9 +44,12 @@ Page({
 		    });
 
 		    index.getTownList((data)=>{
-		    	console.log('data:',data)
+		    	let list = data.data
+		    	list.map((item,inde)=>{
+		    		item.name = item.name.substr(3,item.name.length)
+		    	})
 		    	this.setData({
-		    		list: data
+		    		list: list
 		    	})
 		    })
 	    }

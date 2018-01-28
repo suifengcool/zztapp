@@ -21,7 +21,6 @@ Page({
 		score_solid_none: [],
 		// icon-weixinpay
 		icon: '',
-		collectCount: 100,
 		marqueePace: 1,//滚动速度
     	marqueeDistance: 0,//初始滚动距离
     	orientation: 'left',//滚动方向
@@ -118,7 +117,7 @@ Page({
 					name: '发现(' + data.infoNum + '条)',
 					tab: 1
 				},{
-					name: '评论(' + data.infoNum + '条)',
+					name: '评论(' + data.comment + '条)',
 					tab: 2
 				}],
 				score_solid: arr,
@@ -150,14 +149,18 @@ Page({
 
     changeTab(e){
     	let tab = e.currentTarget.dataset.tab
+    	console.log('tab:',tab)
     	let id = this.data.shop_id
     	let type = this.data.shopInfo.infoNum
+    	let comment = this.data.shopInfo.comment
     	if(!tab){
     		this.setData({
 				tab: tab
 			})
-    	}else{
-    		type && shopStore.getPublishData(id,(data) => {
+    	}
+
+    	if(tab == 2 && type){
+			shopStore.getPublishData(id,(data) => {
 	    		data.map((item)=>{
 	    			if(item.freshtime){
 		    			item.freshtime = handleTime(item).freshtime;
@@ -169,6 +172,19 @@ Page({
 					msgList: data
 				})
 			})
+    	}
+
+    	if(tab == 2 && comment){
+    		let form = {};
+    		form.id = this.data.shop_id;
+    		detail.getComment(form,(data)=>{
+    			console.log('data11:',data)
+    			this.setData({
+					tab: tab,
+					commentList: data.data
+				})
+
+    		})
     	}
     },
 

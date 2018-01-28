@@ -491,3 +491,41 @@ page{
 	background:#dedede;
 	border-radius: 50%;
 }
+.comment-item{
+	border-bottom: 0.5rpx solid #dedede;
+	padding: 30rpx;
+	font-size: 28rpx;
+	color: #555;
+}
+.user-box{
+	display: flex;
+}
+.pic-box{
+	width: 100rpx;
+	height: 100rpx;
+	margin-right: 30rpx;
+}
+.pic-box .img{
+	border-radius: 50%;
+	height: 100%;
+	width: 100%;
+}
+.msg-box{
+	flex: 1;
+	padding:10rpx 0;
+}
+.time-box{
+	margin-top:10rpx;
+	display:flex;
+	justify-content:space-between;
+	font-size:24rpx;
+}
+.time-box .iconfont{
+	font-size: 28rpx;
+}
+.comment-item .content{
+	margin-top:10rpx;
+}
+.active{
+	color: #fa5305;
+}

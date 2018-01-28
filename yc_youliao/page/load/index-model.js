@@ -33,70 +33,32 @@ class Index extends Base {
     })
   }
 
-    getTownList(callback){
-        let data = [{
-            logo: '',
-            text: '梅江镇',
-            id: 1
-        },{
-            logo: '',
-            text: '黄石镇',
-            id: 2
-        },{
-            logo: '',
-            text: '青塘镇',
-            id: 3
-        },{
-            logo: '',
-            text: '固村镇',
-            id: 4
-        },{
-            logo: '',
-            text: '田头镇',
-            id: 5
-        },{
-            logo: '',
-            text: '黄陂镇',
-            id: 6
-        },{
-            logo: '',
-            text: '石上镇',
-            id: 7
-        },{
-            logo: '',
-            text: '东山坝镇',
-            id: 8
-        },{
-            logo: '',
-            text: '赖村镇',
-            id: 9
-        },{
-            logo: '',
-            text: '小布镇',
-            id: 10
-        },{
-            logo: '',
-            text: '洛口镇',
-            id: 11
-        },{
-            logo: '',
-            text: '长胜镇',
-            id: 12
-        }]
-        callback && callback(data)
-        // var param = {
-        //   url: 'entry/wxapp/index',
-        //   data,
-        //   sCallback: (res) => {
-        //     wx.setStorage({
-        //       key: "index",
-        //       data: res
-        //     })
-        //     callback && callback(res.data.data)
-        //   }
-        // }
-        // this.request(param)
+  getSeid(callback) {
+    if (this.seid == '') {
+      this.store({ type: 'GET_SEID' }, (data) => {
+        this.seid = data
+        callback(data)
+      })
+    } else {
+      callback && callback(this.seid)
     }
+  }
+
+  getTownList(callback) {
+    this.getSeid((seid) => {
+      let data = {
+        seid
+      }
+      var param = {
+        url: 'entry/wxapp/GetArea',
+        data,
+        sCallback: (res) => {
+          callback && callback(res.data)
+        }
+      }
+      this.request(param)
+    })
+  }
 
   // 请求图片socket
   getAttachurl(callback) {

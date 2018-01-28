@@ -5,6 +5,7 @@
 			<i
                 class="iconfont icon-star2 {{ score > index ? 'active' : ''}}"
                 wx:for="{{[0,1,2,3,4]}}"
+                wx:key = "{{index}}"
                 catchtap="changeStar"
                 data-item = "{{item}}"
                 data-index = "{{index}}"
@@ -19,5 +20,5 @@
 		bindinput="bindTextinput"
 		placeholder="要发布的内容..."
 	/>
-	<view class="btn">发表评论</view>
+	<view class="btn" bindtap="sendComment">发表评论</view>
 </view>

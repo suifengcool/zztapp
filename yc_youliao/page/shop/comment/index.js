@@ -1,15 +1,24 @@
+import { getImageSocket } from '../../../resource/utils/comment.js'
+import { Index } from 'index-model.js'
+var index = new Index()
+const app = getApp()
 Page({
     data: {
 		score: 0,
 		content: '',
-		textareaEmpty: false
+		textareaEmpty: false,
+        id: null
     },
 
     /**
     * 生命周期函数--监听页面加载
     */
     onLoad: function (options) {
-	
+       if(options && options.id){
+            this.setData({
+                id: options.id
+            })
+       }
     },
 
     changeStar(e){
@@ -33,10 +42,10 @@ Page({
     },
 
     bindTextinput(e){
-        console.log('e:',e.detail.value)
         if(e.detail.value.length){
             this.setData({
-                textareaEmpty: false
+                textareaEmpty: false,
+                content: e.detail.value
             })
         }else{
             this.setData({
@@ -44,4 +53,50 @@ Page({
             })
         }
     },
+
+    sendComment(e){
+        let _this = this;
+        if(!this.data.content || !this.data.content.trim().length){
+            wx.showModal({
+                title: '提示',
+                content: '请输入评论内容~',
+                showCancel: false,
+                confirmColor: '#333',
+                success: function (res) {
+                    if (res.confirm) {
+                        console.log('用户点击确定')
+                    } else if (res.cancel) {
+                        console.log('用户点击取消')
+                    }
+                }
+            })
+            return
+        }
+
+        let form = {};
+        form.id = this.data.id;
+        form.dp = this.data.score;
+        form.info = this.data.content;
+        index.sendComment(form,(data)=>{
+            if(data.message == "sucess"){
+                wx.showToast({
+                    title: '评论成功',
+                    icon: 'success',
+                    duration: 3000,
+                    complete: function(){
+                        wx.redirectTo({
+                            url: `/yc_youliao/page/shop/detail/index?shop_id=${data.data.shop_id}`
+                        })
+                    }
+                })
+            }
+        })
+    },
+
+    // redirect(data){
+    //     wx.redirectTo({
+    //         url: `/yc_youliao/page/shop/detail/index?shop_id=${data.data.shop_id}`
+    //     })
+    // }
+
 })

@@ -32,7 +32,7 @@ Page({
 		let isLoaded = wx.getStorageSync('isLoaded');
 		if(isLoaded){
 			this.setData({
-				townName: isLoaded.text,
+				townName: isLoaded.name,
 				townId: isLoaded.id
 			})
 		}
@@ -70,7 +70,8 @@ Page({
 	       		cate: [...data.cate],
 				hotClassifyList: [...data.cate].slice(0,5),
 	       		advs: [...this.data.advs, ...data.advs],
-	       		hotshop: [...this.data.hotshop, ...data.hotshop]
+	       		hotshop: [...this.data.hotshop, ...data.hotshop],
+	       		hotClassifyList: data.hotCate
 	        })
 		})
 

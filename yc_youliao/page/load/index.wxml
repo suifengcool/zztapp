@@ -8,7 +8,7 @@
                 src="{{item.logo ? imagesSocket+'/'+item.logo : '../../resource/images/zzt_logo2.png'}}"
                 background-size="cover"
             ></image>
-            <view class="text">{{item.text}}</view>
+            <view class="text">{{item.name}}</view>
         </view>
     </view>
 </view>
