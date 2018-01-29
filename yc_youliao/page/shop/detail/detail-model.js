@@ -123,6 +123,23 @@ class Detail extends Base {
     }
     this.getCommentData({ id: this.id, type: 1, comment })
   }
+  // 获取优惠券列表
+  getCouponList(options, callback) {
+    this.getSeid((seid) => {
+      let data = {
+        seid,
+        shop_id: options.id
+      }
+      var param = {
+        url: 'entry/wxapp/TicketList',
+        data,
+        sCallback: (res) => {
+          callback && callback(res.data)
+        }
+      }
+      this.request(param)
+    })
+  }
   // 判断是否收藏
   isCollect(id, callback) {
     this.getSeid((seid) => {

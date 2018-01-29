@@ -30,6 +30,8 @@ Page({
 	    marquee2_margin: 60,
 	    size: 11,
 	    text: '通知：春节放假期间暂停发货，所有订单在正月10日后开始发货，不便之处，敬请谅解！',
+	    showGetCoupon: false,
+	    couponList: []
     },
 
     onLoad: function (options) {
@@ -179,9 +181,23 @@ Page({
     		form.id = this.data.shop_id;
     		detail.getComment(form,(data)=>{
     			console.log('data11:',data)
+				let obj = data.data;
+    			obj.map((item,index)=>{
+    				let len = item.dp
+    				let arr = [], arr1 = [];
+    				for(let i=0; i<len; i++){
+    					arr.push(i)
+    				}
+    				for(let j=0; j<5-len; j++){
+    					arr1.push(j)
+    				}
+    				item.starList1 = arr;
+    				item.starList2 = arr1;
+    			})
+    			console.log('obj:',obj)
     			this.setData({
 					tab: tab,
-					commentList: data.data
+					commentList: obj
 				})
 
     		})
@@ -288,6 +304,48 @@ Page({
 		        }
 	        }
 	    }, vm.data.interval);
+	},
+
+	// 阻止蒙层下滚动
+	preventD(){
+
+	},
+
+	getCouponList(e){
+		if(this.data.showGetCoupon){
+			this.setData({
+				showGetCoupon: false
+			})
+			return
+		}
+
+		let form = {};
+		form.id = this.data.shop_id;
+		detail.getCouponList(form,(data)=>{
+			console.log('data:',data)
+			if(!data || !data.data.length){
+				wx.showModal({
+	                title: '提示',
+	                content: '该商家暂未提供优惠券~~',
+	                showCancel: false,
+	                confirmColor: '#333',
+	                success: function (res) {
+	                    if (res.confirm) {
+	                        console.log('用户点击确定')
+	                    } else if (res.cancel) {
+	                        console.log('用户点击取消')
+	                    }
+	                }
+	            })	
+	            return
+			}
+			if(data && data.data.length){
+				this.setData({
+					showGetCoupon: true,
+					couponList: data.data
+				})
+			}
+		})
 	}
 
 })

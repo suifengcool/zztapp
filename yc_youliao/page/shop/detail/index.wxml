@@ -176,8 +176,13 @@
                         <view class="time">{{item.addtime}}</view>
                         <view class="star">
                             <i 
-                                class="iconfont icon-star2 {{ item.dp > index ? 'active' : ''}}" 
-                                wx:for="{{[0,1,2,3,4]}}"
+                                class="iconfont icon-star2 active}}" 
+                                wx:for="{{item.starList1}}"
+                                wx:key = "{{index}}"
+                            ></i>
+                            <i 
+                                class="iconfont icon-star2}}" 
+                                wx:for="{{item.starList2}}"
                                 wx:key = "{{index}}"
                             ></i>
                         </view>
@@ -195,9 +200,15 @@
         <navigator url="../../moveIn/create/index?id={{shopInfo.shop_id}}" class="edit-btn">
             <i class="iconfont icon-edit"></i>编辑店铺
         </navigator>
-        <navigator url="../../coupon/create/index" class="coupon-btn">
+
+        <!--
+        <navigator url="../../coupon/create/index?shop_id={{shopInfo.shop_id}}&shop_name={{shopInfo.shop_name}}&logo={{shopInfo.logo}}" class="coupon-btn">
             <i class="iconfont icon-coupon2"></i>发放优惠券
         </navigator>
+        -->
+        <view class="coupon-btn" bindtap="getCouponList">
+            <i class="iconfont icon-coupon2"></i>领取优惠券
+        </view>
     </view>
     <view wx:if="{{!shopInfo.myself}}" class="footer-box">
         <navigator url="../comment/index?id={{shopInfo.shop_id}}" class="edit-btn">
@@ -205,6 +216,27 @@
         </navigator>
         <view class="coupon-btn">
             <i class="iconfont icon-coupon2"></i>领取优惠券
+        </view>
+    </view>
+
+    <view wx:if = "{{showGetCoupon}}" class="getCouponBox" catchtouchmove="preventD">
+        <view class="couponList">
+            <view class="coupon-item"  wx:for="{{couponList}}" wx:key="{{index}}">
+                <view class="coupon-detail">
+                    <view class="coupon-detail-top">
+                        <view class="money">
+                        ￥{{item.amount}}
+                        </view>
+                        <view class="text">优惠券</view>
+                    </view>
+                    <view class="coupon-detail-bottom">
+                        <view class="counpon-name">{{item.name}}</view>
+                        <view class="coupon-time">{{item.endtime+'前可用'}}</view>
+                    </view>
+                    
+                </view>
+                <view class="couponBtn">点击领取</view>
+            </view>
         </view>
     </view>
 </view>

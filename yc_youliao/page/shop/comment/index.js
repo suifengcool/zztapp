@@ -83,10 +83,12 @@ Page({
                     title: '评论成功',
                     icon: 'success',
                     duration: 3000,
-                    complete: function(){
-                        wx.redirectTo({
-                            url: `/yc_youliao/page/shop/detail/index?shop_id=${data.data.shop_id}`
-                        })
+                    success: ()=>{
+                        setTimeout(()=>{
+                            wx.redirectTo({
+                               url: `/yc_youliao/page/shop/detail/index?shop_id=${data.data.shop_id}`
+                            })
+                        }, 3000) 
                     }
                 })
             }

@@ -19,7 +19,12 @@ page{
 	height: 80rpx;
 	border-radius: 50%;
 	margin: 20rpx 25rpx 0 25rpx;
-	background: green;
+	background: #dedede;
+}
+.logo{
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
 }
 .line{
 	width: 100%;
