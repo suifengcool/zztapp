@@ -18,6 +18,25 @@ page{
 	position:relative;
 	width:100%;
 	box-sizing:border-box;
+	justify-content: space-between;
+}
+.del {
+    background-color: orangered;
+    width: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    -webkit-transform: translateX(90px);
+    transform: translateX(90px);
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+}
+.touch-move-active .content,
+.touch-move-active .del {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
 }
 .home-list .home-list-item .pic{
 	width: 140rpx;

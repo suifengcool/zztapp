@@ -547,12 +547,11 @@ page{
 	top:50%;
 	transform:translate(-50%,-50%);
 	z-index:20000;
-	background:#fff;
 }
 .coupon-item{
 	display: flex;
 	color:#fff;
-	margin-bottom: 20rpx;
+	margin-bottom: 10rpx;
 }
 .coupon-detail{
 	flex:1;
@@ -563,7 +562,6 @@ page{
 	line-height:35rpx;
 	padding:60rpx 20rpx;
 	background:#fc9b4c;
-	height:259rpx;
 	font-size:28rpx;
 	box-sizing:border-box;
 }
@@ -594,4 +592,15 @@ page{
 	padding:15rpx 40rpx;
 	border-top:0.5rpx dotted #fff;
 	box-sizing:border-box;
+}
+.close-btn{
+	width:70rpx;
+	height:60rpx;
+	font-size:32rpx;
+	margin:20rpx auto 0;
+	border:1rpx solid #fff;
+	line-height:60rpx;
+	padding:0 20rpx;
+	color:#fff;
+	border-radius:20rpx;
 }

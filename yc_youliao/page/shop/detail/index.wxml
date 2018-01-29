@@ -200,21 +200,15 @@
         <navigator url="../../moveIn/create/index?id={{shopInfo.shop_id}}" class="edit-btn">
             <i class="iconfont icon-edit"></i>编辑店铺
         </navigator>
-
-        <!--
         <navigator url="../../coupon/create/index?shop_id={{shopInfo.shop_id}}&shop_name={{shopInfo.shop_name}}&logo={{shopInfo.logo}}" class="coupon-btn">
             <i class="iconfont icon-coupon2"></i>发放优惠券
         </navigator>
-        -->
-        <view class="coupon-btn" bindtap="getCouponList">
-            <i class="iconfont icon-coupon2"></i>领取优惠券
-        </view>
     </view>
     <view wx:if="{{!shopInfo.myself}}" class="footer-box">
         <navigator url="../comment/index?id={{shopInfo.shop_id}}" class="edit-btn">
             <i class="iconfont icon-edit"></i>发表评论
         </navigator>
-        <view class="coupon-btn">
+        <view class="coupon-btn" bindtap="getCouponList">
             <i class="iconfont icon-coupon2"></i>领取优惠券
         </view>
     </view>
@@ -227,7 +221,11 @@
                         <view class="money">
                         ￥{{item.amount}}
                         </view>
-                        <view class="text">优惠券</view>
+                        <view class="text">
+                            <view class="i">优</view>
+                            <view class="i">惠</view>
+                            <view class="i">券</view>
+                        </view>
                     </view>
                     <view class="coupon-detail-bottom">
                         <view class="counpon-name">{{item.name}}</view>
@@ -235,8 +233,14 @@
                     </view>
                     
                 </view>
-                <view class="couponBtn">点击领取</view>
+                <view class="couponBtn" bindtap="chooseCoupon" data-item="{{item}}">
+                    <view class="i">点</view>
+                    <view class="i">击</view>
+                    <view class="i">领</view>
+                    <view class="i">取</view>
+                </view>
             </view>
+            <view class="close-btn" bindtap="getCouponList">关闭</view>
         </view>
     </view>
 </view>

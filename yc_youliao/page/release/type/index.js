@@ -30,8 +30,17 @@ Page({
 
     chooseType(e){
     	let item = e.currentTarget.dataset.item
-    	wx.redirectTo({
-	        url: `/yc_youliao/page/release/create/index?type_name=${item.name}&type_id=${item.id}`
-    	})
+        var pages = getCurrentPages();
+        var currPage = pages[pages.length - 1];   //当前页面
+        var prevPage = pages[pages.length - 2];  //上一个页面
+
+        //直接调用上一个页面的setData()方法，把数据存到上一个页面中去
+        prevPage.setData({
+            'form.type_name':item.name,
+            'form.type_id':item.id,
+        })
+        wx.switchTab({
+            url: `/yc_youliao/page/release/create/index`
+        })
     }
 })

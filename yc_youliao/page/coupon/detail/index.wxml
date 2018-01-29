@@ -1,19 +1,32 @@
 <view class="container-coupon">
 	<view class="coupon-area">
 		<view class="info">
-			<view class="head"></view>
-			<view class="name">中国电信</view>
-			<view class="adress">湖北省武汉市江夏区康魅路惠风同庆花园蜜糖镇</view>
-			<view class="tel">13797071376</view>
+			<view class="head">
+				<image 
+	                src="{{imagesSocket + '/' + couponInfo.logo}}" 
+	                mode="aspectFill"
+	                class="img"
+	            />
+			</view>
+			<view class="name">{{couponInfo.shop_name}}</view>
+			<view class="adress">{{couponInfo.address}}</view>
+			<view class="tel">{{couponInfo.telphone}}</view>
 		</view>
-		<view class="actives">满200减50</view>
+		<view class="actives">满{{couponInfo.sill_amount}}减{{couponInfo.amount}}</view>
 		<view class="qcord-box">
-			<view class="qcord-img"></view>
-			<view class="qcord-num">2017120112938428</view>
+			<view class="qcord-img">
+				<image 
+	                src="{{imagesSocket + '/' + couponInfo.qr_code}}" 
+	                mode="aspectFill"
+	                class="img"
+	            />
+			</view>
+			<!--<view class="qcord-num">2017120112938428</view>-->
 		</view>
-		<view class="time">2017.12.01-2018.12.01</view>
+		<view class="time">{{couponInfo.starttime}}-{{couponInfo.endtime}}</view>
 		<view class="msg">到店消费时请提前向商家出示</view>
-		<view wx:if="{{isUsed}}" class="caution">优惠券已使用</view>
+		<view wx:if="{{couponInfo.status > 0 }}" class="caution">优惠券已使用</view>
+		<view wx:if="{{couponInfo.status < 1 && isMaster}}" class="caution" bindtap="confirmCoupon">确认使用</view>
 	</view>
 	<view wx:if="{{!isUsed}}" class="tips">
 		<view class="tips-item">1、购买商品时，满足使用条件可抵用券面显示金额；</view>

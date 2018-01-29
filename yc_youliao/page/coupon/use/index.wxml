@@ -31,22 +31,18 @@
         </picker>
 	</view>
 	<view class="line"></view>
-	<!--
 	<view class="item">
 		<view class="label">人数</view>
 		<input class="input" bindinput="listenerPeopleNumInput" type="number" />
 		<view class="unit">人</view>
 	</view>
-	-->
 	<view class="item">
 		<view class="label">发放数量</view>
 		<input class="input" bindinput="listenerCountInput" type="number" />
 		<view class="unit">张</view>
 	</view>
-	<!--
 	<view class="tips">
 		优惠券发放规则：商家可设置每100位访问店铺的用户都可获得优惠券，发完为止。（例如：人数设置为100，则第100，200，300...位访问用户可获得优惠券，若人数设置为1则所有用户都可获得优惠券）
 	</view>
-	-->
 	<view class="btn" bindtap="createCoupon">发放优惠券</view>
 </view>

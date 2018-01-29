@@ -140,6 +140,26 @@ class Detail extends Base {
       this.request(param)
     })
   }
+
+  // 领取优惠券
+  chooseCoupon(options, callback) {
+    this.getSeid((seid) => {
+      let data = {
+        seid,
+        tid: options.tid
+      }
+      var param = {
+        url: 'entry/wxapp/AddTicketReceive',
+        data,
+        sCallback: (res) => {
+          callback && callback(res.data)
+        }
+      }
+      this.request(param)
+    })
+  }
+
+
   // 判断是否收藏
   isCollect(id, callback) {
     this.getSeid((seid) => {

@@ -62,15 +62,15 @@ Page({
             })
             return
 		}
-		// if(!this.data.peopleNum){
-		// 	wx.showToast({
-  //               title: '请填写人数',
-  //               image: '../../../resource/images/warn.png',
-  //               duration: 2000,
-  //               mask: true
-  //           })
-  //           return
-		// }
+		if(!this.data.peopleNum){
+			wx.showToast({
+                title: '请填写人数',
+                image: '../../../resource/images/warn.png',
+                duration: 2000,
+                mask: true
+            })
+            return
+		}
 		if(!this.data.count){
 			wx.showToast({
                 title: '请填写发放数量',

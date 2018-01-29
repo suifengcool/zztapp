@@ -346,6 +346,30 @@ Page({
 				})
 			}
 		})
+	},
+
+	chooseCoupon(e){
+		let item = e.currentTarget.dataset.item
+		console.log('item:',item)
+		let form = {};
+		form.tid = item.id;
+		detail.chooseCoupon(form,(data)=>{
+			console.log('data:',data)
+			if(data.data && data.data.errno == 0){
+				wx.showToast({
+                    title: '优惠券领取成功',
+                    icon: 'success',
+                    duration: 3000,
+                    success: ()=>{
+			            setTimeout(()=>{
+			                this.setData({
+			                	showGetCoupon: false
+			                })
+			            }, 3000) 
+		    	    }
+                })
+			}
+		})
 	}
 
 })

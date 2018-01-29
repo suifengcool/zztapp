@@ -1,10 +1,10 @@
 <view class="moveInList">
 	<view class="home-list">
 		<view 
-			class="home-list-item" 
+			class="home-list-item {{item.isTouchMove ? 'touch-move-active' : ''}}" 
 			wx:for="{{shopList}}" 
 			wx:key="{{index}}" 
-			bindlongtap="longTap"
+			catchlongtap="longTap"
 			data-item="{{item}}"
 		>
 			<view class="pic">
@@ -39,6 +39,7 @@
 			<view class="btn-box" bindtap = 'editShop' data-item = '{{item}}'>
 				<view class="edit">编辑</view>
 			</view>
+			<view class="del" catchtap="del" data-index="{{index}}">删除</view>
 		</view>
 	</view>
 </view>

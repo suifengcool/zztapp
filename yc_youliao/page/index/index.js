@@ -95,10 +95,24 @@ Page({
 	scanCode() {
 	    wx.scanCode({
 	        success: (res) => {
-	        	console.log(res)
+	        	wx.redirectTo({
+                   url: `/yc_youliao/page/coupon/detail/index?id=${res.result}`
+                })
 	        },
 	        fail: (res) => {
-	        	console.log(res)
+	        	wx.showModal({
+                title: '扫描错误',
+                content: res,
+                showCancel: false,
+                confirmColor: '#333',
+                success: function (res) {
+                    if (res.confirm) {
+                        console.log('用户点击确定')
+                    } else if (res.cancel) {
+                        console.log('用户点击取消')
+                    }
+                }
+            })
 	        }
 	    })
 	},
@@ -124,10 +138,10 @@ Page({
 
 	aaa(){
 		console.log('11111111')
-		wx.pageScrollTo({
-		  scrollTop: 495,
-		  duration: 300
-		})
+		// wx.pageScrollTo({
+		//   scrollTop: 495,
+		//   duration: 300
+		// })
 		wx.getSystemInfo({
 			success:function(res){
 				console.log('res:',res)
