@@ -604,3 +604,10 @@ page{
 	color:#fff;
 	border-radius:20rpx;
 }
+.noneList{
+	width:100%;
+	text-align:center;
+	font-size:28rpx;
+	margin:30rpx 0;
+	color: #979797;
+}

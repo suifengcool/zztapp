@@ -6,6 +6,26 @@ class Index extends Base {
 		super()
 	}
 
+  // 请求图片socket
+  getAttachurl(callback) {
+    getImageSocket((data) => {
+      console.log(data)
+      callback(data)
+    })
+  }
+  // 获取用户信息
+  indexGetUserInfo() {
+    getUserInfo(true, (res) => {
+      console.log(res)
+    })
+  }
+  // 获取经纬度信息
+  _indexGetLocation(callback) {
+    getLocation(false, (res) => {
+      callback(res)
+    })
+  }
+
 	getSeid(callback) {
 	    this.store({ type: 'GET_SEID' }, (seid) => {
 	        callback(seid)
@@ -55,6 +75,7 @@ class Index extends Base {
 		data.province = form.province 
 		data.city = form.city
 		data.district = form.district
+		data.logo = form.logo
 		data.text = form.intro
 		if(form.imgUrl && form.imgUrl.length){
 			data['thumbs'] = form.imgUrl.join(',')
@@ -73,30 +94,20 @@ class Index extends Base {
 	    })
 	}
 
-    // 请求图片socket
-	getAttachurl(callback) {
-		getImageSocket((data) => {
-		    console.log(data)
-		    callback(data)
-		})
-	}
-
-    // 获取用户信息
-    indexGetUserInfo(cb) {
-		getUserInfo(true, (res) => {
-			cb && cb(res)
-		  console.log('res222222:',res)
-		})
+	getUserName(cb) {
+        let data = {}
+        this.store({ type: 'GET_SEID' }, (seid) => {
+            data.seid = seid
+            var param = {
+                url: 'entry/wxapp/GetUserName',
+                data,
+                sCallback: (res) => {
+                    cb && cb(res.data.data)
+                }
+            }
+            this.request(param)
+        })
     }
-
-	// 获取经纬度信息
-	_indexGetLocation(callback) {
-		getLocation(false, (res) => {
-		  callback(res)
-		})
-	}
-
-
 }
 
 

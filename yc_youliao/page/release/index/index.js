@@ -21,9 +21,6 @@ Page({
 			id: 3
 		}],
 		tab: 0,
-		newMsgList: [],
-		hotMsgList: [],
-		nearMsgList: [],
 		dataList: [],
 		moduleList: [],
 		count: {}
@@ -40,16 +37,44 @@ Page({
 		    })
 		});
 
-		index.getPublishData((data)=>{
+		this.fetchData('new')
+
+        index.getPublishData((data)=>{
 			this.setData({
-				newMsgList: data.newMsg,
-				hotMsgList: data.hotMsg,
-				nearMsgList: data.nearMsg,
-				dataList: data.newMsg,
 				moduleList: data.module,
 				count: data.count
 			})
 		})
+    },
+
+    onShow: function(){
+		this.fetchData('new')
+    },
+
+    fetchData(type){
+		let form = {};
+		form.type = type;
+		index.getModuleData(form,(data)=>{
+            this.setData({
+                dataList: data
+            })
+        })
+    },
+
+    // 图片预览
+    previewImg(e) {
+        let arr = e.currentTarget.dataset.src; 
+        console.log('arr:',arr)
+        let arr2 = arr;
+        arr.map((item)=>{
+            if(item.indexOf('http')<0){
+                arr2.length = 0;
+                arr2.push(this.data.imagesSocket + '/' + item)
+            }
+        })
+        wx.previewImage({
+            urls: arr2       // 需要预览的图片http链接列表
+        })
     },
 
     changeTap(e){
@@ -60,28 +85,18 @@ Page({
 
     	switch(item.id){
 			case 0:
-			    this.setData({
-		    		dataList: this.data.newMsgList
-		    	})
+			    this.fetchData('new')
 			    break;
 			case 1:
-			    this.setData({
-		    		dataList: this.data.hotMsgList
-		    	})
+			    this.fetchData('hot')
 			    break;
 		    case 2:
-			    this.setData({
-		    		dataList: []
-		    	})
+			    this.fetchData('comment')
 			    break;
 		    case 3:
-			    this.setData({
-		    		dataList: this.data.nearMsgList
-		    	})
+			    this.fetchData('near')
 			    break;
 		}
-
-		console.log('this.data.dataList:',this.data.dataList)
     },
 
     goToModule(e){

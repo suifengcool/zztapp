@@ -1,5 +1,5 @@
 <view class="container-coupon-create">
-	<view class="top">
+	<view class="top bg_white">
 		<view class="img">
 			<image 
                 src="{{imagesSocket + '/' + logo}}" 

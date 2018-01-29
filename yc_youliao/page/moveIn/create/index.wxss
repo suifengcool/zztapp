@@ -126,7 +126,7 @@ page{
 .placeholder{
 	position: absolute;
 	left:167rpx;
-	top:-1rpx;
+	top:-22rpx;
 	color:#777;
 }
 .shop{

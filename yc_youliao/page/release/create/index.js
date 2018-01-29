@@ -77,6 +77,7 @@ Page({
             })
         }
         this.init()
+        this.getUserList()
     },
 
     // 一些初始化的信息
@@ -122,7 +123,8 @@ Page({
             'form.lng': nowLocation.lng,
             'form.province': data.province,
             'form.city': data.city,
-            'form.lndistrictg': data.district,
+            'form.city': data.city,
+            'form.district': data.district,
             'form.address': data.province + data.city + data.district + data.address,
             'location.address': data.formatted_address,
             confirmAdress: true
@@ -202,14 +204,46 @@ Page({
         }
     },
 
+    // 图片预览
+    previewImg(e) {
+        wx.previewImage({
+            urls: this.data.imgs       // 需要预览的图片http链接列表
+        })
+    },
+
     delImg(e){
         let target = e.target.dataset.item
         const arr2 = this.data.imgs.filter((item)=>{
             return item != target
         })
+
+        const arr3 = this.data.imgs.filter((item)=>{
+            return item == target
+        })
+
+        if(arr3.length>=2){
+            arr2.push(target)
+        }
         this.setData({
             imgs: arr2,
             'form.imgUrl': arr2
+        })
+    },
+
+    getUserList(){
+        index.getUserName((data)=>{
+            console.log('data:',data)
+            let arr = data;
+            arr.map((item,index)=>{
+                if(item.logo.indexOf('http') < 0 ){
+                    item.logo = this.data.imagesSocket + '/' + item.logo
+                }
+            })
+            this.setData({
+                'form.nickName':arr.length ? arr[0].nickname : '',
+                'form.shop_id':arr.length ? arr[0].shop_id : '',
+                'form.logo':arr.length ? arr[0].logo : '',
+            })
         })
     },
 
@@ -254,7 +288,7 @@ Page({
         wx.showToast({
             title: text,
             icon: 'success',
-            image: '../../../resource/images/成功.png',
+            image: '../../../resource/images/warn.png',
             duration: 2000,
             mask: true
         })
@@ -274,7 +308,7 @@ Page({
             return
         }
         if(this.data.form.telphone && !(/^1[3|5][0-9]\d{4,8}$/.test(this.data.form.telphone))){
-            this.toast('请填写正确的手机号码')
+            this.toast('请填写正确号码')
             return
         }
         if(!this.data.form.type_name){
@@ -283,19 +317,33 @@ Page({
         }
         let form = this.data.form
         index.submit(form,(data)=>{
-            console.log('data:',data)
-            if(data.message == 'sucess' || data.errno == 0){
+            if(data.message == "sucess" || data.errno == 0){
                 wx.showToast({
                     title: '添加成功',
                     icon: 'success',
                     image: '../../../resource/images/成功.png',
                     duration: 2000,
                     mask: true,
-                    complete: function(){
-                        wx.removeStorageSync('release')
-                        wx.switchTab({
-                            url: `/yc_youliao/page/release/index/index`
-                        })
+                    success: ()=>{
+                        setTimeout(()=>{
+                            wx.removeStorageSync('release')
+                            this.setData({
+                                'form.nickName':'',
+                                'form.shop_id':null,
+                                'form.type_name':'',
+                                'form.type_id':null,
+                                'form.intro':'',
+                                isNotEmpty: true,
+                                'form.imgUrl':[],
+                                'imgUrl':[],
+                                'form.telphone':null,
+                                imgs: []
+                            })
+                            wx.switchTab({
+                                url: `/yc_youliao/page/release/index/index`
+                            })
+
+                        }, 2000) 
                     }
                 })
             }else{

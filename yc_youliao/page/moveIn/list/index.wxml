@@ -39,7 +39,17 @@
 			<view class="btn-box" bindtap = 'editShop' data-item = '{{item}}'>
 				<view class="edit">编辑</view>
 			</view>
-			<view class="del" catchtap="del" data-index="{{index}}">删除</view>
 		</view>
 	</view>
+	<view wx:if="{{ !shopList || !shopList.length}}" class="noStatus">
+    	<view class="pic-box">
+    		<image
+	            class = "pic"
+	            src = "../../../resource/images/nostatus1.png"
+	            background-size = "cover"
+	        ></image>
+    	</view>
+    	<view class="text">暂无入驻店铺</view>
+    	<navigator url="../create/index" wx:if="{{!tab}}" class="text text2">点击开启你的店铺之旅吧~</navigator>
+    </view>
 </view>

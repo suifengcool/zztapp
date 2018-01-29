@@ -264,10 +264,10 @@ Page({
 
 	// 点击选择分类
 	scrollTap(e) {
-		wx.pageScrollTo({
-		  scrollTop: 495,
-		  duration: 1
-		})
+		// wx.pageScrollTo({
+		//   scrollTop: 495,
+		//   duration: 1
+		// })
 	    let id = parseInt(e.currentTarget.dataset.id);
 	    let index = parseInt(e.currentTarget.dataset.index);
 	    this.setData({

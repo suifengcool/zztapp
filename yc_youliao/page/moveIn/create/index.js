@@ -67,7 +67,7 @@ Page({
                     form: data,
                     logoImg: data.logo.indexOf('http') > -1 ? data.logo : this.data.imagesSocket + '/' + data.logo,
                     imgs: arr1,
-                    imgUrl: arr1
+                    imgUrl: arr1,
                 })
                 let arr = [];
                 this.data.items.forEach((item,index)=>{
@@ -91,7 +91,8 @@ Page({
                     form: moveInData,
                     logoImg: moveInData.logoImg.indexOf('http') > -1 ? moveInData.logoImg : this.data.imagesSocket + '/' + moveInData.logoImg,
                     imgs: moveInData.imgs,
-                    imgUrl: moveInData.imgUrl
+                    imgUrl: moveInData.imgUrl,
+                    textareaEmpty: moveInData.intro && moveInData.intro.trim().length ? false : true
                 })          
             }
             if(this.data.form && this.data.form.inco && this.data.form.inco.length){
@@ -433,11 +434,13 @@ Page({
                     title: this.data.shop_id ? '修改成功' : '上传成功',
                     icon: 'success',
                     duration: 3000,
-                    complete: function(){
-                        wx.removeStorageSync('moveInData')
-                        wx.switchTab({
-                            url: `/yc_youliao/page/index/index`
-                        })
+                    success: ()=>{
+                        setTimeout(()=>{
+                            wx.removeStorageSync('moveInData')
+                            wx.switchTab({
+                                url: `/yc_youliao/page/index/index`
+                            })
+                        }, 3000) 
                     }
                 })
             }

@@ -39,6 +39,7 @@ page{
 	display: flex;
 	justify-content: space-between;
 	position: relative;
+	background: #fff;
 }
 .input{
 	width: 200rpx;
@@ -58,7 +59,7 @@ page{
 }
 .btn{
 	width: 75%;
-	margin: 0 auto;
+	margin: 30rpx auto 0;
 	height: 70rpx;
 	line-height: 70rpx;
 	text-align: center;

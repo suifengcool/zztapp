@@ -6,8 +6,9 @@
 		        <image 
 		        	class='pic-item' 
 		        	src='{{item}}'
+		        	bindtap="previewImg" 
 	        	>
-	        	<i class="iconfont icon-del" bindtap="delImg" data-item="{{item}}"></i>
+	        	<view class="del-btn" catchtap="delImg" data-item="{{item}}">删除</view>
 	        	</image>
 	        	
 		    </block>

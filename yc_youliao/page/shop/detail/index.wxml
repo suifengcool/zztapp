@@ -78,6 +78,7 @@
     </view>
 
     <view wx:if="{{tab == 1}}" class="publish-list bg_white">
+        <view wx:if="{{!msgList.length}}" class="noneList">暂无内容</view>
         <view class="newItem" wx:for="{{msgList}}" wx:for-item="item" wx:key="unique" >
             <navigator 
                 hover-class="none" 
@@ -161,6 +162,7 @@
     </view>
 
     <view wx:if="{{tab == 2}}" class="comment-list bg_white">
+        <view wx:if="{{!commentList.length}}" class="noneList">暂无内容</view>
         <view class="comment-item" wx:for="{{commentList}}" wx:key="{{index}}">
             <view class="user-box">
                 <view class="pic-box">

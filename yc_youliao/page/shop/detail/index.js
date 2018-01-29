@@ -155,13 +155,11 @@ Page({
     	let id = this.data.shop_id
     	let type = this.data.shopInfo.infoNum
     	let comment = this.data.shopInfo.comment
-    	if(!tab){
-    		this.setData({
-				tab: tab
-			})
-    	}
+		this.setData({
+			tab: tab
+		})
 
-    	if(tab == 2 && type){
+    	if(tab == 1 && type){
 			shopStore.getPublishData(id,(data) => {
 	    		data.map((item)=>{
 	    			if(item.freshtime){
@@ -170,7 +168,6 @@ Page({
 	    		})
 	    		
 				this.setData({
-					tab: tab,
 					msgList: data
 				})
 			})
@@ -196,7 +193,6 @@ Page({
     			})
     			console.log('obj:',obj)
     			this.setData({
-					tab: tab,
 					commentList: obj
 				})
 

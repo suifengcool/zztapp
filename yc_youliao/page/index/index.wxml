@@ -30,6 +30,7 @@
             </view>
         </view>
 
+        <!--
         <view class="hotClassify-list">
             <view class="hotClassify-item" wx:for="{{hotClassifyList}}" wx:key="{{index}}" bindtap="aaa">
                 <image
@@ -40,6 +41,7 @@
                 <view class="text">{{item.cate_name}}</view>
             </view>
         </view>
+        --> 
 
         <view wx:if="{{!showClassify}}" class="advert-box">
             <view class="advert-item">
@@ -182,6 +184,18 @@
                 <view class="text {{tabbar == 3? 'active':''}}">我的</view>
             </view>
         </view>
+
+        .shop-box .title-box .title:after{
+    position: absolute;
+    display: inline-block;
+    content: '';
+    left: 0;
+    top:48%;
+    width: 6rpx;
+    height: 60%;
+    transform: translateY(-50%);
+    background: #fa5305;
+}
     --> 
      
   
