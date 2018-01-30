@@ -13,10 +13,13 @@ Page({
         isCollect: false,
         showCommentBox: false,
         scanNum: 100,
+        sendNum: 1,
+        zanNum: 10,
         isInput: false,
         comment: '',
         userInfo: null,
-        createTime: ''
+        createTime: '',
+        isZaned: false
     },
 
     /**
@@ -69,6 +72,9 @@ Page({
 
             this.setData({
                 info: data,
+                sendNum: data.send,
+                zanNum: data.zan,
+                isZaned: data.iszan ? true : false,
                 createTime: time
             })
         })
@@ -178,6 +184,7 @@ Page({
 
     // 分享按钮
     onShareAppMessage: function (res) {
+        let _this = this;
         if (res.from === 'button') {
           // 来自页面内转发按钮
             console.log(res.target)
@@ -193,12 +200,31 @@ Page({
             title: '更多精彩尽在镇镇通',
             path: '/yc_youliao/page/release/detail/index?' + params,
             success: function (res) {
+                index.sendviews(_this.data.id,(data) => {
+                    if(data && data.errno == 0){
+                        _this.setData({
+                            sendNum: _this.data.sendNum - (-1)
+                        })
+                    }
+                })
                 console.log('/yc_youliao/page/release/detail/index?' + params)
             },
             fail: function (res) {
             // 转发失败
             }
         }
+    },
+
+    doZanInfo(e){
+        if(this.data.isZaned){
+            return
+        }
+        index.doZanInfo(this.data.id,(data)=>{
+            this.setData({
+                isZaned: !this.data.isZaned,
+                zanNum: this.data.isZaned ? this.data.zanNum - 1 : this.data.zanNum - (-1) 
+            })
+        })
     },
 
     getFormatDays(timesamp){

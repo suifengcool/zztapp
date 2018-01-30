@@ -100,12 +100,21 @@ page{
 	font-size:34rpx;
 	vertical-align:-3%;
 }
-.scan{
-	margin-left:20rpx;
-    flex: 1;
+.num-box .icon-collect{
+  font-size: 29rpx;
 }
-.scan .iconfont{
-	margin-right: 10rpx;
+.share{
+  margin: 0 20rpx;
+}
+.scan{
+	
+}
+.zan{
+  margin-left:20rpx;
+  flex: 1;
+}
+.scan .iconfont, .zan .iconfont{
+	margin-right: 5rpx;
 }
 .msg{
 	width: 90rpx;

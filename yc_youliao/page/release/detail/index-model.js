@@ -45,6 +45,33 @@ class Index extends Base {
       this.request(param)
     })
   }
+  // 用户转发量
+  sendviews(id, callback) {
+    this.getSeid((seid) => {
+      var param = {
+        url: 'entry/wxapp/DoSendInfo',
+        data: { seid, info_id: id },
+        sCallback: (res) => {
+          callback && callback(res.data)
+        }
+      }
+      this.request(param)
+    })
+  }
+  // 用户转发量
+  doZanInfo(id, callback) {
+    this.getSeid((seid) => {
+      var param = {
+        url: 'entry/wxapp/DoZanInfo',
+        data: { seid, info_id: id },
+        sCallback: (res) => {
+          callback && callback(res.data)
+        }
+      }
+      this.request(param)
+    })
+  }
+
   getSeid(callback) {
     if (this.seid == '') {
       this.store({ type: 'GET_SEID' }, (data) => {

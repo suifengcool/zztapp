@@ -66,6 +66,8 @@ Page({
                 this.setData({
                     shop_id: id,
                     form: data,
+                    cate_name: data.cate_name,
+                    cate_id: data.cate_id ? data.cate_id : data.pcate_id,
                     logoImg: data.logo.indexOf('http') > -1 ? data.logo : this.data.imagesSocket + '/' + data.logo,
                     imgs: arr1,
                     imgUrl: arr1,
@@ -119,8 +121,10 @@ Page({
     	
     	if(options && options.cate_name){
     		this.setData({
-				'form.cate_name': options.cate_name,
-				'form.cate_id': options.cate_id
+                'form.cate_name': options.cate_name,
+				'cate_name': options.cate_name,
+                'form.cate_id': options.cate_id,
+				'cate_id': options.cate_id
     		})
     	}
 		this.init()
@@ -352,7 +356,7 @@ Page({
     	})
     },
 
-    // 选择分类
+    // 查看协议
     readDeal(){
         let obj = this.data.form;
         obj.imgUrl = this.data.imgUrl;

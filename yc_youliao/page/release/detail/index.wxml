@@ -20,7 +20,10 @@
 	</view>
 	<view class="num-box">
 		<view class="time">{{createTime}}</view>
+		<view class="share">{{sendNum}}人转发</view>
 		<view class="scan"><i class="iconfont icon-scan"></i>{{scanNum}}</view>
+		<view class="zan" bindtap="doZanInfo"><i class="iconfont {{isZaned ? 'icon-collect-solid' : 'icon-collect'}}"></i>{{zanNum}}</view>
+
 		
 		<view class="msg" bindtap="showComment"><i class="iconfont icon-msg-solid2"></i></view>
 		<view wx:if="{{showCommentBox}}" class="bomb-box">
