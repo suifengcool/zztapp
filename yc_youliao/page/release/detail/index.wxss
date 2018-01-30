@@ -113,6 +113,10 @@ page{
   margin-left:20rpx;
   flex: 1;
 }
+.zan .icon-collect-solid{
+  font-size:38rpx;
+  vertical-align:-7%;
+}
 .scan .iconfont, .zan .iconfont{
 	margin-right: 5rpx;
 }
@@ -213,7 +217,7 @@ page{
     color: #000079;
 }
 .commentInputWrapper{
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   height: 100%;
@@ -236,6 +240,9 @@ page{
   box-sizing: border-box;
   padding-bottom: 10px;
   z-index: 200;
+  position:fixed;
+  bottom:0;
+  left:0;
 }
 .commentInputWrapper .area{
   width: 100%;

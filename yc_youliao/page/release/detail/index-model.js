@@ -10,16 +10,18 @@ class Index extends Base {
 
   /*得到详情信息*/
   getDetailData(id,callback) {
-    this.id = id
-    var param = {
-      url: 'entry/wxapp/GetInfoById',
-      data: { id},
-      sCallback: (res) => {
-        
-          callback && callback(res.data.data)
+    this.getSeid((seid) => {
+      this.id = id
+      var param = {
+        url: 'entry/wxapp/GetInfoById',
+        data: { id,seid},
+        sCallback: (res) => {
+          
+            callback && callback(res.data.data)
+        }
       }
-    }
-    this.request(param)
+      this.request(param)
+    })
   }
   // 请求地址信息
   getLocationData(location, callback) {

@@ -73,7 +73,7 @@
 		    </scroll-view>
 	    </view>
 
-	    <view wx:if="{{!showClassify}}" class="line"></view>
+	    <view wx:if="{{!showClassify}}" class="bg_line"></view>
 	    <view wx:if="{{showClassify}}" class="classicfy-box bg_white" bindtap="closeClassify" catchtouchmove="preventD">
 	    	<view class="home-list-top bg_white">
 		    	<scroll-view scroll-x='true' class="type-box">

@@ -7,7 +7,6 @@ Page({
 	data: {
 		shopList: [],
 		imagesSocket: '',
-		items: [],
 		startX: 0,          //开始坐标
 		startY: 0
 	},
@@ -20,16 +19,6 @@ Page({
 			})
 		});
 		this.getData()
-
-		for (var i = 0; i < 10; i++) {
-	  this.data.items.push({
-		content: i + " 向左滑动删除哦,向左滑动删除哦,向左滑动删除哦,向左滑动删除哦,向左滑动删除哦",
-		isTouchMove: false //默认全隐藏删除
-	  })
-	}
-	this.setData({
-	  items: this.data.items
-	})
 	},
 
 	getData(){

@@ -50,8 +50,8 @@
 	    </view>
     -->
 
-    <view wx:if="{{ infoList && infoList.length}}" class="comment-box">
-    	<view class="img-box">
+    <view class="comment-box">
+    	<view class="img-box" wx:if="{{ infoList && infoList.length}}">
     		<view class="comment-img-item">
     			<i class="iconfont icon-collect-solid"></i>
     		</view>
@@ -62,7 +62,7 @@
 		    	/>
     		</view>
     	</view>
-    	<view class="word-box">
+    	<view class="word-box" wx:if="{{ commentList && commentList.length}}" >
     		<view class="word-item" wx:for="{{commentList}}" wx:key="{{index}}">
     			<i>{{item.nickname}}</i> {{':'  +item.info}}
     		</view>
