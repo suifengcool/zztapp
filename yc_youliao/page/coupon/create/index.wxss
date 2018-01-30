@@ -41,6 +41,12 @@ page{
 	position: relative;
 	background: #fff;
 }
+.time-box{
+	display: flex;
+}
+.time-box i{
+	margin: 0 10rpx;
+}
 .input{
 	width: 200rpx;
 	height: 100%;

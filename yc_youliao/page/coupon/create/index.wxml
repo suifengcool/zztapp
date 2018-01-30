@@ -22,13 +22,15 @@
 	</view>
 	<view class="item">
 		<view class="label">有效期</view>
-		<picker mode="date" value="{{start_time}}" bindchange="bindStartTimeChange" start="{{start_time}}">
-            <view class="picker-left">{{start_time}}</view>
-        </picker>
-        至
-        <picker mode="date" value="{{end_time}}" bindchange="bindEndTimeChange">
-            <view class="picker-right">{{end_time}}</view>
-        </picker>
+		<view class="time-box">
+			<picker mode="date" value="{{start_time}}" bindchange="bindStartTimeChange" start="{{start_time}}">
+	            <view class="picker-left">{{start_time}}</view>
+	        </picker>
+	        <i>至</i>
+	        <picker mode="date" value="{{end_time}}" bindchange="bindEndTimeChange">
+	            <view class="picker-right">{{end_time}}</view>
+	        </picker>
+		</view>
 	</view>
 	<view class="line"></view>
 	<!--
