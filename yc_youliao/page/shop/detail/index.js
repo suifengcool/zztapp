@@ -200,6 +200,20 @@ Page({
     	}
     },
 
+    // 图片预览
+    previewImg(e) {
+        let arr = e.currentTarget.dataset.src; let arr2 = arr;
+        arr.map((item)=>{
+            if(item.indexOf('http')<0){
+                arr2.length = 0;
+                arr2.push(this.data.imagesSocket + '/' + item)
+            }
+        })
+        wx.previewImage({
+            urls: arr2       // 需要预览的图片http链接列表
+        })
+    },
+
     // 电话拨打
     phonetap() {
 	    if (this.data.shopInfo.telphone) {

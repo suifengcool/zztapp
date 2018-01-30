@@ -55,7 +55,18 @@ page{
 	color: #fff;
 	border-top-left-radius:25rpx;
 	border-bottom-left-radius:25rpx;
-	border-right: 0.5rpx solid #dedede;
+	position: relative;
+}
+.search-box:after{
+	content: '';
+	display: inline-block;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 1rpx;
+	height: 75%;
+	background: #777;
+	transform: translateY(-50%);
 }
 .search-box .iconfont{
 	vertical-align: -6%;

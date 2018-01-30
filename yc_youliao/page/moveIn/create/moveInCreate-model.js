@@ -14,12 +14,10 @@ class Create extends Base {
 
 	// 请求地址
     getDetailLocation(nowLocation, callback) {
-	    console.log(nowLocation)
 	    var param = {
 	        url: 'entry/wxapp/GetLaction',
 	        data: nowLocation,
 	        sCallback: function (res) {
-		        console.log(res)
 		        callback && callback(res.data.data)
 	        }
 	    }
@@ -85,7 +83,6 @@ class Create extends Base {
 
 	submit(form,cb){
 		let data = {}
-		console.log('form1111:',form)
 		data.logo = form.logo[0]
 		if(form.imgUrl && form.imgUrl.length){
 			data['imgUrl'] = form.imgUrl.join(',')
@@ -123,7 +120,6 @@ class Create extends Base {
     // 请求图片socket
 	getAttachurl(callback) {
 		getImageSocket((data) => {
-		    console.log(data)
 		    callback(data)
 		})
 	}

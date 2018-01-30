@@ -42,7 +42,7 @@
     "backgroundColor":"#000",
     "navigationBarBackgroundColor": "#000",
     "navigationBarTextStyle": "#fff",
-    "navigationBarTitleText": "镇镇通",
+    "navigationBarTitleText": "镇镇通宁都便民服务平台",
     "enablePullDownRefresh": true
   },
   "networkTimeout": {

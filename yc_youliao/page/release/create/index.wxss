@@ -15,7 +15,6 @@ page{
 	width: 100%;
 	color: #000;
 	font-size: 28rpx;
-	padding-bottom: 110rpx;
 }
 .textarea{
 	width: 100%;
@@ -108,18 +107,16 @@ page{
 }
 .deal{
 	font-size: 23rpx;
-	margin: 20rpx 0 0 20rpx;
+	height: 70rpx;
+	position:relative;
 }
 .container-release .on{
 	background: #fa5305;
 	color: #fff;
 }
 .btn{
-	position: fixed;
-	bottom: 0;
-	left: 50%;
-	transform: translateX(-50%);
 	width: 94%;
+	margin: 30rpx auto 30rpx;
 	background: #dedede;
 	height: 80rpx;
 	line-height: 80rpx;
@@ -127,5 +124,23 @@ page{
 	font-size: 30rpx;
 	color: #fff;
 	border-radius: 15rpx;
-	margin: 10rpx 0;
+}
+.caution{
+	padding:20rpx;
+	color:#979797;
+	font-size:24rpx;
+	margin-top:10rpx;
+	box-sizing:border-box;
+	width:70%;
+	display: flex;
+	position:absolute;
+	left:50%;
+	top:0;
+	transform:translateX(-50%);
+}
+radio-group{
+	margin-top: -8rpx;
+}
+.caution i{
+	color: #000080;
 }

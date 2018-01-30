@@ -14,7 +14,8 @@ Page({
         },
         imgUrl: [],
         imgs: [],
-        imagesSocket: ''
+        imagesSocket: '',
+        readed: false
     },
 
     onLoad: function (options) {
@@ -61,6 +62,12 @@ Page({
             if(release.telphone){
                 this.setData({
                     'form.telphone':release.telphone
+                })
+            } 
+            if(release.readed){
+                this.setData({
+                    'form.readed':release.readed,
+                    readed: release.readed
                 })
             }  
         }
@@ -284,6 +291,16 @@ Page({
         })
     },
 
+    readDeal(){
+        wx.setStorage({
+            key: "release",
+            data: this.data.form
+        })  
+        wx.navigateTo({
+            url: `/yc_youliao/page/release/deal/index`
+        })
+    },
+
     toast(text){
         wx.showToast({
             title: text,
@@ -313,6 +330,10 @@ Page({
         }
         if(!this.data.form.type_name){
             this.toast('请选择信息类别')
+            return
+        }
+        if(!this.data.readed){
+            this.toast('请选择阅读协议')
             return
         }
         let form = this.data.form
@@ -350,7 +371,5 @@ Page({
                 this.toast(data)
             }
         })
-
-
     }
 })

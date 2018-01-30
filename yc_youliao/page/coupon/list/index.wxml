@@ -1,5 +1,5 @@
 <view class="couponList">
-	<view class="coupon-item" bindtap="goDetail" data-item='{{item}}' wx:for="{{couponList}}" wx:key="{{index}}">
+	<view wx:if="{{item.shop_name}}" class="coupon-item" bindtap="goDetail" data-item='{{item}}' wx:for="{{couponList}}" wx:key="{{index}}">
 		<view class="title-box">
 			<view class="headImg">
 				<image 

@@ -37,7 +37,8 @@ Page({
         imgs:[],
         logoImg: '',
         shop_id: '',
-        textareaEmpty: true
+        textareaEmpty: true,
+        readed: false
 
     },
 
@@ -68,6 +69,7 @@ Page({
                     logoImg: data.logo.indexOf('http') > -1 ? data.logo : this.data.imagesSocket + '/' + data.logo,
                     imgs: arr1,
                     imgUrl: arr1,
+                    textareaEmpty: data.intro && data.intro.trim().length ? false : true
                 })
                 let arr = [];
                 this.data.items.forEach((item,index)=>{
@@ -92,6 +94,9 @@ Page({
                     logoImg: moveInData.logoImg.indexOf('http') > -1 ? moveInData.logoImg : this.data.imagesSocket + '/' + moveInData.logoImg,
                     imgs: moveInData.imgs,
                     imgUrl: moveInData.imgUrl,
+                    cate_name: moveInData.cate_name,
+                    cate_id: moveInData.cate_id,
+                    readed: moveInData.readed,
                     textareaEmpty: moveInData.intro && moveInData.intro.trim().length ? false : true
                 })          
             }
@@ -171,13 +176,19 @@ Page({
     chooseAddress() {
         wx.chooseLocation({
             success: (res) => {
-                console.log(res)
                 this.setData({
                     'location.lat': res.latitude,
                     'location.lng': res.longitude
                 })
                 this.setAddress(true)
             }
+        })
+    },
+
+    // 图片预览
+    previewImg(e) {
+        wx.previewImage({
+            urls: this.data.imgs       // 需要预览的图片http链接列表
         })
     },
 
@@ -199,7 +210,6 @@ Page({
     // 图片上传  
     imgUpload2: function (e) {
 	    let type = e.currentTarget.dataset.type
-        console.log('this.data.imgUrl:',this.data.imgUrl)
         wx.chooseImage({
 	        success: (res) => {
 	        	this.uploadDIY(res.tempFilePaths, (dir) => {
@@ -207,7 +217,6 @@ Page({
 	        		dir.forEach((item,index)=>{
 						arr.push(this.data.imagesSocket+ '/' + item)
 	        		})
-                    console.log('arr:',arr)
 		            this.setData({
 		                imgs: [...this.data.imgs, ...res.tempFilePaths],
 		                imgUrl: [...this.data.imgUrl, ...arr]
@@ -257,13 +266,13 @@ Page({
 
     delImg(e){
     	let target = e.target.dataset.item
-        console.log('target:',target)
 		const arr2 = this.data.imgs.filter((item)=>{
 			return item != target
 		})
 		this.setData({
 			imgs: arr2,
-            'form.imgUrl': arr2
+            'form.imgUrl': arr2,
+            imgUrl: arr2
 		})
     },
 
@@ -272,7 +281,6 @@ Page({
     	this.setData({
     		'form.telphone': e.detail.value
     	})
-
     },
 
     // 店名
@@ -284,7 +292,6 @@ Page({
 
     // 选择店内设施
     checkboxChange: function(e) {
-        console.log('checkbox发生change事件，携带value值为：', e.detail.value)
         this.setData({
             'form.inco': e.detail.value
         })
@@ -298,7 +305,6 @@ Page({
     },
 
     bindTextinput(e){
-        console.log('e:',e.detail.value)
         if(e.detail.value.length){
             this.setData({
                 textareaEmpty: false
@@ -336,6 +342,7 @@ Page({
         obj.imgUrl = this.data.imgUrl;
         obj.logoImg = this.data.logoImg;
         obj.imgs = this.data.imgs;
+        obj.readed = this.data.readed;
 		wx.setStorage({
             key: "moveInData",
             data: obj
@@ -345,8 +352,24 @@ Page({
     	})
     },
 
+    // 选择分类
+    readDeal(){
+        let obj = this.data.form;
+        obj.imgUrl = this.data.imgUrl;
+        obj.logoImg = this.data.logoImg;
+        obj.imgs = this.data.imgs;
+        obj.cate_name = this.data.cate_name;
+        obj.cate_id = this.data.cate_id;
+        wx.setStorage({
+            key: "moveInData",
+            data: obj
+        })
+        wx.navigateTo({
+            url: `/yc_youliao/page/release/deal/index`
+        })
+    },
+
     moveInHandle(){
-        console.log('this.data.form11111:',this.data.form)
     	if(!this.data.form.logo){
             wx.showToast({
                 title: '请上传门店Logo',
@@ -419,15 +442,18 @@ Page({
             })
 			return
     	}
-
+        if(!this.data.readed){
+            this.toast('请选择阅读协议')
+            return
+        }
         let form = this.data.form
         if(form.shop_id){
-            form.imgUrl = this.data.imgUrl
+            // form.imgUrl = this.data.imgUrl
         }
         if(this.data.shop_id){
             form.shop_id = this.data.shop_id
         }
-    	
+
     	index.submit(form,(data)=>{
             if(data.message == 'sucess' || data.errno == 0){
                 wx.showToast({

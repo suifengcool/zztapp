@@ -12,3 +12,13 @@ page{
 	text-align: center;
 	font-size: 28rpx;
 }
+.confirm-btn{
+	margin-top: 30rpx;
+	height:50rpx;
+	line-height:50rpx;
+	width:100%;
+	text-align:center;
+}
+radio{
+	vertical-align:10%;
+}

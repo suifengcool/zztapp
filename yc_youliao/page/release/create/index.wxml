@@ -44,10 +44,13 @@
 		</view>
 	</view>
 	<view class="deal color">
-		<i class="iconfont adress"></i>
-		<navigator url="../deal/index">
-			我已阅读并同意《平台用户服务协议》
-		</navigator>
+		<view bindtap="readDeal" class="caution">
+			<radio-group class="radio-group" bindchange="radioChange">
+			    <label class="radio">
+			        <radio value="确认阅读并遵守" checked="{{readed}}"/>
+			    </label>
+			</radio-group>我已阅读并同意<i>《平台用户服务协议》</i>
+		</view>
 	</view>
 	<view class="btn {{!isNotEmpty? 'on' : ''}}" bindtap="submitHandle">立即发布</view>
 </view>
