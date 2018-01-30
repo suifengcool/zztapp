@@ -189,8 +189,8 @@ page{
     text-align: center;
 }
 .comment-box .img-box .comment-img-item .iconfont{
-    font-size:29rpx;
-    color:#777;
+    font-size:43rpx;
+    color:#999;
     vertical-align:-7%;
 }
 .comment-box .img-box .comment-img-item .img{

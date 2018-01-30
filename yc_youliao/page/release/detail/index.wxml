@@ -50,12 +50,12 @@
 	    </view>
     -->
 
-    <view wx:if="{{commentList.length}}" class="comment-box">
+    <view wx:if="{{ infoList && infoList.length}}" class="comment-box">
     	<view class="img-box">
     		<view class="comment-img-item">
-    			<i class="iconfont icon-msg-solid2"></i>
+    			<i class="iconfont icon-collect-solid"></i>
     		</view>
-    		<view class="comment-img-item" wx:for="{{commentList}}" wx:key="{{index}}">
+    		<view class="comment-img-item" wx:for="{{infoList}}" wx:key="{{index}}">
     			<image 
 					class="img"
 			    	src="{{item.avatar ? item.avatar : '../../../resource/images/user-default.png'}}" 

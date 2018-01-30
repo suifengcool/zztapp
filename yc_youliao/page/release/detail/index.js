@@ -19,7 +19,8 @@ Page({
         comment: '',
         userInfo: null,
         createTime: '',
-        isZaned: false
+        isZaned: false,
+        infoList: []
     },
 
     /**
@@ -75,7 +76,8 @@ Page({
                 sendNum: data.send,
                 zanNum: data.zan,
                 isZaned: data.iszan ? true : false,
-                createTime: time
+                createTime: time,
+                infoList: data.zaninfo 
             })
         })
 
@@ -220,9 +222,11 @@ Page({
             return
         }
         index.doZanInfo(this.data.id,(data)=>{
+
             this.setData({
                 isZaned: !this.data.isZaned,
-                zanNum: this.data.isZaned ? this.data.zanNum - 1 : this.data.zanNum - (-1) 
+                zanNum: this.data.isZaned ? this.data.zanNum - 1 : this.data.zanNum - (-1) ,
+                infoList: [...this.data.infoList, { nickname: this.data.userInfo.nickName, avatar: this.data.userInfo.avatarUrl }],
             })
         })
     },
