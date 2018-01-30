@@ -30,9 +30,16 @@
             </view>
         </view>
 
-        <!--
         <view class="hotClassify-list">
-            <view class="hotClassify-item" wx:for="{{hotClassifyList}}" wx:key="{{index}}" bindtap="aaa">
+            <view 
+                class="hotClassify-item" 
+                wx:for="{{hotClassifyList}}" 
+                wx:key="{{index}}" 
+                bindtap = "goToSearchList"
+                data-key = '{{item.cate_name}}'
+                data-type = 'shop'
+                data-id = '{{item.cate_id}}'
+            >
                 <image
                     class="pic"
                     src="{{item.thumb ? imagesSocket+'/'+item.thumb : '../../resource/images/zzt_logo1.png'}}"
@@ -41,7 +48,6 @@
                 <view class="text">{{item.cate_name}}</view>
             </view>
         </view>
-        --> 
 
         <view wx:if="{{!showClassify}}" class="advert-box">
             <view class="advert-item">

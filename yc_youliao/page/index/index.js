@@ -330,5 +330,14 @@ Page({
 	      toastText: 'Michael’s　Toast'  
 	    });  
 	    this.showToast();  
-	  }  
+    },
+
+    goToSearchList(e){
+    	let key = e.currentTarget.dataset.key
+		let type = e.currentTarget.dataset.type
+		let id = e.currentTarget.dataset.id
+		wx.navigateTo({
+	        url: `/yc_youliao/page/search/${type}/index?keyword=${key}&from=index&cate_id=${id}`
+    	})
+    }  
 })

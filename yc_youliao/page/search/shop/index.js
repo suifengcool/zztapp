@@ -32,6 +32,10 @@ Page({
 		});
 
 		if(option && option.keyword){
+
+			wx.setNavigationBarTitle({
+		        title: '店铺-' + option.keyword
+		    })
 			this.setData({
 				keyword: option.keyword,
 				isKeywordEmpty: false,

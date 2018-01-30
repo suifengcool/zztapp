@@ -489,7 +489,7 @@ page{
 .hotClassify-list{
 	display: flex;
 	flex-wrap: wrap;
-	padding: 30rpx 25rpx;
+	padding: 20rpx 25rpx;
 	box-sizing: border-box; 
 }
 .hotClassify-item{
@@ -513,7 +513,6 @@ page{
 	padding: 0 30rpx;
 	box-sizing: border-box;
 	margin-bottom: 20rpx;
-	margin-top: 20rpx;
 }
 .advert-item{
 	width: 332rpx;
