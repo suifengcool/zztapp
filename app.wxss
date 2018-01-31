@@ -292,7 +292,7 @@
   background: #fff;
 }
 .image_pic{
-  background-image: url('https://picabstract-preview-ftn.weiyun.com:8443/ftn_pic_abs_v2/0c365bcd8ee14ac3acf84533383c4646981adab9ee96916878205317bd730827aced574164ef8ed8dd62a8d78784e411?pictype=scale&from=30113&version=2.0.0.2&uin=371801080&fname=zzt_logo1.png&size=1024');
+  background-image: url('https://picabstract-preview-ftn.weiyun.com:8443/ftn_pic_abs_v2/1bdae2493f0b41efd60d332182122a587c93c9dd02873143c1b3b55525b1f7457b1b15d4269b3312762696af307d1795?pictype=scale&from=30113&version=2.0.0.2&uin=371801080&fname=zzt_logo2%281%29.png&size=1024');
   background-size:contain;
   background-repeat: no-repeat;
   background-position: center center;

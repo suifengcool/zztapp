@@ -62,7 +62,7 @@
     </view>
     <view wx:if="{{!tab}}" class="shop-content bg_white">
         <view class="shop-desc">
-            <view class="iconList">
+            <view wx:if="{{shopInfo.inco && shopInfo.inco.length}}" class="iconList">
                 <view wx:if="{{shopInfo.inco && shopInfo.inco.length}}" class="shop-desc-item" wx:for="{{shopInfo.icon}}" wx:key="{{index}}">
                     <i class="iconfont {{item.icon}}"></i>{{item.text}}
                 </view>

@@ -61,6 +61,7 @@ Page({
 	        	if(item.logo.indexOf('http') < 0 ){
 					item.logo = this.data.imagesSocket + '/' + item.logo
 	        	}
+	        	item.shop_name = item.shop_name.split('（')[0];
 			})
 			this.setData({
 	       		cate: [...data.cate],

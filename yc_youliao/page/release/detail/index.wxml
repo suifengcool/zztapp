@@ -6,7 +6,10 @@
 		    	src="{{info.avatar ? info.avatar : '../../../resource/images/user-default.png'}}" 
 	    	/>
 		</view>
-		<view class="name">{{info.nickname}}</view>
+		<view class="name">
+			{{info.nickname}}
+			<view class="address">{{info.city + info.district}}</view>
+		</view>
 	</view>
 	<view class="title">{{info.content.text || info.content.title}}</view>
 	<view class="imgBox">
