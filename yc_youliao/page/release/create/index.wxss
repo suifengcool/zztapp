@@ -115,7 +115,7 @@ page{
 	color: #fff;
 }
 .btn{
-	width: 94%;
+	width: 60%;
 	margin: 30rpx auto 30rpx;
 	background: #dedede;
 	height: 80rpx;

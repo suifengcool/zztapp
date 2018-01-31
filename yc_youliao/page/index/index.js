@@ -12,6 +12,7 @@ Page({
 	data: {
 		shopList: [],
 		cate: [],
+		cateScroll: [],
 		advs: [],
 		hotshop: [],
 	    cateId: -1,
@@ -63,6 +64,7 @@ Page({
 			})
 			this.setData({
 	       		cate: [...data.cate],
+	       		cateScroll: [...data.cate],
 				hotClassifyList: [...data.cate].slice(0,5),
 	       		advs: [...this.data.advs, ...data.advs],
 	       		hotshop: [...this.data.hotshop, ...data.hotshop],
@@ -252,7 +254,16 @@ Page({
 		// })
 	    let id = parseInt(e.currentTarget.dataset.id);
 	    let index = parseInt(e.currentTarget.dataset.index);
+	    let item = e.currentTarget.dataset.item;
+	    
+	    let arr = this.data.cate,
+	    	arr2 = [];
+	    arr2 = arr.filter((ele,index)=> {
+	    	return ele.cate_id != item.cate_id ;
+	    });
+	    arr2.unshift(item);
 	    this.setData({
+	    	cateScroll: arr2,
 	      	cateId: id,
 	      	currentIndex: index
 	    })
