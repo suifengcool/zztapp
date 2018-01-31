@@ -13,7 +13,11 @@
     	        <block wx:for="{{advs}}" wx:key="unique">    
     		        <swiper-item>    
     		            <image 
-                            src="{{ item.thumb ? imagesSocket+'/'+item.thumb : '../../resource/images/logo-default.png'}}" class="slide-image image_pic" mode="aspectFill"/> 
+                            src="{{ item.thumb ? imagesSocket+'/'+item.thumb : '../../resource/images/logo-default.png'}}" class="slide-image image_pic" 
+                            mode="aspectFill"
+                            data-id="{{item.shop_id}}"
+                            bindtap="tap"
+                        /> 
     		        </swiper-item>    
     	        </block> 
     	    </swiper>

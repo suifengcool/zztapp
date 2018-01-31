@@ -284,6 +284,21 @@ Page({
 	// 点击门店列表，查看店铺详情
 	tap(e) {
 	    let id = e.currentTarget.dataset.id;
+	    if(!id){
+	    	wx.showModal({
+	    		title: '提示',  
+	            content: '找不到该店铺',  
+	            showCancel: false,
+	            success: function(res) {  
+	                if (res.confirm) {  
+
+	                } else if (res.cancel) {  
+
+	                }  
+	            } 
+	    	})
+	    	return
+	    }
 	    wx.navigateTo({
 	        url: `/yc_youliao/page/shop/detail/index?shop_id=${id}`
     	})
