@@ -5,7 +5,7 @@
         <view class="item-box" wx:for="{{list}}" wx:key="{{index}}" data-item="{{item}}" bindtap="goToIndex">
             <image
                 class="pic"
-                src="{{item.logo ? imagesSocket+'/'+item.logo : '../../resource/images/zzt_logo1.png'}}"
+                src="{{item.logo ? imagesSocket+'/'+item.logo : '../../resource/images/logo-default.png'}}"
                 background-size="cover"
             ></image>
             <view class="text">{{item.name}}</view>
