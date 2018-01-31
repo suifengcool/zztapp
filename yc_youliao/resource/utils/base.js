@@ -12,7 +12,6 @@ class Base{
 		var that = this;
 		// 数据上传时带上acid
 		if (app.sq_acid) {
-		    console.log(params.data)
 		    if(!params.data) {
 				params.data = { sq_acid: app.sq_acid}
 		    }else{
@@ -37,16 +36,15 @@ class Base{
     }
 
     _processError(err) {
-		console.log(err)
 		if(err.data.errno === 1) {
 		    wx.showModal({
 				title: '提示',
 				content: err.data.message,
 				success: function (res) {
 				    if (res.confirm) {
-						console.log('用户点击确定')
+
 				    } else if (res.cancel) {
-						console.log('用户点击取消')
+
 				    }
 				}
 		    })

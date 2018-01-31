@@ -18,7 +18,7 @@ let getSeid = function (state, callback) {
                 callback && callback(res.data.data)
               },
               fail(err) {
-                console.log(err)
+
               }
             })
           }
