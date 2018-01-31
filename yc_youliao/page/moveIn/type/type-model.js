@@ -1,6 +1,7 @@
 import { Base } from '../../../resource/utils/base.js'
-import { getLocation, getUserInfo, getImageSocket } from '../../../resource/utils/comment.js'
+import { getUserInfo } from '../../../resource/utils/comment.js'
 const app = getApp()
+
 class Index extends Base {
   constructor() {
     super()
@@ -18,9 +19,6 @@ class Index extends Base {
       this.request(param)
     })
   }
-
 }
-
-
 
 export { Index }

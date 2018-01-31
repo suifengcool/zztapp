@@ -1,5 +1,5 @@
 import { getImageSocket, handleTime } from '../../../resource/utils/comment.js'
-import { html2json } from '../../../../we7/resource/js/htmlToWxml.js'
+import { html2json } from '../../../resource/js/htmlToWxml.js'
 import { ShopStore } from 'shopStore-model.js'
 import { Detail } from 'detail-model.js'
 const shopStore = new ShopStore()
@@ -36,7 +36,6 @@ Page({
 
     onLoad: function (options) {
     	pageOptions = options
-    	console.log('options:',options)
     	// 获取图片头
 		getImageSocket((data) => {
 		    this.setData({
@@ -52,7 +51,6 @@ Page({
 
         // 收藏判断
 	    detail.isCollect(id,(flag) => {
-	    	console.log('flag:',flag)
 	        this.setData({
 	        	isCollect: flag
 	        })
@@ -138,7 +136,6 @@ Page({
     onShow: function () {
 	    var vm = this;
 	    var length = vm.data.text.length * vm.data.size;      // 文字长度
-	    console.log('length:',length)
 	    var windowWidth = wx.getSystemInfoSync().windowWidth; // 屏幕宽度
 	    vm.setData({
 	        length: length,
@@ -151,7 +148,6 @@ Page({
 
     changeTab(e){
     	let tab = e.currentTarget.dataset.tab
-    	console.log('tab:',tab)
     	let id = this.data.shop_id
     	let type = this.data.shopInfo.infoNum
     	let comment = this.data.shopInfo.comment
@@ -177,7 +173,6 @@ Page({
     		let form = {};
     		form.id = this.data.shop_id;
     		detail.getComment(form,(data)=>{
-    			console.log('data11:',data)
 				let obj = data.data;
     			obj.map((item,index)=>{
     				let len = item.dp
@@ -191,7 +186,6 @@ Page({
     				item.starList1 = arr;
     				item.starList2 = arr1;
     			})
-    			console.log('obj:',obj)
     			this.setData({
 					commentList: obj
 				})
@@ -226,8 +220,11 @@ Page({
 	// 查看地图
     map() {
 	    wx.openLocation({
-	        latitude: parseFloat(this.data.shopInfo.lat), longitude: parseFloat(this.data.shopInfo.lng), address: this.data.shopInfo.address, success: (res) => {
-	        	console.log(res)
+	        latitude: parseFloat(this.data.shopInfo.lat), 
+	        longitude: parseFloat(this.data.shopInfo.lng), 
+	        address: this.data.shopInfo.address, 
+	        success: (res) => {
+
 	        }
 	    })
     },
@@ -251,7 +248,7 @@ Page({
     onShareAppMessage: function (res) {
         if (res.from === 'button') {
           // 来自页面内转发按钮
-            console.log(res.target)
+
         }
 
         let params = ''
@@ -264,7 +261,7 @@ Page({
             title: '更多精彩尽在镇镇通',
             path: '/yc_youliao/page/shop/detail/index?' + params,
             success: function (res) {
-                console.log('/yc_youliao/page/shop/detail/index?' + params)
+
             },
             fail: function (res) {
             // 转发失败
@@ -332,7 +329,6 @@ Page({
 		let form = {};
 		form.id = this.data.shop_id;
 		detail.getCouponList(form,(data)=>{
-			console.log('data:',data)
 			if(!data || !data.data.length){
 				wx.showModal({
 	                title: '提示',
@@ -341,9 +337,9 @@ Page({
 	                confirmColor: '#333',
 	                success: function (res) {
 	                    if (res.confirm) {
-	                        console.log('用户点击确定')
+
 	                    } else if (res.cancel) {
-	                        console.log('用户点击取消')
+
 	                    }
 	                }
 	            })	
@@ -360,11 +356,9 @@ Page({
 
 	chooseCoupon(e){
 		let item = e.currentTarget.dataset.item
-		console.log('item:',item)
 		let form = {};
 		form.tid = item.id;
 		detail.chooseCoupon(form,(data)=>{
-			console.log('data:',data)
 			if(data.data && data.data.errno == 0){
 				wx.showToast({
                     title: '优惠券领取成功',

@@ -94,7 +94,7 @@ Page({
 		wx.removeStorage({
 		    key: 'searchList',
 		    success: function(res) {
-		    	console.log(res.data)
+
 		    } 
 		})
 	},

@@ -1,4 +1,4 @@
-import { getUserInfo, getImageSocket, getLocation , dateToStr} from '../../resource/utils/comment.js'
+import { getUserInfo, getImageSocket, getLocation } from '../../resource/utils/comment.js'
 import { ShopList } from 'shopList-model.js'
 import { Index } from 'index-model.js'
 
@@ -20,8 +20,6 @@ Page({
 	    imagesSocket: '',
 	    isComplete: false,
 	    currentIndex: 0,
-	    isShowToast: false ,
-	    tabbar: 0,
 	    townName: '',
 	    townId: null,
 	    hotClassifyList:[]
@@ -30,13 +28,14 @@ Page({
 	
 	onLoad: function(){
 		let isLoaded = wx.getStorageSync('isLoaded');
+
 		if(isLoaded){
 			this.setData({
 				townName: isLoaded.name,
 				townId: isLoaded.id
 			})
 		}
-		console.log('isLoaded:',isLoaded)
+
 		// 获取用户信息
 		getUserInfo((data) => {
 			let userInfo = data
@@ -46,11 +45,6 @@ Page({
 			})
 		});
 
-		wx.setNavigationBarColor({
-            frontColor: '#ffffff',
-            backgroundColor: '#000000'
-        })
-
 		// 获取图片头
 		getImageSocket((data) => {
 		    this.setData({
@@ -58,6 +52,7 @@ Page({
 		    })
 		});
 
+		// 获取首页数据
 		index.getIndexData((data)=>{
 			let arr = [];
 	        arr = [...this.data.hotshop, ...data.hotshop];
@@ -89,119 +84,6 @@ Page({
 	       		cate: data
 	        })
 	    })
-	},
-
-	// 二维码
-	scanCode() {
-	    wx.scanCode({
-	        success: (res) => {
-	        	wx.redirectTo({
-                   url: `/yc_youliao/page/coupon/detail/index?id=${res.result}`
-                })
-	        },
-	        fail: (res) => {
-	        	wx.showModal({
-                title: '扫描错误',
-                content: res,
-                showCancel: false,
-                confirmColor: '#333',
-                success: function (res) {
-                    if (res.confirm) {
-                        console.log('用户点击确定')
-                    } else if (res.cancel) {
-                        console.log('用户点击取消')
-                    }
-                }
-            })
-	        }
-	    })
-	},
-	
-    // 用户点击右上角分享
-	onShareAppMessage: function (res) {
-		if (res.from === 'button') {
-		    // 来自页面内转发按钮
-		    console.log(res.target)
-		}
-		return {
-		    title: '更多的精彩尽在镇镇通',
-		    // 转发成功
-		    success: function (res) {
-				console.log('转发成功:',res)
-		    },
-		    // 转发失败
-		    fail: function (res) {
-				console.log('转发失败:',res)
-		    }
-		}
-	},
-
-	aaa(){
-		console.log('11111111')
-		// wx.pageScrollTo({
-		//   scrollTop: 495,
-		//   duration: 300
-		// })
-		wx.getSystemInfo({
-			success:function(res){
-				console.log('res:',res)
-			}
-		})
-	},
-
-	// 显示遮罩层  
-	showAllClassify(){ 
-		var _this = this;
-		
-		var animation = wx.createAnimation({  
-			duration: 200,  
-			timingFunction: "linear",  
-			delay: 0  
-		});  
-		_this.animation = animation;  
-		animation.translateY(animationShowHeight).step(); 
-
-		_this.setData({  
-			animationData: animation.export(),  
-			showClassify: !_this.data.showClassify  
-		});
-
-		setTimeout(function () {  
-			animation.translateY(0).step()  
-			_this.setData({  
-				animationData: animation.export()  
-			})  
-		}.bind(_this), 200);  
-	},
-
-	// 隐藏遮罩层  
-	closeClassify(){
-		var _this = this;
-		var animation = wx.createAnimation({  
-			duration: 200,  
-			timingFunction: "linear",  
-			delay: 0  
-		});  
-
-		_this.animation = animation;  
-		animation.translateY(animationShowHeight).step();
-
-		_this.setData({  
-			animationData: animation.export(),  
-		});
-
-		setTimeout(function () {  
-			animation.translateY(0).step();  
-			_this.setData({  
-				animationData: animation.export(),  
-				showClassify: false  
-			})  
-		}.bind(_this), 200);  
-	},
-
-	// 阻止蒙层下滚动
-	preventD(){
-
 	},
 
 	getData(newId) {
@@ -262,6 +144,106 @@ Page({
 	    })
 	},
 
+	// 扫描二维码
+	scanCode() {
+	    wx.scanCode({
+	        success: (res) => {
+	        	wx.redirectTo({
+                   url: `/yc_youliao/page/coupon/detail/index?id=${res.result}`
+                })
+	        },
+	        fail: (res) => {
+	        	wx.showModal({
+	                title: '扫描错误',
+	                content: res,
+	                showCancel: false,
+	                confirmColor: '#333',
+	                success: function (res) {
+	                    if (res.confirm) {
+	                        console.log('用户点击确定')
+	                    } else if (res.cancel) {
+	                        console.log('用户点击取消')
+	                    }
+	                }
+	            })
+	        }
+	    })
+	},
+	
+    // 用户点击右上角分享
+	onShareAppMessage: function (res) {
+		if (res.from === 'button') {
+		    // 来自页面内转发按钮
+		    console.log(res.target)
+		}
+		return {
+		    title: '更多的精彩尽在镇镇通',
+		    // 转发成功
+		    success: function (res) {
+				console.log('转发成功:',res)
+		    },
+		    // 转发失败
+		    fail: function (res) {
+				console.log('转发失败:',res)
+		    }
+		}
+	},
+
+	// 显示遮罩层  
+	showAllClassify(){ 
+		var _this = this;
+		
+		var animation = wx.createAnimation({  
+			duration: 200,  
+			timingFunction: "linear",  
+			delay: 0  
+		});  
+		_this.animation = animation;  
+		animation.translateY(animationShowHeight).step(); 
+
+		_this.setData({  
+			animationData: animation.export(),  
+			showClassify: !_this.data.showClassify  
+		});
+
+		setTimeout(function () {  
+			animation.translateY(0).step()  
+			_this.setData({  
+				animationData: animation.export()  
+			})  
+		}.bind(_this), 200);  
+	},
+
+	// 隐藏遮罩层  
+	closeClassify(){
+		var _this = this;
+		var animation = wx.createAnimation({  
+			duration: 200,  
+			timingFunction: "linear",  
+			delay: 0  
+		});  
+
+		_this.animation = animation;  
+		animation.translateY(animationShowHeight).step();
+
+		_this.setData({  
+			animationData: animation.export(),  
+		});
+
+		setTimeout(function () {  
+			animation.translateY(0).step();  
+			_this.setData({  
+				animationData: animation.export(),  
+				showClassify: false  
+			})  
+		}.bind(_this), 200);  
+	},
+
+	// 阻止蒙层下滚动
+	preventD(){
+
+	},
+
 	// 点击选择分类
 	scrollTap(e) {
 		// wx.pageScrollTo({
@@ -278,7 +260,7 @@ Page({
 	},
 
 	// 点击门店列表，查看店铺详情
-	tap (e) {
+	tap(e) {
 	    let id = e.currentTarget.dataset.id;
 	    wx.navigateTo({
 	        url: `/yc_youliao/page/shop/detail/index?shop_id=${id}`
@@ -299,6 +281,7 @@ Page({
         })
     },
 
+	// 选择镇
     chooseTown(){
 		wx.removeStorageSync('isLoaded')
 		wx.redirectTo({
@@ -306,32 +289,7 @@ Page({
 		})
     },
 
-    showToast: function () {  
-	    var _this = this;  
-	    // toast时间  
-	    _this.data.count = parseInt(_this.data.count) ? parseInt(_this.data.count) : 3000;  
-	    // 显示toast  
-	    _this.setData({  
-	      isShowToast: true,  
-	    });  
-	    // 定时器关闭  
-	    setTimeout(function () {  
-	      _this.setData({  
-	        isShowToast: false  
-	      });  
-	    }, _this.data.count);  
-	  },  
-	  /* 点击按钮 */  
-	  clickBtn: function () {  
-	    console.log("你点击了按钮")  
-	    //设置toast时间，toast内容  
-	    this.setData({  
-	      count: 1500,  
-	      toastText: 'Michael’s　Toast'  
-	    });  
-	    this.showToast();  
-    },
-
+	// 点击热门分类，跳转至对应店铺列表
     goToSearchList(e){
     	let key = e.currentTarget.dataset.key
 		let type = e.currentTarget.dataset.type

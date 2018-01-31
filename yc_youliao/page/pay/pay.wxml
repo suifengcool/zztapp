@@ -1,9 +1,0 @@
-<!--yc_youliao/page/pay/pay.wxml-->
-<view class='pay'>
-  <view class='price'>￥{{price}}</view>
-  <view class='des'>
-    <view class='line'><text class='col666'>商品</text><text class='col222 right'>模块发布</text></view>
-  </view>
-  <view class='btn' bindtap='pay'>确认支付</view>
-  <view class='btn cancle' bindtap='cancle'>返回</view>
-</view>

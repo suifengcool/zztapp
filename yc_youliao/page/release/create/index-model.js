@@ -9,14 +9,13 @@ class Index extends Base {
   // 请求图片socket
   getAttachurl(callback) {
     getImageSocket((data) => {
-      console.log(data)
       callback(data)
     })
   }
   // 获取用户信息
   indexGetUserInfo() {
     getUserInfo(true, (res) => {
-      console.log(res)
+
     })
   }
   // 获取经纬度信息
@@ -34,12 +33,10 @@ class Index extends Base {
 
 	// 请求地址
     getDetailLocation(nowLocation, callback) {
-	    console.log(nowLocation)
 	    var param = {
 	        url: 'entry/wxapp/GetLaction',
 	        data: nowLocation,
 	        sCallback: function (res) {
-		        console.log(res)
 		        callback && callback(res.data.data)
 	        }
 	    }

@@ -26,7 +26,6 @@ Page({
 
     getUserList(){
     	index.getUserName((data)=>{
-			console.log('data:',data)
 			let arr = data;
 	        arr.map((item,index)=>{
 	        	if(item.logo.indexOf('http') < 0 ){

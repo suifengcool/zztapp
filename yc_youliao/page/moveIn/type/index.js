@@ -3,16 +3,11 @@ var index = new Index()
 
 Page({
     data: {
-		isUsed: false,
 		cateList: []
     },
 
-    /**
-    * 生命周期函数--监听页面加载
-    */
     onLoad: function (options) {
 		index.getTypeList((data)=>{
-			console.log('data:',data)
 			this.setData({
 	       		cateList: data
 	        })

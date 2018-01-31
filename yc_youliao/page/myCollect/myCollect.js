@@ -110,7 +110,6 @@ Page({
 
     // 收藏(取消收藏)按钮
     onCollectTap(e) {
-        console.log('e.currentTarget.dataset.item:',e.currentTarget.dataset.item)
         let _this = this;
         let type = Number(e.currentTarget.dataset.type);
         let id = type ? e.currentTarget.dataset.item.shop_id : e.currentTarget.dataset.item.message_id;
@@ -118,7 +117,6 @@ Page({
             id: id,
             type: type
         }
-        console.log('form:',form)
         myCollect.collect(form,(res) => {
             if(!res.data.errno){
                 wx.showToast({
@@ -165,6 +163,5 @@ Page({
         wx.navigateTo({
             url: `/yc_youliao/page/shop/detail/index?shop_id=${item.shop_id}`
         })
-
     }
 })

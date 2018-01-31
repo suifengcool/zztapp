@@ -63,64 +63,6 @@ Page({
 		})
 	},
 
-	longTap(e){
-		let _this = this;
-		let id = e.currentTarget.dataset.item.shop_id;
-		let shop_name = e.currentTarget.dataset.item.shop_name;
-		wx.vibrateShort({
-			success: (res) => {
-				wx.showModal({
-					title: shop_name,
-					cancelText: '进入店铺',
-					confirmText: '删除店铺',
-					confirmColor: '#999',
-					success: function(res){
-						if(res.confirm){
-							wx.showModal({
-							  title: '是否确定删除该店铺',
-							  cancelText: '取消',
-							  confirmText: '确认',
-							  confirmColor: '#333',
-							  success: function(res){
-								if (res.confirm){
-								  index.DelMyShop(id,(data)=>{
-									if(data === '删除店铺成功!'){
-										wx.showToast({
-										  title: '店铺删除成功',
-										  icon: 'success',
-										  duration: 3000,
-										  success: ()=>{
-											setTimeout(()=>{
-												_this.getData()
-											}, 3000) 
-										  }
-										})
-									}else{
-										wx.showModal({
-											title: '删除失败',
-											content: data,
-											showCancel: false
-										})
-
-									}
-								  })
-								}
-							  }
-							})
-						}else{
-						  wx.redirectTo({
-							url: `/yc_youliao/page/shop/detail/index?shop_id=${id}`
-						})
-						}
-					}
-				})
-			},
-			fail: (res) => {
-				console.log(res)
-			}
-		})
-	},
-
 	goToDetail(e){
 		let item = e.currentTarget.dataset.item;
 		wx.redirectTo({
@@ -223,5 +165,63 @@ Page({
 				}
 			}
 		})
-    }
+    },
+
+    longTap(e){
+		let _this = this;
+		let id = e.currentTarget.dataset.item.shop_id;
+		let shop_name = e.currentTarget.dataset.item.shop_name;
+		wx.vibrateShort({
+			success: (res) => {
+				wx.showModal({
+					title: shop_name,
+					cancelText: '进入店铺',
+					confirmText: '删除店铺',
+					confirmColor: '#999',
+					success: function(res){
+						if(res.confirm){
+							wx.showModal({
+							  title: '是否确定删除该店铺',
+							  cancelText: '取消',
+							  confirmText: '确认',
+							  confirmColor: '#333',
+							  success: function(res){
+								if (res.confirm){
+								  index.DelMyShop(id,(data)=>{
+									if(data === '删除店铺成功!'){
+										wx.showToast({
+										  title: '店铺删除成功',
+										  icon: 'success',
+										  duration: 3000,
+										  success: ()=>{
+											setTimeout(()=>{
+												_this.getData()
+											}, 3000) 
+										  }
+										})
+									}else{
+										wx.showModal({
+											title: '删除失败',
+											content: data,
+											showCancel: false
+										})
+
+									}
+								  })
+								}
+							  }
+							})
+						}else{
+						  wx.redirectTo({
+							url: `/yc_youliao/page/shop/detail/index?shop_id=${id}`
+						})
+						}
+					}
+				})
+			},
+			fail: (res) => {
+				console.log(res)
+			}
+		})
+	},
 })

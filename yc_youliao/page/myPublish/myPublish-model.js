@@ -8,12 +8,10 @@ class MyPublish extends Base {
   getMyPublishData(options, callback) {
     this.store({ type: 'GET_SEID' }, (seid) => {
       options.seid = seid
-      console.log(options)
       var param = {
         url: 'entry/wxapp/GetInfoByUser',
         data: options,
         sCallback: (res) => {
-          console.log(res)
           let arr = res.data.data
           arr.forEach((v) => {
             handleTime(v)
@@ -27,12 +25,10 @@ class MyPublish extends Base {
   deleteInfo (e, callback){
     this.store({ type: 'GET_SEID' }, (seid) => {
       let id = this.getDataSet(e, 'id')
-      console.log(seid, id)
       var param = {
         url: 'entry/wxapp/DeleteInfo',
         data: { seid, message_id: id },
         sCallback: (res) => {
-          console.log(res)
           if (res.data.message.indexOf('sucess') > -1) {
             wx.showToast({
               title: '删除成功',
@@ -47,7 +43,5 @@ class MyPublish extends Base {
     })
   }
 }
-
-
 
 export { MyPublish }

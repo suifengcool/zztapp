@@ -28,7 +28,6 @@ Page({
             })
         });
 
-		console.log('options:',options)
 		if(options && options.shop_id){
 			this.setData({
 				logo: options.logo,
@@ -91,7 +90,6 @@ Page({
 		form.name = '满' + this.data.counsume + '减' + this.data.delNum;
 		form.type = 1;
 		index.createCoupon(form,(data)=>{
-			console.log('data:',data)
 			if(data.errno == 0){
 				wx.showToast({
                     title: '优惠券创建成功',

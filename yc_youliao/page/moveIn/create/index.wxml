@@ -119,6 +119,4 @@
 		<view wx:if="{{shop_id}}" class="footer-btn" bindtap="moveInHandle">确认修改</view>
 		<view wx:else class="footer-btn" bindtap="moveInHandle">马上入驻</view>
 	</view>
-	
-	<toast hidden="{{hiddenToast}}" duration="2000" bindchange="toastHidden" >{{toastText}}</toast>
 </view>

@@ -189,7 +189,7 @@ Page({
         let _this = this;
         if (res.from === 'button') {
           // 来自页面内转发按钮
-            console.log(res.target)
+
         }
 
         let params = ''
@@ -209,7 +209,6 @@ Page({
                         })
                     }
                 })
-                console.log('/yc_youliao/page/release/detail/index?' + params)
             },
             fail: function (res) {
             // 转发失败

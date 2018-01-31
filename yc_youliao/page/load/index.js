@@ -1,5 +1,4 @@
 import { getUserInfo, getImageSocket, getLocation , dateToStr} from '../../resource/utils/comment.js'
-
 import { Index } from 'index-model.js'
 
 var index = new Index()
@@ -13,12 +12,8 @@ Page({
 	},
 	
 	onLoad: function(options){
-		wx.setNavigationBarColor({
-            frontColor: '#ffffff',
-            backgroundColor: '#000000'
-        })
-
 		let isLoaded = wx.getStorageSync('isLoaded');
+
 	    if(isLoaded){
 			wx.switchTab({
 	            url: `/yc_youliao/page/index/index`
@@ -26,7 +21,7 @@ Page({
 	    }else{
 	    	// 获取用户信息
 			getUserInfo((data) => {
-				console.log('data')
+				
 			});
 
 			// 获取图片头

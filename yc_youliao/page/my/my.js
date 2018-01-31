@@ -1,18 +1,11 @@
-// yc_youliao/my/my.js
 import { getUserInfo } from '../../resource/utils/comment.js'
 Page({
-
-    /**
-    * 页面的初始数据
-    */
     data: {
 		name: '',
 		avatar: '',
 		city: true
     },
-    /**
-    * 生命周期函数--监听页面加载
-    */
+
     onLoad: function (options) {
 		getUserInfo((data) => {
 		    let userInfo = data
@@ -22,6 +15,7 @@ Page({
 		    })
 		})
     },
+    
 	onTitleTap(e) {
 		let name = e.currentTarget.dataset.name
 		this.setData({

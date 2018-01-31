@@ -64,7 +64,6 @@ Page({
     // 图片预览
     previewImg(e) {
         let arr = e.currentTarget.dataset.src; 
-        console.log('arr:',arr)
         let arr2 = arr;
         arr.map((item)=>{
             if(item.indexOf('http')<0){

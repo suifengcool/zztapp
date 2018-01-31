@@ -1,14 +1,15 @@
 <view class="moveInList">
-	<!--
-		<view class="home-list">
-			<view 
-				class="home-list-item {{item.isTouchMove ? 'touch-move-active' : ''}}" 
-				wx:for="{{shopList}}" 
-				wx:key="{{index}}" 
-				catchlongtap="longTap"
-				data-item="{{item}}"
-			>
-				<view class="pic">
+	<view class="container">
+	    <view 
+	    	class="touch-item home-list-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" 
+	    	bindtouchmove="touchmove" 
+	    	wx:for="{{shopList}}" 
+	    	wx:key="{{index}}"
+	    	bindtap="goToDetail"
+	    	data-item="{{item}}"
+    	>
+	    	<view class="content">
+	    		<view class="pic">
 					<image
 			            class = "img"
 			            src = "{{item.logo}}"
@@ -36,59 +37,7 @@
 					<view class="tabs">
 						<view class="tab-itam" wx:for="{{item.inco}}" wx:key="{{index}}" wx:for-item="i">{{i}}</view>
 					</view>
-				</view>
-				<view class="btn-box" bindtap = 'editShop' data-item = '{{item}}'>
-					<view class="edit">编辑</view>
-				</view>
-			</view>
-		</view>
-	-->
-
-
-	<view class="container">
-	    <view 
-	    	class="touch-item home-list-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" 
-	    	bindtouchmove="touchmove" 
-	    	wx:for="{{shopList}}" 
-	    	wx:key="{{index}}"
-	    	bindtap="goToDetail"
-	    	data-item="{{item}}"
-    	>
-	    	<view class="content">
-	    		<view class="pic">
-				<image
-		            class = "img"
-		            src = "{{item.logo}}"
-		            background-size = "cover"
-		        ></image>
-			</view>
-			<view class="desc">
-				<view class="title">
-					<view class="name">{{item.shop_name}}</view>
-				</view>
-				<view class="score-box">
-					<view class="score-list">
-						<view class="score-item" wx:for="{{item.score_solid}}" wx:key="{{index}}">
-                            <i class="iconfont icon-star2"></i>
-                        </view>
-                        <view class="score-item" wx:for="{{item.score_solid_half}}" wx:key="{{index}}">
-                            <i class="iconfont icon-star1"></i>
-                        </view>
-                        <view class="score-item" wx:for="{{item.score_solid_none}}" wx:key="{{index}}">
-                            <i class="iconfont icon-star0"></i>
-                        </view>
-					</view>
-					<view class="score-text">{{item.dp}}</view>
-				</view>
-				<view class="tabs">
-					<view class="tab-itam" wx:for="{{item.inco}}" wx:key="{{index}}" wx:for-item="i">{{i}}</view>
-				</view>
-			</view>
-			<!--
-				<view class="btn-box" bindtap = 'editShop' data-item = '{{item}}'>
-					<view class="edit">编辑</view>
-				</view>
-			-->
+				</view>	
 	    	</view>
 	    	<view class="del" >
 	    		<view class="left-btn btn-item" data-item="{{item}}" catchtap = 'editShop'>编辑</view>
@@ -96,7 +45,6 @@
 	    	</view>
 	    </view>
     </view>
-
 
 	<view wx:if="{{ !shopList || !shopList.length}}" class="noStatus">
     	<view class="pic-box">

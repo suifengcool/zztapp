@@ -3,6 +3,8 @@ class ShopList extends Base {
   constructor() {
     super()
   }
+
+  // 获取分类
   getGetCateData(callback) {
     var param = {
       url: 'entry/wxapp/GetCate',
@@ -13,9 +15,8 @@ class ShopList extends Base {
     this.request(param)
   }
 
-  // 得到页面信息
+  // 获取店铺列表
   getPageData(data, callback) {
-    console.log('data:',data)
     var param = {
       url: 'entry/wxapp/GetShopList',
       data,
@@ -26,6 +27,7 @@ class ShopList extends Base {
     }
     this.request(param)
   }
+
   _handleData(data) {
     data.forEach((v) => {
       if(v.dp) {
@@ -36,7 +38,5 @@ class ShopList extends Base {
     })
   }
 }
-
-
 
 export { ShopList }

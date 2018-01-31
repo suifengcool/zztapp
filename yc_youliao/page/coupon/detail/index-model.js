@@ -20,7 +20,6 @@ class Index extends Base {
   }
 
   getCouponDetail(options,callback) {
-    console.log('options:',options)
     this.getSeid((seid) => {
       let data = {
         seid,

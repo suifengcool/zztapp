@@ -21,7 +21,6 @@ Page({
 
     getTypeList(){
     	index.getChannel((data)=>{
-			console.log('data:',data)
 			this.setData({
 				typeList: data
 			})

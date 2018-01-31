@@ -16,7 +16,7 @@ App({
                     // 小程序同步哪个公众号的id,
                     // 如复制手机端链接https://yun.0418it.com/app/index.php?i=43&c=entry&do=index&m=yc_youliao ,
                     // 那么43就是要同步公众号的id
-	util: require('we7/resource/js/util.js'),
+	util: require('yc_youliao/resource/js/util.js'),
 	siteInfo : {
 		"name": "",
 		"uniacid": "2",

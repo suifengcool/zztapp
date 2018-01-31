@@ -93,7 +93,7 @@
     		<view class="classicfy">
     			<view class="classicfy-item" wx:for="{{cate}}" wx:key="{{index}}">
     				<view 
-                        class="iconbox iconbox-food"
+                        class="iconbox"
                         data-id='{{item.cate_id}}' 
                         data-index='{{index}}' 
                         bindtap='scrollTap'
@@ -171,48 +171,4 @@
 	    	</view>
 	    </view>
     </view>
-    <!--
-        <view class="footer-box">
-            <view class="footer-item" data-tab='0' bindtap="changeTabbar">
-                <i class="iconfont {{tabbar == 0? 'icon-home-active':'icon-home'}}"></i>
-                <view class="text {{tabbar == 0? 'active':''}}">首页</view>
-            </view>
-            <view class="footer-item" data-tab='1' bindtap="changeTabbar">
-                <i class="iconfont {{tabbar == 1? 'icon-compass-active':'icon-compass'}}"></i>
-                <view class="text {{tabbar == 1? 'active':''}}">发现</view>
-            </view>
-            <view class="footer-item" data-tab='2' bindtap="changeTabbar">
-                <i class="iconfont {{tabbar == 2? 'icon-plus-circle-bg':'icon-plus-circle2'}}"></i>
-                <view class="text {{tabbar == 2? 'active':''}}">发布</view>
-            </view>
-            <view class="footer-item" data-tab='3' bindtap="changeTabbar">
-                <i class="iconfont {{tabbar == 3? 'icon-head-active':'icon-head'}}"></i>
-                <view class="text {{tabbar == 3? 'active':''}}">我的</view>
-            </view>
-        </view>
-
-        .shop-box .title-box .title:after{
-    position: absolute;
-    display: inline-block;
-    content: '';
-    left: 0;
-    top:48%;
-    width: 6rpx;
-    height: 60%;
-    transform: translateY(-50%);
-    background: #fa5305;
-}
-    --> 
-     
-  
-<!--mask-->  
-<view class="toast_mask" wx:if="{{isShowToast}}"></view>  
-<!--以下为toast显示的内容-->  
-<view class="toast_content_box" wx:if="{{isShowToast}}">  
-  <view class="toast_content">  
-    <view class="toast_content_text">  
-      {{toastText}}  
-    </view>  
-  </view>  
-</view> 
 </view>

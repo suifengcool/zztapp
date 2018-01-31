@@ -25,12 +25,10 @@ class Index extends Base {
 
 	// 请求地址
     getDetailLocation(nowLocation, callback) {
-	    console.log(nowLocation)
 	    var param = {
 	        url: 'entry/wxapp/GetLaction',
 	        data: nowLocation,
 	        sCallback: function (res) {
-		        console.log(res)
 		        callback && callback(res.data.data)
 	        }
 	    }
@@ -41,7 +39,6 @@ class Index extends Base {
     // 请求图片socket
 	getAttachurl(callback) {
 		getImageSocket((data) => {
-		    console.log(data)
 		    callback(data)
 		})
 	}

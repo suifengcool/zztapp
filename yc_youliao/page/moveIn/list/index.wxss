@@ -94,18 +94,7 @@ page{
 	color: #FF8C00;
 	font-size: 23rpx;
 }
-.btn-box{
-	position: absolute;
-	right: 10rpx;
-	top: 0;
-	height: 40rpx;
-	line-height: 40rpx;
-	width: 95rpx;
-	text-align: center;
-	color: #fff;
-	background: rgba(0,0,0,0.6);
-	font-size: 24rpx;
-}
+
 .noStatus{
 	width: 45%;
 	margin: 30% auto 30%;

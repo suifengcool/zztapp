@@ -17,7 +17,6 @@ Page({
         });
 
         index.getCouponList((data)=>{
-            console.log('data111:',data)
             this.setData({
                 couponList: data.data
             })

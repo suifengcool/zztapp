@@ -23,7 +23,6 @@ Page({
 	},
 	
 	onLoad: function(option){
-		console.log('option:',option)
 		// 获取图片头
 		getImageSocket((data) => {
 		    this.setData({

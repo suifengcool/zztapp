@@ -15,7 +15,6 @@ class ShopStore extends Base {
 			    url: 'entry/wxapp/getShop',
 			    data: data,
 			    sCallback: (res) => {
-			    	console.log('res33333:',res)
 					// this.handleData(res.data.data, callback)
 					callback && callback(res.data.data)
 			    }
@@ -43,7 +42,6 @@ class ShopStore extends Base {
 
     // 处理数据
     handleData(data, callback) {
-    	console.log('data33444:',data)
 		// 评分转为小数点一位
 		if(data.dp && data.dpFor){
 			data.dp = parseFloat(data.dp).toFixed(1)
@@ -69,12 +67,10 @@ class ShopStore extends Base {
 
     // 请求地址
     getDetailLocation(nowLocation, callback) {
-	    console.log(nowLocation)
 	    var param = {
 	        url: 'entry/wxapp/GetLaction',
 	        data: nowLocation,
 	        sCallback: function (res) {
-	            console.log(res)
 	            callback && callback(res.data.data)
 	        }
 	    }
@@ -105,7 +101,6 @@ class ShopStore extends Base {
 				    v.starttime = this._handleTime(v.starttime)
 				    v.endtime = this._handleTime(v.endtime)
 				})	
-				console.log(data)
 		  		callback && callback(data)
 		    }
 		}

@@ -29,8 +29,6 @@ Page({
 		form: {},
 	    cate_name: '',
 	    cate_id: '',
-	    hiddenToast: true,
-	    toastText: '',
 	    start_time: '06:00',
 	    end_time: '18:00',
 	    imgUrl: [],
@@ -116,7 +114,6 @@ Page({
                     items: arr
                 })
             }
-
         }
     	
     	if(options && options.cate_name){
@@ -268,6 +265,7 @@ Page({
         }
     },
 
+    // 删除照片
     delImg(e){
     	let target = e.target.dataset.item
 		const arr2 = this.data.imgs.filter((item)=>{
@@ -476,12 +474,6 @@ Page({
             }
     	})
     },
-
-    toastHidden(){
-    	this.setData({
-    		hiddenToast: true
-    	})
-    }
 
     // bindStartTimeChange: function(e) {
        //  this.setData({

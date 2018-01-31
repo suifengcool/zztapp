@@ -64,9 +64,7 @@ Page({
                     break;
             }
         }
-        console.log('form:',form)
         index.getModuleData(form,(data)=>{
-            console.log('data:',data)
             this.setData({
                 list: data
             })

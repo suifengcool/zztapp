@@ -16,7 +16,6 @@ Page({
     * 生命周期函数--监听页面加载
     */
     onLoad: function (options) {
-        console.log('options11:',options)
         // 获取图片头
         getImageSocket((data) => {
             this.setData({
@@ -53,7 +52,6 @@ Page({
 
     confirmCoupon(e){
         index.confirmCoupon({id:this.data.id},(data)=>{
-            console.log('data:',data)
             if(data && data.errno == 0){
                 wx.showToast({
                     title: '优惠券核销成功',

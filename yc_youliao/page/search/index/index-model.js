@@ -35,7 +35,6 @@ class Index extends Base {
   // 请求图片socket
   getAttachurl(callback) {
     getImageSocket((data) => {
-      console.log(data)
       callback(data)
     })
   }

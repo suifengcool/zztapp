@@ -15,7 +15,7 @@ class Index extends Base {
 	// 请求模块信息
   getModuleData(options, callback) {
     this.store({ type: 'GET_SEID' }, (seid) => {
-      console.log(seid)
+
     })
     if (options && options.id) {
       this.id = options.id
@@ -40,12 +40,10 @@ class Index extends Base {
     })
   }
   _requestModule(data, callback) {
-    console.log(data)
     var param = {
       url: 'entry/wxapp/GetModuleById',
       data: data,
       sCallback: (res) => {
-        console.log(res)
         this.page++
         callback && callback(res.data.data)
       }
@@ -55,12 +53,10 @@ class Index extends Base {
 
 	// 请求地址
     getDetailLocation(nowLocation, callback) {
-	    console.log(nowLocation)
 	    var param = {
 	        url: 'entry/wxapp/GetLaction',
 	        data: nowLocation,
 	        sCallback: function (res) {
-		        console.log(res)
 		        callback && callback(res.data.data)
 	        }
 	    }

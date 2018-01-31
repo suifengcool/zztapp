@@ -19,7 +19,6 @@ Page({
 	},
 	
 	onLoad: function(option){
-		console.log('option:',option)
 		// 获取图片头
 		getImageSocket((data) => {
 		    this.setData({
@@ -73,8 +72,6 @@ Page({
 		        msgList: [...this.data.msgList, ...data],
 	        	page: this.data.page + 1
 		    })
-
-		    console.log('this.data.msgList:',this.data.msgList)
 		})
 		
 	},

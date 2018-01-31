@@ -1,4 +1,5 @@
 {
 	"navigationBarTitleText": "镇镇通宁都便民服务平台",
-	"enablePullDownRefresh": false
+	"enablePullDownRefresh": false,
+	"backgroundColor": "#000000"
 }

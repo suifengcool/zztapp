@@ -90,7 +90,6 @@ Page({
     // 一些初始化的信息
     init(options) {
         getLocation(true, (location) => {
-            console.log('location:',location)
             if(location) {
                 index.getSeid((seid) => {
                     this.setData({
@@ -161,7 +160,6 @@ Page({
                     dir.forEach((item,index)=>{
                         arr.push(this.data.imagesSocket+ '/' + item)
                     })
-                    console.log('arr:',arr)
                     this.setData({
                         imgs: [...this.data.imgs, ...res.tempFilePaths],
                         imgUrl: [...this.data.imgUrl, ...arr],
@@ -239,7 +237,6 @@ Page({
 
     getUserList(){
         index.getUserName((data)=>{
-            console.log('data:',data)
             let arr = data;
             arr.map((item,index)=>{
                 if(item.logo.indexOf('http') < 0 ){
