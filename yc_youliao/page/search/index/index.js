@@ -104,7 +104,7 @@ Page({
 		if(!keyword.trim()){
 			wx.showToast({
                 title: '请输入关键字',
-                image: '../../../resource/images/成功.png',
+                image: '../../../resource/images/success.png',
                 duration: 2000
             })
             return

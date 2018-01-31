@@ -339,7 +339,7 @@ Page({
                 wx.showToast({
                     title: '添加成功',
                     icon: 'success',
-                    image: '../../../resource/images/成功.png',
+                    image: '../../../resource/images/success.png',
                     duration: 2000,
                     mask: true,
                     success: ()=>{

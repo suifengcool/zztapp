@@ -1,5 +1,5 @@
 <view class="container-shop">
-    <view class="swiper-contain">
+    <view wx:if="{{shopInfo.bannerImg.length}}" class="swiper-contain">
     	<swiper class="swiper" indicator-dots="true" autoplay="true" interval="3000" duration="1000">    
             <block wx:for="{{shopInfo.bannerImg}}" wx:key="unique">    
     	        <swiper-item>    

@@ -167,7 +167,6 @@ class Detail extends Base {
         url: 'entry/wxapp/GetCollect',
         data: { seid, shop_id: id },
         sCallback: (res) => {
-          console.log(res)
           let flag = false
           if (res.data.data.shop.length > 0) {
             const arr2 = res.data.data.shop.filter((item)=>{
