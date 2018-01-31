@@ -255,18 +255,28 @@ Page({
 	    let id = parseInt(e.currentTarget.dataset.id);
 	    let index = parseInt(e.currentTarget.dataset.index);
 	    let item = e.currentTarget.dataset.item;
-	    
-	    let arr = this.data.cate,
+	    let type = e.currentTarget.dataset.type;
+
+	    // type为0 ，展开的cate
+		if(type === '0'){
+			let arr = this.data.cate,
 	    	arr2 = [];
-	    arr2 = arr.filter((ele,index)=> {
-	    	return ele.cate_id != item.cate_id ;
-	    });
-	    arr2.unshift(item);
-	    this.setData({
-	    	cateScroll: arr2,
-	      	cateId: id,
-	      	currentIndex: index
-	    })
+		    arr2 = arr.filter((ele,index)=> {
+		    	return ele.cate_id != item.cate_id ;
+		    });
+		    arr2.unshift(item);
+		    this.setData({
+		    	cateScroll: arr2,
+		      	cateId: id,
+		      	currentIndex: 0
+		    })
+		}else{
+			this.setData({
+				cateScroll: this.data.cate,
+		      	cateId: id,
+		      	currentIndex: index
+		    })
+		}
 	    this.getData(true)
 	},
 

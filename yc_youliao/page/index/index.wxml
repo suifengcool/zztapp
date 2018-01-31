@@ -97,6 +97,7 @@
                         data-id='{{item.cate_id}}' 
                         data-index='{{index}}' 
                         data-item='{{item}}' 
+                        data-type='0' 
                         bindtap='scrollTap'
                     >
     					<image
@@ -113,12 +114,13 @@
 	    	<view wx:if="{{!showClassify}}" class="home-list-top">
 		    	<scroll-view scroll-x='true' class="type-box">
 		    		<view 
-                        class="type-item {{index == 0 ? 'type-item-active' : ''}}" 
+                        class="type-item {{currentIndex == index ? 'type-item-active' : ''}}" 
                         wx:for="{{cateScroll}}" 
                         wx:key="{{index}}" 
                         data-id='{{item.cate_id}}' 
                         data-index='{{index}}' 
                         data-item='{{item}}' 
+                        data-type='1' 
                         bindtap='scrollTap'
                     >
                         {{item.cate_name}}
