@@ -195,6 +195,19 @@
         </view>
     </view>
 
+    <view wx:if="{{shopInfo.bgpic}}" class="qrCord-box">
+        <view class="bg_line"></view>
+        <view class="qrCord-title">点击图中二维码进行识别，即可进入门店</view>
+        <view class="qrCord">
+            <image 
+                src="{{shopInfo.bgpic ? shopInfo.bgpic : '../../resource/images/user-default.png'}}" 
+                mode="aspectFill"
+                class="img"
+            />
+        </view>
+        <view class="qrCord-title"><i>{{shopInfo.shop_name}}</i>专属小程序码</view>
+    </view>
+
     <navigator url="../../moveIn/create/index" class="goToMoveIn bg_white">我是商家，我要入驻</navigator>
 
 

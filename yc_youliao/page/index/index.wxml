@@ -15,7 +15,7 @@
     		            <image 
                             src="{{ item.thumb ? imagesSocket+'/'+item.thumb : '../../resource/images/logo-default.png'}}" class="slide-image image_pic" 
                             mode="aspectFill"
-                            data-id="{{item.shop_id}}"
+                            data-id="{{item.link}}"
                             bindtap="tap"
                         /> 
     		        </swiper-item>    
