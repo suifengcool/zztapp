@@ -203,6 +203,7 @@
                 src="{{shopInfo.bgpic ? shopInfo.bgpic : '../../resource/images/user-default.png'}}" 
                 mode="aspectFill"
                 class="img"
+                bindtap="previewImgQrCord" 
             />
         </view>
         <view class="qrCord-title"><i>{{shopInfo.shop_name}}</i>专属小程序码</view>

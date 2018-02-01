@@ -144,7 +144,16 @@ Page({
 	    });
 	    vm.run1();// 水平一行字滚动完了再按照原来的方向滚动
 	    // vm.run2();  // 第一个字消失后立即从右边出现
-	  },
+	},
+
+	// 图片预览
+    previewImgQrCord(e) {
+        let arr = [];
+        this.data.shopInfo.bgpic && arr.push(this.data.shopInfo.bgpic)
+        wx.previewImage({
+            urls: arr       // 需要预览的图片http链接列表
+        })
+    },
 
     changeTab(e){
     	let tab = e.currentTarget.dataset.tab

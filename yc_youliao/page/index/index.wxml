@@ -57,14 +57,14 @@
             <view class="advert-item">
                 <image
                     class="pic"
-                    src="{{'../../resource/images/redPack1.png'}}"
+                    src="{{'../../resource/images/adv1.png'}}"
                     background-size="cover"
                 ></image>
             </view>
             <view class="advert-item">
                 <image
                     class="pic"
-                    src="{{'../../resource/images/redpack2.png'}}"
+                    src="{{'../../resource/images/adv2.png'}}"
                     background-size="cover"
                 ></image>
             </view>
