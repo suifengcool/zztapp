@@ -18,6 +18,7 @@
 				class="img-item image_pic"
 				mode="aspectFill"
 		    	src="{{item.length <= 50? imagesSocket + item : item}}" 
+		    	bindtap="previewImg" 
 	    	/>
 		</view>
 	</view>

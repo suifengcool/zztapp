@@ -258,5 +258,18 @@ Page({
         wx.switchTab({
             url: `/yc_youliao/page/index/index`
         })
-    }
+    },
+
+    // 图片预览
+    previewImg(e) {
+        let arr = this.data.info.content.thumbs;
+        arr.map((item,index)=>{
+            if(item.indexOf('http')<0){
+                item += this.data.imagesSocket
+            }
+        })
+        wx.previewImage({
+            urls: arr      // 需要预览的图片http链接列表
+        })
+    },
 })
