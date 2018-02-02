@@ -484,6 +484,7 @@ page{
 .newItem .images .img{
 	padding-right: 12rpx;
 	padding-bottom: 10rpx;
+	width: 100%;
 }
 .avatar-img{
 	width:100%;
@@ -568,7 +569,8 @@ page{
 .coupon-detail-top{
 	display: flex;
 	justify-content:space-between;
-	padding:10rpx 70rpx;
+	width:450rpx;
+	margin:10rpx auto 10rpx;
 }
 .coupon-detail-top .text{
 	width: 40rpx;

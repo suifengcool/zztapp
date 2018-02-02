@@ -28,7 +28,7 @@
 		<view wx:if="{{couponInfo.status > 0 }}" class="caution">优惠券已使用</view>
 		<view wx:if="{{couponInfo.status < 1 && isMaster}}" class="caution" bindtap="confirmCoupon">确认使用</view>
 	</view>
-	<view wx:if="{{!isUsed}}" class="tips">
+	<view wx:if="{{!isUsed && !isMaster}}" class="tips">
 		<view class="tips-item">1、购买商品时，满足使用条件可抵用券面显示金额；</view>
 		<view>2、每张优惠券只能使用一次，且不能与其他优惠方式同时使用。</view>
 	</view>

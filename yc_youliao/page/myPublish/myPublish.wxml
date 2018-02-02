@@ -7,10 +7,28 @@
     <import src="../../resource/template/complete.wxml" />
     <view hidden="{{!(type == 0)}}">
         <template wx:for="{{render0.data}}" is="li" data="{{item,type,index}}" wx:key="{{index}}"/>
-        <template is="complete" wx:if="{{render0.isComplete}}"/>
+        <view wx:if="{{render0.isComplete}}" class="noStatus">
+            <view class="pic-box">
+                <image
+                    class = "pic"
+                    src = "../../resource/images/nostatus1.png"
+                    background-size = "cover"
+                ></image>
+            </view>
+            <view class="text">暂无发布记录~</view>
+        </view>
     </view>
     <view hidden="{{!(type == 1)}}">
         <template wx:for="{{render1.data}}" is="li" data="{{item,type,index}}" wx:key="{{index}}"/>
-        <template is="complete"  wx:if="{{render1.isComplete}}"/>
+        <view wx:if="{{render1.isComplete}}" class="noStatus">
+            <view class="pic-box">
+                <image
+                    class = "pic"
+                    src = "../../resource/images/nostatus1.png"
+                    background-size = "cover"
+                ></image>
+            </view>
+            <view class="text">暂无发布记录~</view>
+        </view>
     </view>
 </view>

@@ -46,7 +46,7 @@
 	    </view>
     </view>
 
-	<view wx:if="{{ !shopList || !shopList.length}}" class="noStatus">
+	<view wx:if="{{none}}" class="noStatus">
     	<view class="pic-box">
     		<image
 	            class = "pic"

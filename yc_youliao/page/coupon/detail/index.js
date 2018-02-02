@@ -27,16 +27,20 @@ Page({
             this.setData({
                 id: options.id
             })
+        }
+        this.fetchData()
+    },
 
+    fetchData(){
+        if(this.data.id){
             let form = {}
-            form.id = options.id
+            form.id = this.data.id
 
             index.getCouponDetail(form,(data)=>{
                 if(data && data.data){
                     this.setData({
                         couponInfo: data.data,
-                        isMaster: true,
-                        id: options.id
+                        isMaster: true
                     })
                 }
             })
@@ -67,5 +71,26 @@ Page({
                 })
             }
         })
-    }
+    },
+
+    // 下拉更新
+    onPullDownRefresh: function () {
+        wx.showNavigationBarLoading()
+        if(this.data.id){
+            wx.hideNavigationBarLoading()
+            wx.stopPullDownRefresh()
+            return
+        }
+        let form = {};
+        form.id = this.data.couponInfo.id
+        index.getCouponDetail(form,(data) => {
+            if(data && data.data){
+                this.setData({
+                    couponInfo: data.data
+                })
+            }
+            wx.hideNavigationBarLoading()
+            wx.stopPullDownRefresh()
+        })
+    },
 })

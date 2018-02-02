@@ -50,7 +50,7 @@
         <view class="tel-box icon-box" bindtap='phonetap'><i class="iconfont icon-tel-right"></i></view>
         <button class="share-box icon-box" open-type= 'share'><i class="iconfont icon-share"></i></button>
     </view>
-    <view class="line"></view>
+    <view class="bg_line"></view>
     <view class="tab-box bg_white">
         <view 
             class="tab-item tab-left {{index == tab ? 'choosed' : ''}}"
@@ -72,7 +72,7 @@
         <view wx:if="{{shopInfo.intro}}" class="shop-instruction">{{shopInfo.intro}}</view>
         <view class="shop-pic-box">
             <view class="shop-pic-item" wx:for="{{shopInfo.qr_code}}" wx:key="{{index}}">
-                <image src="{{item}}" class="pic" mode="aspectFill"/>
+                <image src="{{item}}" class="pic" mode="aspectFill" bindtap="previewShopImg" />
             </view>
         </view>
     </view>

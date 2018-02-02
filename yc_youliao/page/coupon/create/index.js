@@ -37,8 +37,8 @@ Page({
 		}
 		let date = new Date();
 		this.setData({
-			start_time: date.getFullYear() + '-' + date.getMonth()+1 + '-' + date.getDate(),
-			end_time: date.getFullYear() + '-' + date.getMonth()+2 + '-' + date.getDate()
+			start_time: date.getFullYear() + '-' + (Number(date.getMonth())+1) + '-' + date.getDate(),
+			end_time: date.getFullYear() + '-' + (Number(date.getMonth())+2) + '-' + date.getDate()
 		})
     },
 

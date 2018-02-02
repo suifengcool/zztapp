@@ -6,6 +6,7 @@ Page({
     data: {
         imagesSocket: '',
         couponList: [], 
+        none: false
     },
 
     onLoad: function (options) {
@@ -18,7 +19,8 @@ Page({
 
         index.getCouponList((data)=>{
             this.setData({
-                couponList: data.data
+                couponList: data.data,
+                none: data.data.length ? false : true
             })
         })
     },

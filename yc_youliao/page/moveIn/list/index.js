@@ -8,7 +8,8 @@ Page({
 		shopList: [],
 		imagesSocket: '',
 		startX: 0,          //开始坐标
-		startY: 0
+		startY: 0,
+		none: false
 	},
 
 	onLoad: function (options) {
@@ -51,7 +52,8 @@ Page({
 			})
 			
 			this.setData({
-				shopList: data
+				shopList: data,
+				none: data.length ? false : true
 			})
 		})
 	},

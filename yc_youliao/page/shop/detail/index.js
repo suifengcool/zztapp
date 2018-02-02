@@ -203,6 +203,12 @@ Page({
     	}
     },
 
+    previewShopImg(e){
+		wx.previewImage({
+            urls: this.data.shopInfo.qr_code      // 需要预览的图片http链接列表
+        })
+    },
+
     // 图片预览
     previewImg(e) {
         let arr = e.currentTarget.dataset.src; let arr2 = arr;
@@ -368,17 +374,17 @@ Page({
 		let form = {};
 		form.tid = item.id;
 		detail.chooseCoupon(form,(data)=>{
-			if(data.data && data.data.errno == 0){
+			if(data && data.errno == 0){
 				wx.showToast({
                     title: '优惠券领取成功',
                     icon: 'success',
-                    duration: 3000,
+                    duration: 1500,
                     success: ()=>{
 			            setTimeout(()=>{
 			                this.setData({
 			                	showGetCoupon: false
 			                })
-			            }, 3000) 
+			            }, 1500) 
 		    	    }
                 })
 			}

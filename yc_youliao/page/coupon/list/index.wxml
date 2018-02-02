@@ -20,4 +20,14 @@
 			<view class="btn {{item.status > 0 ? 'active' : ''}}">{{item.status > 0 ? '已使用' : '使用'}}</view>
 		</view>
 	</view>
+	<view wx:if="{{none}}" class="noStatus">
+    	<view class="pic-box">
+    		<image
+	            class = "pic"
+	            src = "../../../resource/images/nostatus1.png"
+	            background-size = "cover"
+	        ></image>
+    	</view>
+    	<view class="text">暂无优惠券~</view>
+    </view>
 </view>
