@@ -10,22 +10,21 @@ Page({
     },
 
     onLoad: function (options) {
-	   // 获取图片头
+	    this.fetch()
+    },
+
+    onShow(){
+        this.fetch()
+    },
+
+    fetch(){
+        // 获取图片头
         getImageSocket((data) => {
             this.setData({
                 imagesSocket: data
             })
-        });
-
-        index.getCouponList((data)=>{
-            this.setData({
-                couponList: data.data,
-                none: data.data.length ? false : true
-            })
         })
-    },
 
-    onShow(){
         index.getCouponList((data)=>{
             this.setData({
                 couponList: data.data,

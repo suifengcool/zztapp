@@ -89,6 +89,7 @@
 			        	wx:key="{{item}}" 
 			        	class='pic-item' 
 			        	src='{{item}}'
+			        	mode="aspectFill"
 		        		bindtap="previewImg" 
 		        	>
 		        	<view class="del-btn" catchtap="delImg" data-item="{{item}}">删除</view>
