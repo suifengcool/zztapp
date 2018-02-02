@@ -9,7 +9,7 @@
         <view class="search" bindtap="goToSearch">
         	<i class="iconfont icon-search2"></i>搜索信息
         </view>
-        <view class="title">镇镇通便民信息总汇</view>
+        <view class="title">镇镇通宁都便民信息总汇</view>
         <view class="num-box">
         	<view class="num-item">帖子：{{count.infoCount}}</view>
         	<view class="num-item">人气：{{count.Popularity}}</view>
