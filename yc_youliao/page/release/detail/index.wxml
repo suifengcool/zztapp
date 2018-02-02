@@ -3,6 +3,7 @@
 		<view class="head">
 			<image 
 				class="headImg"
+				mode="aspectFill"
 		    	src="{{info.avatar ? info.avatar : '../../../resource/images/user-default.png'}}" 
 	    	/>
 		</view>
