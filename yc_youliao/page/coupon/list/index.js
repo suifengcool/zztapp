@@ -25,6 +25,15 @@ Page({
         })
     },
 
+    onShow(){
+        index.getCouponList((data)=>{
+            this.setData({
+                couponList: data.data,
+                none: data.data.length ? false : true
+            })
+        })
+    },
+
     goDetail(e){
     	let item = e.currentTarget.dataset.item;
         if(item.status > 0) return
