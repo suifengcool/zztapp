@@ -9,7 +9,7 @@
     </view>
     <view class="type-box bg_white">
     	<view class="title">
-    		<i class="iconfont {{tab ? 'icon-note' : 'icon-shop'}}"></i>信息分类
+    		<i class="iconfont {{tab ? 'icon-note' : 'icon-shop'}}"></i>{{tab ? '信息分类' : '店铺分类' }}
     	</view>
     	<view class="type-list">
     		<view 

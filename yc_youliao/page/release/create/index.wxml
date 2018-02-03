@@ -7,6 +7,7 @@
 		        	class='pic-item' 
 		        	src='{{item}}'
 		        	bindtap="previewImg" 
+		        	mode="aspectFill"
 	        	>
 	        	<view class="del-btn" catchtap="delImg" data-item="{{item}}">删除</view>
 	        	</image>
