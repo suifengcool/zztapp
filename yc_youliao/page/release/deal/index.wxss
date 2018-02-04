@@ -7,11 +7,33 @@ page{
 }
 .contain-deal{
 	width: 100%;
+	font-size: 25rpx;
+	padding: 0 30rpx;
+	box-sizing: border-box;
 }
 .title{
 	text-align: center;
-	font-size: 28rpx;
+	font-size: 32rpx;
 }
+.name-box{
+	margin: 30rpx 0;
+}
+.name-item{
+	margin-top: 10rpx;
+}
+.p{
+	font-size: 26rpx;
+	line-height: 42rpx;
+}
+.paragraph{
+	margin-top: 30rpx;
+}
+
+
+
+
+
+
 .confirm-btn{
 	margin-top: 30rpx;
 	height:50rpx;

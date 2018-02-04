@@ -334,5 +334,5 @@ Page({
 		wx.navigateTo({
 	        url: `/yc_youliao/page/search/${type}/index?keyword=${key}&from=index&cate_id=${id}`
     	})
-    }  
+    },  
 })

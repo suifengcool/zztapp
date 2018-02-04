@@ -41,9 +41,27 @@ Page({
 		searchList && this.setData({
 			searchList: searchList
 		})
-
-
 	},
+
+	onShow: function(options){
+		if(options && options.fromPage){
+			this.setData({
+				tab: 1
+			})
+		}
+		index.getIndexData((data)=>{
+			this.setData({
+				cateTypeList: data.cate,
+				msgTypeList: data.module
+			})
+		})
+
+		let searchList = wx.getStorageSync('searchList')
+		searchList && this.setData({
+			searchList: searchList
+		})
+	},
+
 	
 	listenerInput(e){
 		this.setData({
@@ -101,6 +119,7 @@ Page({
 
 	search(){
 		let keyword = this.data.keyword;
+		let type = '';
 		if(!keyword.trim()){
 			wx.showToast({
                 title: '请输入关键字',
@@ -109,23 +128,50 @@ Page({
             })
             return
 		}
+		type = this.data.tab ? 'info' : 'shop';
 		
-		let arr = []
+		let arr = this.data.searchList;
 		arr.push({
 			name: keyword,
-			type: this.data.tab ? 'info' : 'shop'
+			type: type
 		})
+
+		arr = uniqeByKeys(arr,['name','type']);  
+
+		
+
+		//将对象元素转换成字符串以作比较  
+		function obj2key(obj, keys){  
+		    var n = keys.length,  
+		        key = [];  
+		    while(n--){  
+		        key.push(obj[keys[n]]);  
+		    }  
+		    return key.join('|');  
+		}  
+		//去重操作  
+		function uniqeByKeys(array,keys){  
+		    var arr = [];  
+		    var hash = {};  
+		    for (var i = 0, j = array.length; i < j; i++) {  
+		        var k = obj2key(array[i], keys);  
+		        if (!(k in hash)) {  
+		            hash[k] = true;  
+		            arr .push(array[i]);  
+		        }  
+		    }  
+		    return arr ;  
+		} 
+
 		wx.setStorage({
             key: "searchList",
-            data: [...arr, ...this.data.searchList]
+            data: arr
         })  
-
-		let type = '';
-		this.data.tab ? type = 'msg' : type = 'shop'
-
-
+		
+		let str = this.data.keyword;
+		let type1 = this.data.tab ? 'msg' : 'shop';
 		wx.navigateTo({
-	        url: `/yc_youliao/page/search/${type}/index?keyword=${keyword}`
+	        url: `/yc_youliao/page/search/${type1}/index?keyword=${str}`
     	})
 	},
 

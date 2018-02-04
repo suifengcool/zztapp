@@ -354,7 +354,7 @@ Page({
             key: "moveInData",
             data: obj
         })
-        wx.navigateTo({
+        wx.redirectTo({
 	        url: `/yc_youliao/page/moveIn/type/index`
     	})
     },

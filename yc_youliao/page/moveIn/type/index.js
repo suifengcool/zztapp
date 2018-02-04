@@ -16,7 +16,7 @@ Page({
 
     chooseCate(e){
 		let item = e.target.dataset.item
-		wx.navigateTo({
+		wx.redirectTo({
 	        url: `/yc_youliao/page/moveIn/create/index?cate_id=${item.cate_id}&cate_name=${item.cate_name}`
     	})
     }

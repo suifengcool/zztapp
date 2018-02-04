@@ -76,6 +76,10 @@ page{
 	color: red;
 	font-size: 28rpx;
 }
+.caution i{
+	margin-left: 20rpx;
+	color: #000080;
+}
 .tips{
 	font-size:25rpx;
 	color:#777;

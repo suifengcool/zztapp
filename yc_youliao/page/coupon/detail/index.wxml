@@ -25,7 +25,7 @@
 		</view>
 		<view class="time">{{couponInfo.starttime}}-{{couponInfo.endtime}}</view>
 		<view class="msg">到店消费时请提前向商家出示</view>
-		<view wx:if="{{couponInfo.status > 0 }}" class="caution">优惠券已使用</view>
+		<view wx:if="{{couponInfo.status > 0 }}" class="caution">优惠券已使用<i wx:if="{{couponInfo.status > 0 && isMaster}}" bindtap="goToApp">进入小程序</i></view>
 		<view wx:if="{{couponInfo.status < 1 && isMaster}}" class="caution" bindtap="confirmCoupon">确认使用</view>
 	</view>
 	<view wx:if="{{!isUsed && !isMaster}}" class="tips">

@@ -93,4 +93,10 @@ Page({
             wx.stopPullDownRefresh()
         })
     },
+
+    goToApp(){
+        wx.redirectTo({
+            url: `/yc_youliao/page/index/index`
+        })
+    }
 })
