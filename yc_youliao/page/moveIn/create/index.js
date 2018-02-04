@@ -36,7 +36,7 @@ Page({
         logoImg: '',
         shop_id: '',
         textareaEmpty: true,
-        readed: false
+        readed: true
 
     },
 
@@ -91,14 +91,18 @@ Page({
             if(moveInData){
                 this.setData({
                     form: moveInData,
-                    logoImg: moveInData.logoImg.indexOf('http') > -1 ? moveInData.logoImg : this.data.imagesSocket + '/' + moveInData.logoImg,
                     imgs: moveInData.imgs,
                     imgUrl: moveInData.imgUrl,
                     cate_name: moveInData.cate_name,
                     cate_id: moveInData.cate_id,
                     readed: moveInData.readed,
                     textareaEmpty: moveInData.intro && moveInData.intro.trim().length ? false : true
-                })          
+                }) 
+                if(moveInData.logoImg){
+                    this.setData({
+                        logoImg: moveInData.logoImg.indexOf('http') > -1 ? moveInData.logoImg : this.data.imagesSocket + '/' + moveInData.logoImg
+                    }) 
+                }         
             }
             if(this.data.form && this.data.form.inco && this.data.form.inco.length){
                 let arr = [];
@@ -177,6 +181,7 @@ Page({
     chooseAddress() {
         wx.chooseLocation({
             success: (res) => {
+                console.log('res:',res)
                 this.setData({
                     'location.lat': res.latitude,
                     'location.lng': res.longitude
@@ -444,10 +449,15 @@ Page({
             })
 			return
     	}
-        if(!this.data.readed){
-            this.toast('请选择阅读协议')
-            return
-        }
+        // if(!this.data.readed){
+        //     wx.showToast({
+        //         title: '请选择阅读协议',
+        //         image: '../../../resource/images/warn.png',
+        //         duration: 2000,
+        //         mask: true
+        //     })
+        //     return
+        // }
         let form = this.data.form
         if(form.shop_id){
             // form.imgUrl = this.data.imgUrl
@@ -474,6 +484,13 @@ Page({
             }
     	})
     },
+
+    radioChange(){
+        console.log('111111')
+        this.setData({
+            readed: !this.data.readed
+        })
+    }
 
     // bindStartTimeChange: function(e) {
        //  this.setData({

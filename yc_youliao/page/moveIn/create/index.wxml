@@ -41,11 +41,20 @@
 	<view class="adress-box">
 		<view class="title">店铺位置信息</view>
 		<view wx:if="{{!confirmAdress}}" class="msg" bindtap='chooseAddress'>未选择位置，请选择您的位置信息</view>
-		<view wx:if="{{confirmAdress}}" class="msg" bindtap='chooseAddress'>{{shop_id ? form.address : location.address}}</view>
+		<view 
+			wx:if="{{confirmAdress}}" 
+			class="msg" 
+			bindtap='chooseAddress'
+		>
+			{{shop_id ? form.address : location.address}}
+		</view>
+
+		<!--
 		<view class="btn-box">
 			<view class="btn-left" bindtap="makeSureLocation">选择</view>
 			<view class="btn-right" bindtap="giveUpLocation">清空</view>
 		</view>
+		-->
 	</view>
 	<view class="shop">
 		<view class="label">店内设施</view>
@@ -107,12 +116,12 @@
 	</view>
 
 	<view class="deal color">
-		<view bindtap="readDeal" class="caution">
+		<view class="caution">
 			<radio-group class="radio-group" bindchange="radioChange">
 			    <label class="radio">
 			        <radio value="确认阅读并遵守" checked="{{readed}}"/>
 			    </label>
-			</radio-group>我已阅读并同意<i>《平台用户服务协议》</i>
+			</radio-group>我已阅读并同意<i bindtap="readDeal">《平台用户服务协议》</i>
 		</view>
 	</view>
 

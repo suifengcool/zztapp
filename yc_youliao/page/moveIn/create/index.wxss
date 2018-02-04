@@ -164,6 +164,8 @@ page{
 	margin:0 auto;
 }
 .btn-left, .btn-right{
+	margin-left: 20rpx;
+	display: inline-block;
 	height: 45rpx;
 	line-height: 45rpx;
 	width: 130rpx;

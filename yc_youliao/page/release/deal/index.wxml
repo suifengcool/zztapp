@@ -2,6 +2,7 @@
 	<view class="title">
 		平台用户服务协议
 	</view>
+	<!--
 	<view class="confirm-btn">
 		<radio-group class="radio-group" bindchange="radioChange">
 		    <label class="radio">
@@ -9,4 +10,5 @@
 		    </label>
 		</radio-group>
 	</view>
+	-->
 </view>

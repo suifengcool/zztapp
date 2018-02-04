@@ -45,12 +45,12 @@
 		</view>
 	</view>
 	<view class="deal color">
-		<view bindtap="readDeal" class="caution">
+		<view class="caution">
 			<radio-group class="radio-group" bindchange="radioChange">
 			    <label class="radio">
 			        <radio value="确认阅读并遵守" checked="{{readed}}"/>
 			    </label>
-			</radio-group>我已阅读并同意<i>《平台用户服务协议》</i>
+			</radio-group>我已阅读并同意<i bindtap="readDeal">《平台用户服务协议》</i>
 		</view>
 	</view>
 	<view class="btn {{!isNotEmpty? 'on' : ''}}" bindtap="submitHandle">立即发布</view>

@@ -15,7 +15,7 @@ Page({
         imgUrl: [],
         imgs: [],
         imagesSocket: '',
-        readed: false
+        readed: true
     },
 
     onLoad: function (options) {
@@ -334,6 +334,7 @@ Page({
             return
         }
         let form = this.data.form
+        console.log('form:',form)
         index.submit(form,(data)=>{
             if(data.message == "sucess" || data.errno == 0){
                 wx.showToast({

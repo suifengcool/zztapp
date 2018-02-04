@@ -7,7 +7,7 @@
     <import src="../../resource/template/complete.wxml" />
     <view hidden="{{!(type == 0)}}">
         <template wx:for="{{render0.data}}" is="li" data="{{item,type,index}}" wx:key="{{index}}"/>
-        <view wx:if="{{render0.isComplete}}" class="noStatus">
+        <view wx:if="{{!render0.data || !render0.data.length}}" class="noStatus">
             <view class="pic-box">
                 <image
                     class = "pic"
@@ -20,7 +20,7 @@
     </view>
     <view hidden="{{!(type == 1)}}">
         <template wx:for="{{render1.data}}" is="li" data="{{item,type,index}}" wx:key="{{index}}"/>
-        <view wx:if="{{render1.isComplete}}" class="noStatus">
+        <view wx:if="{{!render1.data || !render1.data.length}}" class="noStatus">
             <view class="pic-box">
                 <image
                     class = "pic"
