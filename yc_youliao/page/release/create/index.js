@@ -114,10 +114,16 @@ Page({
         } else {
             let nowLocation = { lat: this.data.location.lat, lng: this.data.location.lng }
             index.getDetailLocation(nowLocation, (data) => {
-                this.setLocationData(data, nowLocation)
+                let obj = {};
+                obj.province = data.province;
+                obj.city = data.city;
+                obj.district = data.district;
+                obj.formatted_address = (this.data.location.address+  this.data.location.name).replace(/(.).*\1/g,"$1");
+                obj.address = this.data.location.address;
+                this.setLocationData(obj, nowLocation)
                 wx.setStorage({
                     key: "address",
-                    data: data
+                    data: obj
                 })  
             })
         }
@@ -125,13 +131,12 @@ Page({
 
     setLocationData(data, nowLocation) {
         this.setData({
-            'form.lat': nowLocation.lat,
-            'form.lng': nowLocation.lng,
             'form.province': data.province,
             'form.city': data.city,
-            'form.city': data.city,
             'form.district': data.district,
-            'form.address': data.province + data.city + data.district + data.address,
+            'form.lat': nowLocation.lat,
+            'form.lng': nowLocation.lng,
+            'form.address': (data.province + data.city + data.district + data.address).replace(/(.).*\1/g,"$1"),
             'location.address': data.formatted_address,
             confirmAdress: true
         })
@@ -143,7 +148,9 @@ Page({
             success: (res) => {
                 this.setData({
                     'location.lat': res.latitude,
-                    'location.lng': res.longitude
+                    'location.lng': res.longitude,
+                    'location.address': res.address,
+                    'location.name': res.name
                 })
                 this.setAddress(true)
             }
