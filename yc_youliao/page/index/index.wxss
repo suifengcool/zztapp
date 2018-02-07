@@ -208,18 +208,21 @@ page{
 	border-bottom: 0.5rpx solid #dedede;
 }
 .home-list .home-list-item .pic{
-	width: 120rpx;
-	height: 120rpx;
+	width: 140rpx;
+	height: 140rpx;
 	background: #dedede;
 }
 .home-list .home-list-item .desc{
 	flex: 1;
 	margin-left: 15rpx;
+	display:flex;
+	flex-direction:column;
+	justify-content:space-between;
 }
 .home-list-item .desc .title{
 	display: flex;
 	justify-content: space-between;
-	font-size:28rpx;
+	font-size:30rpx;
 }
 .home-list-item .desc .title .name{
 	font-weight:600;
@@ -356,7 +359,7 @@ page{
 .hotClassify-list{
 	display: flex;
 	flex-wrap: wrap;
-	padding: 25rpx 25rpx 20rpx 25rpx;
+	padding: 30rpx 30rpx 30rpx 30rpx;
 	box-sizing: border-box; 
 }
 .hotClassify-item{

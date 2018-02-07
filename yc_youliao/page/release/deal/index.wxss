@@ -28,6 +28,9 @@ page{
 .paragraph{
 	margin-top: 30rpx;
 }
+.footer{
+	margin-top: 30rpx;
+}
 
 
 
