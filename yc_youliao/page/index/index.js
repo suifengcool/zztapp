@@ -23,8 +23,21 @@ Page({
 	    currentIndex: 0,
 	    townName: '',
 	    townId: null,
-	    hotClassifyList:[]
-
+	    hotClassifyList:[],
+	    sortTypes: [{
+	    	name: '默认排序',
+	    	type: 'default'
+	    },{
+	    	name: '离我最近',
+	    	type: 'near'
+	    },{
+	    	name: '人气排名',
+	    	type: 'hot'
+	    },{
+	    	name: '领券排行',
+	    	type: 'coupon'
+	    }],
+	    sortCurrent: 'default'
 	},
 	
 	onLoad: function(){
@@ -335,4 +348,15 @@ Page({
 	        url: `/yc_youliao/page/search/${type}/index?keyword=${key}&from=index&cate_id=${id}`
     	})
     },  
+
+    // 点击排序
+    sortTap(e){
+    	let type = e.currentTarget.dataset.type
+    	console.log('type:',type)
+    	this.setData({
+    		sortCurrent: type
+    	})
+
+    	console.log('this.sortCurrent:',this.data.sortCurrent)
+    }
 })

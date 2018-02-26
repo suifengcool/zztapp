@@ -135,6 +135,15 @@
 	    			<i wx:if="{{showClassify}}" class="iconfont icon-up-solid"></i>
 	    		</view>
     		</view>
+            <view class="sort-box">
+                <view 
+                    class="sort-item {{sortCurrent == item.type ? 'curentSort' : ''}}" 
+                    wx:for="{{sortTypes}}" 
+                    wx:key="{{index}}"
+                    data-type="{{item.type}}"
+                    bindtap='sortTap'
+                >{{item.name}}</view>
+            </view>
 	    	<view class="home-list">
 	    		<view 
                     class="home-list-item" 
