@@ -54,20 +54,20 @@
         </view>
 
         <view wx:if="{{!showClassify}}" class="advert-box">
-            <view class="advert-item">
+            <navigator class="advert-item" url="../advs/index">
                 <image
                     class="pic"
                     src="{{'../../resource/images/adv1.png'}}"
                     background-size="cover"
                 ></image>
-            </view>
-            <view class="advert-item">
+            </navigator>
+            <navigator class="advert-item" url="../advs/index">
                 <image
                     class="pic"
                     src="{{'../../resource/images/adv2.png'}}"
                     background-size="cover"
                 ></image>
-            </view>
+            </navigator>
         </view>
 	    <view wx:if="{{!showClassify}}" class="shop-box bg_white">
 	    	<view class="title-box">

@@ -22,7 +22,8 @@
     "yc_youliao/page/shop/comment/index",
     "yc_youliao/page/search/index/index",
     "yc_youliao/page/search/shop/index",
-    "yc_youliao/page/search/msg/index"
+    "yc_youliao/page/search/msg/index",
+    "yc_youliao/page/advs/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

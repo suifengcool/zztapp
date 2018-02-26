@@ -1,0 +1,13 @@
+page{
+	background: #f0f0f0;
+}
+.info{
+	position: fixed;
+	left: 0;
+	top: 40%;
+	text-align: center;
+	width: 100%;
+	font-size: 28rpx;
+	color: #979797;
+
+}
