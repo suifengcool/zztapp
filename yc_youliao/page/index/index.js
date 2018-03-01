@@ -32,10 +32,10 @@ Page({
 	    	type: 'near'
 	    },{
 	    	name: '人气排名',
-	    	type: 'hot'
+	    	type: 'scan'
 	    },{
 	    	name: '领券排行',
-	    	type: 'coupon'
+	    	type: 'ticket'
 	    }],
 	    sortCurrent: 'default'
 	},
@@ -120,6 +120,7 @@ Page({
 	    }
 
 	    if(this.data.cateId != 31) form.cid = this.data.cateId
+		if(this.data.sortCurrent != 'default') form.key = this.data.sortCurrent
 
 	    shopList.getPageData(form, (data) => {
 	        if (data.length < LENGTH) {
@@ -356,6 +357,8 @@ Page({
     	this.setData({
     		sortCurrent: type
     	})
+
+    	this.getData(true)
 
     	console.log('this.sortCurrent:',this.data.sortCurrent)
     }
