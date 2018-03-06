@@ -328,7 +328,7 @@ Page({
             this.toast('请填写手机号码')
             return
         }
-        if(this.data.form.telphone && !(/^1[3|5][0-9]\d{4,8}$/.test(this.data.form.telphone))){
+        if(this.data.form.telphone && !(/(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/.test(this.data.form.telphone))){
             this.toast('请填写正确号码')
             return
         }
@@ -341,7 +341,7 @@ Page({
             return
         }
         let form = this.data.form
-        console.log('form:',form)
+
         index.submit(form,(data)=>{
             if(data.message == "sucess" || data.errno == 0){
                 wx.showToast({
