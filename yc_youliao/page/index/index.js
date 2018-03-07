@@ -116,7 +116,8 @@ Page({
 	        lat: this.data.location.latitude,
 	        lng: this.data.location.longitude,
 	        page: this.data.page,
-	        num: LENGTH
+	        num: LENGTH,
+	        area_id: this.data.townId
 	    }
 
 	    if(this.data.cateId != 31) form.cid = this.data.cateId
