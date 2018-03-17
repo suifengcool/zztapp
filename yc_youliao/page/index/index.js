@@ -155,6 +155,32 @@ Page({
 		        item.score_solid_half = arr1;
 		        item.score_solid_none = arr2;
 			})
+			console.log('arr:',arr)
+			function obj2key(obj, keys){  
+			    var n = keys.length,  
+			        key = [];  
+			    while(n--){  
+			        key.push(obj[keys[n]]);  
+			    }  
+			    return key.join('|');  
+			}  
+			
+			//去重操作  
+			function uniqeByKeys(array,keys){  
+			    var arr = [];  
+			    var hash = {};  
+			    for (var i = 0, j = array.length; i < j; i++) {  
+			        var k = obj2key(array[i], keys);  
+			        if (!(k in hash)) {  
+			            hash[k] = true;  
+			            arr .push(array[i]);  
+			        }  
+			    }  
+			    return arr ;  
+			} 
+
+			arr = uniqeByKeys(arr,['shop_id']);
+			console.log('arr2:',arr)
 	        this.setData({
 		        shopList: arr,
 	        	page: this.data.page + 1
@@ -320,6 +346,7 @@ Page({
     },
 
     // 页面上拉触底事件的处理函数
+    // 页面在点击分类时，如果先前数据过多，则点击时页面会出现上下抖动一次，会触发页面上拉触底事件，bug
     onReachBottom: function () {
     	this.getData(false)
     },

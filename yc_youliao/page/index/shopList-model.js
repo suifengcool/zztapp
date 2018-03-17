@@ -17,6 +17,7 @@ class ShopList extends Base {
 
   // 获取店铺列表
   getPageData(data, callback) {
+    console.log('data:',data)
     var param = {
       url: 'entry/wxapp/GetShopList',
       data,

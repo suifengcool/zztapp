@@ -18,11 +18,21 @@ Page({
 		isComplete: false,
 		imagesSocket: '',
 		cate_id: 0,
+		townId: null
 		
 
 	},
 	
 	onLoad: function(option){
+		let isLoaded = wx.getStorageSync('isLoaded');
+
+		if(isLoaded){
+			this.setData({
+				townName: isLoaded.name,
+				townId: isLoaded.id
+			})
+		}
+
 		// 获取图片头
 		getImageSocket((data) => {
 		    this.setData({
@@ -128,6 +138,8 @@ Page({
         if(this.data.cate_id != 31){
         	form.cid = this.data.cate_id
         }
+
+        form.area_id = this.data.townId
         
 		index.getPageData(form,(data)=>{
 

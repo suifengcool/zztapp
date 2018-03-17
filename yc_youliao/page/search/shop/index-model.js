@@ -40,6 +40,7 @@ class Index extends Base {
 	    	data.page = form.page;
     		data.num = form.num;
     		data.cid = form.cid;
+    		data.area_id = form.area_id;
 		    var param = {
 		        url: 'entry/wxapp/GetShopList',
 		        data,
