@@ -88,4 +88,7 @@
 		    </view>
 		</view>
     </view>
+
+    <import src="../../../resource/template/complete.wxml" />
+	<template is="complete" wx:if="{{isComplete}}"/>
 </view>

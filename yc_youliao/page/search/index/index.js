@@ -179,11 +179,19 @@ Page({
 		let key = e.currentTarget.dataset.key
 		let type = e.currentTarget.dataset.type
 		let id = e.currentTarget.dataset.id
+		let item = e.currentTarget.dataset.item
 		wx.navigateTo({
 	        url: id 
 	        	? `/yc_youliao/page/search/${type}/index?keyword=${key}&from=index&cate_id=${id}`
-				: `/yc_youliao/page/search/${type}/index?keyword=${key}&from=index`
+				: `/yc_youliao/page/search/${type}/index?keyword=${key}&from=index&id=${item.id}`
     	})
+	},
+
+	goToMsgList(e){
+		let item = e.currentTarget.dataset.item;
+		wx.navigateTo({
+            url: `/yc_youliao/page/release/list/index?name=${item.name}&id=${item.id}`
+        })
 	}
 	
 })

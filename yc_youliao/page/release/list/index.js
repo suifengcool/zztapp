@@ -2,7 +2,7 @@ import { getLocation, getUserInfo, getImageSocket , getWxUrl} from '../../../res
 import { Index } from 'index-model.js'
 var index = new Index()
 const app = getApp()
-
+const LENGTH = 10;
 Page({
     data: {
 		tabList: [{
@@ -21,10 +21,12 @@ Page({
         tab: 0,
         list: [],
         imagesSocket: '',
-        id: ''
+        id: '',
+        isComplete: false,
     },
 
     onLoad: function (options) {
+        console.log('options:',options)
         if(options && options.id){
             this.setData({
                 id: options.id 
@@ -65,6 +67,11 @@ Page({
             }
         }
         index.getModuleData(form,(data)=>{
+            if (data.length < LENGTH) {
+                this.setData({
+                    isComplete: true
+                })
+            }
             this.setData({
                 list: data
             })

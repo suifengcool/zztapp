@@ -28,9 +28,10 @@
                 wx:for="{{msgTypeList}}" 
                 wx:key="{{index}}" 
                 wx:for-item="i"
-                bindtap = "goToSearchList"
+                bindtap = "goToMsgList"
                 data-key = '{{i.name}}'
                 data-type = 'msg'
+                data-item = '{{i}}'
             >{{i.name}}</view>
     	</view>
     </view>

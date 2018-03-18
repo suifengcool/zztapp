@@ -16,9 +16,11 @@ Page({
 		page: 1,
 		isComplete: false,
 		imagesSocket: '',
+		id:null
 	},
 	
 	onLoad: function(option){
+		console.log('option:',option)
 		// 获取图片头
 		getImageSocket((data) => {
 		    this.setData({
@@ -33,8 +35,15 @@ Page({
 				showSearch: option.from ? false : true
 			})
 		}
-		
-		this.getData()
+
+		if(option.from){
+			this.setData({
+				id: option.id
+			})
+			this.getDataByCateId()
+		}else{
+			this.getData()
+		}
 	},
 
 	listenerInput(e){
@@ -73,7 +82,36 @@ Page({
 	        	page: this.data.page + 1
 		    })
 		})
-		
+	},
+
+	getDataByCateId(){
+		if(this.data.isComplete) return
+
+		let form = {};
+        form.id = this.data.id
+		form.page = this.data.page
+        form.num = LENGTH
+		index.getDataByCateId(form,(data)=>{
+
+			if (data.length < LENGTH) {
+		        this.setData({
+		            isComplete: true
+		        })
+	        }
+
+	        let arr = [];
+	        arr = [...this.data.msgList, ...data];
+	        arr.map((item,index)=>{
+	        	if(item.avatar.indexOf('http') < 0 ){
+					item.avatar = this.data.imagesSocket + '/' + item.avatar
+	        	}
+			})
+
+	        this.setData({
+		        msgList: [...this.data.msgList, ...data],
+	        	page: this.data.page + 1
+		    })
+		})
 	},
 
 	search(){
