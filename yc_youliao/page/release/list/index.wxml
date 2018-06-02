@@ -35,7 +35,7 @@
 			<view class='wechat'>
 			 	<image class='img' src="../../../resource/images/phone.png" />联系他</view>
 		    </view>
-	    	<view class="contentTxt">{{item.con.title}}</view>
+	    	<view class="contentTxt">{{item.con.title?item.con.title:item.con.text}}</view>
 		</navigator>
 
 	    <block wx:if="{{item.con.thumbs}}">
@@ -46,7 +46,7 @@
 				    	wx:for-item="img" 
 				    	wx:key="unique" 
 				    	wx:for="{{item.con.thumbs}}" 
-				    	data-src="{{img}}" 
+				    	data-src="{{item.con.thumbs}}" 
 				    	src="{{img}}" 
 				    	class="image_pic"
 			    	/>
@@ -57,7 +57,7 @@
 				    	wx:key="unique" 
 				    	wx:for-item="img" 
 				    	wx:for="{{item.con.thumbs}}" 
-				    	data-src="{{img}}" 
+				    	data-src="{{item.con.thumbs}}" 
 				    	src="{{img}}" 
 				    	class="image_pic"
 			    	/>
